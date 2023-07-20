@@ -1,0 +1,658 @@
+# Modelo individual: formula de Pril
+
+Nuestro objetivo ahora es encontrar probabilidades exactas de $S$. Para eso, haremos supuesto que puedan facilitar los cálculos.
+
+Bajo ciertos supuestos, existe una metodología recursiva muy conocida para calcular probabilidades exactas de $S$. Nosotros nos enfocaremos principalmente en su aplicación
+
+## Formula de Pril
+
+Presentaremos a continuación la formula de Pril. Este resultado fue mostrado por Nelson De Pril en 1986 y proporciona una expresión exacta, aunque recursiva de la distribución de probabilidad de un riesgo en el modelo individual. La formula es bastante general aunque presupone que las reclamaciones toman los valores en el conjunto $\{1,2,...\}$. Este supuesto no es realmente una restricción fuerte pues en la práctica el pago de siniestros se realiza siempre usando alguna unidad monetaria. Para establecer la fórmula De Pril es necesario dividir el portafolio de $n$ asegurados de acuerdo a la tasa de mortalidad y la suma asegurada. Denotaremos por $n_{ij}$ al número de asegurados que tienen probabilidad de reclamación $q_{j}$ y monto de reclamación $i$, en donde $i$ toma valores en $\{1,2,...,I \}$ y $j$ en $\{1,2,...,J \}$. De esta forma se tiene el Cuadro 1 en donde la suma de las entradas es $n_{i}$, es decir:
+
+\begin{eqnarray*}
+    n=\sum_{i=1}^{I}\sum_{j=1}^{J}n_{ij}\\
+\end{eqnarray*}
+
+Denotaremos por $Y_{ij}$ el monto real reclamado por un asegurado cuya probabilidad de reclamación es $q_{j}$ y posible monto reclamado $i$, es ,decir,
+
+\begin{eqnarray*}
+    Y_{ij}=  \left \{ 
+        \begin{matrix} 
+        0& \text{con probabilidad}& 1-q_{j}  \\
+        i&\text{con probabilidad} & q_{j} \\ 
+    \end{matrix}\right. 
+\end{eqnarray*}
+
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("Imágenes/tabla1-P-M_Pril.jpg", error=FALSE)
+```
+<p style="text-align: center">Cuadro 1. Probabilidad de reclamación - Monto de la reclamación</p>
+
+**Teorema: Formula De Pril (i)** 
+
+Sea $n_{ij}$ el número de pólizas cuyos asegurados tienen tasa de mortalidad $q_{j}$ y suma asegurada $i$. Suponga que $j =1,2,...,J$ e $i=1,2,...,I$. Entonces las probabilidades $g_{x}=\mathbb{P}(S=x)$ están dadas por:
+
+\begin{eqnarray*}
+    g_{x}&=& \displaystyle\frac{1}{x}\displaystyle\sum_{i=1}^{x\wedge I} \displaystyle\sum_{k=1}^{\left \lfloor x/i \right \rfloor} g_{x-ik}\ h(i,k), \quad \text{para } x \geq 1 \\
+    g_{0}&=& \displaystyle\prod_{i=1}^{I}\displaystyle\prod_{j=1}^{J}(1-q_{j})^{n_{ij}}\\
+\end{eqnarray*}
+
+En donde:
+
+\begin{eqnarray*}
+h(i,k)&=& i(-1)^{k-1} \displaystyle\sum_{j=1}^{J} n_{ij} \left ( \displaystyle\frac{q_{j}}{1-q_{j}}  \right)^{k}
+\end{eqnarray*}
+
+**Nota:** \begin{equation*}   x\wedge I \ddot{=} mín \{ x, I\} \end{equation*}
+
+_Demostración._
+
+La función generadora de probabilidad del monto reclamado $Y_{ij}$ por un asegurado con probabilidad de reclamación $q_{j}$, y monto reclamado $i$ es:
+
+\begin{eqnarray*}
+    \mathbb{E}(t^{Y_{ij}})&=& (1-q_{j})+q_{j}t^{i}\\
+\end{eqnarray*}
+
+Por lo tanto, usando la hipótesis de independencia, la función generadora de probabilidad de la cartera completa es:\\
+
+\begin{eqnarray*}
+    G(t)&=&\mathbb{E}(t^{S})\\
+    &=& \displaystyle\sum_{r=0}^{\infty} t^{r}g_{r}\\
+    &=& \displaystyle\prod_{i=1}^{I} \displaystyle\prod_{j=1}^{J} (1-q_{j}+q_{j}t^{i})^{n_{ij}}\\
+\end{eqnarray*}
+
+En donde $q_{r}=\mathbb{P}(S=r)$. Tomando logaritmo y después derivando.
+
+\begin{eqnarray*}
+\ln(G(t))&=& \displaystyle\sum_{i=1}^{I}\displaystyle\sum_{j=1}^{J} n_{ij} \quad \ln(1-q_{j}+q_{j} t^{i})\\
+\displaystyle\frac{d}{dt}\ln(G(t))&=&\displaystyle\frac{G'(t)}{G(t)} \\
+&=& \displaystyle\sum_{i=1}^{I}\displaystyle\sum_{j=1}^{J} n_{ij} \displaystyle\frac{iq_{j}t^{i-1}}{1-q_{j}+q_{j}t^{i}}\\
+\end{eqnarray*}
+
+Por lo tanto:
+
+\begin{eqnarray*}
+    t G'(t)&=& G(t) \displaystyle\sum_{i=1}^{I}\displaystyle\sum_{j=1}^{J} n_{ij} \displaystyle\frac{iq_{j}t^{i}}{1-q_{j}+q_{j}t^{i}}\\
+    &=& G(t) \displaystyle\sum_{i=1}^{I}\displaystyle\sum_{j=1}^{J} n_{ij} i \displaystyle\frac{q_{j}t^{i}}{1-q_{j}} \left( 1+\displaystyle\frac{q_{j}t^{i}}{1-q_{j}} \right)^{-1}\\
+    &=& G(t) \displaystyle\sum_{i=1}^{I}\displaystyle\sum_{j=1}^{J} n_{ij} i \displaystyle\frac{q_{j}t^{i}}{1-q_{j}} \displaystyle\sum_{k=1}^{\infty}(-1)^{k-1} \left( \displaystyle\frac{q_{j}t^{i}}{1-q_{j}} \right)^{k-1} \\
+\end{eqnarray*}
+
+En donde hemos usado la expansión $(1-x)^{-1}= \displaystyle\sum_{k=0}^{\infty} x^{k}$, válida para $|x| <1$. Por lo tanto, para valores suficientemente pequeños de $t$.
+
+\begin{eqnarray*}
+    t G'(t)&=& G(t) \displaystyle\sum_{i=1}^{I}\displaystyle\sum_{j=1}^{J} n_{ij} i \displaystyle\sum_{k=1}^{\infty}(-1)^{k-1} \left( \displaystyle\frac{q_{j}}{1-q_{j}} \right)^{k}t^{ik}. 
+\end{eqnarray*}
+
+Defina ahora la función:
+
+\begin{eqnarray*}
+    h(i,k)&=& i(-1)^{k-1} \displaystyle\sum_{j=1}^{J} n_{ij} \left( \displaystyle\frac{q_{j}}{1-q_{j}} \right)^{k}
+\end{eqnarray*}
+
+La doble suma respecto de los índices $j$ y $k$ es absolutamente convergente en cualquiera de los dos órdenes que se efectúen en estas sumas y el resultado es el mismo. Por lo tanto es válido el intercambio en el orden de las sumas y la expresión anterior puede escribirse como sigue:
+
+\begin{eqnarray*}
+    t G'(t)&=& G(t) \displaystyle\sum_{i=1}^{I} \displaystyle\sum_{k=1}^{\infty}t^{ik} h(i,k)
+\end{eqnarray*}
+
+Sustituyendo de las expresiones $G'(t)$ y $G(t)$ en sus correspondientes series de potencias se obtiene:
+
+\begin{eqnarray*}
+    \displaystyle\sum_{r=1}^{\infty}rt^{r} g_{r} &=&  \displaystyle\sum_{r=0}^{\infty} t^{r} g_{r} \displaystyle\sum_{i=1}^{I} \displaystyle\sum_{k=1}^{\infty}t^{ik} h(i,k)\\
+\end{eqnarray*}
+
+Para $x\geq 1$, el coeficiente de $t^{x}$ en el lado izquierdo es $xg_{x}$, mientras que en el lado derecho es la suma de los términos $g_{x-ik}h(i,k)$ para aquellos valores de $i$ y $k$ tales que $ I \leq ik \leq x$. 
+
+Se pueden  establecer primero los posibles valores para $i$ de la siguiente forma $i=1,...,x \wedge I$, y por lo tanto los valores para $k$ son $k=1,...,[x/i]$, en donde $x\wedge I$ es el valor mínimo entre $x$ e $I$, y $\left \lfloor x/i \right \rfloor$ es la parte entera del cociente $x/i$. Igualando estos coeficientes se tiene que:
+
+\begin{eqnarray*}
+    xg_{x}&=& \displaystyle\sum_{i=1}^{x \wedge I} \displaystyle\sum_{k=1}^{\left \lfloor x/i \right \rfloor} g_{x-ik} h(i,k)\\
+\end{eqnarray*}
+
+De esta forma se llega a la siguiente expresión, para $x \geq 1$:
+
+\begin{eqnarray*}
+    g_{x}&=& \displaystyle\frac{1}{x}\displaystyle\sum_{i=1}^{x\wedge I} \displaystyle\sum_{k=1}^{\left \lfloor x/i \right \rfloor} g_{x-ik} h(i,k)\\
+\end{eqnarray*}
+
+Por otro lado, como $S=0$ sólo cuando ningún asegurado efectúa ninguna reclamación, para $x=0$ se tiene que:
+
+\begin{eqnarray*}
+    g_{0}&=&\displaystyle\prod_{i=1}^{I}\displaystyle\prod_{j=1}^{J}(1-q_{j})^{n_{ij}}\\
+\end{eqnarray*}
+
+Notemos que lo que hace este modelo, es agrupar a los asegurados por monto de reclamación (suma asegurada) $i$ y probabilidad de reclamación $q_{j}$ (grupo ($i,j$)). Observe que la v.a $Y_{ij}$ indica el monto que reclamó un individuo del grupo $(i,j)$, sin embargo hay $n_{ij}$ de ellos; ergo, necesitamos denotar a $Y_{ijk}$ como el monto real que puede reclamar el k-ésimo asegurado del grupo $(i,j)$ para poder ser más específicos. De esta manera, podemos ver al riesgo $S$ como:
+
+\begin{eqnarray*}
+  S&=& \sum_{i=1}^{I}\sum_{j=1}^{J}\sum_{k=1}^{n_{ij}} Y_{ijk}\\
+  &=& \underbrace{\sum_{k=1}^{n_{11}}Y_{11k}}_{\text{Grupo (1,1)}}+
+    \underbrace{\sum_{k=1}^{n_{21}}Y_{21k}}_{\text{Grupo (2,1)}}+...+
+    \underbrace{\sum_{k=1}^{n_{I1}}Y_{I1k}}_{\text{Grupo (I,1)}}+ \underbrace{\sum_{k=1}^{n_{12}}Y_{12k}}_{\text{Grupo (1,2)}}+...+\underbrace{\sum_{k=1}^{n_{I2}}Y_{I2k}}_{\text{Grupo (I,2)}}+...+\underbrace{\sum_{k=1}^{n_{IJ}}Y_{IJk}}_{\text{Grupo (I,J)}}\\
+\end{eqnarray*}
+
+No olvidemos que estamos hablando del modelo individual. Observemos que $Y_{ij}= B_{j}(i)$ donde $B_{j} \sim Ber (q_{j})$. Ahora vamos a desagrupar a los individuos; lo que tenemos es un portafolio con $n$ individuos donde algunos tienen características diferentes entre si.
+
+Sea $X_{t}\ddot{=}D_{t}C_{t}$ con $D_{t} \sim Ber(\gamma_{t})$ y $C_{t}$ una constante que indica el monto que reclama el t-ésimo asegurado del portafolio con n-individuos. 
+
+Entonces existen $t$ y $k$ tales que $X_{t}=Y_{ijk}$ en cuyo caso sucede que $\gamma_{t}=q_{j}$ y $C_{t}=i$.
+
+Observe que esto no es más que renombrar variables por grupo y sin grupos. Entonces podríamos escribir también al riesgo $S$ como:
+
+\begin{equation*}
+    S= \displaystyle\sum_{t=1}^{n} C_{t}D_{t} =\displaystyle\sum_{i=1}^{I}\displaystyle\sum_{j=1}^{J}\displaystyle\sum_{k=1}^{n_{ij}} Y_{ijk}\\
+\end{equation*}
+
+Con lo que podemos notar que si seguimos hablando del modelo individual, solo que con ciertas etiquetas. En consecuencia cada $Y_{ijk}$ es independiente una de otra (esto puesto que los individuos son independientes entre si) y son idénticamente distribuidos por grupo(i, j).
+
+#### Ejemplo {-}
+
+Tomando un portafolio del estilo: 
+
+```{r echo=FALSE, out.width="40%", fig.align='center'}
+knitr::include_graphics("Imágenes/tabla1-SA_QI.jpg", error=FALSE)
+```
+
+En el fondo tenemos el riesgo:
+
+\begin{eqnarray*}
+    S&=& \displaystyle\sum_{i=1}^{I}\displaystyle\sum_{j=1}^{J}\displaystyle\sum_{k=1}^{n_{ij}} Y_{ijk}\\
+    &=& \displaystyle\sum_{k=1}^{2} Y_{11k} + \displaystyle\sum_{k=1}^{1} Y_{12k}+ \displaystyle\sum_{k=1}^{3} Y_{21k}+ 0\\
+    &=& (Y_{111} +Y_{112} )+ (Y_{121})+( Y_{211}+ Y_{212}   +  Y_{213})\\
+\end{eqnarray*}
+
+**Definiendo:**
+
+\begin{eqnarray*}
+    - D_{1} \sim Ber(q_{1}) \quad \text{y} \quad C_{1}=1 \hspace{1cm} - D_{4} \sim Ber(q_{2}) \quad \text{y} \quad C_{4}=1\\
+    - D_{2} \sim Ber(q_{1}) \quad \text{y} \quad C_{2}=1 \hspace{1cm} - D_{5} \sim Ber(q_{2}) \quad \text{y} \quad C_{5}=1\\
+    - D_{3} \sim Ber(q_{1}) \quad \text{y} \quad C_{3}=2 \hspace{1cm} - D_{6} \sim Ber(q_{2}) \quad \text{y} \quad C_{6}=1 
+\end{eqnarray*}
+
+\begin{eqnarray*}
+    S &=& ( D_1 C_1 +  D_2 C_2 )+(D_3 C_3)+(D_4 C_4 + D_5 C_5   +D_6 C_6 )\\
+    &=& \displaystyle\sum_{t=1}^{6} D_{t} C_{t}
+\end{eqnarray*}
+
+Otra observación importante es que $S$ está acotada. Como $D_{t} \in \{ 0,1\}$ y $C_{t}>0$, entonces en el mejor de los escenarios $S=0$ que ocurre cuando nadie reclama. Pero si todos reclaman: 
+
+\begin{eqnarray*}
+    S&=& \displaystyle\sum_{i=1}^{I}\displaystyle\sum_{j=1}^{J}\displaystyle\sum_{k=1}^{n_{ij}} Y_{ijk}\\
+    &=& \displaystyle\sum_{i=1}^{I}\displaystyle\sum_{j=1}^{J}\displaystyle\sum_{k=1}^{n_{ij}} i  \quad \text{Cuando reclaman vale i la suma asegurada}\\
+    &=& \displaystyle\sum_{i=1}^{I}\displaystyle\sum_{j=1}^{J}n_{ij} (i)\\
+    &=& \displaystyle\sum_{i=1}^{I}i \displaystyle\sum_{j=1}^{J}n_{ij}
+\end{eqnarray*}
+
+Que teniendo el cuadro:
+
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("Imágenes/tabla3-Pril.jpg", error=FALSE)
+```
+
+Se traduce a simplemente tomar:
+
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("Imágenes/tabla4-Pril.jpg", error=FALSE)
+```
+
+Viendo esto, haremos el cálculo de la esperanza del riesgo $S$.
+
+\begin{equation*}
+    \mathbb E [S] \ \doteq \mathbb E \left[\sum_{i=1}^{I} \sum_{j=1}^{J} \sum_{k=1}^{n_{ij}} Y_{ijk}\right] = \sum_{i=1}^{I} \sum_{j=1}^{J} \sum_{k=1}^{n_{ij}} \mathbb E [Y_{ijk}]\\
+    = \sum_{i=1}^{I} \sum_{j=1}^{J} \sum_{k=1}^{n_{ij}} iq_{j}
+        \left\{ 
+        \begin{array}{lcc}
+            \mathbb E [Y_{ijk}]\\\\
+            =0\cdot(1-q_{i})+iq_{j}\\\\
+            =iq_{j}\\
+        \end{array}
+        \right.
+    \\
+    = \sum_{i=1}^{I} \sum_{j=1}^{J} iq_{j}n_{ij} = \sum_{i=1}^{I} i \sum_{j=1}^{J} q_{j} n_{ij}
+\end{equation*}
+
+Que es muy similar al cálculo anterior solo que ahora debemos multiplicar cada $n_{ij}$ por su correspondiente $q_{j}$.
+
+\begin{eqnarray*}
+    \mathbb E [S] &=& (1) \times [q_{1}n_{11} + q_{2}n_{12} + ... + ... + ... + q_{J}n_{1J} ]\\
+    &&   + ( 2 ) \times [ q_{1}n_{21} + q_{2}n_{22} + ... + ... + ... + q_{J}n_{2J} ]\\
+    &&   + ( ... ) \times [ ... + ... + ... + ... + ... + ... ]\\
+    &&   + ( i ) \times [ ... + ... + ... + q_{j}n_{ij} + ... + ... ]\\
+    &&  + ( ... ) \times [ ... + ... + ... + ... + ... + ... ]\\
+    &&   + ( I ) \times [ ... + ... + ... + q_{j}n_{Ij} + ... + q_{J}n_{IJ} ]\\
+\end{eqnarray*}
+
+Equivalentemente es multiplicar cada número dentro del cuadro, multiplicarlo por su $(SA,q_{j})$ y sumar todo.
+
+El resultado anterior se puede deducir de la fórmula general del modelo individual simplemente agrupando por $(i,j)$. Haremos el cálculo de la varianza de esta manera para ejemplificarlo. Con base en los resultados obtenidos para el modelo individual:
+
+\begin{eqnarray*}
+    Var(S) &=& \sum_{t=1}^{n} [ \gamma_{t} Var(C_{t}) + \gamma_{t} (1-\gamma_{t}) \mathbb E^{2} [C_{t}] ]\\
+    &=& \sum_{t=1}^{n} \gamma_{t} (1-\gamma_{t}) C_{t}^{2}
+        \left\{ 
+        \begin{array}{lcc}
+            Como\hspace{2mm}C_{t}\hspace{2mm}es\hspace{2mm}constante\\\\
+            Var(C_{t})=0\hspace{2mm}y\hspace{2mm}\mathbb E[C_{t}]=C_{t}\\
+        \end{array}
+        \right. \\
+\end{eqnarray*}
+
+La suma anterior la podemos separar en los grupos $(i,j)$ pues $n=\sum_{i=1}^{I} \sum_{j=1}^{J} n_{ij}$, al separarla, tendremos una suma de sumas de grupos y al mismo tiempo $\gamma_{t}$ coincidirá con $q_{j}$ y $C_{t}$ con $i$ para cada grupo $(i,j)$:
+
+\begin{eqnarray*}
+    &=&  \underbrace{   \sum_{t=1}^{n_{11}} q_{1}(1-q_{1})(1)^{2}     }_{Grupo(1,1)} +
+    \underbrace{    \sum_{t=1}^{n_{12}} q_{2}(1-q_{2})(1)^{2}    }_{Grupo(1,2)} + ... +
+    \underbrace{    \sum_{t=1}^{n_{1J}} q_{J}(1-q_{J})(1)^{2}    }_{Grupo(1,J)}
++ \underbrace{  \sum_{t=1}^{n_{21}} q_{1}(1-q_{1})(2)^{2}     }_{Grupo(2,1)}  \\
+  &&  +\underbrace{    \sum_{t=1}^{n_{22}} q_{2}(1-q_{2})(2)^{2}    }_{Grupo(2,2)}+ 
+    \underbrace{    \sum_{t=1}^{n_{2J}} q_{J}(1-q_{J})(2)^{2}    }_{Grupo(2,J)}+...+...+...+...+...+...+...+...+...+...\\
+& & + ...+...+...+ \underbrace{   \sum_{t=1}^{n_{I1}} q_{1}(1-q_{1})(I)^{2}   }_{Grupo(I,1)}+
+    \underbrace{    \sum_{t=1}^{n_{I2}} q_{2}(1-q_{2})(I)^{2}    }_{Grupo(I,2)}+ ... +
+    \underbrace{   \sum_{t=1}^{n_{IJ}} q_{J}(1-q_{J})(I)^{2}    }_{Grupo(I,J)}\\
+    &=& \sum_{i=1}^{I} \sum_{j=1}^{J} \sum_{k=1}^{n_{ij}} q_{j} (1-q_{j}) i^{2} = \sum_{i=1}^{I} \sum_{j=1}^{J} q_{j} (1-q_{j}) i^{2} n_{ij}\\
+    &=& \sum_{i=1}^{I} i^{2} \sum_{j=1}^{J} q_{j} (1-q_{j}) n_{ij}\\
+
+\end{eqnarray*}
+
+Que análogo al último cálculo no es más que, tomando como referencia la tabla con frecuencias:
+
+\begin{eqnarray*}
+    Var(S) &=& ( 1)^{2} 
+    \times [ (1-q_{1})q_{1}n_{11} + 
+    (1-q_{2})q_{2}n_{12} + 
+    ... + 
+    ... + 
+    ... + 
+    (1-q_{J})q_{J}n_{1J} ]\\ && + ( 2 )^{2} 
+    \times [ (1-q_{1})q_{1}n_{21} + 
+    (1-q_{2})q_{2}n_{22} + 
+    ... + 
+    ... + 
+    ... + 
+    (1-q_{J})q_{J}n_{2J} ]\\ && + ( ... ) 
+    \times [ ... + 
+    ... + 
+    ... + 
+    ... + 
+    ... + 
+    ... ]\\ && + ( i )^{2} 
+    \times [ ... + 
+    ... + 
+    ... + 
+    (1-q_{j})q_{j}n_{ij} + 
+    ... + 
+    ... ]\\ && + ( ... ) 
+    \times [ ... + 
+    ... + 
+    ... + 
+    ... + 
+    ... + 
+    ... ]\\ && + ( i )^{2} 
+    \times [ ... + 
+    ... + 
+    ... + (1-q_{j})q_{j}n_{Ij} + 
+    ... + 
+    (1-q_{J})q_{J}n_{IJ} ]\\
+\end{eqnarray*}
+
+Que es lo mismo que la esperanza pero multiplicando $(1-q_{j})q_{j}$ y no solo $q_{j}$ para cada $j$.
+
+Con lo anterior ya tenemos maneras para calcular probabilidades de $S$, así como varianza y esperanza. Los ejemplos los veremos en R.
+
+Para un mejor entendimiento de la fórmula recursiva de $DePril [i]$ escribiremos a continuación de manera explícita los primeros términos de este desarrollo.
+
+
+\begin{eqnarray*}
+    g_{0} &=& \prod_{i=1}^{I} \prod_{j=1}^{J} (1-q_{j})^{n_{ij}}\\
+    g_{1} &=& g_{0} h(1,1)\\
+    g_{2} &=& \frac{1}{2} \{ g_{0} [h(1.2) + h(2,1)] + g_{1} h(1,1) \}\\
+    g_{3} &=& \frac{1}{3} \{ g_{0} [h(1.3) + h(3,1)] + g_{1} [h(1.2) + h(2,1)] + g_{2} h(1,1) \}\\
+    ...
+\end{eqnarray*}
+
+#### Ejemplo {-}
+
+Para los datos que se muestran en la tabla de la Figura 1.4 en donde se tienen 48 pólizas de seguros con las probabilidades de reclamación y los montos de reclamaciones indicados, la correspondiente función de densidad para este riesgo es la que se muestra en la Figura 1.5 \underline{En el apéndice A se encuentra el código en R de una implementación de la fórmula de De Pril [i].} Debe tenerse cuidado en la implementación numérica de esta fórmula pues dado su caracter recursivo y que algunas de las probabilidades involucradas pueden ser muy pequeñas, pueden generarse resultados incorrectos debido al inevitable redondeo de cifras en una computadora.
+
+
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("Imágenes/Probabilidades de reclamación.jpg", error=FALSE)
+```
+
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("Imágenes/Gráfica 1.5.jpg", error=FALSE)
+```
+
+La fórmula que hemos denominado de $De Pril [i]$ y que se encuentra expresada en el contexto de un portafolio de asegurados individuales puede escribirse como un resultado teórico de la teoría de probabilidad. Este es el contenido de la siguiente proposición. La fórmula tiene una expresión más simple y la demostración sigue los mismo lineamientos que la que hemos presentado, sin embargo, escribiremos nuevamente los detalles de la prueba en esta versión simplificada.
+
+**Proposición** (Fórmula de De Pril [ii]) 
+
+Sean $X_{1},X_{2},...,X_{n}$ v.a.i.i.d. con valores en el conjunto $\{0,1,2,...\}$. Para cada entero $j\geq0$, defina la probabilidad $f_{j} = P(X=j)$, y suponga $f_{0} \neq 0$. Sea $S = X_{1} + ... + X_{n}$. Entonces las probabilidades $g_{x} = P(S=x)$ se pueden calcular recursivamente mediante la siguiente fórmula:
+
+\begin{equation*}
+    g_{0} = (f_{0})^{n},\\
+    g_{x} = \frac{1}{f_{0}} \sum_{j=1}^{x} \left[ \frac{j(n+1)}{x} - 1 \right] f_{j}g_{x-j}, \hspace{2mm}para\hspace{2mm}x\geq1. \\
+\end{equation*}
+
+_Demostración._ 
+
+Primeramente observemos que el evento $(S=0)$ ocurre si y sólo si todos los sumandos de $S$ son cero, de modo que por independencia, $g_{0} = (f_{0})^{n}$. Ahora veamos la forma de obtener la fórmula recursiva. Sean $P_{X}(t)$ y $P_{S}(t)$ las funciones generadoras de probabilidad de las variables discretas $X$ y $S$ respectivamente, es decir:
+
+\begin{equation*}
+    P_{X}(t) = E(t^{X}) = \sum_{k=0}^{\infty} t^{k} f_{k},\\
+    P_{S}(t) = E(t^{S}) = \sum_{k=0}^{\infty} t^{k} g_{k}.
+\end{equation*}
+
+Por independencia e idéntica distribución, $P_{S}(t) = [P_{X}(t)]^{n}$. Derivando respecto de t:
+
+\begin{equation*}
+    P'_{S}(t) = n[P_{X}(t)]^{n-1} P'_{X}(t)
+\end{equation*}
+
+Multiplicando ambos lados por $tP_{X}(t)$:
+
+\begin{equation*}
+    P_{X}(t)tP'_{S}(t) = nP_{S}(t) t P'_{X}(t),
+\end{equation*}
+
+que en términos de sumas se escribe como sigue:
+
+\begin{equation*}
+    \sum_{j=0}^{\infty} t^{j}f_{j} \sum_{k=1}^{\infty} kt^{k}g_{k} = n\sum_{k=0}^{\infty} t^{k}g_{k}  \sum_{j=1}^{\infty} jt^{j}f_{j}.
+\end{equation*}
+
+El siguiente paso es identificar el coeficiente del término $t^{x}$ en cada lado de la ecuación, para $x\geq1$. Por ejemplo, para el lado izquierdo el coeficiente es el término $f_{j}kg_{k}$ para todos aquellos valores de $j\geq0$ y $k\geq1$ tales que $j+k = x$. Esta doble suma puede escribirse como $\sum_{j=0}^{x-1} f_{j}(x-j) g_{x-j}$. De manera similar se encuentra el coeficiente del lado derecho. Igualando estos coeficientes se llega a la identidad:
+
+\begin{equation*}
+    \sum_{j=0}^{x-1} (x-j) f_{j} g_{x-j} = n\sum_{j=1}^{x} j f_{j} g_{x-l}.
+\end{equation*}
+
+Separando el primer sumando del lado izquierdo y añadiendo en esa misma suma el término correspondiente a $j=x$, es es cero, se obtiene:
+
+\begin{equation*}
+    xf_{0}g_{x} + \sum_{j=1}^{x} (x-j) f_{j} g_{x-j} = n\sum_{j=1}^{x} j f_{j} g_{x-l}.
+\end{equation*}
+
+Finalmente se despeja el término $g_{x}$ para llegar a la fórmula anunciada:
+
+\begin{equation*}
+    g_{x} = \frac{1}{f_{0}} \sum_{j=1}^{x} \left[ \frac{j(n+1)}{x} - 1 \right] f_{j}g_{x-j}, x\geq1.
+\end{equation*}
+
+Los primeros términos de la fórmula de De Pril [ii] se muestran a continuación:
+
+\begin{eqnarray*}
+    g_{0} &=& (f_{0})^{n},\\
+    g_{1} &=& \frac{1}{f_{0}} (n f_{1} g_{0}) = 
+    \begin{pmatrix}
+        n \\
+        1 
+    \end{pmatrix} f_{1}(f_{0})^{n-1},\\
+    g_{2} &=& \frac{1}{f_{0}} \left(\frac{n-1}{2} f_{1} g_{1} + nf_{2}g_{0}\right) = 
+    \begin{pmatrix}
+        n \\
+        2 
+    \end{pmatrix}(f_{1})^{2}(f_{0})^{n-2} + 
+    \begin{pmatrix}
+        n \\
+        1 
+    \end{pmatrix} f_{2}(f_{0})^{n-1},\\
+    g_{3} &=& \frac{1}{f_{0}} \left(\frac{n-1}{3} f_{1} g_{2} + \frac{2n-1}{3} f_{2} g_{1} + nf_{3}g_{0}\right)\\
+    &=& 
+    \begin{pmatrix}
+        n \\
+        3 
+    \end{pmatrix}(f_{1})^{3}(f_{0})^{n-3} + 2!
+    \begin{pmatrix}
+        n \\
+        2 
+    \end{pmatrix}f_{2}f_{1}(f_{0})^{n-2} + 
+    \begin{pmatrix}
+        n \\
+        1 
+    \end{pmatrix} f_{3}(f_{0})^{n-1}.\\
+\end{eqnarray*}
+
+Observe que las expresiones simplificadas tienen una interpretación natural en términos combinatoriales. Por ejemplo, la expresión para $g_{2}$ involucra dos situaciones: la primera cuando dos sumandos distintos de $S$ toman cada uno el valor uno y el resto toma el valor cero, y la segunda situación cuando uno de los sumandos toma el valor dos y el resto es cero. Los coeficientes binomiales dan cuenta de las distintas formas en las que se pueden presentar estos arreglos.
+
+#### Ejemplo {-} 
+
+Sean $X_{1}.X_{2},X_{3}$ variables aleatorias independientes con idéntica distribución dada por la tabla que aparece abajo y cuya gráfica se muestra en la Figura 1.6(a).
+
+Usando la fórmula de De Pril [ii] encontraremos la distribución de $S =X_{1} + X_{2} +X_{3}$.
+
+```{r echo=FALSE, out.width="40%", fig.align='center'}
+knitr::include_graphics("Imágenes/tabla5-Pril.jpg", error=FALSE)
+```
+
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("Imágenes/Figura 1.6.jpg", error=FALSE)
+```
+
+Observe que la variable suma puede tomar cualquiera de los valores $0,1,...,6$. Usando la misma notación que en la fórmula de De Pril se muestran a continuación los cálculos para encontrar la función de probabilidad de $S$ y la gráfica correspondiente aparece en la Figura 1.6(b).
+
+\begin{eqnarray*}
+    g_{0} &=& (f_{0})^{3} = \textit{0.125},\\
+    g_{1} &=& \frac{1}{f_{0}} (3f_{1}g_{0}) = \textit{0.15},\\
+    g_{2} &=& \frac{1}{f_{0}} (f_{1}g_{1} + 3f_{2}g_{0}) = \textit{0.285},\\
+    g_{3} &=& \frac{1}{f_{0}} \left(\frac{1}{3} f_{1}g_{2} + \frac{8}{3} f_{2}g_{1}\right) = \textit{0.188},\\
+    g_{4} &=& \frac{1}{f_{0}} (f_{2}g_{2}) = \textit{0.171},\\
+    g_{5} &=& \frac{1}{f_{0}} \left(-\frac{1}{5} f_{1}g_{4} + \frac{3}{5} f_{2}g_{3}\right) = \textit{0.054},\\
+    g_{6} &=& \frac{1}{f_{0}} \left(-\frac{1}{3} f_{1}g_{5} + \frac{1}{3} f_{2}g_{4}\right) = \textit{0.027}.
+\end{eqnarray*}
+
+Nosotros mostraremos la implementación de esta fórmula en los scripts de R.
+
+Debemos observar la diferencia que existe entre los supuestos que se manejan en la fórmula de De Pril ($i$) y ($ii$). En el caso de De Pril ($i$) el portafolio se asume como:
+
+$$S=\displaystyle\sum_{t=1}^{n} C_tD_t=\displaystyle\sum_{i=1}^I\displaystyle\sum_{j=1}^J\displaystyle\sum_{k=1}^{n_{ij}}Y_{ijk}$$
+
+Donde las $C_tD_t$ no tienen la misma distribución $\forall t$ necesariamente. Esto se ve más claro cuando vemos el cuadro que nos muestra el número de individuos por grupo $(i,j)$.\\
+
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("Imágenes/tabla6-Pril.jpg", error=FALSE)
+```
+
+De aquí podemos observar que, sin pérdida de generalidad, uno de los $n_{11}$ miembros del grupo (1,1), tiene una probabilidad $q_1\neq q_2$ para alguno de los miembros del grupo (1,2) por ejemplo.
+
+Por otro lado, los supuestos que maneja la versión simplificada (De Pril ($ii$)) son que, asumiendo un portafolio con $n$-pólizas y tomando $\{X_t\}_{t=1}^n$ v.a.i.i.d. entonces el riesgo será:
+
+\begin{equation*}
+    S\displaystyle\sum_{t=1}^n X_t\qquad
+\end{equation*}
+
+Si meditamos un poco la relación, observemos que esta puede modelar uno de los grupos que están en los supuestos de De Pril ($i$). Si tomamos a $n=n_{ij}$ y $X_t=Y_{ij}=iB_j$ estaríamos modelando todo el grupo ($i,j$) con esta v.a.
+
+La simplificación en los supuestos de la fórmula de De Pril($ii$) nos abre un mundo de posibilidades pues ahora, la suma asegurado no es constante necesariamente y no pide más que el soporte de su severidad ($X_t$) esté contenido en el conjunto $\mathbb{N}\cup\{0\}$. Ahora el asegurado número $t$ puede reclamar $X_t\in\{0,1,...\}$.
+
+**Nota:** $X_t=0\Rightarrow$ no hubo reclamación.
+
+Recordemos la siguiente proposición:
+
+**Proposición:**
+
+Sean $X$ y $Y$ independientes, y sean $g$ y $h$ dos funciones de $\mathbb{R} \text{ en } \mathbb{R}$, Borel medibles. Entonces las variables aleatorias $g(X)$ y $h(Y)$ también son independientes. 
+
+Una de las ventajas más importantes que tiene este modelo es en cuando al cálculo de momentos. Notemos que, definiendo al riesgo $S$ como en las hipótesis de De Pril($ii$):
+
+\begin{eqnarray*}
+    M_S(t)&=&\mathbb{E}\left[e^{St}\right]=\mathbb{E}\left[exp\left(t\displaystyle\sum_{i=1}^n X_i\right)\right]=\mathbb{E}\left[exp\left(\displaystyle\sum_{i=1}^n tX_i\right)\right]\\
+    &=& \mathbb{E}\left[\prod_{i=1}^n e^{tX_i}\right]=\prod_{i=1}^n\mathbb{E}[e^{tX_i}] \quad \left\}\begin{array}{lcc}
+         \text{Por la independencia de} \\
+         \text{las $X_i's$ y la proposición}\\
+         \text{anterior.}
+    \end{array}\right.\\
+    &=& \mathbb{E}^n[e^{tX}]=\mu_X^n(t)\quad \left\}\begin{array}{lcc}
+          \\
+         \text{Por ser v.a.i.i.d.}\\
+    \end{array}\right.
+\end{eqnarray*}
+
+Por tanto, utilizando las hipótesis de De Pril ($ii$) tenemos que la generadora de momentos de $S$ es:
+
+\begin{equation*}
+    \mu_S(t)=\mu_X^n(t)
+\end{equation*}
+
+Con lo cual llegamos a los otros dos resultados importantes:
+
+
+- $\mu'_S(t)=n\mu_X^{n-1}(t)\cdotp \mu'_X(t)\Rightarrow\mu'_S(0)=n(1)\mu'_X(0)$
+        \begin{equation*}
+            \therefore \mathbb{E}[S]=n\mathbb{E}[X]
+        \end{equation*}
+- Para obtener la varianza es más fácil ver que:
+        \begin{eqnarray*}
+            Var(S)&=&Var(\sum_{i=1}^n X_i)\\
+            &=&\sum_{i=1}^{n} Var(X_i)\quad \left\}\begin{array}{lcc}
+                \text{Pues al haber independencia,}\\
+                \text{la covarianza vale cero.}
+            \end{array}\right.\\
+        &=& nVar(X)\quad \left\}\begin{array}{lcc}
+            \text{Pues son idénticamente distribuidas}\\
+        \end{array}\right.
+        \end{eqnarray*}
+        \begin{equation*}
+            \therefore Var(S)=nVar(X)
+        \end{equation*}
+
+Los resultados anteriores se hicieron bajo el supuesto de que el riesgo $S$ sigue las hipótesis que se manejan en la fórmula de De Pril ($ii$). Sin embargo, las demostraciones de estas propiedades no utilizaron el supuesto de que la severidad tenía un soporte discreto. De hecho, estas últimas propiedades son válidas en general para cualquier riesgo $S=\displaystyle\sum_{i=1}^n X_i$ donde cada $X_i$ es v.a.i.i.d. no importando su soporte o distribución.
+
+Pueden encontrar los vídeos con parte de la información anterior en los siguientes enlaces:
+
+- De Pril ($i$)
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+        knitr::include_graphics("Imágenes/ModIndFormulas_1.png", error=FALSE)
+```
+<p style="text-align: center">https://youtu.be/bFPe9cODvD4</p>
+        
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+        knitr::include_graphics("Imágenes/ModIndFormulas_2.png", error=FALSE)
+```
+        
+<p style="text-align:center">https://youtu.be/2hX1OB88BlU</p>
+
+- De Pril ($ii$)
+        ```{r echo=FALSE, out.width="70%", fig.align='center'}
+        knitr::include_graphics("Imágenes/ModIndFormulas_3.png", error=FALSE)
+        ```
+        <p style="text-align:center">https://youtu.be/2ZiBGxG_gFg</p>
+
+Inspirados en la fórmula de De Pril ($ii$), recordemos el siguiente ejemplo:
+
+Supongamos que $D_j\sim Ber(0.1)$ y que $C_j$ tiene la siguiente f.m.p:
+
+\begin{eqnarray*}
+    \mathbb{P}[C_j=c]=\left\{\begin{matrix}
+        \text{0.8} &\mbox{si }& c=1\\
+        \text{0.2} &\mbox{si }& c=2\\
+        0 &\mbox{e.o.c.}&
+    \end{matrix}
+    \right.
+    \qquad\forall j.
+\end{eqnarray*}
+
+Tomando un portafolio con $n=3$ pólizas bajo el modelo individual, busquemos probabilidades de $S_3=\displaystyle\sum_{i=1}^3 D_i C_i$.
+
+Resulta que podemos resolver esto de manera rápida ahora utilizando la fórmula de De Pril ($ii$). Tomando $X_i=D_i C_i$ entonces:
+
+\begin{eqnarray*}
+    \mathbb{P}[X=x]=\left\{\begin{matrix}
+        \text{0.9} &\mbox{si }& x=0\\
+        \text{(0.1)(0.8)=0.08} &\mbox{si }& x=1\\
+        \text{(0.1)(0.2)=0.02} &\mbox{si }& x=2\\
+        0 &\mbox{e.o.c.}&
+    \end{matrix}
+    \right.
+\end{eqnarray*}
+
+Como tenemos $X_i's$ v.a.i.i.d. con soporte contenido en $\mathbb{N}\cup\{0\}$, podemos usar la recursión.
+
+Sin embargo, un ejemplo de desarrollar De Pril ($ii$) con esto ya se tocó anteriormente.Vamos a retomar el resultado al que habíamos llegado:
+
+\begin{eqnarray*}
+    f_{S_3}(t)=\mathbb{P}[S_3=t]\approx\left\{\begin{matrix}
+        72.9\% \ \mbox{si }\  t=0\\
+        19.44\% \ \mbox{si }\  t=1\\
+        6.588\% \ \mbox{si }\  t=2\\
+        0.9152\% \ \mbox{si }\  t=3\\
+        0.1464\% \ \mbox{si }\  t=4\\
+        0.0096\% \ \mbox{si }\  t=5\\
+        0.0008\% \ \mbox{si }\  t=6\\
+        0 \ \mbox{e.o.c.}
+    \end{matrix}
+    \right.
+\end{eqnarray*}
+
+Teniendo en mente lo anterior, vamos a definir ahora un modelo más general primero con un ejemplo. Sea $S$ un riesgo tal que:
+
+$$S=\displaystyle\sum_{i=1}^N X_i$$
+
+Donde $N$ es v.a. con f.m.p.:
+
+\begin{eqnarray*}
+    \mathbb{P}[N=n]=\left\{\begin{matrix}
+        \text{0.75} &\mbox{si }& n=0\\
+        \text{0.25} &\mbox{si }& n=3
+    \end{matrix}
+    \right.
+\end{eqnarray*}
+
+Y además, $\{X_i\}_{i=1}^3$ son v.a.i.i.d. con f.m.p.:
+
+\begin{eqnarray*}
+    \mathbb{P}[X=x]=\left\{\begin{matrix}
+        \text{0.9} &\mbox{si }& x=0\\
+        \text{0.08} &\mbox{si }& x=1\\
+        \text{0.02} &\mbox{si }& x=2\\
+        0 &\mbox{e.o.c.}&
+    \end{matrix}
+    \right.
+\end{eqnarray*}
+
+**Nota:** Si $N=0\Rightarrow S=0$
+
+Observe que $S\in\{0,1,2,3,4,5,6\}$,además:
+
+\begin{eqnarray*}
+    \mathbb{P}[S=0]&=&\mathbb{P}[S=0 | N=0]\mathbb{P}[N=0]+\mathbb{P}[S=0|N\neq 0]\mathbb{P}[N\neq 0]\\
+    &=& \text{0.75}+\mathbb{P}[S=0|N=3]\mathbb{P}[N=3]\\
+    &=& \text{0.75}+\underbrace{f_{S_3}(0)}_{\substack{\text{probabilidad}\\\text{antes obtenida}}}(\text{0.25})\\
+    \mathbb{P}[S=1]&=&\mathbb{P}[S=1 | N=0]\mathbb{P}[N=0]+\mathbb{P}[S=1 | N\neq 0]\mathbb{P}[N\neq 0]\\
+    &=&\text{0.25}\mathbb{P}[S=1|N=3]\\
+    &=&\text{0.25}f_{S_3}(1)
+\end{eqnarray*}
+
+Y haciendo esto sucesivamente, la f.m.p. de $S$ será:
+
+\begin{eqnarray*}
+    f_S(t)=\mathbb{P}[S=t]=\left\{\begin{matrix}
+        \text{0.75+0.25}f_{S_3}(0) &\mbox{si }& t=0\\
+        \text{0.25}f_{S_3}(t) &\mbox{si }& t\in\{1,2,3,4,5,6\}\\
+        0 &\mbox{e.o.c.}&
+    \end{matrix}
+    \right.
+\end{eqnarray*}
+
+Luego observamos los siguientes cálculos:
+
+- \begin{eqnarray*}
+  \mathbb{E}[S]=(\text{0.25})\sum_{t=1}^6 tf_{S_3}(t)=\text{0.9}
+\end{eqnarray*}
+
+- \begin{eqnarray*}
+  \mathbb{E}[S^2]=(\text{0.25})\sum_{t=1}^6 t^2f_{S_3}(t)\approx\text{0.1416}
+\end{eqnarray*}
+\begin{eqnarray*}
+    \Rightarrow Var(S)\approx\text{0.1335}
+\end{eqnarray*}
+
+Pero además, se puede calcular la esperanza de $S$ sin conocer su función de densidad:
+
+
+\begin{eqnarray*}
+    \mathbb{E}[S]&=&\mathbb{E}[\mathbb{E}[S|N]]=\underbrace{\mathbb{E}[S|N=0]}_{N=0\Rightarrow S=0}\mathbb{P}[N=0]+\mathbb{E}[S|N=3]\mathbb{P}[N=3]\\
+    &=&\mathbb{E}\left[\sum_{i=1}^NX_i|N=3\right]\mathbb{P}[N=3]=\mathbb{E}\left[\sum_{i=1}^3X_i\right]\mathbb{P}[N=3]\\
+    &=& 3\cdotp\mathbb{E}[X]\mathbb{P}[N=3]=\mathbb{E}[X](3\cdotp\mathbb{P}[N=3]+0\cdotp\mathbb{P}[N=0])\\
+    &=& \mathbb{E}[X]\mathbb{E}[N]
+\end{eqnarray*}
+
+**Veremos estos cálculos en R.**

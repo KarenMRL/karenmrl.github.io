@@ -1,0 +1,175 @@
+# Reaseguro
+
+Ya que conocemos más de cómo funciona la v.a. $S$, intentaremos modelarla desde otra perspectiva. Pensemos a $S$ como siempre:
+$$S=\displaystyle\sum_{j=1}^N X_j$$
+
+Ahora, supongamos que este portafolio se fragmentará en dos partes, lo que paga la **aseguradora $(S^A)$** y lo que paga la **reaseguradora $(S^R)$** de tal manera que:
+
+$$S={S^A}+{S^R}$$
+Hay diferentes maneras de hacer una partición de pólizas entre la aseguradora y la reaseguradora. Veremos en lo siguiente las formas más comúnes. Notemos lo siguiente la similaridad con los temas pasados del curso.
+
+## Reaseguro proporcional {-}
+
+Similar al **coaseguro** el reaseguro proporcional divide el riesgo $(S)$ en dos partes considerando un $a\in[0,1]$, diremos entonces que "$a$" es la proporción del riesgo $(S)$ que le toca pagar a la aseguradora, mientras que "$1-a$" es lo que le toca a la reaseguradora.
+
+ \begin{eqnarray*} \begin{array}{lcc} S^A=aS=\displaystyle\sum_{j=1}^N aY_j,  \\ S^R=(1-a)S=\displaystyle\sum_{j=1}^N(1-aY_j)
+        \end{array} 
+    \end{eqnarray*}
+    
+Las características probabilísticas de $S^A$, o bien de $S^R$, se encuentran fácilmente **de las de $S$**, pues no es difícil comprobar los siguientes resultados.
+
+_a)_ $F_{S^A}(x)=F_{{S}}\left(\frac{x}{a}\right)$
+
+_b)_ $f_{S^A}(x)=\frac{1}{a}f_{{S}}\left(\frac{x}{a}\right)$, cuando $S$ es absolutamente continua.
+
+_c)_ $M_{S^A}(r)=M_{{S}}(ar)$
+
+_d)_ $E(S^A)=aE(S)\leq E(S)$.
+
+_e)_ $Var(S^A)=a^2Var(S)\leq Var(S).$
+
+_Introducción a la teoría del Riesgo, L. Rincón, pág:81_
+
+Nótese que $aY_j$ es la proporción por póliza que paga la aseguradora.
+
+### Reaseguro no proporcional {-}
+
+$\bullet$ **Reaseguro en el riesgo completo (stop loss)**
+
+Aquí lo que se define es un cierto monto $\mu>0$ llamado **nivel de retención** del cual se establecerá que cada parte cubrirá un riesgo $(S)$ de la siguiente manera:
+
+$$S^A=mín\{S,\mu\}: S^R=máx\{0,S-\mu\}$$
+
+Una vez más **en términos de $S$** nosotros ya sabemos trabajar perfectamente tanto a $S^A$ como $S^R$ en este caso pues son casos particulares de **monto máximo de beneficio** y **deducible**.
+
+Notemos aquí un detalle importante $S^A$ y $S^R$ cubren un nivel de retención $\mu$ **sobre todo el portafolio $S$**. Es decir, que no depende de cada póliza sino de todo lo que trae consigo el portafolio. Lo que nos da pie a un caso interesante.
+
+$\bullet$ **Reaseguro en el riesgo completo (stop loss)**
+
+Bajo esta idea, se ``repartirán" los pagos, de la siguiente manera:
+
+ \begin{equation*}
+   S^{A}= \displaystyle\sum_{j=1}^{N} mín \{ X_{j}, M\} \quad \text{y} \quad S^{R}= \displaystyle\sum_{j=1}^{N} máx \{ 0,X_{j}-M \} 
+    \end{equation*}
+    
+Donde $\mu$ juega un papel de **monto máximo de beneficio** y **deducible** por cada asegurado, desde el punto de vista de la aseguradora y reaseguradora respectivamente. A pesar de esto y daod que estamos hablando de reaseguro (excess of loss) seguiremos llamando A $m$ como **nivel de retención**.
+
+Notemos que estos casos ya los hemos trabajado, pero hay aquí un detalle interesante. Recordemos que, por ejemplo para la reaseguradora en este caso, si $X_{j} \leq M$ para la reaseguradora **no** pagó. De tal manera que el número de pagos que hizo $S_{R}$ no está del todo determinado por $N$.
+
+**Nota**
+
+No confundir los siguientes conceptos
+
+\begin{eqnarray*}
+  \displaystyle\sum_{j=1}^{N} mín \{ X_{j}, M\} \neq mín \{S,M \}\\
+  \displaystyle\sum_{j=1}^{N} máx \{0, X_{j}-M\} \neq máx \{0,S-M \}\\
+\end{eqnarray*}
+
+**Esto significa que los modelos "excess of loss", y "stop loss" no son necesariamente equivalentes.**
+
+Se invita a platicar un poco sobre esto. 
+
+A continuación mostramos algunos vídeos con los temas que se acaban de mencionar.
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/13. QR.png", error=FALSE)
+```
+
+_Link de YouTube:_ https://www.youtube.com/watch?v=LbDaSLqyfYE
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/13. RP.png", error=FALSE)
+```
+
+_Link de YouTube:_ https://www.youtube.com/watch?v=xUroi0VZll4
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/13. RNP-EL.png", error=FALSE)
+```
+
+_Link de YouTube:_ https://www.youtube.com/watch?v=pGP_bK8x2-U
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/13. RNP- StopLoss.png", error=FALSE)
+```
+
+_Link de YouTube:_ https://www.youtube.com/watch?v=TAjhROWBkiE
+
+$\longrightarrow$ Número de reclamaciones 
+
+Bajo el esquema "excess of loss" y considerando un nivel de retención M:
+
+- $N^{A} \ddot{=} \displaystyle\sum_{j=1}^{N} \mathbb I_{(X_{j}\leq M)}$ = \# pagos **Sin incurrir al reaseguro**
+
+- $N^{R} = \displaystyle\sum_{j=1}^{N} \mathbb I_{(X_{j}> M)}$ = \# pagos que hizo la reaseguradora
+
+Es fácil notar que $N=N^{A} + N^{R}$, luego se satisfacen las siguientes propiedades
+
+**Proposición:** _Sea $a=P(Y_{j}\leq M)$. Entonces,_
+
+_1._ si $N$ tiene distribución $bin(n,p)$,
+        
+  _a)_ $N^{A}\sim{bin(n,ap)}$
+  
+  _b)_ $N^{R}\sim{bin(n,(1-a)p)}$
+      
+_2._ si $N$ tiene distribución $Poisson(\lambda)$.
+        
+  _a)_ $N^{A}\sim{Poisson(\lambda a)}$
+  
+  _b)_ $N^{R}\sim{Poisson(\lambda(1-a))}$
+
+_3._ si $N$ tiene distribución $bin$ $neg(k,p)$
+
+  _a)_ $N^{A}\sim{bin neg(k,p/(p+a(1-p)))}$
+  
+  _b)_ $N^{R}\sim{bin neg(k,p/(p+(1-a)(1-p)))}$
+  
+_Introducción a la teoría del Riesgo, L. Rincón, pág: 86_
+
+Es muy útil notar que $N^{A}$ y $N^{R}$ son en realidad casos particulares del modelo colectivo, noten que ambas son sumas aleatorias de variables aleatorias ¿Cuáles?
+
+  - $I_{(X_{j}\leq M)}\sim{Ber(p=\mathbb P [X_{j}\leq M])}$
+  - $I_{(X_{j}> M)}\sim{Ber(p=\mathbb P [X_{j}> M])}$
+
+Donde, desde luego, $\mathbb P [X_{j}\leq M] = 1-\mathbb P [X_{j}> M]$.
+
+Con base en esto, la siguiente demostración es sencilla recordando que para cualquier modelo colectivo:
+\begin{center}
+    $M_{S}(t) = M_{N}(ln(M_{y}(t)))$
+\end{center}
+Tomando $a\doteq \mathbb P [y \leq M]$, P.D $N\sim{Bin(n,p)}$ $\Rightarrow N^{A}\sim{Bin(n,ap)}$
+}
+$$M_{Y}(t) = E(e^{tY}) = 1-a+ae^{t}$$
+
+Entonces $M_{N^{A}}(t) = M_{N}(ln(1-a+ae^{t}))$. Cuando $N$ tiene distribución bin$(n,p)$ tenemos que $M_{N}(t) = (1-p+pe^{t})^{n}$. Por lo tanto,
+
+
+  $$M_{N^{A}}(t) = (1-p+p(1-a+ae^{t}))^{n} = (1-ap+ape^{t})^{n}$$.
+
+**Ejemplo:**
+
+- Sea $N\sim{Bin(n=5,p=0.15)}$
+
+- $\mathbb P [X=k] = \left\{ 
+    \begin{array}{lcc}
+       \textit{ 0.8} & si & x=1\\
+       \textit{0.1} & si & x=2\\
+       \textit{ 0.1} & si & x=3\\
+    \end{array} 
+    \right.$
+    
+- Consideremos un nivel de retención $M=2$
+
+$\Rightarrow$ $a\doteq \mathbb P[X\leq M] = \textit{0.9}$
+
+Veamos lo que sucede con $N^{A}$ y $N^{R}$ en R.
+
+_Script: "Reaseguro"_
+
+
+
+
+    
+    
+

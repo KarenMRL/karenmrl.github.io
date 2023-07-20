@@ -1,0 +1,433 @@
+# Medidas de Riesgo
+
+## Distribuciones para valores extremos
+
+### Teoría de valores extremos
+
+1. La Teoría de Valores Extremos (Extreme value theory) consiste en el empleo de una serie de técnicas estadísticas para la identificación y modelado de observaciones extremas u outliers.
+
+2. Su objeto es determinar que tan extrema puede ser la mayor o menor observación de un fenómeno aleatorio, es decir, estudia el comportamiento del valor _máximo o mínimo_ de una variable aleatoria.
+
+3. El comportamiento inusual de una variable aleatoria merece una consideración especial, ya que puede tener un gran impacto para las decisiones que se desprendan del análisis de la información a la que pertenece.
+
+4. Para explicar este tipo de sucesos que ocurren, generalmente, con muy baja frecuencia, que ocurren, generalmente, con muy baja frecuencia, pero que tienen influencia muy significativa sobre todo un modelo. La _Teoría de Valores Extremos_ emplea métodos matemáticos basados en comportamientos asintóticos, distribuciones, procesos estocásticos y leyes limite.
+
+5. Diferentes investigaciones provenientes de múltiples disciplinas científicas, han desarrollado métodos para cuantificar eventos extremos y sus consecuencias de un modo estadísticamente óptimo,dando lugar a unas distribuciones de probabilidad que permiten la modelación de los valores máximos o mínimos de una variable aleatoria. 
+
+De forma simplificada, nuestro problema es el siguiente:
+
+Dada una muestra independiente $X_{1}, X_{2},...,X_{n}$ de una distribución desconocida, queremos estimar la cola de $F$. Los problemas más importantes son:
+
+a. Las observaciones en la cola de la distribución son escasas.
+
+b. Por lo general, queremos estimar valores por encima del valor máximo de la muestra.
+
+c. Las técnicas usuales de estimación de densidades ajustan bien en las zonas donde los datos tienen mayor densidad, pero pueden ser inadecuadas para estimar las colas.
+
+d. Los modelos correspondientes a esta teoría de valores extremos, tienen aplicaciones en muchas áreas, una de las principales es: las ciencias ambientales, donde se estudian valores extremos, por ejemplo en: Nivel de una presa, velocidad del viento, nivel de un río, concentración de contaminantes, niveles de precipitación pluvial, etc...
+
+e. No obstante , nosotros nos enfocamos en aplicarla dentro del marco del seguro. En esta área, el análisis de siniestralidad extrema es de gran interés, puesto que constituye un riesgo que pone en peligro la estabilidad y solvencia de entidades aseguradoras.
+
+Recordemos una de las definiciones de convergencia, que aprendieron en los cursos de probabilidad básica:
+
+**Definición: Convergencia en distribución**
+
+La sucesión de variables aleatorias $X_{1}, X_{2},...$ converge en distribución a $X$, si para todo punto $x$ en donde la función $F_{X}(x)$ es continua, se cumple que:
+
+$lim_{ n \to\infty}F_{X_{n}}(x) = F_{X}(x)$
+
+En este curso nosotros vamos a trabajar únicamente el caso univariado.
+
+**Corolario**
+
+Sea $\{X_{i}\}_{i=1}^{n}$ una muestra de v.a.i.i.d. Definimos $M_{n}=máx\{x_{i}\} \quad \forall i$ Entonces para cualquier distribución que tengan los $X_{i}'s$, si existe $a_{n}>0$ y $b_{n}\in \mathbb{R}$, tales que:
+
+$\lim_{x\to\infty}\mathbb{P}\left[\frac{M_{n}-b_{n}}{a_{n}}\leq z\right]={G}(z)$
+
+Donde ${\color{tuftsblue}G}(z)$ es una función de distribución (acumulada), llamando $M$ a la v.a cuya función de distribución es ${\color{tuftsblue}G}$, decimos entonces que:
+
+$\frac{M_{n}-b_{n}}{a_{n}} \quad \xrightarrow{\quad d \quad} \quad  M$
+
+Entonces, en caso de encontrar dichas $a_{n}$ y $b_{n}$ donde $\frac{M_{n}-b_{n}}{a_{n}}$ tenga una convergencia en distribución a $M$, entonces la función de distribución (acumulada) de $M$ será $G$, que basado en el teorema de _Fisher-Tippett-Gnedenko_, solo podrá tener una de las siguientes formas:
+
+### Distribuciones de valores extremos {-}
+
+$M \sim Weibull(\alpha, \beta, \lambda>0)$
+
+\begin{equation*}
+     \label{Weibull}
+     G(z) = \left\{
+	       \begin{array}{ll}
+		  exp\left[ -\left(- \left( \frac{z-\beta}{\alpha} \right) \right)^{\lambda}\right]& \mathrm{si\ } z< \beta \\
+		   1    & \mathrm{si\ }\underbrace{ z \geq \beta}_{\text{Soporte}}  
+	       \end{array}
+	     \right.
+   \end{equation*}
+
+		  
+$M \sim Gumbel(\alpha, \beta)$ 
+
+\begin{eqnarray*}
+G(z) = exp \left[-exp \left(- \left( \frac{z-\beta}{\alpha}  \right)   \right)\right]  \quad  \underbrace{ \forall z\in \mathbb{R}}_{\text{Soporte}}  \\
+\end{eqnarray*}
+
+$M \sim Fréchet(\alpha, \beta, \lambda>0)$
+
+\begin{equation*}
+    G(z) = \begin{cases} 
+        0 & si\ z\leq \beta \\
+        exp\left[- \left( \frac{z-\beta}{\alpha}   \right)^{-\lambda}   \right] & si\ \underbrace{z >\beta}_{\text{Soporte}}
+      \end{cases}
+\end{equation*}
+
+**Observación:** n es el tamaño de muestra $\{{X_i}_{i=1}^{n}\}$.
+
+Si $(\{{X_i}_{i=1}^{n}\})$ son una muestra de v.a.i.i.d entonces la función de distribución de $M_{n}= máx\{ X_{i}\}\quad \forall i$, será: 
+
+\begin{eqnarray*}
+F_{M_{n}}(t) =\mathbb{P}[M_{n} \leq t]={P}[X_{1} \leq t,X_{2} \leq t,...,X_{n} \leq t]
+& \overset{indep}{=}& \prod_{i=1}^{n}\mathbb{P}[X_{i} \leq t] &\overset{i.d}{=}& \mathbb{P}^{n}[X \leq t] =F_{X}^{n}(t)\\
+\end{eqnarray*}
+
+Por lo tanto
+
+$F_{M_{n}}(t)=F_{X}^{n}(t)  \quad \forall t\in \mathbb{R}$
+
+Entonces:
+
+\begin{eqnarray*}
+\mathbb{P}\left[ \frac{M_{n}-b_{n}}{a_{n}} \leq z \right]= \mathbb{P}\left[ M_{n}\leq a_{n}z+ b_{n} \leq z \right]= F_{M_{n}}(a_{n}z+b_{n}) = F_{X}^{n}(a_{n}z+b_{n})\\
+\end{eqnarray*}
+
+Por lo tanto:
+
+\begin{eqnarray*}
+\mathbb{P}\left[ \frac{M_{n}-b_{n}}{a_{n}} \leq z \right]&=& F_{X}^{n}(a_{n}z+b_{n})\\
+\end{eqnarray*}
+
+Noten que los limites a los que se llegan son de la forma $e^{x}$, entonces es considerable aprender el siguiente limite:
+
+\begin{eqnarray*}
+\displaystyle\lim_{n} \to \infty\left( 1+ \frac{x}{{n} }\right)^{{n} }=e^{x} \quad \quad \forall x\in \mathbb{R} \quad  {\text{($x$ NO depende de n)}}\\
+\end{eqnarray*}
+
+Observen que el _soporte_ de todas las distribuciones mencionadas son diferentes, por lo que observar detenidamente el soporte al calcular el limite puede ser una guía importante.
+
+### Ejemplo 1{-}
+Sea $X \sim exp(1)$.
+
+\begin{eqnarray*}
+F_{X}(x) = (1-e^{-x}) \mathbb{I}_{(x\geq 0)} (x)\\
+\end{eqnarray*}
+
+Entonces:
+
+\begin{eqnarray*}
+F_{M_{n}}(x) = F_{X}^{n}(x) = (1-e^{-x})^{n} \mathbb{I}_{(x\geq 0)} (x)\\
+\end{eqnarray*}
+
+Ahora, considerando las constantes de normalización $a_{n}=1$ y $b_{n}=ln(n)$ entonces:
+
+\begin{eqnarray*}
+    \displaystyle\lim_{x \to \infty}\mathbb{P}\left[ \frac{M_{n}-b_{n}}{a_{n}}\leq z \right]&=&\displaystyle\lim_{x \to \infty} F_{X}^{n}(a_{n}z+b_{n})\\
+    &=& \displaystyle\lim_{x \to \infty} (1-e^{-(a_{n}z+b_{n})})^{n} \mathbb{I}{((a{n}z+b_{n})\geq 0)} (a_{n}z+b_{n})\\
+    &=& \displaystyle\lim_{x \to \infty} (1-e^{-(z+b_{n})})^{n} \mathbb{I}\underbrace{((z+b{n})\geq 0)}_{\text{Observación}} (z+b{n})\\
+    &=& \displaystyle\lim_{x \to \infty} (1-e^{-z} \cdot e^{ln(1/n)})^{n} \\
+    &=& \displaystyle\lim_{x \to \infty} (1+\frac{-e^{-z}}{n})^{n} \\
+    &=& exp\{- e^{-z}\} \\
+    \end{eqnarray*}   
+
+**Observación:**  
+
+$$z+ ln(n) \geq 0 \Leftrightarrow z \geq -ln(n) \xrightarrow[\quad n \rightarrow \infty \quad]{} z \geq -\infty $$
+
+$$ \therefore \quad z \in \mathbb{R}$$
+
+Lo que nos da como resultado:
+$$ \lim\limits_{n \to \infty}\mathbb{P} [ \frac{\mu_n - b_n}{a_n} \leq z]= \lim\limits_{n \to \infty} ( 1 - e^{-(z + In (n))})^{n} \mathbb{I}_{(z+In (n) \geq 0)} (z+In(n)) = e^{-e^{-z}}  ,  \forall z \in \mathbb{R} $$
+
+
+Gracias al soporte identificamos que $M \sim {Gumbel}$, luego buscamos sus parámetros, pero una vez ya identificada es fácil notar que si $\alpha = 1, \beta = 0$:
+
+\begin{eqnarray*}
+\rightarrow G(x) = exp {-exp {-[\frac{x - \beta }{\alpha}]}} = e^{-e^{-[\frac{x-0}{1}]}} = e^{-e^{-x}} , \forall z \in \mathbb{R}
+\end{eqnarray*} CORREGIR
+
+\begin{eqnarray*}
+\therefore\frac{ M_n - b_n }{a_n} = M_n - ln(n) \overset{d}{\underset{n \rightarrow \infty}{\longrightarrow}} M \sim {Gumbel ( \alpha = 1, \beta = 0)}
+\end{eqnarray*}
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/Resultado gráfico de valor extremo Gumbel.png", error=FALSE)
+```
+
+### Ejemplo 2{-}
+
+Consideremos $X \sim{ Unif (0, 1) }$ $\Longrightarrow$ $F_{x} (x) = x$            $\overset{\star}{\mathbb{I}}_{(0,1)} (x)$
+
+\begin{equation*}
+     \label{ }
+      \overset{\star}{\mathbb{I}}_{(a,b)} (x) = \left\{
+	       \begin{array}{ll}
+		 si\  x \leq a  \Rightarrow\ F_x(x) \equiv 0 \\
+		 si\ x \in\ (a,b) \Rightarrow\  \overset{\star}{\mathbb{I}}_{(a,b)} (x) = 1\\ 
+		 
+		 si\ x \geq\ b  \Rightarrow\ F_x(x) \equiv 1
+	       \end{array}
+	     \right.
+   \end{equation*}
+   
+
+Tomando una muestra $\{X_{i}\}_{i=1}^{n}$, entonces:
+
+${F_M}_n(t) = \mathbb{P} [ M_n = \underset{\forall _i}{ máx }\{ X_i\} \leq t ] = {F_x}^{n}(t)= t^{n} \overset{\star}{\mathbb{I}}_{(0,1)} (t)$ 
+
+_Pequeña observación:_
+ 
+${F_M}_n (t)$  = $t^{n} \overset{\star}{\mathbb{I}}_{(0,1)} (t)$ \Rightarrow \frac{\partial}{\partial t} ${F_M}_n (t)$ = ${f_M}_n$ (t) = $n t^{n-1}$ {$\mathbb{I}_{(0,1)}(t)$} $\dashrightarrow$ Indicadora usual
+ 
+ $\Rightarrow$ ${f_M}_n(t) = nt^{n-1} \mathbb{I}_{(0,1)}(t) = \frac{\Gamma(n-1)}{\Gamma(n) \Gamma(1)} t^{n-1} (1-t)^{1-1} \mathbb{I}_{(0,1)}(t)$
+ 
+$\therefore M_n = \underset{\forall _i}{ máx }\{ X_i\} \sim{ Beta (n,1)}\ ( si \ x_i \perp ' s\ Unif (0,1)$ 
+
+ $\mathbb{E}$[$M_n$] =  $\frac{n}{n+1}$; $\mathbb{V}$ar($M_n$)= $\frac{ n(1)}{(n+1+1)(n+1)^{2}}$ = $\frac{n}{(n+2) (n+1)^{2}}$
+ 
+Consideremos $b_n=1$  y $a_n$ = $\frac{1}{n}$, entonces:
+
+\begin{eqnarray*}
+    \displaystyle \lim\limits_{n \to \infty}\mathbb{P} \left[ \frac{M_n - b_n}{a_n} \leq t\right] &=& \lim\limits_{n \to \infty} {F_M}_n (a_nt + b_n) \\
+    &=& \displaystyle \lim\limits_{n \to \infty} {F_x}^{n} (a_nt + b_n)  \\
+    &=& \displaystyle\lim\limits_{n \to \infty} [a_nt + b_n]^{n} \overset{\star}{\mathbb{I}}_{(0,1)} (a_nt + b_n) \\
+    &=& \displaystyle\lim\limits_{n \to \infty}\underbrace{\left[\frac{t}{n} + 1\right]^{n}}_{\substack{Atendiendo \ el \ límite}}\underbrace{ \overset{\star}{\mathbb{I}}_{(0,1)}\left(\frac{t}{n} + 1\right)}_{\substack{Atendiendo \ la \ indicadora}} \\
+\end{eqnarray*}
+**Observación:** 
+
+-  Atendiendo el límite
+
+$\lim\limits_{n \to \infty} ( 1 + \frac{t}{n} ) ^{n} = e^{t}$
+  
+-  Atendiendo la indicadora
+
+$0 \leq 1 + \frac{t}{n} \leq 1 \Leftrightarrow$ $-1 \leq \frac{t}{n} \leq 0 \Leftrightarrow -n \leq t \leq 0$
+ Cuando\ $n$ $\rightarrow \infty$ entonces:
+      
+$$t \in (-\infty , 0)$$
+Por lo tanto:
+
+$\lim\limits_{n \to \infty}\mathbb{P} [ \frac{M_n - b_n}{a_n} \leq t]$= $\lim\limits_{n \to \infty} ( 1 + \frac{t}{n} )^{n}  \overset{\star}{\mathbb{I}}_{(0,1)}(1+\frac{t}{n})$ = $e^{t}  \overset{\star}{\mathbb{I}}_{(-\infty , 0)}(t)$
+  
+\begin{equation*}
+    \Rightarrow G(x) = \begin{cases} 
+         e^{t} & si\ x < 0 \\
+         1 & si\ x \geq 0
+      \end{cases}
+      \rightarrow \  M \sim Weibull
+\end{equation*}
+   
+Una vez más, gracias al soporte podemos identificar la distribución de valor extremo a la que converge en distribución  $\frac{M_n - b_n}{a_n}$. Procedemos a buscar a cuál en específico.
+Recordemos que la f.d.a. de una Weibull es:
+
+\begin{equation*}
+    G(z) = \begin{cases} 
+        exp [ - ( - ( \frac{z - \beta }{ \alpha }) )^{ \lambda } ] & si\ z < \beta \\
+         1 & si\ z \geq \beta
+      \end{cases}
+\end{equation*}
+   
+Tomando $\alpha = 1, \beta = 0, \lambda = 1$:
+
+  \begin{equation*}
+    G(z) = \begin{cases} 
+        exp [ - ( - ( z) ) ] = e^{z} & si\ z < 0 \\
+         1 & si\ z \geq 0
+      \end{cases}
+\end{equation*} 
+   
+$\therefore \frac{ M_n - b_n }{a_n} \overset{d}{ \longrightarrow } M\ \sim{ Weibull ( \alpha = 1, \beta = 0, \lambda = 1) }$
+
+¡Más aún! Tomando $G'(z)$ =  $\underbrace{g(z) = e^{z} \mathbb{I}_{(-\infty , 0)}(z)}_{\substack{\text{Función de densidad}\\\text{de M}}}$
+
+\begin{eqnarray*}
+  \Rightarrow \mathbb{E} [M] &=& \int \limits_{-\infty}^{0} z e^{z} dz\underset{\underset{\underset{u=-z}{ du=-dz}}{\downarrow}}{=}\int \limits_{\infty}^{0} (-u) e^{-u} (-du) =  \int \limits_{\infty}^{0} u e^{-u} du\\
+ &=& - \int \limits_{0}^{\infty}  u e^{-u} du = - \int \limits_{0}^{\infty}  u f_{Exp(1)} (u) du = -\mathbb{E} [Exp(1)] = -1
+ \end{eqnarray*}
+ \begin{eqnarray*}
+  \therefore \mathbb{E} [M] = -1
+  \end{eqnarray*}
+
+ La siguiente pregunta es ¿Estará ligado al valor anterior con la convergencia\  que tiene $\frac{ M_n - b_n }{a_n}$?
+ 
+ Tomando: 
+ 
+ \begin{eqnarray*}
+    \mathbb{E} \left[\frac{M_n - b_n}{a_n}\right] &=& \frac{\mathbb{E}[M_n] - b_n}{a_n} \quad( \text{pues $a_n$ y $b_n$ no son v.a.'s)}\\
+    &=&\frac{(\frac{n}{n+1})-1}{\frac{1}{n}}=n\left[\frac{n-n-1}{n+1}\right]=-\frac{n}{n+1}=-\left(\frac{n+1-1}{n+1}\right)\\
+    &=&-\left(1-\frac{1}{n+1}\right)=\frac{1}{n+1}-1\\
+    &\therefore& \mathbb{E}\left[\frac{M_n-b_n}{a_n}\right]=\frac{1}{n+1}-1\\
+\text{Pero luego:}\\
+&\lim\limits_{n \to \infty}&\mathbb{E}\left[\frac{M_n-b_n}{a_n}\right]=-1=\mathbb{E}[M]
+  \end{eqnarray*}
+  
+Noten que **no** necesitábamos conocer la distribución de $M$ para lograr obtener su esperanza.
+
+Queda como ejercicio para el lector calcular $Var(M)$ y comprobar que 
+
+$$\lim\limits_{n \to \infty}Var(\frac{\mu_n - b_n}{a_n}) = Var(M)\mbox{ en este caso}$$
+
+## VaR & T-VaR
+### VaR {-}
+
+El VaR **es un valor** utilizado para **cuantificar el riesgo**. En términos formales, el VaR mide la máxima pérdida esperada en un intervalo de tiempo determinado, bajo condiciones normales del mercado y bajo un nivel de confianza dado. Traducido a una forma sencilla y como se estará manejando desde el punto de vista de Teoría del Riesgo y la estadística, **el VaR diremos que es un cuantil**; dada una variable aleatoria $X$ que mida el monto de pérdida de una compañía de seguros el VaR a cierto nivel de confianza $p$ se define como:
+
+$VaR_{p}(X) := F_{X}^{-1}(p) = \pi_{p}$ $\longleftrightarrow$ $F_{X}(VaR_{p}(X))=p=F_{X}(\pi_{p})$
+
+### T-VaR {-}
+
+El valor de la cola en riesgo (TVaR), es una medida de riesgo asociada con el valor más general en riesgo. Cuantifica el **valor esperado** de la pérdida dado que se ha producido un evento fuera de un nivel de probabilidad dado. Dada una variable aleatoria $X$ que mide el monto de pérdida de una compañía de seguros y una cierta cantidad $\pi_{p}$ definimos el  TVaR  como:
+
+$$TVaR_{p}(X):=\mathbb E [X|X>\pi_{p}] = \frac{\int_{\pi_{p}}^{\infty} xf_{x}dx}{1-F(\pi_{p})}$$
+
+
+$$TVaR_{p}(X) \overset{P.D.}{=} \pi_{p} + e(\pi_{p}) = \displaystyle\frac{\int_{\pi_{p}}^{\infty} xf_{x}dx}{1-F(\pi_{p})}, con: e(\pi_{p}) = \frac{\int_{\pi_{p}}^{\infty} (x-\pi_{p})f_{x}(x) dx}{1-p}$$
+
+_Demostración._
+
+Tenemos que: 
+\begin{eqnarray*}
+\displaystyle\pi_{p} + \frac{\int_{\pi_{p}}^{\infty} xf_{x}(x)dx - \int_{\pi_{p}}^{\infty} \pi_{p}f_{x}(x)dx } {1-p} &=& \frac{\pi_{p}(1-p-(1-p)) + \int_{\pi_{p}}^{\infty} xf_{x}(x)dx} {1-p} \\
+   &=& \displaystyle \frac{\int_{\pi_{p}}^{\infty} xf_{x}(x)dx}{1-p} \\
+   &=& \displaystyle TVaR_{p}(X) \\
+\end{eqnarray*}
+
+Queda como ejercicio para el lector que:
+   
+   $$TVaR_{p}(X) = \frac{\int_{p}^{1} VaR_{u}(X)du}{1-p}$$
+    
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/Tabla1-MedidasRiesgo.png", error=FALSE)
+```
+
+**Aclaración:**
+Sea $Y = X|X>a$ con $X$ una v.a continua. Si $t>a$, entonces:
+
+\begin{eqnarray*}
+\Rightarrow F_Y(t)\ \ddot{=}\ \mathbb{P}[Y \leq t]=\mathbb{P}[X\leq t | X>a]=\frac{\mathbb{P}[a<X\leq t]}{\mathbb{P}[X>a]}=\frac{F_X(t)-F_X(a)}{S_X(a)}\quad\forall t\geq a 
+\end{eqnarray*}
+
+_Obs_: si $t \leq a \Rightarrow \mathbb{P}[X\leq t| X>a]=0$
+
+\begin{eqnarray*}
+\Rightarrow f_Y(t) =\frac{d}{dt}F_Y(t)=\frac{f_X(t)}{S_X(a)}\qquad {\therefore f_{X|X>a}(t)=\frac{f_X(t)}{S_X(a)}\mathbb{I}_{t>a}(t)}
+\end{eqnarray*}
+
+De tal manera que:
+\begin{eqnarray*}
+TVaR \ \ddot{=}\  \mathbb{E}[X|X>\pi_p]=\int^{\infty}_{\pi_p}tf_{X|X>\pi_p}(t)dt=\int^{\infty}_{\pi_p}t\frac{f_X(t)}{S_X(\pi_p)}dt=\frac{\int^{\infty}_{\pi_p}tf_X(t)dt}{S_X(\pi_p)}
+\end{eqnarray*}
+
+De ahí obtenemos el cálculo para el TVaR. Como ya hemos visto, hay maneras alternativas para calcular este valor. Anteriormente se mostró que:
+
+$$TVaR_p(X)=\pi_p+\frac{\int^\infty_{\pi_p}f_X(x)dx}{1-p}$$
+A partir de este último resultado veamos otro par de detalles.
+
+Recordemos lo siguiente:
+ 
+**PROPOSICIÓN. (DESIGUALDAD DE MARKOV)**
+
+Sea $X\geq 0$ una variable aleatoria con esperanza finita. para cualquier     $\varepsilon>0$,$$P(X>\varepsilon)\geq \frac{E(X)}{\varepsilon}$$
+
+_Demostración._
+
+\begin{eqnarray*}
+E(X)&=& E(X1_{(X\geq \varepsilon)}+X1_{(X<\varepsilon)}) &\geq& E(X1_{(X\geq \varepsilon)}) &\geq& E(\varepsilon 1_{(X\geq\varepsilon)})\\
+&=& \varepsilon P(X\geq\varepsilon)\blacksquare
+\end{eqnarray*}
+
+Dicho de otra manera, si $X$ es continua con función de supervivencia $S_X(t)$ entonces:
+$$0\leq tS_X(t)\leq\mathbb{E}[X]\quad\forall t\geq 0$$
+Entonces $\lim\limits_{t\rightarrow\infty} tS_X(t)$ existe y es no negativo si $\mathbb{E}[X]<\infty$\
+
+Más aún:
+
+_pues $t\leq \underset{\downarrow}{x}\leq\infty$_
+
+$$0\leq\lim\limits_{t\rightarrow\infty} tS_X(t)=\lim\limits_{t\rightarrow\infty} t\int^\infty_tf_X(x)dx=\lim\limits_{t\rightarrow\infty} \int^\infty_t tf_X(x)dx\leq\lim\limits_{t\rightarrow\infty} \int^\infty_t xf_X(x)dx=0$$
+_$0\leq\int^\infty_0xf_X(x)dx=\mathbb{E}[X]<\infty$ e integrar asi la reduce$\quad\hookleftarrow$_
+
+$\therefore\lim\limits_{t\rightarrow 0}tS_X(t)=0 \quad\text{si}\quad X\geq 0\quad\text{y}\quad \mathbb{E}[X]<\infty$
+
+Una identidad interesante a notar es, dados los supuestos anteriores:
+$\int^\infty_{\pi_p}(x-\pi_p)f_X(x)dx=\int^\infty_{\pi_p}S_X(x)dx$
+
+_Demostración._
+
+\begin{eqnarray*}
+    \underbrace{\int^b_{\pi_p}(x-\pi_p)f_X(x)dx}_{\substack{u=(x-\pi_p)\Rightarrow du=dx\\dv=f_X(x)dx\Rightarrow v=F_X(x)}}&=&(x-\pi_p)F_X(x)|^b{\pi_p}-\int^b_{\pi_p}F_X(x)dx=(b-\pi_p)F_X(b)-\int^b_{\pi_p}(1-S_X(x)dx)\\
+    &=&(b-\pi_p)F_X(b)-(b-\pi_p)+\int^b_{\pi_p} S_X(x)dx\\
+    &=&(b-\pi_p)(F_X(b)-1)+\int^b_{\pi_p} S_X(x)dx=(\pi_p-b)S_X(b)+\int^b_{\pi_p} S_X(x)dx\\
+    &=&\pi_p S(b)-bS_X(b)+\int^b_{\pi_p}S_X(x)dx
+\end{eqnarray*}
+
+$$\therefore\lim\limits_{b\rightarrow\infty}\int^b_{\pi_p}(x-\pi_p)f_X(x)dx=\lim\limits_{b\rightarrow\infty}\int^b_{\pi_p}S_X(x)dx\blacksquare$$
+Habiendo probado esto, se deduce que si $X$ es v.a no-negativa con esperanza finita, entonces:
+ 
+ $TVaR_p(X)=\pi_p+\frac{\int^\infty_{\pi_p}S_X(t)dt}{1-p}$
+ 
+ _Observación:_
+ 
+   
+  
+   $\phi(t)\ \ddot{=}\ $ función de **densidad** de una normal estándar (evaluada en t). 
+  
+   $\Phi(t)\ \ddot{=}\ $ función de **distribución** de una normal estándar (evaluada en t).
+ 
+
+La notación $VaR_p(X)$ puede cambiar por $VaR_p$ si ya se entiende sobre qué se calcula. Igual para $TVaR_p$
+
+_¿De dónde sale la tabla anterior?_
+
+**Ejemplo 1:** $X\sim Exp(\lambda)$ obtengamos $VaR_p(X)$
+
+Sea $VaR_p(X)=\pi_p$ entonces:
+
+\begin{eqnarray*}
+\mathbb{P}[X\leq\pi_p]&=&p=1-e^{\lambda\pi_p}\\
+&\Leftrightarrow& e^{-\lambda\pi_p}=1-p \Leftrightarrow \lambda\pi_p=-ln(1-p)\\
+&\Leftrightarrow& \pi_p=-\frac{ln(1-p)}{\lambda}=VaR_p\qquad \text{Lo que teníamos:}-\frac{ln(1-p)}{\lambda}
+\end{eqnarray*}
+
+Obtengamos $TVaR_p(x)$
+
+Primero:
+
+\begin{eqnarray*}
+\int^\infty_{\pi_p}S_X(x)dx&=&\int^\infty_{\pi_p}e^{-\lambda x} dx=\frac{1}{\lambda}\int^\infty_{\pi_p}\lambda e^{-\lambda x}dx\\
+&=&\frac{1}{\lambda}\int^\infty_{\pi_p}f_X(x)dx=\frac{1}{\lambda}S_X(\pi p)\\
+&=&\frac{e^{-\lambda\pi_p}}{\lambda}\\
+\Rightarrow TVaR_p&=&\pi_p+\frac{\int^\infty_{\pi_p}S_X(x)dx}{S_X(\pi_p)}=-\frac{ln(1-p)}{\lambda}+\frac{\frac{{e^{-\lambda(\pi_p)}}}{\lambda}}{{e^{-\lambda(\pi_p)}}}\\ 
+&=&\underbrace{-\frac{ln(1-p)}{\lambda}}+\underbrace{\frac{1}{\lambda}}=\frac{1-ln(1-p)}{\lambda}\\ 
+\mathbb{E}[X|X>\pi_p]&=&\ \pi_p\ +\mathbb{E}[X] 
+\end{eqnarray*}
+
+Pérdida de memoria de **la distribución exponencial**.  
+
+**Ejemplo 2:** Sea $X\sim Pareto1(\alpha,\theta)$ btengamos $VaR_p(x)$
+
+\begin{eqnarray*}
+F_X(x)&=& 1-\left(\frac{\theta}{x}\right)^\alpha\\
+&\Rightarrow& F_X(\pi_p)\ \ddot{=}\ \mathbb{P}[X\leq\pi_p]=p=1\left(\frac{\theta}{\pi_p}\right)^\alpha\\
+&\Leftrightarrow&\left(\frac{\theta}{\pi_p}\right)^\alpha\Leftrightarrow\frac{\theta}{\pi_p}=(1-p)^{-\frac{1}{\alpha}}\\
+&\Leftrightarrow&\pi_p=\frac{\theta}{(1-p)^{\frac{1}{\alpha}}}=\theta(1-p)^{-\frac{1}{\alpha}}
+\end{eqnarray*}
+
+_Queda como ejercicio para el lector obtener_ $VaR_p$ _de una v.a_ $X\sim log-Normal(\mu,\sigma^2)$.
+
+_Hint:_ $Y\sim N(\mu,\sigma^2)\Leftrightarrow X=e^Y\sim log-Normal(\mu,\sigma^2)$
+
+De tal manera que:
+
+$$F_X(x)=F_Y(ln(x))=\Phi\left(\frac{ln(x)-\mu}{\sigma^2}\right)$$
+
+_Script: ''Valores extremos y VaR''._
+
+ 

@@ -1,0 +1,473 @@
+# Modelo colectivo: Formula de Panjer
+
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("Imágenes/12. HarryP.png", error=FALSE)
+```
+
+_Figura 1: Harry Panjer_
+
+La **fórmula de Panjer**   es un resultado que proporciona una expresión exacta, aunque recursiva, de la función de masa de probabilidad de un riesgo en modelo de pérdidas agregadas. Este modelo tiene ciertas hipótesis que de no cumplirse **se puede** recurrir a las aproximaciones antes mencionadas para el modelo colectivo.
+
+Primeramente, supondremos que el número de reclamaciones de un riesgo ($S$) en el modelo colectivo, es decir, **su frecuencia ($N$) es de clase (a,b,0)** y recordemos las distribuciones provenientes de esta clase:
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/TablaDist.png", error=FALSE)
+```
+
+_Cudro 1: Distribuciones de la clase (a,b,0)_
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/12. Formula_Panjer.png", error=FALSE)
+```
+
+_Link de YouTube:_ https://www.youtube.com/watch?v=ul2j6FhifCw
+
+Otro supuesto es que **la severidad ($Y$) del modelo será discreta con soporte en $\mathbb{N}\ \{ 0\}$**, lo cual implica que el riesgo ($S$) tendrá también un soporte discreto. Específicamente , la densidad del riesgo sí representará probabilidades puntuales.
+
+Esto finalmente nos lleva a algunos resultados preliminares a enunciar la fórmula de Panjer, estos resultados son importantes para comprender la demostración de la fórmula. A pesar de esto y debido a la finalidad de esta sección , estos resultados únicamente se comentarán en el vídeo a continuación y nos enfocaremos más en la aplicación de este resultado.
+
+Una notación muy habitual para este tema es la siguiente:
+
+_Notación:_
+
+\begin{align*}
+        p_{k}&= P(N=k) \ \ &k=0,1,...\\
+        f_{r}&=P(Y=r) \ \  &r=1,2,...\\
+        f_{r}^{*k}&= P(Y_{1}+...+Y_{k}=r) \ \  &1\leq k \leq r=1,2,...\\
+        g_{r}&=P(S=r) \ \  &r=0,1,...\\
+    \end{align*}
+    
+  Resultados preliminares:
+  
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/12. Formula_PR.png", error=FALSE)
+```
+
+_Link de YouTube:_ https://www.youtube.com/watch?v=vVBwC-oLnqg
+
+**Proposición: Formula de Panjer**
+
+Supondremos que $S$ es un modelo colectivo con frecuencia $N$ de clase (a,b,0) y severidad $Y$ con soporte tal que $Sop\{Y\} \subseteq \mathbb{N}\diagdown \{ 0\}$. Las probabilidades puntuales **exactas** de $S$ están dadas por:
+
+\begin{eqnarray*}
+   f_{S}(t)&=& \mathbb{P}[S=t]\\
+    &=& \left \{ \begin{matrix} 
+   \mathbb{P}[N=0] & \mbox{si }& t=0  \\
+   \displaystyle\sum_{j=1}^{t} \left(a+ \displaystyle\frac{b(j)}{t}  \right)\mathbb{P}[Y=j]\mathbb{P}[S=t-j]&\mbox{si }  & t \in \mathbb{N}\diagdown \{ 0\} \\ 
+   0 & & e.o.c 
+\end{matrix}\right. 
+\end{eqnarray*}
+
+_Nota:_ Bajo la notación anterior, el resultado se expresa como:
+
+\begin{eqnarray*}
+   g_{t}&=&  \left \{ \begin{matrix} 
+   P_{0} & \mbox{si }& t=0  \\
+   \displaystyle\sum_{j=1}^{t} \left(a+ \displaystyle\frac{b(j)}{t}  \right)\mathbb{P}[Y=j]f_{j}g_{t-j}&\mbox{si }  & t \in \mathbb{N} \diagdown \{ 0\} \\ 
+   0 & & e.o.c 
+\end{matrix}\right.
+\end{eqnarray*}
+
+La demostración de esta fórmula se muestra también en el siguiente vídeo: 
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/12. Formula_P.png", error=FALSE)
+```
+
+_Link de YouTube:_ https://www.youtube.com/watch?v=r52-snnbVNU
+
+A continuación escribimos explícitamente los primeros términos de la formula recursiva de Panjer:
+
+\begin{eqnarray*}
+g_{0}&=& p_{0}= P(N=0)\\
+g_{1}&=& \left( a + \displaystyle\frac{b}{1} f_{1}g_{0} \right)\\
+g_{2}&=&\left( a + \displaystyle\frac{b}{2} f_{1}g_{1}  \right) +\left( a + \displaystyle\frac{2b}{3} f_{2}g_{0}  \right)\\
+g_{3}&=& \left( a + \displaystyle\frac{b}{3} f_{1}g_{2}  \right)+\left( a + \displaystyle\frac{2b}{3} f_{2}g_{1}  \right) +\left( a + \displaystyle\frac{3b}{3} f_{3}g_{0}  \right)\\
+\vdots
+\end{eqnarray*}
+
+Como un ejemplo consideremos el caso cuando $N$ sigue una distribución Poisson de parámetro $\lambda=3.5$, y el monto de las reclamaciones tiene la siguiente función de densidad.
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/Tabli.png", error=FALSE)
+```
+
+Entonces la formula de Panjer produce la función de probabilidad para $S$ que se muestra en la Figura  a continuación:
+
+## Casos especiales de Panjer 
+
+Recordemos primero que supuestos necesitaba la fórmula original de Panjer:
+
+_1._ $N$ (frecuencia) de clase (a,b,0)
+
+_2._ $Y_{j}$ (severidad) $\in \mathbb{N} \diagdown \{ 0\}\quad \forall j$
+
+Teniendo en mente que hablamos del modelo colectivo de Riesgo:
+
+\begin{eqnarray*}
+S&=& \displaystyle\sum_{j=1}^{N} Y_{j}  \quad \text{Recuerden que si $N \equiv0 \Rightarrow S\equiv 0$ por convención}
+\end{eqnarray*}
+
+En tal caso, las probabilidades **exactas** de $S$ vienen dadas por la recursión que ya conocemos:
+
+\begin{eqnarray*}
+   \mathbb{P}[S=s]
+    &=& \left \{ \begin{matrix} 
+   \mathbb{P}[N=0] & \mbox{si }& s=0  \\
+   \displaystyle\sum_{j=1}^{\overline{K}} \left(a+ \displaystyle\frac{b(j)}{t}  \right)\mathbb{P}[Y=j]\mathbb{P}[S=s-j]&\mbox{si }  & s \in \mathbb{N}\diagdown \{ 0\} \\ 
+   0 & & e.o.c 
+\end{matrix}\right. 
+\end{eqnarray*}
+
+Donde: $\overline{K}=máx\{ s, máx\{ Sop \{Y\}\}\}$.
+
+**Primer punto:** ¿Qué pasa si $0 \in Sop \{ Y\}$ ?
+
+Esto es de mucho interés pues hay v.a.´s asociadas al pago de una compañía de seguros tales que $0 \in Sop \{ Y\}$, un ejemplo son aquellas que tienen un deducible y a una compañía de seguros que le podría interesar calcular probabilidades de un portafolio del estilo
+
+\begin{eqnarray*}
+   S&=& \displaystyle\sum_{j=1}^{N} máx \{X_{i}-d,0 \}
+\end{eqnarray*}
+
+Donde $X_{j}$ es el monto del siniestro del asegurado $j$ . Pensándolo desde este punto de vista, para una aseguradora, que un $X_{j}\leq d$ es equivalente a que no haya ocurrido un siniestro, es decir, el riesgo ($S$) del portafolio es cero.  En otras palabras , asumiendo que $0 \in Sop \{ Y\}$ para alguna v.a $Y$ de interés, tenemos que:
+
+\begin{eqnarray*}
+    \mathbb{P}[S=0]&=& \mathbb{P}\left[  \displaystyle\sum_{j=1}^{N}   Y_{j}=0 \right]\\
+        &=& \mathbb{P}\left[ \{ N=0\} \cup \bigcup_{k=1}^{\infty}\{ N=n, \bigcap_{k=1}^{n}\{Y_{k}=0 \}\} \right]\\
+        &=& \mathbb{P}[N=0]+\sum_{n=1}^\infty\mathbb{P}[N=n](\mathbb{P}[Y=0])^n{\left\{\begin{array}{lcc}
+        \text{Pues cada caso es ajeno}\\
+        \text{y las v.a.'s son indep.}
+        \end{array}\right.}\\
+        &=& \sum_{n=0}^\infty\mathbb{P}[N=n](\mathbb{P}[Y=0])^n{\left\{\begin{array}{lcc}
+        \text{Aquí asumimos}  \\
+        \mbox{que } \mathbb{P}[Y=0]\neq 0  
+        \end{array}\right.}\\
+        &=& \mathbb{E}[(\mathbb{P}[Y=0])^N]{\left\{\begin{array}{lcc}
+        \text{Asumiendo que}  \\
+        sop\{N\}\subseteq\mathbb{N}\cup\{0\}
+        \end{array}\right.}\\
+
+\therefore \mathbb{P}[S=0]&=&\mathbb{E}[(\mathbb{P}[Y=0])^N]
+\end{eqnarray*}
+
+
+Si: $S=\displaystyle\sum_{j=1}^N Y_j\hspace{0.5em}\&\hspace{0.5em}\mathbb{P}[Y=0]\neq 0\hspace{0.5em}\&\hspace{0.5em}sop\{N\}\subseteq\mathbb{N}\cup\{0\}$
+
+¿Les suena $\mathbb{E}[t^x]$?
+
+Por definición: 
+$$
+    G_X(t)\hspace{0.4em}\ddot{=}\hspace{0.4em}\mathbb{E}[t^X]
+$$
+Es la **función generadora de probabilidad** de la v.a. $X$.
+
+Entonces, para nuestro interés si $\mathbb{P}[Y=0]\neq 0$ y $N$ es de clase $(a,b,0)$; se tiene que:
+$$
+    \mathbb{P}[S=0]=G_N(\mathbb{P}[Y=0])
+$$
+
+Por facilidad del lector agregamos lo siguiente:
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/MC_FormulaPager.png", error=FALSE)
+```
+
+_Curso intermedio de probabilidad, L. Rincón, pág:313_
+
+Por último nos falta ver qué sucede si $S>0$.
+
+Según el siguiente documento:
+
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("Imágenes/MC_FormulaPager1.png", error=FALSE)
+```
+
+En la página LM-250 hay otra demostración de lo anterior y además, en la página LM-251 se deduce lo siguiente:
+
+- Sea $N$ (frecuencia) de clase $(a,b,0)$
+
+- Sea $Y$ (severidad) $sop\{Y\}\subseteq\mathbb{N}\cup\{0\}$
+
+- $\mathbb{P}[Y=0]\neq 0$
+
+Entonces
+
+\begin{eqnarray*}
+    \mathbb{P}[S=s]=\left\{
+    \begin{array}{lcc}
+         G_N(\mathbb{P}[Y=0])\mbox{ si } s=0   \\
+         \frac{\displaystyle\sum_{j=1} ^{min\{s,máx\{sop\{Y\}\}\}}\left(a+\frac{b(j)}{s}\right)\mathbb{P}[Y=j]\mathbb{P}[S=s-j]}{1-a\mathbb{P}[Y=0]}\quad s\in \mathbb{N}\backslash \{0\}\\
+         0 \mbox{ en otro caso }
+    \end{array}
+    \right.
+\end{eqnarray*}
+
+**Ejemplo 1:**
+
+- Sea $N\sim Bin(n=2,p=\text{0.25})$
+
+- Consideremos el monto del siniestro $\ddot{=}\hspace{0.4em}X\sim Unif\{1,2,3\} \ (\mathbb{P}[X=k]=\frac{1}{3}\hspace{0.6em}\forall k\in \{1,2,3\})$ para cada asegurado $j$.
+
+- Sea $Y$ el monto que paga una aseguradora con un contrato de deducible $d=2$ sobre el monto de siniestro $(X)$ para cada asegurado $j$.
+
+- Definimos el riesgo de la compañía como: $$S=\displaystyle\sum_{j=1}^NY_j=\displaystyle\sum_{j=1}^Nmáx\{X_j-d,0\}$$
+
+¿Qué sentido tiene la distribución de $N$ en este caso?\\
+
+Notemos que
+\begin{eqnarray*}
+    \mathbb{P}[Y=k]=\left\{
+    \begin{matrix}
+        \frac{2}{3} &\mbox{si }& k=0\\
+        \frac{1}{3} &\mbox{si }& k=1\\
+        0 &\mbox{e.o.c.}&
+    \end{matrix}
+    \right.
+\end{eqnarray*}
+
+_Script: "Panjer Especial"_
+
+**Segundo Punto:** ¿Qué pasa si $N$ es de clase ($a,b,1$)?
+
+Recordemos primero que si $N$ es de clase $(a,b,1)$ quiere decir que sufrió una modificación a su probabilidad en cero. Esto es, que $\mathbb{P}[N=0]$ no es necesariamente la original de la distribución de la cual proviene. Por ejemplo, en el caso cero-truncado obligamos a que $\mathbb{P}[N=0]=0$. Para el caso cero modificado uno podría proponer que $\mathbb{P}[N=0]=\frac{\pi}{4}$ por ejemplo:
+
+Denotemos como $N^{\star}$ la clase ($a,b,1$) de la original $N$ de clase $(a,b,0)$.
+Entonces si $\mathbb{P}[N=k]\hspace{0.4em}\ddot{=}\hspace{0.4em}P_k$, tendremos:
+
+- $\mathbb{P}[N^\star=0]=P_0^\mu$
+- $\mathbb{P}[N^\star=k]=P_k^\mu=\left(\frac{1-P_0^\mu}{1-P_0}\right)P_k$
+    
+  _¡Cuidado con la notación!_
+    
+    
+Entrados en este caso supongamos que $\mathbb{P}[Y=0]=0$
+$$\Rightarrow \mathbb{P}[S=0]=\mathbb{P}[N^\star=0]\quad\text{(la probabilidad modificada).}$$
+
+Por otro lado si $\mathbb{P}[Y=0]\neq 0$, análogamente
+\begin{eqnarray*}
+    \Rightarrow \mathbb{P}[S=0]&=&\mathbb{P}\left[\displaystyle\sum_{j=1}^{N^\star}Y_j=0\right]\\
+    &=&\mathbb{P}\left[\{N^\star=0\}\cup\left(\bigcup_{n=1}^\infty\left\{N^\star=n,\bigcap_{k=1}^n\{Y_k=0\}\right\}\right)\right]\\
+    &=& \mathbb{P}[N^\star=0]+\displaystyle\sum_{n=1}^\infty\mathbb{P}[N^\star=n](\mathbb{P}[Y=0])^n\\
+    &=& P_0^\mu+\displaystyle\sum_{k=1}^\infty P_k^\mu (\mathbb{P}[Y=0])^k\\
+    &=& P_0^\mu + \left(\frac{1-P_0^\mu}{1-P_0}\right)P_k(\mathbb{P}[Y=0])^k\\
+    &=& P_0^\mu + \left(\frac{1-P_0^\mu}{1-P_0}\right)\displaystyle\sum_{k=1}^\infty P_k(\mathbb{P}[Y=0])^k\\
+    &=&P_0^\mu + \left(\frac{1-P_0^\mu}{1-P_0}\right)\left[\left(\displaystyle\sum_{k=0}^\infty P_k\mathbb{P}[Y=0]^k\right)-P_0\right]\\
+    &=& P_0^\mu + \left(\frac{1-P_0^\mu}{1-P_0}\right)\left(G_N(\mathbb{P}[Y=0])-P_0\right)\\
+    &=&P_0^\mu + \left(\frac{1-P_0^\mu}{1-P_0}\right)(G_N(\mathbb{P}[Y=0])-1+1-P_0)\\
+    &=& P_0^\mu +(1-P_0^\mu)\left(\frac{G_N(\mathbb{P}[Y=0])-1}{1-P_0}+1\right)\\
+    &=& {P_0^\mu}+\left(\frac{1-P_0^\mu}{1-P_0}\right)(G_N(\mathbb{P}[Y=0]-1))+1-{P_0^\mu}\\
+    &=& 1+\left(\frac{1-P_0^\mu}{1-P_0}\right)(G_N(\mathbb{P}[Y=0]-1))\\
+    &=& 1-\left(\frac{1-P_0^\mu}{1-P_0}\right)(1-G_N(\mathbb{P}[Y=0]))\\
+    &\mbox{o}& \mbox{bien } \mathbb{P}[S=0]=G_{^\star}(\mathbb{P}[Y=0])
+\end{eqnarray*}
+
+\begin{align*}
+    \therefore \mathbb P [S = 0 ] &=& G_{N^{*}} (\mathbb P [y = 0])\\
+    &=& 1 - (\frac{1-P_{0}^{M}}{1-P_{0}}) (1 - G_{N}(\mathbb P [y=0]))\\
+\end{align*}
+
+Sea cual sea el caso, usando como referencia el último libro mencionado en la misma página, se deduce que, si $N_{*}$ es de $(a,b,1)$ entonces:
+
+Tomando $S = \displaystyle\sum_{j=1}^{N^{*}} y_{j}$, si $x\in sop \{S\} / \{0\}$:
+
+ $\mathbb {P} [S = x] = \displaystyle\frac{
+    [P_{1}^{M}-(a+b)P_{0}^{M}] \mathbb{ P}[y=x]+\displaystyle\sum_{j=1}^{min\{x,max\{sop\{y\}\}\}} \left(a+\frac{bj}{x} \right) \mathbb {P} [y=j] \mathbb {P} [s=x-j]
+    }{1-a\mathbb {P} [y=0]}$
+    
+Nótese que éste es un caso que generaliza al anterior pues si $P_{0}^{M} = P_{0}$ $\Rightarrow$ $P_{k}^{M} = P_{k}$ $\forall k>0$ además, $P_{1}^{M} - P_{0}^{M}(a+b) = 0$; Recuperando así la fórmula anterior. De igual forma, es fácil ver que si $P_{0}^{M} = P_{0}$ entonces: $G_{N^{*}}(t) = G_{N}(t)$ $\forall t$(bien definida según N).
+
+**Ejemplo 2:**
+
+- Consideremos $N\sim{ Poi (\lambda=5) }$
+- $\mathbb P [X=x] = 
+    \left\{ 
+    \begin{array}{lcc}
+        0.25 & si & {x=1}\\
+        0.5 & si & {x=2}\\
+        0.25 & si & {x=3}\\
+    \end{array} 
+    \right.$
+
+- Hacemos $N^{*}$ tal que $P_{0}^{M} = \frac{\pi}{4}$
+
+- Definimos $S= \displaystyle\sum_{j=1}^{N^{*}} x_{j}$ Modelo Colectivo
+
+**Ejemplo 3:**
+
+- Consideremos $N\sim{ Poi (\lambda=5) }$
+
+- $\mathbb P [X=x] = 
+    \left\{ 
+    \begin{array}{lcc}
+        0.25 & si & {x=0}\\
+        0.5 & si & {x=1}\\
+        0.25 & si & {x=2}\\
+    \end{array} 
+    \right.$
+
+- Hacemos $N^{*}$ tal que $P_{0}^{M} = \frac{\pi}{4}$
+
+- Definimos $S= \displaystyle\sum_{j=1}^{N^{*}} x_{j}$ Modelo Colectivo
+
+**En resumen:** Definiendo $S= \displaystyle\sum_{j=1}^{N}y_{j}$ modelo colectivo
+
+$\circ$ Si $N$ es de clase $(a,b,0)$
+
+
+  $\Rightarrow \mathbb P[S=0] = 
+    \left\{ 
+    \begin{array}{lcc}
+        \mathbb P[N=0] & si & \mathbb P [y=0] =0\\
+        G_{N}(\mathbb P[y=0]) & si & \mathbb P [y=0] \neq 0\\
+    \end{array} 
+    \right.$\\ \\
+    
+  Luego $\forall x\in sop\{S\}/\{0\}$\vspace{5mm}\\
+    $\mathbb P [S = x] = \displaystyle\frac{
+        \displaystyle\sum_{j=1}^{min\{x,max\{sop\{y\}\}\}} \left(a+\frac{bj}{x} \right) \mathbb P [y=j] \mathbb P [s=x-j]
+        }{1-a\mathbb P [y=0]}$
+  
+
+$\circ$ Si $N$ es de clase $(a,b,1)$
+
+  $\Rightarrow \mathbb P[S=0] = 
+    \left\{ 
+    \begin{array}{lcc}
+        P_{0}^{M} & si & \mathbb P [y=0] =0\\
+        1-\left(\displaystyle\frac{1-P_{0}^{M}}{1-P_{0}}\right)(1-G_{N}(\mathbb P[y=0])) & si & \mathbb P [y=0] \neq 0\\
+    \end{array} 
+    \right.$\vspace{5mm}\
+    Luego $\forall x\in sop\{S\}/\{0\}$\vspace{5mm}\\
+    $\mathbb P [S = x] = \displaystyle\frac{
+        [P_{1}^{M}-(a+b)P_{0}^{M}] \mathbb P[y=x]+\displaystyle\sum_{j=1}^{min\{x,max\{sop\{y\}\}\}} \left(a+\frac{bj}{x} \right) \mathbb P [y=j] \mathbb P [s=x-j]
+        }{1-a\mathbb P [y=0]}$   
+        
+    
+_Nota:_ Recuerda  $M_{N}(t)\doteq\mathbb E[e^{tx}]$ y $G_{N}(t) = \mathbb E[t^{x}]$ y además 
+$$G_{N}(e^{t})\doteq\mathbb E [(e^{t})^{x}]=\mathbb E[e^{tx}]=M_{N}(t)$$,
+    \begin{align*}
+        M_{N}(ln(t)) &\doteq \mathbb E [e^{ln(t)x}] = \mathbb E [e^{ln(t^{x})}]\ \ \\
+        &= \mathbb E [t^{x}] \doteq G_{N}(t)
+    \end{align*}
+    
+  $\therefore G_{N}(e^{t}) = M_{N}(t)$ $\&$ $M_{n}(ln(t)) = G_{N}(t)$
+     
+_Nota: Recuerden que para las siguientes propiedades, sus demostraciones no involucran el supuesto de que $y\geq 0$, de hecho son válidas para construcciones bien definidas de $S$._
+
+**Proposición:** _Suponiendo que las cantidades y funciones indicadas existen, el riesgo $S$ en el modelo colectivo cumple las siguientes propiedades:_
+
+  _1._ $E(S) = E(N)E(Y)$
+  
+  -2._ $E(S^{2}) = E(N)E(Y^{2}) + E(N(N-1))E^{2}(Y)$
+  
+  _3._ $Var(S) = Var(N)E^{2}(Y) + Var(Y)E(N)$
+  
+  _4._ $M_{S}(t) = M_{N}(ln(M_{Y}(t)))$
+
+ _Introducción a la teoría del Riesgo, L. Rincón, pág: 19_
+ 
+Considerando $f_{0} \doteq \mathbb P[y=0]$ tenemos lo siguiente:
+
+_Table D.1._ Starting values [$f_{s}(0)$] for recursions
+
+```{r echo=FALSE, out.width="90%"}
+knitr::include_graphics("Imágenes/Values.png", error=FALSE)
+```
+
+Son los valores iniciales para $\mathbb P [S=0]$ en cada caso
+
+## Momento de S para Panjer {-}
+
+Sea $$S\ddot{=} \sum_{j=1}^{N}X_{j}$$ entonces:
+
+
+
+**Para N de clase $(a,b,0)$:**
+
+**5.4.3 Theorem (DePril's Recursion).** _If the distribution of N is nondegenerate and satisfies_
+
+   $$p_{n} = (a+\frac{b}{n}) p_{n-1}$$
+    
+
+for some $a,b\in \textbf{R}$ and all $n \in \textbf{N}$, then the identity
+
+  $E[S^{n}] = \frac{1}{1-a} \sum_{k=1}^{n}
+    \begin{pmatrix}
+    n \\
+    k
+    \end{pmatrix}
+    (a+b\frac{k}{n})E[S^{n-k}]E[X^{k}]$
+\text{holds for all} $n\in \textbf{N}$
+
+**Lectures on Risk Theory**
+    
+   _Klays D. Schmidt_
+
+**Para N de clase $(a,b,1)$:**
+
+**Teorema 4.3.** Si la distribución primaria $\{p_{k}\}$ de $S$ en (14) es clase $(a,b;1)$, entonces, para $n\in \mathbb N$
+
+$E[S^{n}] = \displaystyle\frac{
+    [p_{1}-(a+b)p_{0}] E(X^{n}) + \sum_{j=1}^{n}  
+    \begin{pmatrix}
+    n \\
+    j
+    \end{pmatrix}
+    (a+\frac{bj}{n}) E(X^{j}) E(S^{n-j})
+    }
+    {1-a}$
+    
+siempre que $E(X^{j})$, con $j=1,2,...,n$, exista
+
+**Distribuciones clase (a,b) y algoritmo de Panjer**
+    
+  _César Escalante Coterio_
+  
+**Ejemplo 4:**
+
+Consideremos 
+
+- $S= \sum_{j=1}^{N}X_{j}$
+
+- $N\sim{ Bin (n=4,p= \textit{0.2}) }$
+
+- $\mathbb P [X=x] = 
+    \left\{ 
+    \begin{array}{lcc}
+        \textit{0.5} & si & x=1\\
+        \textit{0.3} & si & x=2\\
+        \textit{0.2} & si & x=3\\
+    \end{array} 
+    \right.$
+    
+$\Rightarrow$ $M_{x}(t) \doteq \mathbb E[e^{tx}] = \textit{0.5}e^{t} + \textit{0.3}e^{2t} + \textit{0.2}e^{3t}$
+
+Continuemos el ejemplo en el Script de esta sección
+
+Adicionalmente, si la severidad resulta continua, existen diversas maneras de discretizarla y utilizar la fórmula de Panjer. se invita al lector a revisar y meditar esta clase de metodologías si en algún momento se enfrenta a situaciones de este estilo.
+
+Un vídeo donde se explican algunos detalles más de estos lo podemos ver a continuación:
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/FormuPanj.png", error=FALSE)
+```
+
+_Link de YouTube:_ https://www.https://www.youtube.com/watch?v=H4ETDaUUvTk
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+

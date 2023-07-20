@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 5 Severidad Coberturas | Teoría del Riesgo</title>
+  <meta name="description" content="Descripcion" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 5 Severidad Coberturas | Teoría del Riesgo" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Descripcion" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 5 Severidad Coberturas | Teoría del Riesgo" />
+  
+  <meta name="twitter:description" content="Descripcion" />
+  
+
+<meta name="author" content="Cinthya Denisse González Mendoza :o" />
+
+
+<meta name="date" content="2023-07-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="frecuencia-anexo.html"/>
+<link rel="next" href="severidad-combinacion-de-coberturas.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notas de Teoría del Riesgo</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Conceptos básicos y preeliminares</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#introducción"><i class="fa fa-check"></i><b>1.1</b> Introducción</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#algunos-antecedentes-históricos"><i class="fa fa-check"></i><b>1.2</b> Algunos antecedentes históricos</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#algunos-términos-del-seguro"><i class="fa fa-check"></i><b>1.3</b> Algunos términos del seguro</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#seguro"><i class="fa fa-check"></i>Seguro:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#riesgo"><i class="fa fa-check"></i>Riesgo:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#siniestro"><i class="fa fa-check"></i>Siniestro:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asegurador"><i class="fa fa-check"></i>Asegurador:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asegurado"><i class="fa fa-check"></i>Asegurado:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#beneficiario"><i class="fa fa-check"></i>Beneficiario:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#póliza"><i class="fa fa-check"></i>Póliza:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#prima"><i class="fa fa-check"></i>Prima:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#clase-de-primas"><i class="fa fa-check"></i><b>1.4</b> Clase de primas:</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#clasificación-de-los-seguros"><i class="fa fa-check"></i><b>1.5</b> Clasificación de los seguros</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#distribuciones-clásicas-en-teoría-del-riesgo"><i class="fa fa-check"></i><b>1.6</b> Distribuciones clásicas en Teoría del Riesgo</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asociadas-al-monto-de-una-pérdida"><i class="fa fa-check"></i>Asociadas al monto de una pérdida</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#familias-paramétricas-para-modelar-el-monto-de-riesgo"><i class="fa fa-check"></i><b>1.7</b> Familias paramétricas para modelar el monto de riesgo</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#exponencial"><i class="fa fa-check"></i>Exponencial</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#gamma"><i class="fa fa-check"></i>Gamma</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#log---normal"><i class="fa fa-check"></i>Log - Normal</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#weibull"><i class="fa fa-check"></i>Weibull</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#burr"><i class="fa fa-check"></i>Burr</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#pareto"><i class="fa fa-check"></i>Pareto</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#modelación-del-riesgo"><i class="fa fa-check"></i><b>1.8</b> Modelación del riesgo</a></li>
+<li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#ajuste-de-funciones-de-probabilidad"><i class="fa fa-check"></i><b>1.9</b> Ajuste de funciones de probabilidad</a></li>
+<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#reconocimiento-del-modelo"><i class="fa fa-check"></i><b>1.10</b> Reconocimiento del modelo</a>
+<ul>
+<li class="chapter" data-level="1.10.1" data-path="index.html"><a href="index.html#moda-de-una-función-de-densidad"><i class="fa fa-check"></i><b>1.10.1</b> Moda de una función de densidad</a></li>
+<li class="chapter" data-level="1.10.2" data-path="index.html"><a href="index.html#coeficiente-de-asimetría-skewness"><i class="fa fa-check"></i><b>1.10.2</b> Coeficiente de asimetría (Skewness)</a></li>
+<li class="chapter" data-level="1.10.3" data-path="index.html"><a href="index.html#coeficiente-de-kurtosis"><i class="fa fa-check"></i><b>1.10.3</b> Coeficiente de Kurtosis</a></li>
+<li class="chapter" data-level="1.10.4" data-path="index.html"><a href="index.html#función-de-distribución-empírica"><i class="fa fa-check"></i><b>1.10.4</b> Función de distribución empírica</a></li>
+<li class="chapter" data-level="1.10.5" data-path="index.html"><a href="index.html#cuantiles"><i class="fa fa-check"></i><b>1.10.5</b> Cuantiles</a></li>
+<li class="chapter" data-level="1.10.6" data-path="index.html"><a href="index.html#rango-intercuantílico"><i class="fa fa-check"></i><b>1.10.6</b> Rango intercuantílico</a></li>
+</ul></li>
+<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#estimación-de-parámetros"><i class="fa fa-check"></i><b>1.11</b> Estimación de parámetros</a>
+<ul>
+<li class="chapter" data-level="1.11.1" data-path="index.html"><a href="index.html#método-de-momentos"><i class="fa fa-check"></i><b>1.11.1</b> Método de momentos</a></li>
+<li class="chapter" data-level="1.11.2" data-path="index.html"><a href="index.html#máxima-verosimilitud"><i class="fa fa-check"></i><b>1.11.2</b> Máxima verosimilitud</a></li>
+</ul></li>
+<li class="chapter" data-level="1.12" data-path="index.html"><a href="index.html#pruebas-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>1.12</b> Pruebas de bondad de ajuste</a>
+<ul>
+<li class="chapter" data-level="1.12.1" data-path="index.html"><a href="index.html#planteamiento-general-de-una-prueba-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>1.12.1</b> Planteamiento general de una prueba de bondad de ajuste</a></li>
+<li class="chapter" data-level="1.12.2" data-path="index.html"><a href="index.html#algunas-pruebas-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>1.12.2</b> Algunas pruebas de bondad de ajuste</a></li>
+</ul></li>
+<li class="chapter" data-level="1.13" data-path="index.html"><a href="index.html#cómo-leer-un-p-value"><i class="fa fa-check"></i><b>1.13</b> ¿Cómo leer un p-value?</a>
+<ul>
+<li class="chapter" data-level="1.13.1" data-path="index.html"><a href="index.html#región-de-rechazo-y-no-rechazo"><i class="fa fa-check"></i><b>1.13.1</b> Región de Rechazo y no rechazo:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.14" data-path="index.html"><a href="index.html#el-proceso-de-modelación-del-riesgo"><i class="fa fa-check"></i><b>1.14</b> El proceso de modelación del Riesgo</a>
+<ul>
+<li class="chapter" data-level="1.14.1" data-path="index.html"><a href="index.html#el-proceso-de-modelado"><i class="fa fa-check"></i><b>1.14.1</b> El proceso de modelado</a></li>
+<li class="chapter" data-level="1.14.2" data-path="index.html"><a href="index.html#pasos"><i class="fa fa-check"></i><b>1.14.2</b> Pasos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html"><i class="fa fa-check"></i><b>2</b> Medidas de Riesgo</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#distribuciones-para-valores-extremos"><i class="fa fa-check"></i><b>2.1</b> Distribuciones para valores extremos</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#teoría-de-valores-extremos"><i class="fa fa-check"></i><b>2.1.1</b> Teoría de valores extremos</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#distribuciones-de-valores-extremos"><i class="fa fa-check"></i>Distribuciones de valores extremos</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#ejemplo-1-2"><i class="fa fa-check"></i>Ejemplo 1</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#ejemplo-2-1"><i class="fa fa-check"></i>Ejemplo 2</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#var-t-var"><i class="fa fa-check"></i><b>2.2</b> VaR &amp; T-VaR</a>
+<ul>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#var"><i class="fa fa-check"></i>VaR</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#t-var"><i class="fa fa-check"></i>T-VaR</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="frecuencia.html"><a href="frecuencia.html"><i class="fa fa-check"></i><b>3</b> Frecuencia</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="frecuencia.html"><a href="frecuencia.html#frecuencia-1"><i class="fa fa-check"></i><b>3.1</b> Frecuencia</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="frecuencia.html"><a href="frecuencia.html#familia-ab0"><i class="fa fa-check"></i><b>3.1.1</b> Familia (a,b,0)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="frecuencia-anexo.html"><a href="frecuencia-anexo.html"><i class="fa fa-check"></i><b>4</b> Frecuencia Anexo</a></li>
+<li class="chapter" data-level="5" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html"><i class="fa fa-check"></i><b>5</b> Severidad Coberturas</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#diferencia-entre-función-de-densidad-y-función-de-masa-de-probabilidad"><i class="fa fa-check"></i><b>5.1</b> Diferencia entre función de densidad y función de masa de probabilidad</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#visualización-de-variables-aleatorias-mixtas"><i class="fa fa-check"></i><b>5.1.1</b> Visualización de variables aleatorias mixtas</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#coberturas-en-seguros-reaseguros"><i class="fa fa-check"></i><b>5.2</b> Coberturas en Seguros / Reaseguros</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#coaseguro"><i class="fa fa-check"></i><b>5.2.1</b> Coaseguro</a></li>
+<li class="chapter" data-level="5.2.2" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#inflación"><i class="fa fa-check"></i><b>5.2.2</b> Inflación</a></li>
+<li class="chapter" data-level="5.2.3" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#deducibles"><i class="fa fa-check"></i><b>5.2.3</b> Deducibles</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#la-regla-de-darth-vader"><i class="fa fa-check"></i><b>5.3</b> La regla de Darth Vader</a></li>
+<li class="chapter" data-level="5.4" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#monto-máximo-de-beneficio"><i class="fa fa-check"></i><b>5.4</b> Monto máximo de beneficio</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html"><i class="fa fa-check"></i><b>6</b> Severidad combinacion de coberturas</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#contratos-con-deducible-y-monto-máximo-de-beneficio"><i class="fa fa-check"></i><b>6.1</b> Contratos con Deducible y monto máximo de beneficio</a></li>
+<li class="chapter" data-level="6.2" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#generalización-de-beneficio-y-monto-máximo"><i class="fa fa-check"></i><b>6.2</b> Generalización de beneficio y monto máximo</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#quitando-el-deducible-d0"><i class="fa fa-check"></i>Quitando el deducible d=0</a></li>
+<li class="chapter" data-level="" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#quitando-monto-máximo-de-beneficio-uinfty"><i class="fa fa-check"></i>Quitando Monto máximo de beneficio: <span class="math inline">\(u=\infty\)</span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html"><i class="fa fa-check"></i><b>7</b> Severidad (Costo por pérdida y por pago)</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html#costo-por-pago"><i class="fa fa-check"></i><b>7.1</b> Costo por pago</a></li>
+<li class="chapter" data-level="7.2" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html#cuantiles-para-las-coberturas"><i class="fa fa-check"></i><b>7.2</b> Cuantiles para las coberturas</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html#ejemplo-6"><i class="fa fa-check"></i>Ejemplo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="severidad-anexo.html"><a href="severidad-anexo.html"><i class="fa fa-check"></i><b>8</b> Severidad Anexo</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#pago-del-asegurado-con-deducible-y-monto-máximo-de-beneficio"><i class="fa fa-check"></i>Pago del asegurado con deducible y monto máximo de beneficio:</a></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#generalización-del-cálculo-de-variables-esperadas-para-y_p."><i class="fa fa-check"></i>Generalización del cálculo de variables esperadas para <span class="math inline">\(Y_p\)</span>.</a></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#generalización-de-la-fórmula-de-darth-vader."><i class="fa fa-check"></i>Generalización de la fórmula de Darth Vader.</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#ejercicio"><i class="fa fa-check"></i>Ejercicio:</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#más-deducibles"><i class="fa fa-check"></i>Más deducibles</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#ejemplo-muy-sencillo-de-como-jugar-con-el-deducible"><i class="fa fa-check"></i>Ejemplo muy sencillo de como jugar con el deducible:</a></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#solución-3"><i class="fa fa-check"></i>Solución</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html"><i class="fa fa-check"></i><b>9</b> Modelo individual bases</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#modelo-individual"><i class="fa fa-check"></i><b>9.1</b> Modelo individual</a></li>
+<li class="chapter" data-level="9.2" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#derivación-bajo-el-signo-integral"><i class="fa fa-check"></i><b>9.2</b> Derivación bajo el signo integral</a></li>
+<li class="chapter" data-level="9.3" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#teorema-de-probabilidad-total-en-el-caso-continuo"><i class="fa fa-check"></i><b>9.3</b> Teorema de probabilidad total en el caso continuo:</a></li>
+<li class="chapter" data-level="9.4" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#teorema-de-probabilidad-total-en-el-caso-discreto"><i class="fa fa-check"></i><b>9.4</b> Teorema de probabilidad total en el caso discreto:</a></li>
+<li class="chapter" data-level="9.5" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#aproximación-normal"><i class="fa fa-check"></i><b>9.5</b> Aproximación Normal</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#teorema-central-del-límite"><i class="fa fa-check"></i>TEOREMA CENTRAL DEL LÍMITE</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="modelo-individual-formula-de-pril.html"><a href="modelo-individual-formula-de-pril.html"><i class="fa fa-check"></i><b>10</b> Modelo individual: formula de Pril</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="modelo-individual-formula-de-pril.html"><a href="modelo-individual-formula-de-pril.html#formula-de-pril"><i class="fa fa-check"></i><b>10.1</b> Formula de Pril</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html"><i class="fa fa-check"></i><b>11</b> Modelo colectivo: Bases</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-colectivo"><i class="fa fa-check"></i>Modelo Colectivo</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-binomial-compuesto"><i class="fa fa-check"></i>Modelo Binomial Compuesto</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-binomial-negativo-compuesto"><i class="fa fa-check"></i>Modelo binomial negativo compuesto</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-poisson-compuesto"><i class="fa fa-check"></i>Modelo Poisson Compuesto</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#distribución-de-la-convoluación-de-poisson-compuestas"><i class="fa fa-check"></i>Distribución de la convoluación de Poisson compuestas</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#aproximaciones-de-probabilidad-del-modelo-colectivo"><i class="fa fa-check"></i>Aproximaciones de probabilidad del Modelo Colectivo</a>
+<ul>
+<li class="chapter" data-level="11.0.1" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#aproximación-normal-1"><i class="fa fa-check"></i><b>11.0.1</b> Aproximación Normal</a></li>
+<li class="chapter" data-level="11.0.2" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#aproximación-gamma-trasladada"><i class="fa fa-check"></i><b>11.0.2</b> Aproximación Gamma Trasladada</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="modelo-colectivo-formula-de-panjer.html"><a href="modelo-colectivo-formula-de-panjer.html"><i class="fa fa-check"></i><b>12</b> Modelo colectivo: Formula de Panjer</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="modelo-colectivo-formula-de-panjer.html"><a href="modelo-colectivo-formula-de-panjer.html#casos-especiales-de-panjer"><i class="fa fa-check"></i><b>12.1</b> Casos especiales de Panjer</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-formula-de-panjer.html"><a href="modelo-colectivo-formula-de-panjer.html#momento-de-s-para-panjer"><i class="fa fa-check"></i>Momento de S para Panjer</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="reaseguro.html"><a href="reaseguro.html"><i class="fa fa-check"></i><b>13</b> Reaseguro</a>
+<ul>
+<li class="chapter" data-level="" data-path="reaseguro.html"><a href="reaseguro.html#reaseguro-proporcional"><i class="fa fa-check"></i>Reaseguro proporcional</a>
+<ul>
+<li class="chapter" data-level="" data-path="reaseguro.html"><a href="reaseguro.html#reaseguro-no-proporcional"><i class="fa fa-check"></i>Reaseguro no proporcional</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html"><i class="fa fa-check"></i><b>14</b> Calculo de primas</a>
+<ul>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#propiedades-y-principios-del-cálculo-de-primas"><i class="fa fa-check"></i>Propiedades y Principios del cálculo de Primas</a>
+<ul>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-valor-esperado"><i class="fa fa-check"></i>Principio de valor esperado</a></li>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-la-varianza"><i class="fa fa-check"></i>Principio de la varianza</a></li>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-la-desviación-estándar"><i class="fa fa-check"></i>Principio de la desviación estándar</a></li>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-utilidad-cero"><i class="fa fa-check"></i>Principio de utilidad cero</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="credibilidad.html"><a href="credibilidad.html"><i class="fa fa-check"></i><b>15</b> Credibilidad</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="credibilidad.html"><a href="credibilidad.html#teoría-de-la-credibilidad"><i class="fa fa-check"></i><b>15.1</b> Teoría de la credibilidad</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="credibilidad.html"><a href="credibilidad.html#introducción-1"><i class="fa fa-check"></i><b>15.1.1</b> Introducción</a></li>
+<li class="chapter" data-level="15.1.2" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-completatotal"><i class="fa fa-check"></i><b>15.1.2</b> Credibilidad Completa/total</a></li>
+<li class="chapter" data-level="15.1.3" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-completa-bajo-hipótesis-de-normalidad"><i class="fa fa-check"></i><b>15.1.3</b> Credibilidad Completa Bajo Hipótesis de Normalidad</a></li>
+<li class="chapter" data-level="15.1.4" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-parcial"><i class="fa fa-check"></i><b>15.1.4</b> Credibilidad Parcial</a></li>
+<li class="chapter" data-level="15.1.5" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-parcial-bajo-hipótesis-de-normalidad"><i class="fa fa-check"></i><b>15.1.5</b> Credibilidad Parcial bajo Hipótesis de Normalidad</a></li>
+<li class="chapter" data-level="15.1.6" data-path="credibilidad.html"><a href="credibilidad.html#ajuste-de-primas-con-credibilidad-clásica"><i class="fa fa-check"></i><b>15.1.6</b> Ajuste de primas con credibilidad clásica</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="credibilidad.html"><a href="credibilidad.html#enfoque-bayesiano"><i class="fa fa-check"></i><b>15.2</b> Enfoque bayesiano</a></li>
+<li class="chapter" data-level="15.3" data-path="credibilidad.html"><a href="credibilidad.html#teorema-de-bayes"><i class="fa fa-check"></i><b>15.3</b> Teorema de Bayes</a></li>
+<li class="chapter" data-level="15.4" data-path="credibilidad.html"><a href="credibilidad.html#familias-conjugadas"><i class="fa fa-check"></i><b>15.4</b> Familias conjugadas</a></li>
+<li class="chapter" data-level="15.5" data-path="credibilidad.html"><a href="credibilidad.html#cálculo-bayesiano-de-primas-de-seguros"><i class="fa fa-check"></i><b>15.5</b> Cálculo Bayesiano de primas de seguros</a>
+<ul>
+<li class="chapter" data-level="" data-path="credibilidad.html"><a href="credibilidad.html#cómo-modelar-un-riesgo-para-obtener-una-prima-de-credibilidad-bayesiana"><i class="fa fa-check"></i>¿Cómo modelar un riesgo para obtener una prima de credibilidad Bayesiana?</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Teoría del Riesgo</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="severidad-coberturas" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Capítulo 5</span> Severidad Coberturas<a href="severidad-coberturas.html#severidad-coberturas" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="diferencia-entre-función-de-densidad-y-función-de-masa-de-probabilidad" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Diferencia entre función de densidad y función de masa de probabilidad<a href="severidad-coberturas.html#diferencia-entre-función-de-densidad-y-función-de-masa-de-probabilidad" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Debemos tener en mente que siempre que hablamos de una v.a. entonces estamos diciendo implícitamente que lo denotamos como <span class="math inline">\(f_X(x)\)</span> es una función de <em>densidad</em>. El detalle importante aquí es que:
+<span class="math display">\[f_X(x)\ {\neq}\hspace{0.4 em}\mathbb{P}[X=x]\]</span></p>
+<p>Porque de hecho <span class="math inline">\(\mathbb{P}[X=x]=0\)</span> ya que <span class="math inline">\(X\)</span> es una v.a continua. La diferencia con una función de <em>masa de probabilidad</em> (f.m.p) es que cuando se menciona se deja claro que su correspondiente variable aleatoria digamos <span class="math inline">\(Y\)</span> <strong>sí</strong> es <strong>discreta</strong> y por lo tanto:
+<span class="math display">\[\begin{eqnarray*}
+f_Y(y)\ = \ \mathbb{P}[Y=y]
+\end{eqnarray*}\]</span></p>
+<p>Una f.m.p. también es llamada función de densidad pero se usa el término ‘’f.m.p.’’ para dejar claro que su v.a. subyacente es discreta.</p>
+<p>Lo anterior es una observación importante ya que si estamos hablando de una v.a. continua, no se usa directamente la función de densidad para obtener probabilidades. Es necesario acudir a la <em>función de distribución</em> <span class="math inline">\((F_Y(y))\)</span> para poder acceder a las probabilidades de una v.a del tipo continuo. En concreto,<strong>una función de distribución siempre hace referencia a probabilidades</strong>. Sin importar si su v.a. subyacente es continua o discreta, siempre sucede que:</p>
+<p><span class="math display">\[F_Y(y)\ \ddot{=}\ \mathbb{P}[Y\leq y]\]</span></p>
+<p><em>Nota: Entonces, cuando queramos medir, de forma probabilística, fenómenos que involucran una v.a. continua, vamos a utilizar la función de distribución</em></p>
+<div id="visualización-de-variables-aleatorias-mixtas" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Visualización de variables aleatorias mixtas<a href="severidad-coberturas.html#visualización-de-variables-aleatorias-mixtas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Cuando una v.a. es <strong>discreta</strong>, su función de distribución puede verse como algo de este estilo:</p>
+<p><img src="Ima%CC%81genes/5.%20SC_grafica1.png" width="50%" /></p>
+<p>Del gráfico se puede deducir que:
+<span class="math display">\[\begin{equation*}
+    F_X(x)\ \ddot=\ \mathbb{P}[X\leq x] = \left \{ \begin{matrix} 0 &amp; \mbox{si }&amp; x &lt;1
+\\ 0.2 &amp; \mbox{si }&amp; x\in[1,2)
+\\ 0.6 &amp; \mbox{si }&amp; x\in[2,3)
+\\ 0.8 &amp; \mbox{si }&amp; x\in[3,4)
+\\ 1 &amp; \mbox{si }&amp; x\geq 4\end{matrix}\right.
+\end{equation*}\]</span></p>
+<p>Si observamos el gráfico observamos que la función tiene <em>saltos</em> o discontinuidades.</p>
+<p>Dichos saltos nos indican que en los puntos del soporte (eje X) <strong>existe una probabilidad puntual</strong>. Además hay partes constantes (planas), lo cual indica que no hay probabilidad de ningún tipo en esos puntos.</p>
+<p>La función de masa de probabilidad del ejemplo anterior <strong>se puede obtener a partir de la diferencia</strong> entre los saltos esto pues, si <span class="math inline">\(x\in sop\{X\}\)</span>:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+F_X(x)-F_X(x-1)\ &amp;\ddot=&amp;\ \mathbb{P}[X\leq x]-\mathbb{P}[X\leq x-1]\\
+&amp;=&amp; (\mathbb{P}[X=x]+\mathbb{P}[X&lt;x])-\mathbb{P}[X\leq x-1]
+\end{eqnarray*}\]</span></p>
+<p>pero <span class="math inline">\(\mathbb{P}[X&lt;x]=\mathbb{P}[X\leq x-1]\)</span> pues <span class="math inline">\(X\)</span> es discreta (esto asumiendo que <span class="math inline">\(sop\{X\}\)</span> tiene números consecutivos).</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\Leftrightarrow F_X(x)-F_X(x-1) &amp;=&amp; \mathbb{P}[X=x]+\mathbb{P}[X\leq x-1]-\mathbb{P}[X\leq x-1]\\
+&amp;=&amp; {\underbrace{\mathbb{P}[X=x] =\ f_X(x)}}_{\text{por ser una v.a. discreta}}
+\end{eqnarray*}\]</span></p>
+<p>Calculando las diferencias entre los saltos:
+<span class="math display">\[\begin{equation*}
+    f_X(x)\overset{\overset{\text{v.a discreta}}{\downarrow}} = \mathbb{P}[X=x] = \left \{ \begin{matrix} 0.2 &amp; \mbox{si }&amp; x =1
+\\ 0.4 &amp; \mbox{si }&amp; x=2
+\\ 0.2 &amp; \mbox{si }&amp; x=3
+\\ 0.2 &amp; \mbox{si }&amp; x=4
+\\ 0 &amp; \mbox{c.o.c} \end{matrix}\right.
+\end{equation*}\]</span></p>
+<p>De tal manera que cuando vemos la función de densidad de una v.a. discreta, se verá como:</p>
+<p><img src="Ima%CC%81genes/5.%20SC_grafica2.png" width="50%" /></p>
+<p>Notemos que la función solamente toma valores positivos en puntos específicos. En el resto es continua casi-seguramente como constante igual a cero.</p>
+<p>En cuanto a las v.a los gráficos de las funciones de distribución son algo de este estilo:</p>
+<p><img src="Ima%CC%81genes/5.%20SC_grafica3.png" width="50%" /></p>
+<p>Observemos que esta gráfica <strong>no tiene saltos</strong>, de hecho, <span class="math inline">\(\forall\hspace{0.3em}p\in [0,1]\quad \exists x \in \mathbb{R}\)</span> tal que <span class="math inline">\(F_X(x)=p\)</span> (considerando aquellos casos donde <span class="math inline">\(x\rightarrow\infty\hspace{0.4em} ó\hspace{0.4em}-\infty\)</span>).</p>
+<p>En otras palabras <span class="math inline">\(F_X:\mathbb{R}\mapsto[0,1]\)</span> es <strong>suprayectiva</strong>.</p>
+<p>Si nosotros quisiéramos obtener la función de densidad de la v.a. anterior, basta con calcular su derivada. De tal manera que: <span class="math display">\[f_X(t)=\frac{d}{dt}F_X(t)\]</span></p>
+<p>Haciendo esto y tomando como referencia simplemente el gráfico anterior, su función de densidad podría verse como algo del estilo:</p>
+<p><img src="Ima%CC%81genes/5.%20SC_grafica4.png" width="50%" /></p>
+<p>Notemos que <strong>esta función es continua, al menos en <span class="math inline">\((0,x_0)\)</span> </strong> que tiene que ser el <span class="math inline">\(sop\{X\}\)</span> pues vemos que la distribución acumula nada (cero) antes del 0 y todo (uno) después de <span class="math inline">\(x_0\)</span>.</p>
+<p>Por las mismas razones, nosotros esperaríamos ver una indicadora en este mismo intervalo para <span class="math inline">\(f_X\)</span>. Lo importante a notar de este caso es que la función de distribución de una v.a continua es también continua y suprayectiva al [0,1].</p>
+<p>Cuando hablamos de una v.a <strong>mixta</strong> vamos a tener una <strong>función de distribución acumulada</strong> que es discontinua, pero cumpliendo siempre las hipótesis esenciales de una f.d.a.</p>
+<p>Gráficamente puede verse como:</p>
+<p><img src="Ima%CC%81genes/5.%20SC_grafica5.png" width="50%" /></p>
+<p>Recordemos que <strong>una función de distribución acumulada siempre hace referencia a una probabilidad</strong>. Entonces los saltos que tiene esta función no pueden pasar desapercibidos. De hecho, lo que sucede es que la variable aleatoria subyacente a <span class="math inline">\(F_X\)</span> del último gráfico, debe ser <strong>mixta</strong>.</p>
+<p>Para obtener la función de densidad a partir de la distribución en estos casos, debemos hacer ambas cosas: Derivar y tomar la diferencia en los saltos.</p>
+<p>De observar el gráfico anterior vemos que hay saltos en los puntos 0 y <span class="math inline">\(x_0\)</span>, esto quiere decir que <span class="math inline">\(\mathbb{P}[X]\equiv 0&gt;0\)</span> y también <span class="math inline">\(\mathbb{P}[X\equiv x_0]\)</span>. Lo cual significa que <span class="math inline">\(X\)</span> <strong>toma valores puntuales con una probabilidad positiva</strong>. Sin embargo, vemos que la función de distribución es continua en el intervalo <span class="math inline">\((0,x_0)\)</span>, eso quiere decir que <strong><span class="math inline">\(X\)</span> es continua en los intervalos donde <span class="math inline">\(F_X\)</span> también lo sea</strong>. Más aún, si <span class="math inline">\(x\in(0,x_0)\Rightarrow\mathbb{P}[X=x]=0\)</span>, precisamente por el efecto de la continuidad.</p>
+<p>La función de densidad debería verse como:</p>
+<p><img src="Ima%CC%81genes/5.%20SC_grafica6.png" width="50%" /></p>
+</div>
+</div>
+<div id="coberturas-en-seguros-reaseguros" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Coberturas en Seguros / Reaseguros<a href="severidad-coberturas.html#coberturas-en-seguros-reaseguros" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En esta sección comenzaremos a modelar flujos de efectivo ($) típicos de una compañía aseguradora. Los contratos más comunes que manejan las aseguradoras consideran diversos factores como el <strong>coaseguro</strong> y la <strong>inflación</strong>, los cuales son llamados de tipo <strong>proporcional</strong>. Por otro lado, tenemos el <strong>deducible</strong> y el <strong>monto máximo de beneficio</strong> los cuales son considerados del tipo <strong>no-proporcional</strong>.</p>
+<p>Comúnmente este tema está muy relacionado con los tipos de <strong>reaseguro</strong>, sin embargo por ahora vamos a modelar los contratos antes mencionados <strong>desde el punto de vista de la aseguradora</strong>. Marginalmente, se puede observar que este tipo de contratos están relacionados por lo que el desarrollo teórico de los contratos <strong>desde el punto de vista del asegurado</strong> quedará como ejercicio para el lector.</p>
+<p>Para introducir este tema se recomienda ver:</p>
+<p><img src="Ima%CC%81genes/5.%20SC_grafica7.png" width="50%" /></p>
+<p>Sea <span class="math inline">\(X\)</span> una v.a. que modela la <strong>severidad</strong> de un riesgo. Cuando ocurre un siniestro, <span class="math inline">\(X\)</span> toma un valor fijo y según lo que se establezca en una póliza podemos ‘’dividir’’ este monto en dos partes:</p>
+<p><span class="math inline">\(Z\ \ddot{=}\ \)</span> Monto que paga el asegurado</p>
+<p><span class="math inline">\(Y\ \ddot{=}\ \)</span> Monto que paga la aseguradora</p>
+<p>Para que juntos cubran el siniestro; <span class="math inline">\(X\)</span> = <span class="math inline">\(Y\)</span>+<span class="math inline">\(Z\)</span>.</p>
+<p>A esto nosotros <strong>en este curso</strong> le llamaremos:</p>
+<p><strong>Ley de conservación del riesgo</strong>: ’’ Un riesgo que no se crea ni se destruye, solo se <strong>transfiere</strong>.’’</p>
+<p>Nuesto objetivo será que para todos los tipos de seguro que tengamos, pongamos a <span class="math inline">\(Y\)</span> en términos de <span class="math inline">\(X\)</span>.</p>
+<div id="coaseguro" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Coaseguro<a href="severidad-coberturas.html#coaseguro" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sea <span class="math inline">\(X\)</span> el monto de pérdida asociado a un siniestro, luego, tomemos <span class="math inline">\(\alpha\)</span> <span class="math inline">\(\in[0,1]\)</span> un <strong>factor de coaseguro</strong>*. Este factor representa la proporción de pago que le corresponde a la aseguradora mientras el poseedor de la póliza (contrato) paga la fracción restante <span class="math inline">\(1-\alpha\)</span>. La v.a. de pago por parte de la aseguradora es:</p>
+<p><span class="math display">\[Y=\alpha X\]</span></p>
+<p>Cuya densidad puede obtenerse de la siguiente manera:
+<span class="math display">\[\begin{eqnarray*}
+F_Y(y)\ \ddot{=}&amp;\ \mathbb{P}[Y\leq y]\ \ddot{=}\ \mathbb{P}[\alpha X\leq y]=\mathbb{P}\left[X\leq \frac{y}{\alpha}\right]\ \ddot{=}\  F_X\left(\frac{y}{\alpha}\right)
+\end{eqnarray*}\]</span>
+<span class="math display">\[\begin{eqnarray*}
+\Rightarrow {f_Y(y)}=\frac{d}{dy}F_Y(y)=\frac{d}{dy}F_X\left(\frac{y}{\alpha}\right)= {\frac{1}{\alpha}f_X\left(\frac{y}{\alpha}\right)}
+\end{eqnarray*}\]</span></p>
+<p>Otra manera (quizás la más conocida) de obtener el resultado anterior es con el <strong>teorema de cambio de variable</strong>:</p>
+<p><strong>TEOREMA DE CAMBIO DE VARIABLE 1.</strong></p>
+<p>Sea <span class="math inline">\(X\)</span> una variable aleatoria continua con valores dentro de un intervalo <span class="math inline">\((a,b)\subseteq \mathbb{R}\)</span>, y con función de densidad <span class="math inline">\(f_X(x)\)</span>.Sea <span class="math inline">\(\varphi:(a,b)\rightarrow\mathbb{R}\)</span> una función continua, estrictamente creciente o decreciente y con inversa diferenciable. Entonces la variable aleatoria <span class="math inline">\(Y=\varphi(X)\)</span> toma valores dentro del intervalo <span class="math inline">\(\varphi(a,b)\)</span>, y tiene función de densidad:
+<span class="math display">\[\begin{equation*}
+    f_Y(y)=\left \{ \begin{matrix} f_X(\varphi^{-1}(y))|\frac{d}{dy}\varphi^{-1}(y)| &amp; \mbox{para }&amp; y\in \varphi(a,b)
+\\ 0 &amp; \mbox{otro caso }&amp;
+\end{matrix}\right.
+\end{equation*}\]</span></p>
+<p>Así, podemos entonces hacer lo siguiente:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+Y&amp;=&amp;\varphi(X)=\alpha X \Rightarrow\varphi^{-1}(X)=\frac{X}{\alpha}\Rightarrow \left|\frac{d}{dx}\varphi^{-1}(X)\right|=\frac{1}{\alpha}
+\end{eqnarray*}\]</span></p>
+<p><span class="math display">\[\begin{eqnarray*}
+\Rightarrow f_Y(y)=\left|\frac{d}{dy}\varphi^{-1}(y)\right| f_X(\varphi^{-1}(y))=\frac{1}{\alpha}f_X\left(\frac{y}{\alpha}\right)
+\end{eqnarray*}\]</span></p>
+<p>Por lo tanto:</p>
+<p><span class="math display">\[f_Y(t)=\frac{1}{\alpha}f_X\left(\frac{t}{\alpha}\right)\]</span></p>
+<p><em>Nota:</em> El soporte de <span class="math inline">\(Y\)</span> estará dado por
+<span class="math display">\[sop(Y)\hspace{0.4em}\ddot{=}\{y|\frac{y}{\alpha}\in sop(X)\}\]</span></p>
+<p>Obtener la esperanza de esta v.a. es fácil en términos de la esperanza de <span class="math inline">\(X\)</span>, debido a la linealidad de la esperanza, se tiene que:</p>
+<p><span class="math display">\[\mathbb{E}[Y]=\mathbb{E}[\alpha X]=\alpha\mathbb{E}[X]\]</span></p>
+<p><strong>Ejemplo:</strong></p>
+<p>Suponga que el monto de un siniesto es aleatorio y con distribución <span class="math inline">\(X\sim Unif(100,200)\)</span>. En una póliza de seguros se pacta un <strong>factor de coaseguro</strong> <span class="math inline">\(\alpha=50\%\)</span>. De tal manera que lo que cubre la compañía será unicamente el 50% del total del siniestro <span class="math inline">\((Y=\alpha X)\)</span>.
+<span class="math display">\[\Rightarrow f_Y(t)=\frac{1}{50\%}f_X\left(\frac{t}{50\%}\right)=2f_X(2t)=2\left(\frac{1}{200-100}\right)\underset{(100,200)}{\mathbb{I}}(2t)\]</span></p>
+<p><em><span class="math inline">\(100\leq 2t\leq 200 \Leftrightarrow 50 \leq t\leq100\)</span></em></p>
+<p><span class="math display">\[\begin{eqnarray*}
+&amp;=&amp; \frac{1}{50}\underset{(50,100)}{\mathbb{I}}(t)=\frac{1}{100-50}\underset{(50,100)}{\mathbb{I}}(t)\\
+&amp;\Rightarrow&amp; Y=50\% X\sim Unif(50,100)
+\end{eqnarray*}\]</span></p>
+<p>En este caso, hemos llegado a que <span class="math inline">\(Y\)</span> tiene otra distribución conocida. Sin embargo, esto no será siempre así, pero dado que en este caso si la tiene entonces podemos calcular la esperanza:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\mathbb{E}[Y]&amp;=&amp; \frac{b+a}{2}\\
+&amp;=&amp; \frac{100+50}{2}\\
+&amp;=&amp; \frac{150}{2}\\
+&amp;=&amp; 75
+\end{eqnarray*}\]</span></p>
+<p>Pero, es fácil ver que también se da que:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\mathbb{E}[Y]&amp;=&amp;\alpha \mathbb{E}[X]\\
+&amp;=&amp; (50\%) \left( \frac{200+100}{2}\right)\\
+&amp;=&amp; \left( \frac{1}{2} \right) (150)\\
+&amp;=&amp; 75
+\end{eqnarray*}\]</span></p>
+<p>De donde podemos observar que la propiedad anterior funciona.</p>
+<p><strong>NOTA: Un coaseguro entra siempre que la aseguradora tenga que pagar y se paga la fracción del monto toal a cubrir.</strong></p>
+</div>
+<div id="inflación" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Inflación<a href="severidad-coberturas.html#inflación" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Muchas veces el pago de una suma asegurada se hace a final del año. Pero, si un siniestro ocurre al principio del año hay que considerar que, lo que se valuó al momento del siniestro ya no valga lo mismo por efectos de la inflación.</p>
+<p>Para considerar la inflación, tomemos <span class="math inline">\(r \geq 0\)</span> y definamos a <span class="math inline">\(X\)</span> como: El monto asociado a un siniestro.</p>
+<p>Vamos a pensar que, de materializarse un siniestro, éste sufrirá un cambio en su valor monetario provocado por la inflación <strong>a un año</strong>.</p>
+<p>De tal manera que el pago de la aseguradora será:</p>
+<p><span class="math display">\[Y= (1+r)X\]</span></p>
+<p>En caso de que el siniestro ocurra y la aseguradora la deba pagar. De manera (muy) similar al coaseguro.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+F_{Y}(t)&amp;\ddot{=}&amp;\mathbb{P}[Y \leq t]\\
+&amp;=&amp; \mathbb{P}[(1+r)X \leq t]\\
+&amp;=&amp; \mathbb{P}\left[X \leq \frac{t}{1+r} \right]\\
+&amp;\ddot{=}&amp; F_{X}\left( \frac{t}{1+r} \right)
+\end{eqnarray*}\]</span></p>
+<p><span class="math display">\[\begin{eqnarray*}
+F_{Y}(t)&amp;\ddot{=}&amp;\mathbb{P}[Y \leq t]\\
+&amp;=&amp; \mathbb{P}[(1+r)X \leq t]\\
+&amp;=&amp; \mathbb{P}\left[X \leq \frac{t}{1+r} \right]\\
+&amp;\ddot{=}&amp; F_{X}\left( \frac{t}{1+r} \right)
+\end{eqnarray*}\]</span></p>
+<p>Entonces,
+<span class="math display">\[\begin{eqnarray*}
+f_{Y}(t)&amp;=&amp; \frac{d}{dt} F_{Y}(t)\\
+&amp;=&amp; \frac{d}{dt} F_{X}\left( \frac{t}{1+r} \right)\\
+&amp;=&amp; \frac{1}{1+r} f_{X}\left( \frac{t}{1+r} \right)\\
+\end{eqnarray*}\]</span></p>
+<p>Por lo tanto
+<span class="math display">\[\begin{eqnarray*}
+     {f_{Y}(t)= \frac{1}{1+r} f_{X}\left( \frac{t}{1+r} \right)}\\
+\end{eqnarray*}\]</span></p>
+<p>Análogamente al caso anterior, la esperanza de esta variable aleatoria estará dada por:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\mathbb{E}[Y]= \mathbb{E}[(1+r)X]= (1+r) \mathbb{E}[X]
+\end{eqnarray*}\]</span></p>
+<p><strong>Ejemplo:</strong></p>
+<p>Suponga que el monto de un siniestro es aleatorio y con distribución <span class="math inline">\(X \sim Unif(0,1000)\)</span>. En una póliza de seguros se pacta una <strong>inflación</strong> con tasa <span class="math inline">\(r=10\%\)</span>. De tal manera que, cuando ocurre un siniestro, este se valuará en cierto monto X, pero <strong>como se pagará a final del año</strong>, al <strong>monto total</strong> será de <span class="math inline">\(Y=(1+r)X\)</span>. Así:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+f_{Y}(t)&amp;=&amp; \frac{1}{1+r} f_{X}\left( \frac{t}{1+r} \right)\\
+&amp;=&amp; \frac{1}{1.1} f_{X} \left( \frac{t}{1.1} \right)\\
+&amp;=&amp; \frac{1}{1.1} \left[ \frac{1}{100} \underset{(0,1000)}{\mathbb{I}}\left(\frac{t}{1.1} \right)\right]
+\end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(0\leq \frac{t}{1.1}\leq 1000 \Leftrightarrow 0 \leq t \leq 1100\)</span></p>
+<p><span class="math display">\[\begin{eqnarray*}
+f_{Y}(t)&amp;=&amp;  \frac{1}{1100} \underset{(0,1100)}{\mathbb{I}} (t)  \\
+\end{eqnarray*}\]</span></p>
+<p>Por lo tanto
+<span class="math display">\[\begin{eqnarray*}
+Y&amp;=&amp; (1+r)X \sim Unif(0,1100)\\
+\end{eqnarray*}\]</span></p>
+<p>Al igual que en el ejemplo anterior, tenemos el caso en que Y tiene una distribución conocida. Debido a lo anterior, podemos hacer el cálculo de su esperanza.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\mathbb{E}[Y]&amp;=&amp; \frac{b+a}{2}\\
+&amp;=&amp; \frac{1100}{2}\\
+&amp;=&amp; 550\\
+\end{eqnarray*}\]</span></p>
+<p>Que coincide con la propiedad.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\mathbb{E}[Y]&amp;=&amp; (1+r)\mathbb{E}[X]\\
+&amp;=&amp; (1.1)\left( \frac{1000}{2} \right)\\
+&amp;=&amp; (1.1)500\\
+&amp;=&amp; 550
+\end{eqnarray*}\]</span></p>
+<p>Por lo tanto</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\mathbb{E}[Y]&amp;=&amp; 550 \\
+\end{eqnarray*}\]</span></p>
+<p>Debemos tener en mente que este factor inflacionario aumentó el valor esperado del monto original.</p>
+<p>Ahora, vamos a observar el siguiente diagrama</p>
+<p><img src="Ima%CC%81genes/5.%20Teori%CC%81a%20del%20riesgo_Inflacio%CC%81n%20y%20Coaseguro.png" width="100%" /></p>
+</div>
+<div id="deducibles" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Deducibles<a href="severidad-coberturas.html#deducibles" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>¿Cómo funciona un deducible? ¿Por qué funciona?</p>
+<p><img src="Ima%CC%81genes/5.%20Deducible.png" width="100%" /></p>
+<p><em>Figura 1.</em> <a href="https://www.youtube.com/watch?v=sV0mQB42Rf4&amp;feature=youtu.be" class="uri">https://www.youtube.com/watch?v=sV0mQB42Rf4&amp;feature=youtu.be</a></p>
+<p>Cuando ocurre un siniestro, el asegurado llama al seguro. En la póliza (de hecho en la mayoría) se establece un deducible, el cual debe pagar al asegurado para poder ejercer su derecho de cobro a la aseguradora. Esto es muy importante ya que <strong>la aseguradora pagará únicamente si el monto del siniestro supera el deducible</strong>.</p>
+<p>Visto de manera gráfica, si suponemos que el monto del siniestro puede ocurrir dentro del intervalo <span class="math inline">\([a,b]\)</span>.</p>
+<p><img src="Ima%CC%81genes/5.%20Linea%20del%20tiempo.png" width="100%" /></p>
+<p>Sea <span class="math inline">\(X\)</span> el monto de pérdida asociado a un siniestro definido en el intervalo <span class="math inline">\([a,b]\)</span> con <span class="math inline">\(a \geq 0\)</span>. Sea <span class="math inline">\(d \in [a,b]\)</span> el deducible establecido en la póliza. El pago de la aseguradora tendrá un comportamiento:</p>
+<p><img src="Ima%CC%81genes/5.%20Deducible%20y%20Coaseguro.png" width="100%" /></p>
+<p>Esto es debido a que podemos calcular a Y en términos de <span class="math inline">\(X\)</span> como:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+   Y&amp;=&amp; máx\{ X-d,0\}\\
+   &amp;=&amp;\left \{ \begin{matrix}
+    0&amp; \mbox{si }&amp; a\leq X \leq d &amp;  \Leftrightarrow &amp; Y \equiv 0
+    \\X-d&amp; \mbox{si }&amp; d &lt;X \leq b &amp;  \Leftrightarrow &amp; \quad 0&lt; Y \leq b-d
+    \\
+\end{matrix}\right.
+\end{eqnarray*}\]</span></p>
+<p>Que es el monto que la aseguradora cubrirá en caso de que un siniestro ocurra. Buscamos obtener una medida de probabilidad de esta v.a. Para eso podemos tomar casos. <strong>Como <span class="math inline">\(X\)</span> es continua , mediremos probabilidades con la función de distribución</strong>.</p>
+<p><strong>Observación: Noten que <span class="math inline">\(Y= máx\{ X-d, 0 \}\geq 0\)</span> siempre.</strong></p>
+<p><em>Caso 1</em></p>
+<p><span class="math display">\[\begin{eqnarray*}
+X \in [a,d]  \Leftrightarrow Y \equiv 0\\
+\end{eqnarray*}\]</span></p>
+<p><span class="math display">\[\begin{eqnarray*}
+  \mathbb{P}[Y \equiv 0] &amp;=&amp; \mathbb{P}[X \in [a,d]]\\
+  &amp;=&amp; \mathbb{P}[a \leq X \leq d]\\
+  &amp;=&amp; F_{X}(d)- F_{X}(a)\\
+  &amp;=&amp; F_{X}(d)
+\end{eqnarray*}\]</span></p>
+<p>Por lo tanto
+<span class="math display">\[\begin{eqnarray*}
+\mathbb{P}[Y \equiv 0]
+&amp;=&amp; F_{X}(d)
+\end{eqnarray*}\]</span></p>
+<p><img src="Ima%CC%81genes/5.%20DC%20II.png" width="100%" /></p>
+<p>Por lo tanto , vemos que <span class="math inline">\(Y\)</span> acumula probabilidad positiva en un punto. ¿Será entonces que Y es una v.a <strong>discreta</strong>?</p>
+<p>Recordemos la siguiente definición y el siguiente teorema.</p>
+<p><strong>Teorema:</strong></p>
+<p>Sea <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> dos eventos y supongamos que B tiene probabilidad estrictamente positiva. La del evento <span class="math inline">\(A\)</span> dado el evento <span class="math inline">\(B\)</span> se denota por el símbolo <span class="math inline">\(P(A|B)\)</span> y se define como el siguiente cociente:</p>
+<p>De donde se sigue que:\</p>
+<p><span class="math display">\[\begin{eqnarray*}
+     {P(A|B)} = {P(A\cap B)}{P(B)}
+\end{eqnarray*}\]</span></p>
+<p><strong>Teorema:</strong></p>
+<p>Sea <span class="math inline">\(B_{1},...,B_{n}\)</span> una partición de <span class="math inline">\(\Omega\)</span> tal que <span class="math inline">\(P(B_{i}) \neq 0, i=1,...,n\)</span>. Para cualquier evento A.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+P(A)= \displaystyle\sum_{i=1}^{n}P(A|B_{i})P(B_{i})\\
+\end{eqnarray*}\]</span></p>
+<p><em>Caso 2</em></p>
+<p><span class="math display">\[\begin{eqnarray*}
+Si \quad  X \in (d,b]  \Leftrightarrow 0&lt; \gamma \leq b-d
+\end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(\Omega =Y \geq 0 \quad \Leftrightarrow \quad (Y=0 \vee Y&gt;0)=\Omega\)</span></p>
+<p><img src="Ima%CC%81genes/5.%20Grafica.png" width="100%" /></p>
+<p>Tomemos <span class="math inline">\(t \in (0,b-d]\)</span>, ahora midamos probabilidad de <span class="math inline">\(\gamma\)</span>.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    F_{Y}(t)&amp;=&amp; \mathbb{P}[Y \leq t]\\
+    &amp;=&amp; \mathbb{P}[Y \leq t| Y \equiv 0] \cdot \mathbb{P}[Y \equiv 0]+\mathbb{P}[Y \leq t| Y &gt; 0] \cdot \mathbb{P}[\ Y &gt; 0] \quad \text{Probabilidad total}\\
+    &amp;=&amp; \mathbb{P}[Y \equiv 0] + \mathbb{P} [(0&lt;Y) \cap (Y \leq t)]\quad \text{Definición de probabilidad condicional}\\
+    &amp;=&amp; \mathbb{P}[Y \equiv 0]+\mathbb{P}[0 &lt; Y \leq t]\\
+\end{eqnarray*}\]</span></p>
+<p>Por lo tanto</p>
+<p><span class="math display">\[\begin{eqnarray*}
+{F_{Y}(t)}&amp;=&amp; {\mathbb{P}[Y \equiv 0]+\mathbb{P}[0 &lt; Y \leq t]}\\
+\end{eqnarray*}\]</span></p>
+<p>Esto era lógico pues los eventos:</p>
+<p><span class="math display">\[\begin{equation*}
+A\ddot{=} (Y \geq t) \quad \quad B\ddot{=}(Y \equiv0) \quad \quad C\ddot{=}(0&lt; Y \geq t)\\
+\end{equation*}\]</span></p>
+<p>Cumplían que:
+<span class="math display">\[\begin{equation*}
+A=B\cup C \quad\textit{y además} \quad B \cap C= \varnothing  \quad {\textit{(significa que son ajenos)}}  \\
+\end{equation*}\]</span></p>
+<p>Y recordando los axiomas de la probabilidad:</p>
+<p><strong>Axiomas de probabilidad</strong></p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(P(A)\leq 0\)</span></li>
+<li><span class="math inline">\(P(\Omega)=1\)</span></li>
+<li><span class="math inline">\(P \left( \bigcup_{k=1}^{\infty} \right)\)</span>} <span class="math inline">\(=\)</span> <span class="math inline">\(\displaystyle\sum_{k=1}^{\infty}P(A_{k})\)</span> cuando <span class="math inline">\(A_{1}, A_{1},...\)</span> son ajenos dos a dos</li>
+</ol>
+<p>Entonces</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    F_{Y}(t)&amp;\ddot{=}&amp; \mathbb{P}[Y \leq t]\\
+    &amp;=&amp; \mathbb{P}[A]\\
+    &amp;=&amp; \mathbb{P}[B \cup C]\\
+    &amp;=&amp; \mathbb{P}[B]+\mathbb{P}[C]\\
+    &amp;=&amp; \mathbb{P}[Y \equiv 0]+\mathbb{P}[0 &lt; Y \leq t] \quad \text{Se separó en casos ajenos}\\
+\end{eqnarray*}\]</span></p>
+<p>Y ahí tenemos dos formas diferentes de llegar a este mismo resultado. Por otro lado, aún tenemos que encontrar a <span class="math inline">\(\gamma\)</span> en términos de <span class="math inline">\(X\)</span>, así que para eso haremos lo siguiente:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+F_{Y}(t)&amp;=&amp; { \mathbb{P}[Y \equiv 0]}+{\mathbb{P}[0 &lt; Y \leq t]}\\
+&amp;=&amp; {\mathbb{P}[X\leq d]}+{\mathbb{P}[0&lt;X-d\leq t]}
+\end{eqnarray*}\]</span></p>
+<p>Esto pues, como tenemos <span class="math inline">\(t \in (0, b-d]\)</span> entonces:</p>
+<p><img src="Ima%CC%81genes/Linea.png" width="100%" /></p>
+<p><span class="math display">\[\begin{eqnarray*}
+0&lt;Y \leq t \leq b-d \quad \Rightarrow \quad 0&lt;Y \leq b-d \Rightarrow Y =X-d\\
+\end{eqnarray*}\]</span></p>
+<p>Entonces
+<span class="math display">\[\begin{eqnarray*}
+F_{Y}(t)&amp;=&amp; F_{X}(t)+\mathbb{P}[0&lt; X-d \leq t]\\
+&amp;=&amp; F_{X}(d)+\mathbb{P}[d&lt;X\leq t+d]\\
+&amp;=&amp; {F_{X}(d)}+(F_{X}(t+d)-F_{X}(d))\\
+&amp;=&amp; F_{X}(t+d)\\
+\end{eqnarray*}\]</span></p>
+<p>Por lo tanto
+<span class="math display">\[\begin{eqnarray*}
+F_{Y}(t) &amp;=&amp; F_{X}(t+d)\\
+\end{eqnarray*}\]</span></p>
+<p>Entonces
+<span class="math display">\[\begin{eqnarray*}
+f_{Y}(t)&amp;=&amp; \displaystyle\frac{\partial }{\partial t}F_{Y}(t)\\
+&amp;=&amp; \displaystyle\frac{\partial }{\partial t}F_{X}(t+d)\\
+&amp;=&amp; f_{X}(t+d) \quad \forall \quad t\in (0, b-d]\\
+\end{eqnarray*}\]</span></p>
+<p>Entonces <span class="math inline">\(Y\)</span> se comporta como una v.a continua en el intervalo (0, b-d].</p>
+<p><span class="math inline">\(\therefore Y\)</span> <strong>es una variable aleatoria mixta.</strong></p>
+<p>Entonces:</p>
+<p>Si <span class="math inline">\(Y \ddot{=} máx\{ X-d,0 \}\)</span> es la v.a que mide al monto a pagar de la aseguradora por un siniestro <span class="math inline">\(X \in [a,b]\)</span> en un contrato con <strong>deducible</strong> d. La función de densidad de <span class="math inline">\(\gamma\)</span> en términos de la densidad de <span class="math inline">\(X\)</span> será:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    f_{Y}(t)&amp;=&amp; \left \{ \begin{matrix}
+    F_{X}(d) &amp; \mbox{si }&amp; t0 &amp; {\textit{Parte discreta}}\\
+    f_{X}(t+d)&amp; \mbox{si }&amp; t\in t \in (0,b-d] &amp; {\textit{Parte continua}}\\
+    0 &amp; &amp; \mbox{en otro caso.}\\
+\end{matrix}\right.
+\end{eqnarray*}\]</span></p>
+<p>Una vez esto, el cálculo de la esperanza de <span class="math inline">\(Y\)</span> está dado por:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \mathbb{E}[Y]&amp;=&amp; \underbrace{\overbrace{0}^{y} \cdot \overbrace{F_{X}(d)}^{\mathbb{P}[Y=y]}}{\text{Parte discreta}}+ \int{0}^{b-d}{\underbrace{\overbrace{t}^{y}\overbrace{f_{X}(t+d)}^{f_{Y}(y)}  dt}_{\text{Parte continua}}}\\
+\end{eqnarray*}\]</span></p>
+<p>Así podríamos calcular la esperanza “Por definición” de una variable aleatoria mixta.</p>
+</div>
+</div>
+<div id="la-regla-de-darth-vader" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> La regla de Darth Vader<a href="severidad-coberturas.html#la-regla-de-darth-vader" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><img src="Ima%CC%81genes/5.%20DV.jpeg" width="100%" /></p>
+<p>El nombre del siguiente teorema no tiene un origen del todo oficial.</p>
+<p>Se dice que el nombre surgió por la impresión contraintuitiva, quizás un poco inquietante y surrealista , que el resultado puede evocar un primer encuentro.</p>
+<p>Considerando una v.a <span class="math inline">\(X\)</span> que es no-negativa casi-seguramente y cuya esperanza existe, entonces:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \mathbb{E}[X]= \int_{0}^{\infty}S_{X}(t) \quad dt\\
+\end{eqnarray*}\]</span></p>
+<p><img src="Ima%CC%81genes/5.%20DV%202.png" width="100%" /></p>
+<p><em>Figura 2:</em> <a href="https://www.youtube.com/watch?v=wWC7KFpuPmI&amp;feature=youtu.be" class="uri">https://www.youtube.com/watch?v=wWC7KFpuPmI&amp;feature=youtu.be</a></p>
+<p>Podemos ver un ejemplo de esto, en el vídeo que se muestra a continuación</p>
+<p><img src="Ima%CC%81genes/5.%20Regla-DV.png" width="100%" /></p>
+<p><em>Figura 3:</em> <a href="https://www.youtube.com/watch?v=wWC7KFpuPmI" class="uri">https://www.youtube.com/watch?v=wWC7KFpuPmI</a></p>
+<p>Por ahora no vamos a ver la demostración de la regla, pero vamos a deducirla en los casos en que pueda resultar “fácil”.</p>
+<p>Nosotros vamos a decir que la esperanza está calculada <strong>a la Darth Vader</strong> cuando tengamos una integración de la función de supervivencia en algún intervalo para su obtención.</p>
+<p>Otro vídeo que puede ayudar a comprender esta idea lo encontrarán a continuación:</p>
+<p><img src="Ima%CC%81genes/5.%20Esperanza.png" width="100%" /></p>
+<p><em>Figura 4:</em> <a href="https://www.youtube.com/watch?v=ZX2W59Mdaag" class="uri">https://www.youtube.com/watch?v=ZX2W59Mdaag</a></p>
+<p>Inspirados en la regla de Darth Vader, vamos a obtener la esperanza de <span class="math inline">\(Y\)</span> con un cálculo de este estilo.</p>
+<p><span class="math display">\[\mathbb E [Y] = \int_{0}^{b-d} t f_{x}(t+d) dt = \int_{d}^{b} (\alpha - d) f_{x}(\alpha)d\alpha\]</span></p>
+<p><em>Cambio de var:</em> <span class="math inline">\(\alpha = t+d \longrightarrow dt = d\alpha\)</span></p>
+<p><span class="math display">\[=-(\alpha-d)S_{x}(\alpha) |_{d}^{b} + \int_{d}^{b} S_{x}(\alpha) d\alpha\]</span></p>
+<em>Por partes:</em>
+<span class="math display">\[\begin{array}{lcc}
+            u=\alpha-d &amp; dv = f_{x}(\alpha)\\\\
+            du = d\alpha &amp; v = -S_{x}(\alpha) \longrightarrow \frac{\partial}{\partial t}S_{x}(t) = -f_{x}(t) \\\\
+        \end{array}\]</span>
+<p><span class="math display">\[=-(b-d){S_{x}(b)}+{(d-d)} S_{x}(d) + \int_{d}^{b} S_{x}(\alpha) d\alpha\]</span></p>
+<p><span class="math display">\[=\int_{d}^{b} S_{x}(\alpha) d\alpha\]</span></p>
+<p>Entonces, podemos calcular el valor esperado de <span class="math inline">\(Y\)</span> en un contrato con deducible al estilo Darth Vader en términos de <span class="math inline">\(X\)</span> como:</p>
+<p><span class="math display">\[\mathbb E [Y] = =\int_{d}^{b} S_{x}(t) dt\]</span>
+<em>Nota:</em>
+Recuerden que <span class="math inline">\(X\in[a,b]\)</span>, donde <span class="math inline">\(a,v\geq0.\)</span>
+Lo anterior también es válido si <span class="math inline">\(b\longrightarrow\infty,ie,X\in[a,\infty)\)</span></p>
+</div>
+<div id="monto-máximo-de-beneficio" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Monto máximo de beneficio<a href="severidad-coberturas.html#monto-máximo-de-beneficio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Similar a los deducibles, un <strong>monto máximo de beneficio</strong> es un límite que se fija en una póliza. De tal manera que todo monto producido por un siniestro que exceda cierto <strong>umbral</strong>, ya no será responsabilidad de la aseguradora.
+Cuando ocurre un siniestro en un contrato de este estilo, el asegurado llama a la aseguradora y ésta procede a cubrir todos los daños <strong>hasta cierto monto pactado</strong>. si el siniestro excede este monto, <strong>el restante lo deberá cubrir el asegurado</strong>.</p>
+<p>Visto de manera gráfica, si suponemos que el monto del siniestro puede ocurrion dentro del intervalo <span class="math inline">\([a,b]\)</span> tendremos:</p>
+<p><img src="Ima%CC%81genes/5.%20Linea%20del%20tiempo.png" width="100%" /></p>
+<p>Sea <span class="math inline">\(X\)</span> el monto de pérdida asociado a un siniestro definido en el intervalo <span class="math inline">\([a,b]\)</span>, <span class="math inline">\((a\geq0)\)</span>. Sea <strong>u</strong> el monto máximo de beneficio definido en la póliza con <span class="math inline">\(u\in[a,b]\)</span>. La v.a. <span class="math inline">\(Y\)</span> tendrá un comportamiento del estilo:</p>
+<p><img src="Ima%CC%81genes/5.%20Deducible%20y%20Coaseguro.png" width="100%" /></p>
+<p>Esto es similar al pay off de ir corto en una opción put. “vender una opción de venta.”</p>
+<p>Esto es debido a que podemos calcular a <span class="math inline">\(Y\)</span> en términos de <span class="math inline">\(X\)</span> como:</p>
+<p><span class="math display">\[\begin{equation*}
+Y = min\{ x,u\}= \begin{cases}
+            x &amp; si &amp; a\leq x&lt;u {\Longleftrightarrow} a\leq Y &lt; u\\\\
+            u &amp; si &amp; u\leq x \leq b {\Longleftrightarrow} Y\equiv u \\\\
+        \end{cases}
+        \end{equation*}\]</span></p>
+<p><em>Nota:</em> <span class="math inline">\(Y\in[a,u]\)</span> <span class="math inline">\(\forall x\in[a,b]\)</span></p>
+<p>Una vez ya encontrada la variable aleatoria a modelar, procedemos a buscar su función de densidad. Igual que con el deducible podemos separ casos:</p>
+<p><em>Caso 1:</em> <span class="math inline">\(X\in[a,b)\)</span> <span class="math inline">\(\Longleftrightarrow\)</span> <span class="math inline">\(Y\in[a,u)\)</span>
+Tomemos <span class="math inline">\(t\in[a,u)\)</span>, entonces:</p>
+<p><span class="math display">\[\begin{align*}
+    F_{Y}(t) &amp;\circeq \mathbb P [Y\leq t]\\
+    &amp;= \mathbb P [a\leq Y \leq t]\hspace{3mm} \text{pues $y\geq a$ siempre}\\
+    &amp;= \mathbb P [a\leq X \leq t]\hspace{3mm} \text{pues $t&lt;u$}\\
+    &amp;= F_{X}(t) - {F_{X}(a)}\  \text{pues $a\leq X \leq b$}\\
+\end{align*}\]</span></p>
+<p><span class="math inline">\(\therefore\)</span> <span class="math inline">\(F_{Y}(t) =F_{X}(t)\)</span> <span class="math inline">\(\Longleftrightarrow\)</span> <span class="math inline">\(f_{Y}(t) = f_{X}(t)\)</span> <span class="math inline">\(\forall t\in[a,u)\)</span></p>
+<p><em>Caso 2:</em> <span class="math inline">\(Y\equiv u\)</span> <span class="math inline">\(\Longleftrightarrow\)</span> <span class="math inline">\(u\leq x \leq b\)</span>, entonces:</p>
+<p><span class="math inline">\(F_{Y}(u) = \mathbb P [Y\leq u] = \mathbb P [a\leq Y\leq u] = 1\)</span></p>
+<p>Vemos que hay probabilidad positiva de que <span class="math inline">\(Y\)</span> tome el valor puntual <span class="math inline">\(u\)</span>. De tal manera que:</p>
+<p><span class="math display">\[\begin{align*}
+    f_{Y}(u) &amp;= \mathbb P[Y\equiv u] = \mathbb P[u\leq x\leq b] = F_{x}(b)-F_{x}(u)\\
+    &amp;= 1 - F_{x}(u)\hspace{3mm} {pues\hspace{2mm}x\leq b\hspace{2mm}siempre}\\
+    &amp;= S_{x}(u) \hspace{7mm} \\
+\end{align*}\]</span></p>
+<p><span class="math inline">\(\therefore\)</span> <span class="math inline">\(f_{Y}(u)=S_{x}(u)\)</span></p>
+<p>Teniendo como resultado:</p>
+<p>Si <span class="math inline">\(Y\circeq min\{X,u\}\)</span> es la v.a. que mide el monto a pagar de la aseguradora por un siniestro <span class="math inline">\(X\in[a,b]\)</span> en un contrato con <strong>monto máximo de beneficio</strong> <span class="math inline">\(&quot;u&quot;\)</span>, la función de densidad de <span class="math inline">\(Y\)</span> en terminos de la densidad de <span class="math inline">\(X\)</span> será:</p>
+<p><span class="math display">\[\begin{equation*}
+f_{Y}(t)= \begin{cases}
+            f_{x}(t) &amp; si &amp; t\in[\alpha,u]\hspace{2mm} {parte\hspace{3mm}continua}\\\\
+            S_{x}(u) &amp; si &amp; t\equiv u\hspace{2mm}{parte\hspace{3mm}discreta} \\\\
+            0 &amp;  &amp; en\hspace{2mm}otro\hspace{2mm}caso\\
+        \end{cases}
+     \end{equation*}\]</span></p>
+<p>Mostremos el cálculo de la esperanza y obtengámosla a la Darth Vader:</p>
+<p><span class="math inline">\(\mathbb E [Y] = \int_{a}^{u} t f_{Y}(t) dt + uS_{x}(u)\)</span> <span class="math inline">\(\longrightarrow\)</span> por definición</p>
+<p><em>Por partes:</em> <span class="math display">\[\begin{equation*}
+              \begin{cases}
+              g=t &amp; dh = f_{Y}(t)dt\\
+              dg=dt &amp; h = -S_{x}(t)
+               \end{cases}
+     \end{equation*}\]</span></p>
+<p><span class="math display">\[\mathbb E[Y]= -tS_{x}(t)|_{a}^{u} + \int_{a}^{u} S_{x}(t)dt + uS_{x}(u) -uS_{x}(u) +a{S_{x}(a)}^{1} +\int_{a}^{u}S_{x}(t)dt +{uS_{x}(u)} \]</span>
+<span class="math display">\[\mathbb E[Y]= a+\int_{a}^{u}S_{x}(t)dt \Longleftrightarrow Darth Vader \]</span></p>
+<p><span class="math display">\[\begin{eqnarray*}
+  \therefore \mathbb E[Y] &amp;=&amp; a+\int_{a}^{u}S_{x}(t)dt
+\end{eqnarray*}\]</span>
+<em>Nota:</em> <span class="math inline">\(a\)</span> es el valor mínimo que puede tomar <span class="math inline">\(x\)</span>, si <span class="math inline">\(inf\{sop\{x\}\} = 0\)</span> <span class="math inline">\(\longrightarrow\)</span> <span class="math inline">\(a=0\)</span>.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="frecuencia-anexo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="severidad-combinacion-de-coberturas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-SeveridadCoberturas.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Notas_TeoriadelRiesgo.pdf", "Notas_TeoriadelRiesgo.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

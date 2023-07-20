@@ -1,0 +1,686 @@
+# Severidad combinacion de coberturas
+Así es como hemos visto cada uno de los tipos de seguros por separado. Vamos a ver ahora como modelar combinaciones de estos seguros.
+
+## Contratos con Deducible y monto máximo de beneficio
+
+Lo que sucede en este tipo de contratos es que la aseguradora pagará cuando un siniestro rebase cierto deducible **d**, y cubrirá todos aquellos gastos que no superen un umbral **u** (monto máximo de beneficio).
+
+Dicho de otra forma, si un siniestro ocurre, la aseguradora pagará los gastos que ocurran únicamente entre los montos antes establecidos en la póliza **d** y **u**. Todo monto que quede por debajo del deducible o sobre el monto máximo de beneficio será responsabilidad del asegurado.
+
+Visto de manera gráfica, si suponemos que el monto del siniestro puede ocurrir dentro del intervalo $[a,b]$ tendremos:
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/Cap.6_D-mmb I.png", error=FALSE)
+```
+
+Consideremos una v.a $X \in [a,b]$ y tomemos $d, u \in [a,b]$ con $d<u$, el deducible y monto máximo de beneficio respectivamente. Sea $Y$ la v.a que modela el monto a pagar por parte de la aseguradora en un contrato con estas características para cubrir el siniestro $X$. La gráfica de $Y$ en términos de los posibles valores de $X$ es:
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/Cap.6_D-mmb 2.png", error=FALSE)
+```
+
+Esto sucede ya que el pago está dado por:
+
+ \begin{eqnarray*}
+   Y &=& máx\{ min\{X-u\}-d,0 \}\\
+   &=&\left \{ \begin{matrix} 
+    0& \mbox{si }& a\leq X \leq d &  \Leftrightarrow &Y \equiv 0\\
+    X-d& \mbox{si }& d <X \leq u &  \Leftrightarrow & \quad 0< Y \leq u-d\\
+    u-d & {si } & u <X \leq b &  \Leftrightarrow & \quad Y \equiv u-d\\
+\end{matrix}\right. 
+\end{eqnarray*}
+
+_Nota:_ $Y \in [0, u-d] \quad \forall \quad X [a,b]$.
+
+Vamos a obtener ahora la forma de densidad de $Y$. notemos que $Y \in [0, u-d]$. Podemos separar este intervalo en casos a manera similar a los casos pasados. Recordemos que $Y$ está en función de valores que toma $X$.
+
+\begin{eqnarray*}
+[0, u-d]&=& \underbrace{\{ 0\}}_{\text{Caso 1}} \cup \underbrace{(0, u-d)}_{\text{Caso 2} }\cup \underbrace{\{ u-d\}}_{\text{Caso 3}}
+\end{eqnarray*}
+
+_Caso 1_
+
+Notemos que $a\leq X \leq d \quad \Leftrightarrow \quad Y \equiv 0$ entonces:
+
+\begin{eqnarray*}
+f_{Y}(t)&=& \mathbb{P}[Y \equiv 0]\\
+&=& \mathbb{P}[a \leq X \leq d]]\\
+&=& F_{X}(d)-{F_{X}(a)}\\
+&=& F_{X}(d)\\
+\end{eqnarray*}
+
+Por lo tanto
+\begin{eqnarray*}
+f_{Y}(t)&=& F_{X}(d)\\
+\end{eqnarray*}
+
+_Caso 2_
+
+Notemos que si $0< Y < u-d \quad \Rightarrow \quad  Y=X-d$. Sea $t \in (0, u-d)$ y así:
+
+\begin{eqnarray*}
+F_{Y}(t)&=& \mathbb{P}[Y \leq t]\\
+&=& \mathbb{P}[Y \equiv 0] + \mathbb{P}[0< Y \leq t] \quad {\textit{Separamos en casos ajenos}}\\
+&=& \mathbb{P}[Y \equiv 0] + \mathbb{P}[0< X-d \leq t] \quad {\textit{Pues $t<u-d$}}\\
+\end{eqnarray*}
+
+Entonces
+\begin{eqnarray*}
+    F_{Y}(t) &=& F_{X}(d)+\mathbb{P}[d<X \leq t+d]\\
+    &=& {F_{X}(d)}+(F_{X}(t+d)-{F_{X}(d)})\\
+    &=& F_{X}(t+d)\\
+    \end{eqnarray*}
+
+Por lo tanto
+\begin{eqnarray*}
+F_{Y}(t)&=& F_{X}(t+d) \quad \Leftrightarrow \quad f_{X}(t)= f_{X}(t+d) \quad \forall \quad t \in (0, u-d) \\
+\end{eqnarray*}
+
+_Caso 3_
+
+Notemos que $u \leq X \leq b \Leftrightarrow Y \equiv u-d$ entonces:
+
+\begin{eqnarray*}
+    f_{Y}(u-d) &=& \mathbb{P}[Y \leq u-d]\\
+    &=& \mathbb{P}[u\leq X \leq b]\\
+    &=& {F_{X}(b)}-F_{X}(u)\\
+    &=& 1-F_{X}(u)\\
+    &=& S_{X}(u)\\
+    \end{eqnarray*}
+
+Por lo tanto
+\begin{eqnarray*}
+f_{Y}(u-d)&=& S_{X}(u)\\
+\end{eqnarray*}
+
+_Nota:_ $Y$ es discreta en $\{ 0\}$ y $\{ u-d \}$, continua en $(0, u-d)$.
+
+Por lo tanto el pago de $Y$ de una aseguradora en un contrato con **deducible y monto máximo de beneficio** en términos del monto de siniestro $X$ es
+
+\begin{eqnarray*}
+    f_{Y}(t)&=& \left \{ \begin{matrix} 
+    F_{X}(d) & \mbox{si }& t \equiv 0 & \text{Parte discreta}\\ 
+    f_{X}(t+d)& \mbox{si }&  t \in (0,u-d) & \text{Parte continua}\\
+    S_{X}(u) & \mbox{si }& t\equiv u-d & \text{Parte discreta}\\
+    0 & & \mbox{en otro caso.}\\
+\end{matrix}\right. 
+\end{eqnarray*}
+    
+Ahora mostraremos el cálculo de la esperanza por definición y obtengámoslo a la Darth Vader.
+
+\begin{eqnarray*}
+    \mathbb{E}[Y] &=& \overbrace{0 \cdot F_{X}(d)}^{\text{Discreta}}+ \overbrace{\displaystyle\int_{0}^{u-d} f_{X}(t+d) dt}^{\text{Continua}}+\overbrace{(u-d)S_{X}(u)}^{\text{Discreta}} \rightarrow \text{Por definición}\\
+    &=& \displaystyle\int_{d}^{u}(\alpha-d)f_{X}+(u-d)S_{X}(u)
+\end{eqnarray*}
+
+_Haciendo cambio de variable:_
+
+\begin{eqnarray*}
+    \left \{ \begin{matrix} 
+    \alpha= y+d & \Leftrightarrow & y=\alpha-d\\
+    d\alpha=dy
+\end{matrix}\right. 
+\end{eqnarray*}
+
+_Por partes:_
+\begin{eqnarray*}
+    \left \{ \begin{matrix} 
+    t= \alpha-d & dg=f_{X}(\alpha)d\alpha\\
+    dt=d\alpha & g= -S_{X}(\alpha)
+\end{matrix}\right. 
+\end{eqnarray*}
+
+De este modo
+
+\begin{eqnarray*}
+\mathbb{E}[Y] &=& -(\alpha-d)S_{X}(\alpha) |_{d}^{u}+ \displaystyle\int_{d}^{u} S_{X}(\alpha) d\alpha +(u-d)S_{X}(u)\\
+&=&{{-(u-d)S_{X}(u)}}+0+ \displaystyle\int_{d}^{u}S_{X}(\alpha) d\alpha + {{(u-d)S_{X})(u)}}
+\end{eqnarray*}
+
+Por lo tanto
+
+$$\mathbb{E}[Y] = \displaystyle\int_{d}^{u}S_{X}(t) d\alpha$$
+
+## Generalización de beneficio y monto máximo
+
+Acabamos de obtener la función de densidad del pago de una aseguradora cuando hay deducible y monto máximo de beneficio. Resulta que, haciendo un par de ajustes, recuperaremos los casos marginales, es decir, cuando solamente tenemos uno de los dos contratos. En pocas palabras vamos a ver que la última fórmula obtenida, podemos recuperar otras dos que ya vimos.
+
+Tenemos entonces la función de densidad con deducible y m.m.b:
+
+\begin{eqnarray*}
+    f_{Y}(t)&= \left \{ \begin{matrix} 
+    F_{X}(d) & \mbox{si }& t\equiv 0 & \\ 
+    f_{X}(t+d)& \mbox{si }&  t \in (0,u-d) =(0,u) \\
+    S_{X}(u) & {si } & t\equiv u-d & \\
+\end{matrix}\right. 
+\end{eqnarray*}
+
+- Para quitar el **deducible** ponemos **d=0**.
+- Para quitar el **monto máximo de beneficio**, $u=\infty$.
+
+### Quitando el deducible d=0 {-}
+
+\begin{eqnarray*}
+    f_{Y}(t)&= \left \{ \begin{matrix} 
+    F_{X}(d)=F_{X}(0)=0 & \mbox{si }& t\equiv 0 & \\ 
+    f_{X}(t+d)=f_{X}(t)& \mbox{si }&  t \in (0,u-d) =(0,u)\\
+    S_{X}(u) & {si } & t\equiv u-d =u& \\
+    0 &  &  e.o.c
+\end{matrix}\right. 
+\end{eqnarray*}
+
+\begin{eqnarray*}
+    = \left \{ \begin{matrix} 
+    f_{X}(t) & \mbox{si } & t \in (0,u)\\
+    S_{X}(u) & \mbox{si } & t \equiv u\\
+    0 &   & e.o.c
+\end{matrix}\right. 
+\end{eqnarray*}
+
+_Pero $f_{X}(t)$ está bien definida en [a,b], entonces: 
+
+\begin{eqnarray*}
+f_{X}(t) &=& 0 \quad \forall \quad t \in (0,a) \\
+    &=& \left \{ \begin{matrix} 
+    f_{X}(t) & \mbox{si } & t \in {[a,u)}\\
+    S_{X}(u) & \mbox{si } & t \equiv u\\
+    0 &  &  e.o.c
+\end{matrix}\right. 
+\end{eqnarray*}
+
+_Recuperamos la función de densidad para m.m.b_
+
+Veamos que sucede con la regla de Darth Vader.
+
+\begin{eqnarray*}
+    {\mathbb{E}[Y]}&=& \int_{d}^{u} S_{X}(t)  dt\\
+    &=& \int_{0}^{u} S_{X}(t) dt\\
+    &=& \int_{0}^{a} S_{X}(t)  dt+ \int_{a}^{u} S_{X}(t)  dt\\
+    &=& \int_{0}^{a} dt+ \int_{a}^{u} S_{X}(t) dt \quad {S_{X}(t)=1 \quad \forall t \in (0,a)}\\
+    &=&\ { a+ \int_{a}^{u} S_{X}(t) dt} \quad  \text{Esperanza a la Darth Vader de m.m.b}\\
+    \end{eqnarray*}
+
+Recuperando así la otra fórmula que ya teníamos . Esto nos hace pensar si el deducible necesariamente debe estar en el intervalo $[a,b]$. La respuesta es que no, pero $d<a$ el deducible siempre se pagaría cuando hubiese un siniestro. Sería un pago constante que se da cada que $X$ tiene algún valor.
+
+Generalmente, esta clase de detalles pasa desapercibida o no se menciona, pero es importante estar consciente de lo que se está haciendo.
+
+**PARA PENSAR:** ¿Qué pasa cuando $d \in [0,a)$?
+
+Simplemente $Y= máx\{X-d,0 \}=X-d$ siempre, pues $X\geq$ por defición. Entonces $Y \in [a-d,b-d]$ y se comporta como:
+
+\begin{eqnarray*}
+F_{Y}(t) &=&\mathbb{P}[Y \leq t]\\
+&=& \mathbb{P}[X-d \leq t]\\
+&=& \mathbb{P}[X\leq t+d]\\
+&=& F_{X}(t+d)\\
+\end{eqnarray*}
+
+Entonces
+\begin{eqnarray*}
+f_{Y}(t)=f_{X}(t+d) \quad \forall \quad t \in (a-d,b-d)\\
+\end{eqnarray*}
+
+Pero $Y$ será una variable aleatoria totalmente continua ¿Por qué se quitó el efecto de la parte discreta?
+
+Antes, cuando $d\in [a,b]$ llevábamos un intervalo con probabilidad de $X$ a un punto:
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/L1.png", error=FALSE)
+```
+
+Si hacemos una modificación a esto...
+
+Cuando $d \in [0, a)$ no tomamos probabilidades de $X$
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/L2.png", error=FALSE)
+```
+Entonces, a pesar de que $d$ no está en el intervalo $[a,b]$, si le otorga un beneficio a la aseguradora, reduciendo así sus pagos. Aunque no tanto a como cuando $d \in [a,b]$ .
+
+Quedará ocmo ejercicio para el lector pensar qué sucede cuando $d>b$ tanto de manera teórica como práctica. ¿Creen que el asegurado estaría dispuesto a contratar un contrato así?, ¿Qué pasa con $\mathbb{E}[Y]$, con sus momentos en general, sus cuantiles, etc ?
+
+Se invita al lector a desarrollar un poco diferentes variantes de este problema pensando siempre en el punto de vista práctico aplicado a la realidad.
+
+### Quitando Monto máximo de beneficio: $u=\infty$ {-}
+    
+  \begin{equation*}
+  f_{Y}{t} = \begin{cases}
+        F_{X}(d) & si & t\equiv 0\\\\
+        f_{X}(t+d) & si & t\in (0,u-d) = (0,\infty)\\\\
+        S_{X}(u) = S_{X}(\infty) = 0 & si & t\equiv u-d = \infty\\\\
+        0 & & en\ otro\ caso\\
+        \end{cases}
+        \end{equation*}
+       
+    
+  \begin{equation*}
+ = \begin{cases} 
+ F_{X}(d) & si & t\equiv 0\\\\
+        f_{X}(t+d) & si & t\in (0,\infty)\\\\
+        0 & & en\ otro\ caso\\
+        \end{cases}
+        \end{equation*}
+        
+_Pero $f_{X}(t)$ está definida en [a,b] entonces $f_{X}(x)=0$ $\forall x>b \longrightarrow $ $f_{X}(t+d) =0$ $\forall t>b-d$, así_
+
+\begin{equation*}
+  = \begin{cases} 
+   F_{X}(d) & si & t\equiv 0\\\\
+    f_{X}(t+d) & si & t\in (0,b-d]\\\\
+    0 & & en\ otro\ caso
+    \end{cases}
+        \end{equation*}
+        
+Veamos qué sucede con la regla de Darth Vader para este caso.
+
+ \begin{align*}
+    \mathbb E[Y] &= \int_{d}^{u} S_{x}(t)dt = \int_{d}^{\infty} S_{x}(t)dt\\
+    &= \int_{d}^{b} S_{x}(t)dt + \int_{b}^{\infty} S_{x}(t)dt\\
+    &= \int_{d}^{b} S_{x}(t)dt + \int_{b}^{\infty} 0dt \ \quad{x\hspace{3mm}definida\hspace{3mm}en\hspace{3mm}[a,b]}\\
+    &= \int_{d}^{b} S_{x}(t)dt \longrightarrow  
+    {Recuperamos\hspace{2mm} la\hspace{2mm} regla\hspace{2mm} de\hspace{2mm}}\
+    {Darth\hspace{2mm} Vader\hspace{2mm} para\hspace{2mm}}\
+    {el\hspace{2mm} caso\hspace{2mm} solo\hspace{2mm} con\hspace{2mm} deducibles}
+\end{align*}
+
+De igual manera podríamos preguntarnos que sucede moviendo la posición de $"u"$ a lo largo de la recta $\mathbb R^{+}\cup \{0\}$, esto quedará como ejercicio de razonamiento para el lector.
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/DiagramaDeVenn.png", error=FALSE)
+```
+
+Finalmente, recordemos gráficamente al deducible y el monto máximo de beneficio:
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/Simply in 8 minutes.png", error=FALSE)
+```
+
+_Figura:_ https://www.youtube.com/watch?v=EfmTWu2yn5Q&feature=youtu.be
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/Cap.6_Pay off en corto y largo.png", error=FALSE)
+```
+
+Largo $\approx$ comprar (espero que el \$ del bien $\uparrow$). Call = opción de compra.
+Corto $\approx$ vender (espero que el \$ del bien $\downarrow$). Put = opción de venta.
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/DeducibleYMonto.png", error=FALSE)
+```
+
+La gráfica es muy similar a la de ir largo en un contrato Bull Spread.
+
+La similitud que hay con las estrategias de derivadas puede ayudarnos como guía para saber otras maneras de construyr los mismos contratos, al igual que cuando se **replica** un portafolio en derivadas.
+Por ejemplo, se sabe la estrategia Bull Spread se puede **replicar** a partir de opciones call con diferentes precios Strike, tomando $u>d$:
+
+_i)_ Llendo largo con un Call con precio Strike d. **(+) (comprando)**
+
+_ii)_ Llendo corto con un Call con precio Strike u. **(-) (vendiendo)**
+
+_Los signos son así pues, en el pay-off, lo que vendo me obliga y lo que compro me permite._
+
+Esto se traduce a una ecuación como:
+
+  $BullSpread(u,d) = Call(d) - Call(u)$
+
+Esto sucede exactamente igual con los contratos de deducible (recordemos que estos son como **ir largo en un contrato call**. Llamamos por un momento:
+
+$Y_{d}^{u}\circeq max\{min\{X,u\}-d,0\}$ _Contrato con deducible = d y Monto máximo de beneficio =u_
+
+$Y_{d}^{u}\circeq max\{X-d,0\}$ _Contrato con deducible = d_
+
+$Y_{d}^{u}\circeq max\{X-u,0\}$ _Monto máximo de beneficio = u_
+
+Bueno, pues si un Bull Spread se puede replicar como acabamos de menciona, también sucede que:
+
+$$Y_{d}^{u} = Y_{d} - Y_{u}$$
+
+$$\Updownarrow$$
+$$max\{min\{X,u\}-d,0\} = max\{X-d,0\} - max\{X-u,0\}$$
+Es decir podemos modelar un contrato con deducible y monto máximo de beneficio en términos de dos contratos de deducible. La interpretación de esto puede resultar muy interesante. En el contexto en el que estamos $Y$ modela pérdidas (montos) entonces, si decimos que asumir un contrato $Y_{d}^{u}$ es lo mismo que hacer $Y_{d} - Y_{u}$, significa que equivale a asumir un contrato con deducible $(Y_{d})$ y que "alguien más" asuma el riesgo hasta cierto punto $(Y_{u})$. Tema que nos hace pensar en **reaseguro**, pero se estudiará más adelante. 
+
+También se sabe que la estrategia Bull Spread se puede replicar con el siguiente portafolio:
+
+_i)_ Ir largo en un put con precio Strike d. **(+) (comprar)**
+
+_ii)_ Ir corto en un put con precio Strike u. **(-) (vender)**
+
+Traduciendolo así en la siguiente igualdad:
+    $$Bull Spread (u,d) = put(u) - put(d)$$
+  Y una equivalencia también se da ahora con los contratos de monto máximo de beneficio (recordemos que estos som como ir **corto en put**). Llamemos momentáneamente:
+  
+$Y_{d}^{u}\circeq max\{min\{X,u\}-d,0\}$ _Contrato con deducible = d y Monto máximo de beneficio =u_
+
+$Y_{d}^{u}\circeq max\{X,d\}$ _Contrato con m.m.b = d_
+
+$Y_{d}^{u}\circeq max\{X,u\}$ _Contrato con m.m.b =u_
+
+Entonces, sin pérdida de generalidad, si $Y^{d}$ es como ir corto en un contrato put sucede que $-Y^{d}$ es como ir largo en un contrato put. Replicando:
+
+$$Y_{d}^{u} = Y_{d} - Y_{u}$$
+$$\Updownarrow$$
+$$max\{min\{X,u\}-d,0\} = max\{X,u\} - max\{X,d\}$$
+La verificación de esto quedará como ejercicio para el lector. Asimismo, estas observaciones se meten con temas fuera del alcance de este curso. Se invita al lector a investigar más y a abrir su mente para hacer analogías con estos temas.
+
+_Como un último comentario, me gustaría hacer una pregunta para el lector. Teniendo conocimiento básicos de finanzas, sabemos que **NO** debemos valuar derivados **con probabilidades reales**. en la teoría financiera se sabe que para encontrar el precio de un derivado se hace uso de una medida amortiguada dad por el Lema de Itô. ¿Porqué si los seguros con deducibles y montos máximos de beneficio son similares a algunos productos financieros estos **SÍ** se valúan **con probabilidades reales**?_
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/Cap.6_Video Derivado con Prob..png", error=FALSE)
+```
+
+_Figura:_ https://www.youtube.com/watch?v=qzFAK1jJKIE
+
+**Combinando todo: pólizas con deducible, monto máximo de beneficio, coaseguro e inflación.**
+
+Cada uno de los contratos son diferentes por sí solos. Sin embargo, así como con el deducible y monto máximo de beneficio, también es posible integrar el coaseguro y la inflación.
+¡Manos a la obra! Vamos a construir la variable aleatoria del monto de pérdida a partir de modelar su comportamiento práctico. Cuando ocurre un siniestro, se materializa un monto a pagar **X**, vamos a pensar que el pago por dicho monto se remunerará dentro de un año. Llamemos **r** a la tasa de inflación anual.
+
+_Nota: Aquí decimos "un año" pero en general puede ser "un periodo de tiempo"._
+
+Debido al efecto inflacionario, el monto a pagar después de un año será:
+
+  $$X_r \circeq {X(1+r})$$
+Luego, si éste sinietro $X_{r}$ **no** supera el deducible $(d)$, entonces la aseguradora **no** pagará algo. Es decir, si denostamos a $Y$ como la pérdida de la aseguradora:
+
+$${Y} \equiv 0 \Longleftrightarrow X_r \leq {d}$$
+Por otro lado; si el monto ${X_r}$ supera el deducible, entonces el coaseguro ${\alpha}$ se acciona. Vamos a preguntarnos ahora, ¿Cuanto será lo máximo que pagará la aseguradora?.
+
+Como estamos hablando de que existe un monto máximo de beneficio $u$, entonces lo máximo a pagar ocurrirá si $X_r \geq {u}$. A su vez, como hay un deducible, el pago máximo es:
+
+$$Y\equiv \alpha ({u}-{d}) \Longleftrightarrow X_r \geq{u}$$
+Lo anterior implica que $Y\in[0,\alpha({u}-{d})]$.
+
+De donde se observa que $Y$ tiene probabilidad positiva de tomar valores puntuales en sus extremos.
+
+¿Qué suscede con el pago de la aseguradora $Y$ si el monto total $X_r$ se encuentra entre el deducible $d$ y el monto máximo de beneficio $u$?.
+
+Se deduce por tricotomía que:
+
+$$Y \in (0,{\alpha}({u}-{d})) \Longleftrightarrow {X_r} \in ({d},{u})$$
+    
+_Nota: Es importante observar que ni el monto máximo de beneficio ni el deducible son afectados directamente por la inflación. Proponerlos debe hacerse pensando en que el coaseguro los afecta y que el siniestro con inflación se quede dentro de la cobertura._
+
+Cuando $X_r \in ({d},{u})$ entonces lo que la aseguradora pagará es:
+
+$${Y} = {\alpha}[{X_{r}} - {d}] \Longleftrightarrow {X_r} \in ({d},{u})$$
+En resumen, tenemos que:
+
+\begin{equation*}
+            Y =máx\{\alpha(mín\{X_{r},{u}\}-d),0\} = \left \{ \begin{matrix} 0 & \mbox{sii }& X_{r} \leq d
+        \\ \alpha[X_{r}-d] & \mbox{sii }& X_{r}\in (d,u)
+        \\ \alpha(u-d) & \mbox{sii }& X_{r}\geq u
+        \end{matrix}\right. 
+        \end{equation*}
+
+\begin{equation*}
+            Y =máx\{\alpha(mín\{X(1+r),u\}-d),0\} = \left \{ \begin{matrix} 0 & \mbox{sii }& X\leq\frac{d}{1+r}
+\\ \alpha[X(1+r)-d] & \mbox{sii }& X\in \left(\frac{d}{1+r},\frac{u}{1+r}\right)
+\\ \alpha(u-d) & \mbox{sii }& X\geq\frac{u}{1+r}
+\end{matrix}\right.
+\end{equation*}
+
+Una vez construida nuestra v.a. procedemos a medir probabilidades de ella.\\ Como $Y\in[0,\alpha({u}-{d})]$, podemos separar en 3 casos:
+
+$Y$ es discreta en:
+
+_Caso_ ${Y\equiv 0}$
+
+\begin{eqnarray*}
+F_{Y}(0)=f_{Y}(0)&=&\mathbb{P}[{Y}\equiv 0]=\mathbb{P}\left[{X}\leq\frac{d}{1+{r}}\right]=F_{X}\left(\frac{d}{1+{r}}\right)\\
+
+
+&\therefore& f_{Y}(0)=F_{X}\left(\frac{d}{1+{r}}\right)
+\end{eqnarray*}
+
+_Caso_ ${Y \equiv {\alpha}({u}-{d})}$
+
+\begin{eqnarray*}
+    {f_Y}{\alpha}({u}-{d}))=\mathbb{P}[{Y}\equiv\alpha({u}-{d})]=\mathbb{P}\left[{X}\geq\frac{u}{1+{r}}\right]=S_{X}\left(\frac{u}{1+{r}}\right)
+\end{eqnarray*}
+
+$Y$ es continua en:
+
+_Caso_ ${Y\in (0,{\alpha}({u}-{d}))}$
+
+Sea $t\in(0,{\alpha}({u}-{d}))$, entonces:
+
+\begin{eqnarray*}
+    F_{Y}(t)\ & \ddot{=}\ & \mathbb{P}[Y\leq t]\\
+    &=&\mathbb{P}[\{Y\equiv 0\}\cup\{0<Y\leq t\}]\\
+    &=&\mathbb{P}[Y\equiv 0]+\mathbb{P}[0<Y\leq t]\quad\{\text{Eventos ajenos.}\\
+    &=& F_{X}\left(\frac{d}{1+r}\right)+\mathbb{P}[0<\alpha[X(1+r)-d]\leq t]\quad\{\text{Sustituyendo y porque } t<\alpha(u-d)\\
+    &=& F_{X}\left(\frac{d}{1+r}\right)+\mathbb{P}\left[\frac{d}{1+r}<X\leq\frac{t+d\alpha}{(1+r)\alpha}\right] \quad\left \{ 
+        \begin{matrix} 0 <\alpha[X(1+r)-d]\leq t\\ 
+            \Leftrightarrow 0 < X(1+r)-d\leq \frac{t}{\alpha}\\ 
+            \Leftrightarrow 0<X(1+r)\leq\frac{t}{\alpha}+d\\ 
+            \Leftrightarrow 0<X\leq\frac{t+d\alpha}{(1+r)\alpha}
+        \end{matrix}\right.\\
+    &=& F_{X}\left(\frac{d}{1+r}\right)+F_{X}\left(\frac{t+d\alpha}{(1+r)\alpha}\right)-F_{X}\left(\frac{d}{1+r}\right)\\
+    &=& F_{X}\left(\frac{t+d\alpha}{(1+r)\alpha}\right)\\
+\end{eqnarray*}
+\begin{eqnarray*}
+    \therefore&F_{Y}(t)=F_{X}\left(\frac{t+d\alpha}{(1+r)\alpha}\right)\quad\forall t\in(0,\alpha(u-d))\\
+    \underset{\downarrow}{\Rightarrow}& f_{Y}(t)\frac{1}{(1+r)\alpha}f_{X}\left(\frac{t+d\alpha}{(1+r)\alpha}\right)\quad\forall t\in(0,\alpha(u-d))
+\end{eqnarray*}
+
+
+    
+_asumiendo la continuidad de_ $X$
+
+Así, la función de densidad de $Y$ es:
+
+\begin{equation*}
+    f_{Y}(t) = \left \{ 
+    \begin{matrix} 
+        F_{X}(\frac{d}{1+r}) & \text{si } & t=0\ (discreta)\\ 
+        \frac{f_{X}\left(\frac{t+d \alpha}{\alpha (1+r)}\right)}{\alpha(1+r)} & \text{si }& t\in (0,\alpha(u-d))\ (continua)\\ 
+        S_{X}\left(\frac{u}{(1+r)}\right) & \text{si} & t=\alpha(u-d)\ (discreta)\\ 
+        0 & \text{en otro caso.}
+    \end{matrix}
+\right. 
+\end{equation*}
+
+_Nota: Para este proceso siempre pensamos $X$ v.a. continua._
+
+_Nota: $Y$ es una v.a. mixta_
+
+Una vez más, ya que tenemos la función de densidad, pasaremos a mostrar el cálculo de su esperanza por definición y a la Darth Vader. Por definición de esperanza:
+
+\begin{eqnarray*}
+    \mathbb{E}[{Y}]={\underbrace{{0\cdotp\left[F_{{X}}\left(\frac{{d}}{1+{r}}\right)\right]}}_{\text{parte discreta}}}+{\underbrace{{\int_0^{{\alpha}({u}-{d})}t\cdotp\frac{f_{{X}}\left(\frac{t+{d}{\alpha}}{{\alpha}(1+{r})}\right)}{{\alpha}(1+{r})}dt}}_{\text{parte continua}}}+{\underbrace{{{\alpha}({u}-{d})\cdotp \left[S_{{X}}\left(\frac{{u}}{1+{r}}\right)\right]}}_{\text{parte discreta}}}
+    \end{eqnarray*}
+    
+Notamos que de la **parte continua**:
+
+\begin{equation*}
+    \int_0^{\alpha(u-d)} t\cdotp \frac{f_X\left(\frac{t+d\alpha}{(1+r)\alpha}\right)}{(1+r)\alpha}dt =   \quad\left \{ 
+        \begin{matrix} \text{Cambio de Variable}\\ 
+            \text{v}
+=\frac{t+d\alpha}{(1+r)\alpha}\Rightarrow dv
+    =\frac{1}{(1+r)\alpha}dt\\
+    t=\alpha[(1+r)v-d]\\ 
+    t=0\Rightarrow v=\frac{d}{1+r}\\ 
+    t=\alpha(u-d)\Rightarrow v=\frac{u}{1+r}
+\end{matrix}\right.
+\end{equation*}
+\begin{equation*}
+= \int_{\frac{d}{1+r}}^{\frac{u}{1+r}}(\alpha[(1+r)v-d])f_X(v)dv = \quad\left \{ 
+        \begin{matrix} \text{Integrando por partes:}\\ 
+            h=\alpha[(1+r)v-d]\quad dg=f_X(v)
+    dv\\ 
+    dh=\alpha(1+r)
+    dv\quad g=-S_X(v)
+    dv
+\end{matrix}\right.\\
+\end{equation*}
+\begin{equation*}
+    = \left.-\alpha[(1+r)v-d] S_X(v)\right|{\frac{d}{1+r}}^{\frac{u}{1+r}}+\int{\frac{d}{1+r}}^{\frac{u}{1+r}}\alpha(1+r)S_X(v)dv\\
+\end{equation*}
+\begin{equation*}
+    = \alpha\left[(1+r)\frac{d}{(1+r)-d}\right]S_X\left(\frac{d}{1+r}\right)-\alpha\left[(1+r)\left(\frac{u}{1+r}\right)-d\right]S_X\left(\frac{u}{1+r}\right)+...\\
+    . .+\alpha(1+r)\int_{\frac{d}{1+r}}^{\frac{u}{1+r}}S_X(v)dv\\
+\end{equation*}
+\begin{equation*}
+   = \alpha(1+r)\int_{\frac{d}{1+r}}^{\frac{u}{1+r}}S_X(v)dv-\alpha[u-d]S_X\left(\frac{u}{1+r}\right)
+\end{equation*}
+
+Sustituyendo la _parte continua_ en la esperanza por definición, obtenemos la esperanza con la regla de Darth Vader:
+
+\begin{equation*}
+    \mathbb{E}[{Y}]={\alpha}(1+{r})\int_{\frac{{d}}{1+{r}}}^{\frac{{u}}{1+{r}}}S_{{X}}(t)dt
+\end{equation*}
+    
+Esto sucede para el primer momento, en general, de acuerdo al teorema del _estadístico inconciente_:
+
+_Caso discreto_
+
+**Proposición:** Sea $X$ una variable aleatoria discreta y sea $g:\mathbb{R}\rightarrow\mathbb{R}$ una función tal que $g(X)$ es una variable con esperanza finita. Entonces:
+$$\mathbb{E}[g(X)]=\sum_xg(x)f_X(x)$$
+
+_Caso Continuo_
+
+**Proposición:** Sea $X$ una variable aleatoria continua y sea $g:\mathbb{R}\rightarrow\mathbb{R}$ una función tal que $g(X)$ es una variable con esperanza finita. Entonces:
+$$\mathbb{E}[g(X)]=\int^\infty_{-\infty}g(x)f_X(x)dx$$
+
+En este caso, como $Y$ es una v.a. mixta y tomando ${g}:\mathbb{R}\mapsto\mathbb{R}$ tal que ${g}({Y})$ es v.a. con esperanza finita:
+
+\begin{equation*}
+    \mathbb{E}[g(Y)]={\underbrace{{g(0)\left[F_{X}\left(\frac{d}{1+r}\right)\right]}}_{\text{parte discreta}}}+{\underbrace{{\int_0^{\alpha(u-d)}g(t)\frac{f_{X}\left(\frac{t+d\alpha}{\alpha(1+r)}\right)}{\alpha(1+r)}dt}}_{\text{parte continua}}}+{\underbrace{{g(\alpha(u-d))\cdotp\left[S_{X}\left(\frac{u}{1+r}\right)\right]}}_{\text{parte discreta}}}
+\end{equation*}
+    
+Lo cual nos puede decir de forma general cómo calcular momentos de $Y$.  
+Si nosotros queremos eliminar una cobertura en particular basta con sustituir los siguientes valores:
+
+- Para eliminar el deducible $\rightarrow {d}=0$
+- Para eliminar el m.m.b.$\rightarrow{u}=\infty$
+- Para eliminar el coaseguro $\rightarrow{\alpha}=1$
+- Para eliminar la inflación $\rightarrow{r}=0$
+Haciendo esto hemos generalizado en una sola forma todas las coberturas vistas.
+
+Por ejemplo, si de esta quisiéramos obtener la función de densidad de una cobertura **solo con coaseguro**: 
+
+De la general:
+
+\begin{equation*}
+    f_{Y}(t) = \left \{ \begin{matrix} F_{X}\left(\frac{d}{1+r}\right) & \mbox{si }& t=0\quad(discreta)
+\\ \frac{f_{X}\left(\frac{t+d\alpha}{\alpha(1+r)}\right)}{\alpha(1+r)} & \mbox{si }& t\in (0,\alpha(u-d))\quad(continua)
+\\ S_{X}\left(\frac{u}{(1+r)}\right)&\mbox{si}&t=\alpha(u-d)\quad(discreta)
+\\ 0 &\mbox{en otro caso.}
+\end{matrix}\right. 
+\end{equation*}
+
+Tomamos $u=\infty;d=0;r=0$
+
+\begin{equation*}
+    = \left \{ \begin{matrix} {F_{X}(0)} & \mbox{si }& t=0\quad(discreta)
+\\ \frac{f_{X\left(\frac{t}{\alpha}\right)}}{\alpha} & \mbox{si }& t\in (0,\infty)\quad(continua)
+\\ {S_{X}(\infty)}&\mbox{si}&t=\infty\quad(discreta)
+\\ 0 &\mbox{en otro caso.}
+\end{matrix}\right. 
+\end{equation*}
+
+\begin{equation*}
+=\frac{1}{\alpha}f_{X}\left(\frac{t}{\alpha}\right)\quad\text{si}\quad t\in(0,\infty)\quad{\left \{\begin{matrix} \text{El intervalo se ajustará}\\ \text{con la indicadora que}\\ \text{lleva $f_X $ dentro}\end{matrix}\right.}
+\end{equation*}
+
+Otro ejemplo, si quisiéramos obtener la función de densidad para una cobertura de **nada más la inflación**: 
+
+De la general:
+
+\begin{equation*}
+    f_{Y}(t) = \left \{ \begin{matrix} F_{X}\left(\frac{d}{1+r}\right) & \mbox{si }& t=0\quad(discreta)
+\\ \frac{f_{X}\left(\frac{t+d\alpha}{\alpha(1+r)}\right)}{\alpha(1+r)} & \mbox{si }& t\in (0,\alpha(u-d))\quad(continua)
+\\ S_{X}\left(\frac{u}{1+r}\right)&\mbox{si}&t=\alpha(u-d)\quad(discreta)
+\\ 0 &\mbox{en otro caso.}
+\end{matrix}\right.\\
+\end{equation*}
+
+Tomamos $u=\infty;d=0;\alpha=1$
+
+\begin{equation*}
+    = \left \{ \begin{matrix} {F_{X}(0)} & \mbox{si }& t=0\quad(discreta)
+\\ \frac{f_{X}\left(\frac{t}{1+r}\right)}{1+r} & \mbox{si }& t\in (0,\infty)\quad (continua)
+\\ {S_{X}(\infty)}&\mbox{si}&t=\infty\quad(discreta)
+\\ 0 &\mbox{en otro caso.}
+\end{matrix}\right.
+\end{equation*}
+
+\begin{equation*}
+   =\frac{1}{1+r}f_{X}\left(\frac{t}{1+r}\right)\quad\text{si}\quad t\in(0,\infty)\quad{\left \{\begin{matrix} \text{El intervalo se ajustará}\\ \text{con la indicadora que}\\ \text{lleva $f_X $ dentro}\end{matrix}\right.}
+\end{equation*}
+
+Como último ejemplo, si quisiéramos obtener la función de densidad de una cobertura **únicamente con deducible y monto máximo de beneficio**: 
+
+De la general:
+
+\begin{equation*}
+    f_{Y}(t) =\left \{ \begin{matrix} F_{X}\left(\frac{d}{1+r}\right) & \mbox{si }& t=0\quad(discreta)
+    \\ \frac{f_{X}\left(\frac{t+d\alpha}{\alpha(1+r)}\right)}{\alpha(1+r)} & \mbox{si }& t\in (0,\alpha(u-d))\quad(continua)
+    \\ S_{X}\left(\frac{u}{1+r}\right)&\mbox{si}&t=\alpha(u-d)\quad(discreta)
+    \\ 0 &\mbox{en otro caso.}
+    \end{matrix}\right.\\
+    \end{equation*}
+
+Tomamos $\alpha=1;r=0$
+
+\begin{equation*}
+= \left \{ \begin{matrix} F_{X}(d) & \mbox{si }& t=0\quad(discreta)
+\\ f_{X}(t+d) & \mbox{si }& t\in (0,(u-d))\quad(continua)
+\\ S_{X}(u)&\mbox{si}&t=(u-d)\quad(discreta)
+\\ 0 &\mbox{en otro caso.}
+\end{matrix}\right.
+\end{equation*}
+
+Generalizando así todos los casos que ya vimos y otros particulares. 
+
+Adicionalmente, si observamos cómo obtuvimos la función de densidad de ${Y}$ vamos a observar que también se calculó su función de distribución acumulada: 
+
+\begin{equation*}
+    F_{Y}(t)\ \ddot{=}\ \mathbb{P}[Y\leq t]= \left \{ \begin{matrix} 0 & \mbox{si }& t<0
+\\ F_{X}\left(\frac{d}{1+r}\right) & \mbox{si }& t=0
+\\ F_{X}\left(\frac{d}{1+r}\right)+\int_0^t\frac{f_{X}\left(\frac{x+d\alpha}{\alpha(1+r)}\right)}{\alpha(1+r)}dx
+&\mbox{si}&t\in(0,\alpha(u-d))
+\\ 1 &\mbox{si}&t\geq\alpha(u-d)
+\end{matrix}\right.
+\end{equation*}
+
+\begin{eqnarray*}
+\int_0^t\frac{f_X\left(\frac{x+d\alpha}{\alpha(1+r)}\right)}{\alpha(1+r)}dx&=&\int_{\frac{d}{1+r}}^{\frac{t+d\alpha}{\alpha(1+r)}}f_X(s)ds\quad
+\begin{matrix}
+&\text{Cambio de variable}\\
+&s=\frac{s+d\alpha}{\alpha(1+r)}\Rightarrow ds=\frac{1}{\alpha(1+r)}dx\\
+&x=0\Rightarrow s=\frac{d}{1+r}\\
+&x=t\Rightarrow s=\frac{t+d\alpha}{\alpha(1+r)}
+\end{matrix}\\
+&\ddot{=}&\mathbb{P}\left[\frac{d}{1+r}\leq X \leq \frac{t+d\alpha}{\alpha(1+r)}\right]\\
+&=&F_X\left(\frac{t+d\alpha}{\alpha(1+r)}\right)-F_X\left(\frac{d}{1+r}\right)
+\end{eqnarray*}
+
+Por lo tanto:
+
+\begin{equation*}
+    F_{Y}(t)\ \ddot{=}\ \mathbb{P}[Y\leq t]=\left \{\begin{matrix}
+    0 &\mbox{si}&t<0\\
+    F_{X}\left(\frac{t+{d}{\alpha}}{\alpha(1+{r})}\right)&\mbox{si}&t\in[0,{\alpha}({d})]\\
+    1&\mbox{si}& t\geq{\alpha}({u}-{d})
+    \end{matrix}\right.
+\end{equation*}
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/Cap.6_S_Com_grafica.png", error=FALSE)
+```
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+    
+    

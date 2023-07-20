@@ -1,0 +1,711 @@
+# Modelo individual bases
+Una vez que ya conocemos la **frecuencia** y **severidad** por separado hay que comenzar a unir estos dos conceptos. Para eso vamos a construir una v.a. que no solo combine los temas anteriores sino que los generalice.
+
+Comencemos con un caso particular.
+
+## Modelo individual
+Suponga que tiene un portafolio de $n$ pólizas individuales de seguros válidas por un año como se muestra en la _Figura 1.1_.
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/ModeloInd_1.png", error=FALSE)
+```
+
+_Figura 1.1_
+
+**Sea $p_j$ la probabilidad de que el $j$-ésimo asegurado no efectúe ninguna reclamación durante el tiempo de vigencia del seguro, y sea $q_j$ la probabilidad de que se observe exactamente una reclamación**. Suponga que la igualdad $p_j + q_j=1$ se cumple, ello significa que **no puede haber más de una reclamación por cada asegurado**.Tal situación puede corresponder, por ejemplo, a los seguros de vida. Defina una variable aleatoria: 
+
+ \begin{equation*}
+    D_j=\left\{\begin{array}{lcc} 1 \quad\mbox{si hay reclamación en la póliza } j,\\
+    0\quad \mbox{si no hay reclamación en la póliza  } j.
+    \end{array}\right.
+\end{equation*}
+
+Claramente **$D_j$ tiene una distribución Bernoulli con parámetro $q_j$**. El uso de la letra $D$ viene del término en inglés. **Observe que el número total de reclamaciones está dado por la variable aleatoria $N=D_1+\cdots+D_n$**.Ahora suponga artificialmente que cada póliza efectúa una reclamación, y **sea la variable aleatoria $C_j>0$ el monto de la reclamación efectuada por la póliza $j$**. Debido a que los siniestros pueden presentarse con características distintas y ello puede derivar en distintos montos de reclamación, consideraremos de manera general a $C_j$ no como una constante sino como una variable aleatoria. La leta $C$ proviene del término en inglés, que se traduce en español como **reclamación**. **La verdadera reclamación de la póliza $j$ está dada por el producto**.
+
+\begin{equation*}
+    D_jC_j=\left\{\begin{array}{lcc}
+        C_j & \mbox{si } D_j=1, \\
+       0  & \mbox{si } D_j=0.
+    \end{array}\right.
+\end{equation*}
+
+**Observe que esta variable aleatoria puede ser mixta**, es decir, no ser continua ni discreta. véase la Figura 1.2 en donde se muestran posibles gráficas de la función de distribución de esta variable aleatoria. De esta forma **se considera como datos en este modelo la colección de vectores aleatorios $(D_1,C_1),...,(D_n,C_n),$** que supondremos **independientes**. Consideraremos **además que las variables $D_j$ y $C_j$ también son independientes entre sí**.
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/ModeloInd_2.png", error=FALSE)
+```
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/ModeloInd_3.png", error=FALSE)
+```
+
+_Figura 1.2_
+
+_El monto de reclamaciones agregadas, o también llamado agregado de reclamaciones,en el modelo individual, es la variable aleatoria_
+
+\begin{equation}
+   S=\sum_{j=1}^n D_jC_j
+\end{equation}
+
+_Ecuación 1.1_
+
+**Esta variable es el monto que afronta una compañía aseguradora por concepto de reclamaciones durante el periodo completo del seguro**. La ecuación (1.1) representa el **modelo individual** para una póliza de seguros de las características señaladas. El modelo tiene este nombre pues supone conocer las probabilidades de reclamación y posible monto de reclamación de todos y cada uno de los asegurados de manera individual.**Una posible desventaja de este modelo es que presupone que el número de asegurados en la cartera se mantiene constante durante todo el tiempo de vigencia del seguro**. Desde el punto de vista matemático, y también desde la perspectiva del negocio del seguro, **nuestro objetivo es conocer las características de la variable $S$, a quien llamaremos _riesgo_. Si $F_j(x)$ denota la función de distribución del producto $D_jC_j$, entonces la función de distribución $F(x)$ del riesgo $S$** adquiere la siguiente expresión en términos de convoluciones:
+
+$$F(x)=(F_1*\cdots*F_n)(x)$$
+
+Esta fórmula general y compacta es, sin embargo, un tanto difícil de calcular y **no la utilizaremos** con frecuencia. **Como primeros resultados generales se presentan a continuación algunas características de $S$. Denotaremos por $G_j(x)$ la función de distribución de $C_j$, y como es costumbre,cuando exista, $M_X(t)$ denota la función generadora de momentos de una variable $X$ cualquiera**.
+
+**Proposición:** Bajo la notación e hipótesis del modelo individual se tienen los siguientes resultados.
+
+
+- _i)_ $E(S)=\displaystyle\sum_{j=1}^n q_j E(C_j).$
+
+- _ii)_ $Var(S)=\displaystyle\sum_{j=1}^n\left[q_j Var(C_j)+q_jp_jE^2(C_j)\right]$.
+
+- _iii)_ $F_j(x)=\left\{\begin{array}{lcc}
+    1+q_j(G_j(x)-1) & \textit{si }&x\geq 0,  \\
+    0 &  \textit{si }&x<0.
+\end{array}\right.$
+
+- _iv)_ $M_{D_jC_j}(t)=1+q_j(M_{C_j}(t)-1).$
+
+- _v)_ $M_S(t)=\displaystyle\prod_{j=1}^n[1+q_j(M_{C_j}(t)-1)].$
+
+_Nota: $p_j=1-q_j$_
+
+_Demostración._
+
+_i)_ Por la hipótesis de independencia, $$E(S)=\displaystyle\sum_{j=1}^nE(D_jC_j)=\displaystyle\sum_{j=1}^nE(D_j)E(C_j)=\displaystyle\sum_{j=1}^nq_jE(C_j).$$
+
+_ii)_ Primeramente tenemos que 
+    \begin{eqnarray*}
+        Var(D_jC_j)&=& E(D^2_jC^2_j)-E^2(D_jC_j)\\
+        &=& q_jE(C^2_j)-q^2_jE^2(C_j)\\
+        &=& q_j[Var(C_j)+E^2(C_j)]-q^2_jE^2(C_j)\\
+        &=& q_jVar(C_j)+q_jp_jE^2(C_j).
+    \end{eqnarray*}
+    
+Por lo tanto $$Var(S)=\displaystyle\sum_{j=1}^nVar(D_jC_j)=\displaystyle\sum[q_jVar(C_j)+q_jp_jE^2(C_j)].$$
+
+_iii)_ Para cualquier número real $x\geq0,$
+    \begin{eqnarray*}
+        F_j(x) &=& P(D_jC_j\leq x)\\
+        &=& P(D_jC_j\leq x | D_j=0)P(D_j=0)+P(D_jC_j\leq x | D_j=1)P(D_j=1)\\
+        &=& P(0\leq x | D_j=0)p_j + P(C_j \leq x | D_j=1)q_j\\
+        &=& p_j+q_jG_j(x)\\
+        &=& 1+ q_j(G_j(x)-1).
+    \end{eqnarray*}
+
+_iv)_ Nuevamente condicionando sobre el valor de $D_j$,
+    \begin{eqnarray*}
+        M_{D_jC_J}(t)&=&E(e^{tD_jC_j})\\
+        &=& E(e^{tD_jC_J} | D_j=0)P(D_j=0)+E(e^{tD_jC_J}| D_j=1)P(D_j=1) \\
+        &=& p_j+q_jM_{C_j}(t)\\
+        &=& 1+ q_j(M_{C_j}(t)-1).
+    \end{eqnarray*}
+    
+_v)_ Esta igualdad se sigue directamente de la anterior usando la hipótesis de independencia$._\blacksquare$
+
+_Nota: $S\geq 0$ bajo el contexto y definiciones que se mencionaron en esta sección._
+
+A continuación se muestran vídeos con la explicación de lo mencionado anteriormente:
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/ModeloInd_4.png", error=FALSE)
+```
+
+_Link de YouTube:_ https://youtu.be/rekGEr6sGoQ
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/ModeloInd_5.png", error=FALSE)
+```
+
+_Link de YouTube:_ https://youtu.be/uGhUhhZh3Ok
+
+**Ejemplo:**
+
+Sean $\{C_i\}\sim Exp\left(\frac{1}{200}\right)$ los montos de reclamación para $n=100$ asegurados, de los cuales la probabilidad de reclamación está dada por la siguiente tabla:
+
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("Imágenes/TablaAsegurados.png", error=FALSE)
+```
+
+    
+$\mathbb{E}[S]=\displaystyle\sum_{j=1}^{100}q_j\mathbb{E}[C_j]=200({\underbrace{{\text{45(0.02)}}}_{\text{Grupo 1}}})+{\underbrace{{\text{(37(0.04)}}}_{\text{Grupo 2}}})+{\underbrace{{\text{(18(0.07)}}}_{\text{Grupo 3}}})=728$
+
+\begin{eqnarray*}
+Var(S)&=&\displaystyle\sum_{j=1}^{100}q_jVar(C_j)+q_j{\overbrace{{(1-q_j)}}^{p_j}}\mathbb{E}^2[C_j] = 200^2\displaystyle\sum_{j=1}^{100}[q_j+q_j(1-q_j)]{Var(C_j)=\mathbb{E}^2[C_j]=200^2}\\
+&=&200^2[{\underbrace{{\text{(0.02+0.02(0.98))(45)}}}_{\text{Grupo 1}}}+{\underbrace{{\text{(0.04+0.04(0.96))(37)}}}_{\text{Grupo 2}}}+{\underbrace{{\text{(0.07+0.07(0.93))(18)}}}_{\text{Grupo 3}}}]\\
+&=&284,584\\
+\end{eqnarray*}
+
+
+Observamos que a pesar de contar con ciertas propiedades del **riesgo** $S$ ninguna de ellas nos dice cómo obtener probabilidades de esta variable aleatoria. Lo que sucede es que en general resulta complicado calcular probabilidades de sumas de variables aleatorias el cual está ligado con una expresión matemática conocida como **convoluciones**. Para entender más a fondo esto primero veremos algunos resultados.
+
+## Derivación bajo el signo integral
+
+_Teorema de Leibniz:_ Sea $f:[a,b]\times[c,d]\subset\mathbb{R}^2\rightarrow\mathbb{R}$ una función continua y sean $\alpha,\beta:[c,d]\rightarrow\mathbb{R}$ funciones derivables tales que $$a\leq \alpha(y)\leq x\leq\beta(y)\leq b\quad\forall y \in [c,d]$$
+
+supongamos que $\frac{\partial f}{\partial y}$ existe y es continua en el conjunto
+
+$$T=\{(x,y)\mathbb{R}^2 | \alpha(y)\leq x \leq\beta(y),\quad y \in [c,d]\}$$
+
+entonces
+$$F(y)=\displaystyle\int_{\alpha(y)}^{\beta(y)}f(x,y)dx$$
+existe es derivable 
+
+$\forall y\in [c,d]$ y $$F'(y)=\displaystyle\int_{\alpha(y)}^{\beta(y)}\frac{\partial f(x,y)}{\partial y}dx+f(\beta(y),y)\beta'(y)+f(\alpha(y),y)\alpha'(y)$$
+
+_Nota:_ Si $\alpha$ y $\beta$ son funciones constantes, entonces:
+$$\frac{d}{dy}\displaystyle\int_\alpha^\beta f(x,y)dx=\displaystyle\int_\alpha^\beta\frac{d}{dy}f(x,y)dx$$
+
+
+## Teorema de probabilidad total en el caso continuo: 
+
+Sea $X$ y $Y$ v.a. continuas con $f_X(t)$ y $f_Y(t)$ sus respectivas funciones de densidad. Entonces:
+
+$F_Y(t)\hspace{0.4em}\ddot{=}\hspace{0.4em}\mathbb{P}[Y\leq t]=\displaystyle\int_{\mathbb{R}}\mathbb{P}[Y\leq t | X=x]f_X(x)dx\hspace{0.4em}\ddot{=}\hspace{0.4em}\displaystyle\int_{\mathbb{R}}F_{Y|X=x}(t)F_X(x)dx$
+
+_Demostración._
+
+Llamemos $A\hspace{0.4em}\ddot{=}\hspace{0.4em}Y\leq t$ el evento  "'$Y$' fue menor o igual a '$t$' ". Entonces:
+
+$$\mathbb{I}_A(t)\sim Ber(\mathbb{P}[A]\hspace{0.4em}\ddot{=}\hspace{0.4em}F_Y(t))$$
+
+Recuerden que $\mathbb{E}[Y|X]$ es una v.a que depende del valor que toma $X$. Así:
+
+\begin{eqnarray*}
+    {F_Y(t)}&=& \mathbb{E}[\mathbb{I}_A(t)]=\mathbb{E}[\mathbb{E}[\mathbb{I}_A(t)|X]]\quad {\left\{\begin{array}{lcc}
+         \text{Aplicando esperanza} \\
+       \text{iterada.}   
+    \end{array}\right.}\\
+    &=&\int_{\mathbb{R}}E[\mathbb{I}_A(t)|X=x]f_X(x)dx\quad{\left\{\begin{array}{lcc}
+         \text{Aplicando el teorema del} \\
+       \text{estadístico inconsciente.}   
+    \end{array}\right.}\\
+{\mathbb{E}[\mathbb{I}_A(t)|X=x]}&{=}&{0\cdotp\mathbb{P}[\neg A | X=x]+1\cdotp\mathbb{P}[A | X=x]=\mathbb{P}[A | X=x]}\\
+&=&\int_{\mathbb{R}}\mathbb{P}[A|X=x]f_X(x)dx\quad{\left\{\begin{array}{lcc}
+         \mathbb{I}_A(t)|X=x\sim Ber(\mathbb{P}[A|X=x]) \\
+       \text{esto pues } \mathbb{I}_A(t)\in\{0,1\}\text{ siempre.}   
+    \end{array}\right.}\\
+    &=&\int_{\mathbb{R}}\mathbb{P}[Y\leq t | X=x]F_X(x)dx\quad{\left\{\begin{array}{lcc} 
+        \\
+         \text{Por definición de A.}\\
+        
+    \end{array}\right.}\\
+    \ \ &\ddot{=}&\ \ {\int_{\mathbb{R}}F_{Y|X=x}(t)f_X(x)dx}
+\end{eqnarray*}
+
+Una vez teniendo el resultado anterior con v.a. continuas, recordemos el _Teorema de probabilidad total en el caso discreto:_
+
+## Teorema de probabilidad total en el caso discreto:
+
+Si $X,Y$ son v.a. con soporte en los $\mathbb{N}\cup\{0\}$ entonces:
+
+$$f_Y(t)=\mathbb{P}[Y=t]=\displaystyle\sum_{x=0}^{\infty}\mathbb{P}[Y=t | X=x]\mathbb{P}[X=x]=\displaystyle\sum_{x=0}^\infty f_{Y|X=x}(t)f_X(x)$$
+
+Pero esta notación con "$f$" no debe confundirse, sería "muy cómodo" simplemente cambiar la suma por una integral para decir que es válido en el caso continuo, pero estaríamos abusando de la notación y reaccionando de una manera **heurística** al confundir $f$ con $\mathbb{P}.$
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/Heurísticas.png", error=FALSE)
+```
+
+_Link de YouTube:_ https://youtu.be/pJI8LfnPPB8
+
+Sin embargo, y como ha pasado antes en la historia, la idea anterior es correcta pero no directamente del caso discreto.
+
+En el pasado, por ejemplo, la gente afirmaba lo siguiente sin haber realizado una prueba formal de que esto ocurría:
+
+$\mathbb E [g(x)] = \int_{\mathbb R} g(x) dF_{x} =$
+$\left\{ 
+\begin{array}{lcc}
+    \int_{\mathbb R} g(x)f_{x}(x)dx & si & x\ \ es \ \ continua\\\\
+    \sum_{\forall c} g(x)f_{x}(x) & si & x\ \ es\ discreta\\
+\end{array}
+\right.$
+
+Es la fórmula del estadístico inconsciente. De ahí recibe su nombre y la llamada "suerte del estadístico". El teorema de probabilidad total para el caso continuo se da por que:
+
+Gracias al último resultado, tenemos que: $F_{y}(t) = \int_{\mathbb R} F_{y | x = x} (t) f_{x}(x) dx$
+
+$\longrightarrow f_{y}(t) \doteq \frac{d}{dt} F_{y}(t) = \frac{d}{dt} \int_{R} F_{y | x = x}(t)f_{x}(x)dx$
+
+$\int_{\mathbb R} \frac{d}{dt} F_{y|x=x}(x)f(x)dx$
+{
+$\left\{ 
+\begin{array}{lcc}
+    aplicando\ \ la\ \ regla\ \ de\ \ derivacion\ \ bajo\\
+    el\ \ signo\ \ integral\\
+\end{array}
+\right.$
+
+$\therefore f_{y}(t) = \int_{\mathbb R} f_{y|x=x}(t) f_{x}(x)dx$
+
+Teniendo en mente estos resultados anteriores, podemos seguir con el tema de obtener probabilidad de el riesgo S.
+Consideremos $x,y$ v.a.i. **discretas** y tomemos $S\doteq x+y$, notemos que $S$ es también discreta y además:
+
+\begin{eqnarray*}
+    f_{s}(t) &=& \mathbb P [S=t] = \mathbb P[x+y=t] = \mathbb P [x = t-y]\\
+        &=& \sum_{\forall y} \mathbb P [x=t-y|y=y] \mathbb[y=y]
+        {
+        \left\{ 
+        \begin{array}{lcc}
+            Probabilidad \\ total\\
+        \end{array}
+        \right.}\\
+        &=& \sum_{\forall y} \mathbb P [x=t-y] \mathbb[y=y]
+        {
+        \left\{ 
+        \begin{array}{lcc}
+            Pues\\ X \perp Y\\ y\\
+            además\\Y=y
+        \end{array}
+        \right.} \\
+      
+ &=& \sum_{\forall{y}} f_{x}(t-{y})f_{y}({y}) = \mathbb E[f_{x}(t-y)]\\
+\end{eqnarray*} 
+Por lo tanto, para cualesquiera par de v.a.i. $X,Y$ discretas y tomando $S=X+Y$ entonces:
+
+ \begin{eqnarray*}
+        f_{s}(t) = \underbrace{{
+            \sum_{\forall{y}} f_{x}(t-{y})f_{y}({y})
+            }}_{\text{Convolución}} = \mathbb E[f_{x}(t-y)]
+
+        \end{eqnarray*}
+
+o bien:
+
+\begin{eqnarray*}
+            f_{s}(t) = \underbrace{{
+                \sum_{\forall{x}} f_{x}(t-{x})f_{x}({x})
+                }}_{\text{Convolución}}\mathbb E[f_{x}(t-y)]
+                
+            \end{eqnarray*}
+
+Un resultado similar sucede en el caso continuo.
+
+Consideremos $X,Y$ v.a.i. **continuas** y tomemos $S\doteq X+Y$, notemos que S es también continua y además:
+
+\begin{eqnarray*}
+F_{S}(t) &\doteq& \mathbb  P [S\leq t] = \mathbb P [X+Y\leq t]\mathbb P [X\leq t-Y] \\
+        &=& \int_{\mathbb R} \mathbb P[X\leq t-y|Y=y] f_{Y}(y)dy
+        {
+        \left\{ 
+        \begin{array}{lcc}
+            Probabilidad\ \ Total\ \ en\ \ el\\
+            caso\ \ continuo\\
+        \end{array}
+        \right.}\\
+        &=& \int_{\mathbb R} \mathbb P[X\leq t-y] f_{Y}(y)dy
+        {
+        \left\{ 
+        \begin{array}{lcc}
+            X\perp Y\ \ \\
+            \longrightarrow \mathbb P[X t-y|Y=y] = P[X\leq t-y]\\
+        \end{array}
+        \right.}\\
+    
+&\doteq&  \int_{\mathbb R} F_{X}(t-y)f_{Y}(y)dy = \mathbb E[F_{X}(t-Y)]\\
+\end{eqnarray*}
+Por lo tanto, para cualesquiera par de v.a.i. $X,Y$ continuas y tomando $S=X+Y$ entonces:
+
+\begin{eqnarray*}
+            F_{s}(t) = \underbrace{{
+                \int_{\mathbb R} F_{X}(t-{y})f_{Y}({y})d{y}
+                }}_{\text{Convolución}}= \mathbb E[F_{X}(t-Y)]
+                
+  \end{eqnarray*}
+        
+
+o bien: 
+
+\begin{eqnarray*}
+                F_{s}(t) = \underbrace{{
+                    \int_{\mathbb R} F_{X}(t-{x})f_{X}({x})d{x}
+                    }}_{\text{Convolución}} = \mathbb E[F_{Y}(t-Y)]
+                
+  \end{eqnarray*}
+
+Del resultado anterior se sigue que:
+
+\begin{align*}
+    f_{S}(t) &= \frac{d}{dt} F_{S}(t) = \frac{d}{dt} \int_{\mathbb R} F_{X}(t-y)f_{Y}(y)dy\\
+    &= \int_{\mathbb R} \frac{d}{dt} F_{X}(t-y)f_{Y}(y)dy
+    {
+    \left\{ 
+    \begin{array}{lcc}
+        \\ Aplicando \ \ la \ \ regla \ \ de \ \ Leibniz\\
+        \ \ de \ \ derivacion \ \ bajo \ \ el\ \ signo \ \ integral
+    \end{array}
+    \right.}\\
+    &= \int_{\mathbb R}f_{X}(t-y)f_{Y}(y)dy = \mathbb E [f_{X}(t-Y)]\\
+\end{align*}
+
+Por lo tanto, para culesquiera par de v.a.i. $X,Y$ continuas y tomando $S=X+Y$ entonces:
+
+\begin{align*}
+    F_{s}(t) = \underbrace{{
+    \int_{\mathbb R} f_{X}(t-{y})f_{Y}({y})d{y}
+    }}_\text{Convolución} = \mathbb E[F_{X}(t-Y)]\\
+    
+\end{align*}
+
+o bien:
+
+\begin{align*}
+    F_{s}(t) = \underbrace{{
+    \int_{\mathbb R} f_{Y}(t-{x})f_{X}({x})d{x}
+    }}_\text{Convolución} = \mathbb E[F_{Y}(t-X)]\\
+    
+\end{align*}
+
+Que es básicamente el mismo resultado que en el caso discreto. 
+
+En resumen:
+
+**Sumas y Convoluciones**
+Si $X$ e $Y$ son variables aleatorias independientes con f.d. $F_{X}$ y $F_{Y}$, respectivamente, entonces la f.d. de la suma $Z=X+Y$ es la convolución de $F_{x}$ y $F_{Y}$
+
+  $$F_{Z} = \int_{-\infty}^{\infty} F_{X}(z-t)dF_{Y}(t) = \int_{-\infty}^{\infty} F_{Y}(z-t)dF_{X}(t)$$
+Si $X$ e $Y$ toman valores en los enteros no-negativos con funciones de probabilidad despectivas $p_{X}$ y $p_{Y}$ entonces:
+
+  $$p_{z}(n) = P(Z=n) = \sum_{i=0}^{n} P(X=i) P(Y=n-i) = \sum_{i=0}^{n} p_{X}(i) p_{Y}(n-i) = \sum_{i=0}^{n} p_{X}(n-i) p_{Y}(i)$$
+
+Si consideramos la situación en la cual $X$ tienen $Y$ densidades $f_{x}$ y $f_{Y}$, respectivamente, la densidad $f_{z}$ de la suma es la convolución de las densidades $f_{x}$ y $f_{Y}$:
+
+
+  $$f_{z}(z)= \int_{-\infty}^{\infty} f_{X}(z-t)f_{Y}(t)dt = \int_{-\infty}^{\infty} f_{Y}(z-t)f_{X}(t)dt$$
+
+_Nota:_ $\frac{dF_{Y}(t)}{dt} =          f_{Y}(t) \Longleftrightarrow dF_{Y}(t) =               f_{Y}(t)dt$
+
+Ahora, pensando en el modelo individual, definamos $X_{j} \doteq C_{j}D_{j}$ entonces $\{X_{j}\}_{j=1}^{n}$ son v.a.i. $\forall j \in \{1,...,n\}$.
+
+ $$S_{n} \doteq \sum_{j=1}^{n} C_{j}D_{j} \doteq \sum_{j=1}^{n} X_{j}$$
+ 
+Luego, notemos que $S_{n-1} \perp X_{n}$ pues $\{X_{j}\}_{j=1}^{n-1} \perp X_{n}$. De hecho $S_{n-k} \perp X_{m}$ $\forall m \in \{ n-k+1,...,n \}$ y variando $k\in\{ 1,...,n-1 \}$. Entonces aplicando los resultados obtenidos anteriormente tendríamos en particular para el caso continuo con la función de distribución:
+
+\begin{eqnarray*}
+F_{S_{n}}(t) &=& \int_{\mathbb R} F_{S_{n-1}}(t-x_{n}) f_{x_{n}}(x_{n}) dx_{n}\\
+    &=& \int_{\mathbb R} (\int_{\mathbb R} F_{S_{n-2}}(t-x_{n}-x_{n-1}) f_{x_{n-1}}(x_{n-1}) dx_{n-1} ) 
+    f_{x_{n}}(x_{n}) dx_{n} \\
+    &=& \int_{\mathbb R} (\int_{\mathbb R} (
+        \int_{\mathbb R} F_{S_{n-3}}(t-\sum_{j=0}^{2} x_{n-j}) f_{x_{n-2}}(x_{n-2}) dx_{n-2}
+        ) dx_{n-1} ) 
+        f_{x_{n}}(x_{n}) dx_{n} \\
+    &=& ... = \underbrace{
+        \int_{\mathbb R}
+        \int_{\mathbb R}...
+        \int_{\mathbb R}
+        }_\text{n-1 veces} F_{S_{n-3}}(t-\sum_{j=0}^{n-2} x_{n-j}) f_{x_{2}}(x_{2}) dx_{2}...
+        f_{x_{n-1}}(x_{n-1}) dx_{n-1}
+        f_{x_{n}}(x_{n}) dx_{n}
+        \\
+\end{eqnarray*}
+
+Estos cálculos obtienen probabilidades exactas del riesgo y así tendríamos una expresión de la probabilidad de $S$ en términos de sus sumandos $\{X_{j}\}_{j=1}^{n}$. Como hacer cálculos como el anterior es **"demasiado fácil"**, se ha optado por alternativas que nos ayudan a calcular probabilidades mediante ciertas aproximaciones o simplemente asumiendo casos particulares un tanto más manejables.
+
+## Aproximación Normal
+
+Recordemos el siguiente teorema:
+
+### TEOREMA CENTRAL DEL LÍMITE {-}
+
+Sea $X_{1},X_{2},...$ una sucesión de variables aleatorias independientes e idénticamente distribuidas tales que para cada natural $n$, $E(X_{n}) = \mu $ y $Var(X_{n}) = \sigma^2 < \infty$. Entonces
+
+ $$\frac{X_{1}+...+X_{n}-n\mu}{\sqrt{n}\sigma} \longrightarrow^{d} N(0,1)$$
+
+**Cuando n es grande y el portafolio de asegurados es homogéneo en el
+sentido de que las variables $D_{j}C_{j}$ son idénticamente distribuidas con segundo momento finito, puede usarse el teorema central del límite para aproximar la distribución de $S$ mediante la distribución normal, es decir,**
+
+ $$P(S\leq x) = P\left( \displaystyle\frac{S-E(S)}{\sqrt{Var(S)}}\leq \frac{x-E(S)}{\sqrt{Var(S)}} \right) \approx \Phi\left(\displaystyle\frac{x-E(S)}{\sqrt{Var(S)}}\right)$$
+ 
+**Esta aproximación** puede ser adecuada para ciertos riesgos pero **tiene la desventaja de que asigna una probabilidad positiva al intervalo $(\infty,0)$,lo cual no es consistente con el hecho de que $S\geq 0$**. Sin embargo, dado que la distribución $N(\mu,\sigma^{2})$ se concentra principalmente en el intervalo $(\mu - 4\sigma,\mu + 4\sigma)$, cuando la esperanza y la varianza de $S$ son tales que $E(S) -4\sqrt{Var(S)} \geq 0$, **la probabilidad asignada a la parte negativa del eje es realmente pequeña, ello alivia un poco el hecho de que esta distribución no tenga soporte en el intervalo $[0,\infty)$**. Tal vez la situación más comprometedora sea que la función de densidad normal decae muy rápidamente pues existen riesgos cuyas funciones de densidad no cumplen con tal característica.
+
+_Nota:_ Si $X_{j} \doteq C_{j}D_{j}$ y $\{X_{j}\}_{j=1}^{n}$ v.a.i.i.d. tomando $S \doteq \sum_{j=1}^{n} X_{j}$ entonces:
+
+Ejercicio al lector: \begin{eqnarray*}
+\left\{
+\begin{array}{lcc}
+    \circ \mathbb E [S] = n \mathbb E [X]\\\\
+    \circ Var(S) = n Var(X) \\
+\end{array}
+\right.
+\end{eqnarray*}
+
+**Ejemplo:**
+
+Supongamos un grupo **homogéneo** de asegurados tales que $D_{j} \sim Ber(0.1)$ y $C_{j} \sim X_{(3)}^{2}$. Tomando $X_{j} \doteq D_{j} \bullet C_{j}$ entonces: 
+
+
+\begin{eqnarray*}
+    \mathbb E[X_{j}] &=& \mathbb E[D_{j}] \mathbb E[C_{j}] 
+        \left\{
+        \begin{array}{lcc}
+            D_{j}\perp C_{j} \ \forall j\\
+        \end{array}
+        \right.
+        \\
+        &=& (0.1)(3)\\
+        &=& 0.3 \ \forall j
+\end{eqnarray*}
+
+\begin{eqnarray*}
+    \mathbb E[X_{j}^{2}] &=& \mathbb E[(D_{j}C_{j})^{2}] \\
+    &=& \mathbb E[D_{j}^{2}] \mathbb E[C_{j}^{2}]
+        \left\{
+        \begin{array}{lcc}
+            D_{j}\perp C_{j}\\
+        \end{array}
+        \right.
+    \\
+    &=& [(0.9)(0.1)+(0.1)^{2}][2(3)+3^2]\\
+    &=& 1.5 \ \forall j
+\end{eqnarray*}
+
+$\Longrightarrow Var(X_{j}) = \mathbb E[X_{j}^{2}] - \mathbb E^{2}[X_{j}] = 1.5 - 0.3^{2} = 1.41 \ \forall j$
+
+Considerando un portafolio con n=150 pólizas, calculamos la media y varianza del riesgo S.
+
+$\circ \mathbb E[S] = n \mathbb E[X] = 150 (0.3) = 45$
+
+$\circ Var(S) = n Var(X) = 150 (1.42) = 211.5$
+
+Bajo aproximación normal tenemos:
+
+\begin{eqnarray*}
+    F_{S}(t)&=& \mathbb{P}[S \leq t]\\
+    &=& \mathbb{P}\left[ \displaystyle\frac{S- \mathbb{E}[S]}{\sqrt{Var(S)}} \leq \displaystyle\frac{t-\mathbb{E}[S]}{\sqrt{Var(S)}} \right]\\
+    &\approx& \phi\left( \displaystyle\frac{t-\mathbb{E}[S]}{\sqrt{Var(S)}}    \right)
+    \end{eqnarray*}
+    
+Entonces
+
+\begin{eqnarray*}
+F_{S}(t)&\approx& \phi\left( \displaystyle\frac{t-\mathbb{E}[S]}{\sqrt{Var(S)}}\right) \quad \forall t \geq 0 \\
+\end{eqnarray*}
+
+Con lo cual podemos **probabilidades** del riesgo $S$ y misma herramienta para cuantiles.
+
+Por ejemplo si quisiéramos saber cuál es la probabilidad de **aproximada** de que S sea menor a $65$ entonces:
+
+\begin{eqnarray*}
+F_{S}(65)&\approx& \phi\left( \displaystyle\frac{65-45}{\sqrt{211.5)}}\right)  \\
+&=& 0.9154697\\
+\end{eqnarray*}
+
+También si quisiéramos obtener un cuantil de probabilidad $p$, podríamos estimarlo de forma general:
+
+\begin{equation*}
+\phi\left( \displaystyle\frac{t_{0}-\mathbb{E}[S]}{\sqrt{Var(S)}}\right)=p \Leftrightarrow q_{S}(p) \approx t_{0} = \sqrt{Var(S)} \phi^{-1}(p)+\mathbb{E}(S)  \\
+\end{equation*}
+
+Que en nuestro ejemplo sería para $p=97.5\%$
+
+\begin{equation*}
+    q_{S}(97.5\%) \approx t_{0} = \sqrt{211.5} (1.96)+45 \  \approx \  73.50383\\
+\end{equation*}
+
+Un video con otra aplicación relacionada con el tema lo pueden ver a continuación:
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/9. LMS.png", error=FALSE)
+```
+
+_Link de YouTube:_ https://www.youtube.com/watch?v=TAjhROWBkiE
+
+Ahora, intentemos obtener probabilidades **mezclas** de un riesgo, pero buscando simplificar el problema con un ejemplo:
+
+Supongamos que $D_{j} \sim Ber(0,1)$ y que $C_{j}$ tiene la siguiente f.m.p.
+
+
+\begin{eqnarray*}
+   \mathbb{P}[C_{j}=C]
+    &=& \left \{ \begin{matrix} 
+   0.8 & \mbox{si }& C=1 & \forall j \\
+   0.2 &\mbox{si }  & C=2 \\ 
+   0 & & e.o.c 
+\end{matrix}\right. 
+\end{eqnarray*}
+
+Tomando un portafolio con $n=3$ pólizas bajo el modelo individual, busquemos probabilidades de $S$.
+
+Notemos primero que $S \ddot{=} \displaystyle\sum_{i=1}^{n} x_{i} \in \{0,1,2,3,4,5,6 \}$.
+
+- Cuando $S=0$ fue porque:
+
+\begin{equation*}
+    {
+         \overbrace{
+         \underbrace{C_{1} D_{1}}_{\text{asegurado 1}}=
+         \underbrace{C_{2} D_{2}}_{\text{asegurado 2}}=
+         \underbrace{C_{3} D_{3}}_{\text{asegurado 3}}}^{\text{Reclamaciones por asegurado}}}= 0 \quad \quad \xrightarrow{\text{la denotamos}} \quad \quad
+         \overbrace{(0,0,0)}^{\text{suman cero}}
+\end{equation*}
+
+Entonces $S=0$. 
+
+  ¡Solo hay un caso posible!
+
+
+- Cuando S=1 fue porque:
+
+\begin{equation}
+    \underbrace{{\overbrace{{\{(1,0,0) \} }}^{{\text{ evento #1}}}} {\bigcup}
+    {\overbrace{{\{(0,1,0) \} }}^{{\text{ evento #2}}}} {\bigcup}
+    \overbrace{\{(0,0,1) \} }^{\text{ evento #3}}}_{\text{Posibles eventos}} \quad \longrightarrow  \quad \text{Hay 3 casos}
+\end{equation}
+
+Recordemos un poco de combinatoria antes de continuar.
+
+¿Cuantas "palabras" diferentes podemos formar con las letras de la palabra mississippi?
+
+$\displaystyle\frac{m}{1} \quad \displaystyle\frac{i}{2}\quad \displaystyle\frac{s}{3} \quad \displaystyle\frac{s}{4} \quad \displaystyle\frac{i}{5}\quad \displaystyle\frac{s}{6}\quad \displaystyle\frac{s}{7}\quad \displaystyle\frac{i}{8}\quad \displaystyle\frac{p}{9}\quad \displaystyle\frac{p}{10}\quad \displaystyle\frac{i}{11} \longrightarrow$ Hay 11 letras.
+
+$\displaystyle\frac{m}{1} \quad \displaystyle\frac{i}{2}\quad \displaystyle\frac{s}{3} \quad \displaystyle\frac{p}{4} \longrightarrow$ pero solamente hay 4 letras diferentes.
+
+Pero contamos con una "m", cuatro "i" , cuatro "s" , y dos "p" . Como buscamos ''palabras" diferentes, buscamos hacer permutaciones. Utilizando el coeficiente multinomial tenemos:
+
+$\displaystyle\frac{11!}{1! 4! 4! 2!}= 34,650$ palabras diferentes/permutaciones.
+
+Una vez visto esto, seguimos sin contar tanto.
+
+_a._ (2,0,0) y este evento puede suceder de $\displaystyle\frac{3!}{1! 2!}=3$ formas diferentes.
+    
+  O bien puede pasar que:
+    
+_b._ (1,1,0) y este evento puede suceder de $\displaystyle\frac{3!}{2!1!}=3$ formas diferentes.
+    
+Para un total de _6 casos_ distintos.
+    
+- Cuando $S=3$ fue porque:
+
+\begin{eqnarray*}
+          \left.  \begin{matrix} 
+          (2,1,0); & 3!= 6& \text{casos} \\
+          (1,1,1); &1 &\text{caso}\\ 
+        \end{matrix}\right\} \text{7 casos}
+        \end{eqnarray*}
+        
+- Cuando $S=4$ fue porque:
+
+  \begin{eqnarray*}
+          \left.  \begin{matrix} 
+          (2,2,0); & \displaystyle\frac{3!}{2!}=3& \text{casos} \\
+          (1,1,2); &\displaystyle\frac{3!}{2!}=3 &\text{casos}\\ 
+        \end{matrix}\right\} \text{6 casos}
+        \end{eqnarray*}
+    
+- Cuando $S=5$ fue porque:
+        \begin{equation*}
+          (2,2,1); \quad \displaystyle\frac{3!}{2!}= 3 \quad \text{casos} \\
+        \end{equation*}
+        
+- Cuando S=6 fue porque:
+        \begin{equation*}
+          (2,2,2); \quad \text{solo hay un caso} \\
+        \end{equation*}
+        
+Ahora que tenemos la cantidad de casos, vamos a calcular probabilidades del riesgo $S$. Denotemos como $X_{i}= D_{i} C_{i} \forall i \quad \in \{1,2,3 \}$. Entonces:
+
+\begin{eqnarray*}
+\mathbb{P}[S=t]&=& \mathbb{P}[D_{1}C_{1}+ D_{2}C_{2}  +D_{2}C_{2} =t]\\
+&=& \mathbb{P}[X_{1}+X_{2}+X_{3}=t]  \forall t \in \{0,1,...6\}\\
+\end{eqnarray*}
+
+_1._ $t=0$
+
+\begin{equation*}
+    \left.
+        \begin{array}{rcl}
+                 \mathbb{P}[S=0]&=& \mathbb{P}[X_{1}+X_{2} + X_{3}=0]\\
+                   &=&\mathbb{P}[X_{1}=0,X_{2}=0 , X_{3}=0]\\
+                   &=&\mathbb{P}[X_{1}=0]\mathbb{P}[X_{2}=0]\mathbb{P}[X_{3}=0]\\
+                   &=&\mathbb{P}[X=0]\\
+                  &=&\mathbb{P}[\text{No hubo reclamación}]\\ 
+                  &=& 0.9^{3}\\
+                   \end{array}
+               \right\} {\text{Todo pues $ X_{i} \geq, X_{i} \perp X_{j}$ si $i \leq j X_{i} $, son i.d}}
+\end{equation*}
+
+_2._ $t=1$
+
+\begin{eqnarray*}
+        \mathbb{P}[S=1]&=& \mathbb{P}[X_{1}+X_{2} + X_{3}=1]\\
+        &=& \mathbb{P}[\{ X_{1}=0,X_{2}=0 , X_{3}=0 \} {\cup }\{ X_{1}=0,X_{2}=1 , X_{3}=0 \} {\cup } \{ X_{1}=0,X_{2}=0 , X_{3}=1 \} ]\\
+        &=&\mathbb{P}[\{ X_{1}=0,X_{2}=0 , X_{3}=0 \}]+\mathbb{P}[\{ X_{1}=0,X_{2}=1 , X_{3}=0 \} ]+\mathbb{P}[\{ X_{1}=0,X_{2}=0 , X_{3}=1 \}]\\
+        &=& 3\mathbb{P}[(1,0,0)]\\
+        &=& 3[{\underbrace{{(0.1)(0.8)}}_{{\text{ 1 reclamo \$1}}}}][{\underbrace{{0.9^{2}}}_{{\text{ 2 no reclamaron}}}}] \quad {\text{Pues cada evento es ajeno y las v.a son i.i.d}}\\
+        \end{eqnarray*}
+
+_Nota:_ Si $a \in \{ 1,2\} \Rightarrow \mathbb{P}[CD=a]=\mathbb{P}[D=1, C=a]=\mathbb{P}[D=1]\mathbb{P}[C=a]$
+        
+_3._ $t=2$
+
+\begin{eqnarray*}
+        \mathbb{P}[S=2]&=&[{\overbrace{{3}}^{{\text{ # De veces que ocurre el evento}}}}]\quad  \cdot \quad  {\underbrace{{\mathbb{P}[{\overbrace{{(2,0,0)}}^{\text{# De veces que ocurre el evento}}}]}}_{{\text{Evento en probabilidad}}}}
+        \\
+        &=&{\underbrace{{ 3\cdot [(0.1)(0.2)][0.9]^{2}}}_{{\text{Evento en probabilidad}}}} + 3 \cdot [(0.1)(0.8)]^{2}[0.9]
+        \end{eqnarray*}
+        
+_4._ $t=3$
+
+\begin{eqnarray*}
+    \mathbb{P}[S=3]&=&6\cdot \mathbb{P}[(2,1,0)]+\mathbb{P}[(1,1,1)]\\
+    &=& 6 \cdot [(0.1)(0.2)][(0.1)(0.8)][0.9]+[(0.1)(0.8)]^{3}\\
+    \end{eqnarray*}
+
+        
+_5._ $t=4$
+\begin{eqnarray*}
+    \mathbb{P}[S=4]&=&6\cdot \mathbb{P}[(2,2,0)]+\mathbb{P}[(1,1,2)]\\
+    &=& 3 \cdot [(0.1)(0.2)]^{2}[0.9]+3\cdot [(0.1)(0.8)]^{2}[(0.1)(0.2)]\\
+    \end{eqnarray*}
+    
+        
+_5._ $t=5$
+ \begin{eqnarray*}
+    \mathbb{P}[S=5]&=&6\cdot \mathbb{P}[(2,2,1)]\\
+    &=& 3 \cdot (0.1)^{3}[(0.2)^{2}(0.8)]\\
+    \end{eqnarray*}
+
+
+        
+_6._ $t=6$
+\begin{eqnarray*}
+    \mathbb{P}[S=6]&=&6\cdot \mathbb{P}[(2,2,2)]\\
+    &=& [(0.1)(0.2)]^{3} \\
+    \end{eqnarray*}
+    
+Lo cual nos permite contar con las probabilidades exactas de $S$. Así, su f.m.p es:
+
+\begin{eqnarray*}
+   f_{S}(t)&=& \mathbb{P}[S=t]\\
+    &=& \left \{ \begin{matrix} 
+   72.9\% & \mbox{si } & t=0 & \\
+   19.44 \%&\mbox{si }  & t=1 \\ 
+   6.588\% &\mbox{si }  & t=2 \\
+  0.9152 \%&\mbox{si }  & t=3 \\
+   0.1464 \%&\mbox{si }  & t=7 \\
+   0.0096 \%&\mbox{si }  & t=5 \\
+   0.0008 \%&\mbox{si }  & t=6 \\
+   0 & & e.o.c 
+\end{matrix}\right. 
+\end{eqnarray*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

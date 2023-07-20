@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 3 Frecuencia | Teoría del Riesgo</title>
+  <meta name="description" content="Descripcion" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 3 Frecuencia | Teoría del Riesgo" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Descripcion" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 3 Frecuencia | Teoría del Riesgo" />
+  
+  <meta name="twitter:description" content="Descripcion" />
+  
+
+<meta name="author" content="Cinthya Denisse González Mendoza :o" />
+
+
+<meta name="date" content="2023-07-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="medidas-de-riesgo.html"/>
+<link rel="next" href="frecuencia-anexo.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notas de Teoría del Riesgo</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Conceptos básicos y preeliminares</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#introducción"><i class="fa fa-check"></i><b>1.1</b> Introducción</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#algunos-antecedentes-históricos"><i class="fa fa-check"></i><b>1.2</b> Algunos antecedentes históricos</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#algunos-términos-del-seguro"><i class="fa fa-check"></i><b>1.3</b> Algunos términos del seguro</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#seguro"><i class="fa fa-check"></i>Seguro:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#riesgo"><i class="fa fa-check"></i>Riesgo:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#siniestro"><i class="fa fa-check"></i>Siniestro:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asegurador"><i class="fa fa-check"></i>Asegurador:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asegurado"><i class="fa fa-check"></i>Asegurado:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#beneficiario"><i class="fa fa-check"></i>Beneficiario:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#póliza"><i class="fa fa-check"></i>Póliza:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#prima"><i class="fa fa-check"></i>Prima:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#clase-de-primas"><i class="fa fa-check"></i><b>1.4</b> Clase de primas:</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#clasificación-de-los-seguros"><i class="fa fa-check"></i><b>1.5</b> Clasificación de los seguros</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#distribuciones-clásicas-en-teoría-del-riesgo"><i class="fa fa-check"></i><b>1.6</b> Distribuciones clásicas en Teoría del Riesgo</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asociadas-al-monto-de-una-pérdida"><i class="fa fa-check"></i>Asociadas al monto de una pérdida</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#familias-paramétricas-para-modelar-el-monto-de-riesgo"><i class="fa fa-check"></i><b>1.7</b> Familias paramétricas para modelar el monto de riesgo</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#exponencial"><i class="fa fa-check"></i>Exponencial</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#gamma"><i class="fa fa-check"></i>Gamma</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#log---normal"><i class="fa fa-check"></i>Log - Normal</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#weibull"><i class="fa fa-check"></i>Weibull</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#burr"><i class="fa fa-check"></i>Burr</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#pareto"><i class="fa fa-check"></i>Pareto</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#modelación-del-riesgo"><i class="fa fa-check"></i><b>1.8</b> Modelación del riesgo</a></li>
+<li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#ajuste-de-funciones-de-probabilidad"><i class="fa fa-check"></i><b>1.9</b> Ajuste de funciones de probabilidad</a></li>
+<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#reconocimiento-del-modelo"><i class="fa fa-check"></i><b>1.10</b> Reconocimiento del modelo</a>
+<ul>
+<li class="chapter" data-level="1.10.1" data-path="index.html"><a href="index.html#moda-de-una-función-de-densidad"><i class="fa fa-check"></i><b>1.10.1</b> Moda de una función de densidad</a></li>
+<li class="chapter" data-level="1.10.2" data-path="index.html"><a href="index.html#coeficiente-de-asimetría-skewness"><i class="fa fa-check"></i><b>1.10.2</b> Coeficiente de asimetría (Skewness)</a></li>
+<li class="chapter" data-level="1.10.3" data-path="index.html"><a href="index.html#coeficiente-de-kurtosis"><i class="fa fa-check"></i><b>1.10.3</b> Coeficiente de Kurtosis</a></li>
+<li class="chapter" data-level="1.10.4" data-path="index.html"><a href="index.html#función-de-distribución-empírica"><i class="fa fa-check"></i><b>1.10.4</b> Función de distribución empírica</a></li>
+<li class="chapter" data-level="1.10.5" data-path="index.html"><a href="index.html#cuantiles"><i class="fa fa-check"></i><b>1.10.5</b> Cuantiles</a></li>
+<li class="chapter" data-level="1.10.6" data-path="index.html"><a href="index.html#rango-intercuantílico"><i class="fa fa-check"></i><b>1.10.6</b> Rango intercuantílico</a></li>
+</ul></li>
+<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#estimación-de-parámetros"><i class="fa fa-check"></i><b>1.11</b> Estimación de parámetros</a>
+<ul>
+<li class="chapter" data-level="1.11.1" data-path="index.html"><a href="index.html#método-de-momentos"><i class="fa fa-check"></i><b>1.11.1</b> Método de momentos</a></li>
+<li class="chapter" data-level="1.11.2" data-path="index.html"><a href="index.html#máxima-verosimilitud"><i class="fa fa-check"></i><b>1.11.2</b> Máxima verosimilitud</a></li>
+</ul></li>
+<li class="chapter" data-level="1.12" data-path="index.html"><a href="index.html#pruebas-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>1.12</b> Pruebas de bondad de ajuste</a>
+<ul>
+<li class="chapter" data-level="1.12.1" data-path="index.html"><a href="index.html#planteamiento-general-de-una-prueba-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>1.12.1</b> Planteamiento general de una prueba de bondad de ajuste</a></li>
+<li class="chapter" data-level="1.12.2" data-path="index.html"><a href="index.html#algunas-pruebas-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>1.12.2</b> Algunas pruebas de bondad de ajuste</a></li>
+</ul></li>
+<li class="chapter" data-level="1.13" data-path="index.html"><a href="index.html#cómo-leer-un-p-value"><i class="fa fa-check"></i><b>1.13</b> ¿Cómo leer un p-value?</a>
+<ul>
+<li class="chapter" data-level="1.13.1" data-path="index.html"><a href="index.html#región-de-rechazo-y-no-rechazo"><i class="fa fa-check"></i><b>1.13.1</b> Región de Rechazo y no rechazo:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.14" data-path="index.html"><a href="index.html#el-proceso-de-modelación-del-riesgo"><i class="fa fa-check"></i><b>1.14</b> El proceso de modelación del Riesgo</a>
+<ul>
+<li class="chapter" data-level="1.14.1" data-path="index.html"><a href="index.html#el-proceso-de-modelado"><i class="fa fa-check"></i><b>1.14.1</b> El proceso de modelado</a></li>
+<li class="chapter" data-level="1.14.2" data-path="index.html"><a href="index.html#pasos"><i class="fa fa-check"></i><b>1.14.2</b> Pasos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html"><i class="fa fa-check"></i><b>2</b> Medidas de Riesgo</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#distribuciones-para-valores-extremos"><i class="fa fa-check"></i><b>2.1</b> Distribuciones para valores extremos</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#teoría-de-valores-extremos"><i class="fa fa-check"></i><b>2.1.1</b> Teoría de valores extremos</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#distribuciones-de-valores-extremos"><i class="fa fa-check"></i>Distribuciones de valores extremos</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#ejemplo-1-2"><i class="fa fa-check"></i>Ejemplo 1</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#ejemplo-2-1"><i class="fa fa-check"></i>Ejemplo 2</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#var-t-var"><i class="fa fa-check"></i><b>2.2</b> VaR &amp; T-VaR</a>
+<ul>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#var"><i class="fa fa-check"></i>VaR</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#t-var"><i class="fa fa-check"></i>T-VaR</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="frecuencia.html"><a href="frecuencia.html"><i class="fa fa-check"></i><b>3</b> Frecuencia</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="frecuencia.html"><a href="frecuencia.html#frecuencia-1"><i class="fa fa-check"></i><b>3.1</b> Frecuencia</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="frecuencia.html"><a href="frecuencia.html#familia-ab0"><i class="fa fa-check"></i><b>3.1.1</b> Familia (a,b,0)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="frecuencia-anexo.html"><a href="frecuencia-anexo.html"><i class="fa fa-check"></i><b>4</b> Frecuencia Anexo</a></li>
+<li class="chapter" data-level="5" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html"><i class="fa fa-check"></i><b>5</b> Severidad Coberturas</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#diferencia-entre-función-de-densidad-y-función-de-masa-de-probabilidad"><i class="fa fa-check"></i><b>5.1</b> Diferencia entre función de densidad y función de masa de probabilidad</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#visualización-de-variables-aleatorias-mixtas"><i class="fa fa-check"></i><b>5.1.1</b> Visualización de variables aleatorias mixtas</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#coberturas-en-seguros-reaseguros"><i class="fa fa-check"></i><b>5.2</b> Coberturas en Seguros / Reaseguros</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#coaseguro"><i class="fa fa-check"></i><b>5.2.1</b> Coaseguro</a></li>
+<li class="chapter" data-level="5.2.2" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#inflación"><i class="fa fa-check"></i><b>5.2.2</b> Inflación</a></li>
+<li class="chapter" data-level="5.2.3" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#deducibles"><i class="fa fa-check"></i><b>5.2.3</b> Deducibles</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#la-regla-de-darth-vader"><i class="fa fa-check"></i><b>5.3</b> La regla de Darth Vader</a></li>
+<li class="chapter" data-level="5.4" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#monto-máximo-de-beneficio"><i class="fa fa-check"></i><b>5.4</b> Monto máximo de beneficio</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html"><i class="fa fa-check"></i><b>6</b> Severidad combinacion de coberturas</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#contratos-con-deducible-y-monto-máximo-de-beneficio"><i class="fa fa-check"></i><b>6.1</b> Contratos con Deducible y monto máximo de beneficio</a></li>
+<li class="chapter" data-level="6.2" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#generalización-de-beneficio-y-monto-máximo"><i class="fa fa-check"></i><b>6.2</b> Generalización de beneficio y monto máximo</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#quitando-el-deducible-d0"><i class="fa fa-check"></i>Quitando el deducible d=0</a></li>
+<li class="chapter" data-level="" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#quitando-monto-máximo-de-beneficio-uinfty"><i class="fa fa-check"></i>Quitando Monto máximo de beneficio: <span class="math inline">\(u=\infty\)</span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html"><i class="fa fa-check"></i><b>7</b> Severidad (Costo por pérdida y por pago)</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html#costo-por-pago"><i class="fa fa-check"></i><b>7.1</b> Costo por pago</a></li>
+<li class="chapter" data-level="7.2" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html#cuantiles-para-las-coberturas"><i class="fa fa-check"></i><b>7.2</b> Cuantiles para las coberturas</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html#ejemplo-6"><i class="fa fa-check"></i>Ejemplo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="severidad-anexo.html"><a href="severidad-anexo.html"><i class="fa fa-check"></i><b>8</b> Severidad Anexo</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#pago-del-asegurado-con-deducible-y-monto-máximo-de-beneficio"><i class="fa fa-check"></i>Pago del asegurado con deducible y monto máximo de beneficio:</a></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#generalización-del-cálculo-de-variables-esperadas-para-y_p."><i class="fa fa-check"></i>Generalización del cálculo de variables esperadas para <span class="math inline">\(Y_p\)</span>.</a></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#generalización-de-la-fórmula-de-darth-vader."><i class="fa fa-check"></i>Generalización de la fórmula de Darth Vader.</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#ejercicio"><i class="fa fa-check"></i>Ejercicio:</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#más-deducibles"><i class="fa fa-check"></i>Más deducibles</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#ejemplo-muy-sencillo-de-como-jugar-con-el-deducible"><i class="fa fa-check"></i>Ejemplo muy sencillo de como jugar con el deducible:</a></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#solución-3"><i class="fa fa-check"></i>Solución</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html"><i class="fa fa-check"></i><b>9</b> Modelo individual bases</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#modelo-individual"><i class="fa fa-check"></i><b>9.1</b> Modelo individual</a></li>
+<li class="chapter" data-level="9.2" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#derivación-bajo-el-signo-integral"><i class="fa fa-check"></i><b>9.2</b> Derivación bajo el signo integral</a></li>
+<li class="chapter" data-level="9.3" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#teorema-de-probabilidad-total-en-el-caso-continuo"><i class="fa fa-check"></i><b>9.3</b> Teorema de probabilidad total en el caso continuo:</a></li>
+<li class="chapter" data-level="9.4" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#teorema-de-probabilidad-total-en-el-caso-discreto"><i class="fa fa-check"></i><b>9.4</b> Teorema de probabilidad total en el caso discreto:</a></li>
+<li class="chapter" data-level="9.5" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#aproximación-normal"><i class="fa fa-check"></i><b>9.5</b> Aproximación Normal</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#teorema-central-del-límite"><i class="fa fa-check"></i>TEOREMA CENTRAL DEL LÍMITE</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="modelo-individual-formula-de-pril.html"><a href="modelo-individual-formula-de-pril.html"><i class="fa fa-check"></i><b>10</b> Modelo individual: formula de Pril</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="modelo-individual-formula-de-pril.html"><a href="modelo-individual-formula-de-pril.html#formula-de-pril"><i class="fa fa-check"></i><b>10.1</b> Formula de Pril</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html"><i class="fa fa-check"></i><b>11</b> Modelo colectivo: Bases</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-colectivo"><i class="fa fa-check"></i>Modelo Colectivo</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-binomial-compuesto"><i class="fa fa-check"></i>Modelo Binomial Compuesto</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-binomial-negativo-compuesto"><i class="fa fa-check"></i>Modelo binomial negativo compuesto</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-poisson-compuesto"><i class="fa fa-check"></i>Modelo Poisson Compuesto</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#distribución-de-la-convoluación-de-poisson-compuestas"><i class="fa fa-check"></i>Distribución de la convoluación de Poisson compuestas</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#aproximaciones-de-probabilidad-del-modelo-colectivo"><i class="fa fa-check"></i>Aproximaciones de probabilidad del Modelo Colectivo</a>
+<ul>
+<li class="chapter" data-level="11.0.1" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#aproximación-normal-1"><i class="fa fa-check"></i><b>11.0.1</b> Aproximación Normal</a></li>
+<li class="chapter" data-level="11.0.2" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#aproximación-gamma-trasladada"><i class="fa fa-check"></i><b>11.0.2</b> Aproximación Gamma Trasladada</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="modelo-colectivo-formula-de-panjer.html"><a href="modelo-colectivo-formula-de-panjer.html"><i class="fa fa-check"></i><b>12</b> Modelo colectivo: Formula de Panjer</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="modelo-colectivo-formula-de-panjer.html"><a href="modelo-colectivo-formula-de-panjer.html#casos-especiales-de-panjer"><i class="fa fa-check"></i><b>12.1</b> Casos especiales de Panjer</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-formula-de-panjer.html"><a href="modelo-colectivo-formula-de-panjer.html#momento-de-s-para-panjer"><i class="fa fa-check"></i>Momento de S para Panjer</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="reaseguro.html"><a href="reaseguro.html"><i class="fa fa-check"></i><b>13</b> Reaseguro</a>
+<ul>
+<li class="chapter" data-level="" data-path="reaseguro.html"><a href="reaseguro.html#reaseguro-proporcional"><i class="fa fa-check"></i>Reaseguro proporcional</a>
+<ul>
+<li class="chapter" data-level="" data-path="reaseguro.html"><a href="reaseguro.html#reaseguro-no-proporcional"><i class="fa fa-check"></i>Reaseguro no proporcional</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html"><i class="fa fa-check"></i><b>14</b> Calculo de primas</a>
+<ul>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#propiedades-y-principios-del-cálculo-de-primas"><i class="fa fa-check"></i>Propiedades y Principios del cálculo de Primas</a>
+<ul>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-valor-esperado"><i class="fa fa-check"></i>Principio de valor esperado</a></li>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-la-varianza"><i class="fa fa-check"></i>Principio de la varianza</a></li>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-la-desviación-estándar"><i class="fa fa-check"></i>Principio de la desviación estándar</a></li>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-utilidad-cero"><i class="fa fa-check"></i>Principio de utilidad cero</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="credibilidad.html"><a href="credibilidad.html"><i class="fa fa-check"></i><b>15</b> Credibilidad</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="credibilidad.html"><a href="credibilidad.html#teoría-de-la-credibilidad"><i class="fa fa-check"></i><b>15.1</b> Teoría de la credibilidad</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="credibilidad.html"><a href="credibilidad.html#introducción-1"><i class="fa fa-check"></i><b>15.1.1</b> Introducción</a></li>
+<li class="chapter" data-level="15.1.2" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-completatotal"><i class="fa fa-check"></i><b>15.1.2</b> Credibilidad Completa/total</a></li>
+<li class="chapter" data-level="15.1.3" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-completa-bajo-hipótesis-de-normalidad"><i class="fa fa-check"></i><b>15.1.3</b> Credibilidad Completa Bajo Hipótesis de Normalidad</a></li>
+<li class="chapter" data-level="15.1.4" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-parcial"><i class="fa fa-check"></i><b>15.1.4</b> Credibilidad Parcial</a></li>
+<li class="chapter" data-level="15.1.5" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-parcial-bajo-hipótesis-de-normalidad"><i class="fa fa-check"></i><b>15.1.5</b> Credibilidad Parcial bajo Hipótesis de Normalidad</a></li>
+<li class="chapter" data-level="15.1.6" data-path="credibilidad.html"><a href="credibilidad.html#ajuste-de-primas-con-credibilidad-clásica"><i class="fa fa-check"></i><b>15.1.6</b> Ajuste de primas con credibilidad clásica</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="credibilidad.html"><a href="credibilidad.html#enfoque-bayesiano"><i class="fa fa-check"></i><b>15.2</b> Enfoque bayesiano</a></li>
+<li class="chapter" data-level="15.3" data-path="credibilidad.html"><a href="credibilidad.html#teorema-de-bayes"><i class="fa fa-check"></i><b>15.3</b> Teorema de Bayes</a></li>
+<li class="chapter" data-level="15.4" data-path="credibilidad.html"><a href="credibilidad.html#familias-conjugadas"><i class="fa fa-check"></i><b>15.4</b> Familias conjugadas</a></li>
+<li class="chapter" data-level="15.5" data-path="credibilidad.html"><a href="credibilidad.html#cálculo-bayesiano-de-primas-de-seguros"><i class="fa fa-check"></i><b>15.5</b> Cálculo Bayesiano de primas de seguros</a>
+<ul>
+<li class="chapter" data-level="" data-path="credibilidad.html"><a href="credibilidad.html#cómo-modelar-un-riesgo-para-obtener-una-prima-de-credibilidad-bayesiana"><i class="fa fa-check"></i>¿Cómo modelar un riesgo para obtener una prima de credibilidad Bayesiana?</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Teoría del Riesgo</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="frecuencia" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Capítulo 3</span> Frecuencia<a href="frecuencia.html#frecuencia" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="frecuencia-1" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Frecuencia<a href="frecuencia.html#frecuencia-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Hasta el momento estuvimos hablando principalmente de variables aleatorias continuas, esto con la finalidad de modelar algo que nosotros llamamos “severidad”. La severidad no es estrictamente continua (puede ser discreta o incluso una v.a. mixta) pero hay una parte de la teoría del riesgo que sí debe ser discreta, la frecuencia.</p>
+<p>En esta parte vamos a conocer las variables aleatorias más usuales que se utilizan para modelar fenómenos discretos, así como propiedades importantes que nos ayudarán a facilitar cálculos y expandir la forma en que podemos modelar un riesgo.</p>
+<p>Resulta ser, que si una variable aleatoria pertenece a un grupo conocido como <strong>familia/clase (a,b,i)</strong> es entonces <strong>discreta</strong>, alguna de las siguientes distribuciones y cuentan con una propiedad de recursividad.</p>
+<div id="familia-ab0" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Familia (a,b,0)<a href="frecuencia.html#familia-ab0" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Las siguientes distribuciones son las pertenecientes a la Familia/Clase (a,b,0), cuando hablemos de ellas, vamos a considerar las siguientes parametrizaciones:</p>
+<ul>
+<li><span class="math inline">\(X\sim Binomial(n,p)\Rightarrow f_X(x)=\binom{n}{x}p^x(1-p)^{n-x} \hspace{.4em}x\in \{0,1,...,n\}, n\in\mathbb{N}-\{0\},p\in[0,1]\)</span></li>
+<li><span class="math inline">\(X\sim Geométrica(p)\Rightarrow f_X(x)=p(1-p)^x \quad x\in\mathbb{N},p\in[0,1]\)</span></li>
+<li><span class="math inline">\(X\sim Poisson(\lambda)\Rightarrow f_X(x)=e^{-\lambda}\frac{\lambda^x}{x!} \quad x\in\mathbb{N},\lambda&gt;0\)</span></li>
+<li><span class="math inline">\(X\sim BinNeg(r,p)\Rightarrow f_X(x)=\binom{r+x-1}{x}p^r(1-p)^x \quad x\in\mathbb{N},r\geq 1,p\in[0,1]\)</span></li>
+</ul>
+<p>Sea <span class="math inline">\(p_k:=\mathbb{P}[X=k]\)</span>. Resulta ser que las distribuciones anteriores se pueden escribir de manera <strong>recursiva</strong> bajo la siguiente regla:</p>
+<p style="text-align: center">
+<span class="math inline">\(p_k = p_{k-1}(a+\frac{b}{k})\)</span>
+</p>
+<p>Con base en la regla anterior, conociendo inicialmente nuestra distribución, y resolviendo por un sistema de ecuaciones, podríamos determinar los valores de a y b para las distribuciones anteriores. Lo cuál nos lleva al siguiente cuadro:</p>
+<p><img src="Ima%CC%81genes/tabla1-Frecuencia.jpg" width="100%" /></p>
+<p>Notemos que si conocemos información mínima de este cuadro para alguna variable aleatoria, podemos determinar por completo de qué distribución se está hablando.</p>
+<p><strong>Importante.</strong> La recursión anterior, también funciona para lo que diremos a continuación.</p>
+<ul>
+<li><strong>Caso cero truncado.</strong> Aquí vamos a asumir que <span class="math inline">\(p^T_0=0\)</span> y haciendo ésto, debemos modificar nuestra función de masa de probabilidad y lo haremos de la siguiente forma:</li>
+</ul>
+<p style="text-align: center">
+<span class="math inline">\(P^T_k=\frac{P_k}{1-P_0}\quad\forall k\neq0\)</span>
+</p>
+<ul>
+<li><strong>Caso cero modificado.</strong> Aquí vamos a modificar la probabilidad original en cero y la reemplazaremos por algún otro valor cualquiera <span class="math inline">\(p^M_0\in(0,1)\)</span> y haciendo ésto, debemos modificar nuestra función de masa de probabilidad y lo haremos de la siguiente forma:</li>
+</ul>
+<p style="text-align: center">
+<span class="math inline">\(P^M_k=\frac{1-P^M_0}{1-P_0}P_k\quad\forall k\neq0\)</span>
+</p>
+<p><strong>Estas dos últimas son la familia/clase (a,b,1).</strong></p>
+<p>Recordando un poco de las distribuciones:</p>
+<p><strong>Distribución Poisson</strong></p>
+<p><span class="math inline">\(X\sim Poisson(\lambda) \quad\text{con}\quad \lambda&gt;0\)</span>.</p>
+<p><span class="math inline">\(f(x)=e^{-\lambda}\frac{\lambda^x}{x!}\quad\text{para}\quad x=0,1,...\)</span></p>
+<p><span class="math inline">\(\mathbb{E}(X)=\lambda\)</span>.</p>
+<p><span class="math inline">\(Var(X)=\lambda\)</span>.</p>
+<p><span class="math inline">\(G(t)=e^{-\lambda(1-t)}\)</span>.</p>
+<p><span class="math inline">\(M(t)=exp[\lambda(e^t-1)]\)</span>.</p>
+<p>La suma de dos variables independientes con distribución Poisson(<span class="math inline">\(\lambda_1\)</span>) y Poisson(<span class="math inline">\(\lambda_2\)</span>) tiene distribución Poisson(<span class="math inline">\(\lambda_1+\lambda_2\)</span>).</p>
+Nota: <span class="math inline">\(Var(X)=\mathbb{E}[X]\)</span>.
+<img src="Ima%CC%81genes/4.3%20video1.png" width="70%" style="display: block; margin: auto;" />
+<p style="text-align: center">
+<a href="https://youtu.be/y_dOx8FhHpQ" class="uri">https://youtu.be/y_dOx8FhHpQ</a>
+</p>
+<p><strong>Distribución Binomial</strong></p>
+<p><span class="math inline">\(X\sim Bin(n,p) \quad\text{con}\quad n\in\mathbb{N}\hspace{0.4em}\text{y}\hspace{0.4em} p\in(0,1)\)</span>.</p>
+<p><span class="math inline">\(f(x)=\binom{n}{x}p^x(1-p)^{n-x}\quad\text{para}\quad x=0,1,...,n\)</span>.</p>
+<p><span class="math inline">\(\mathbb{E}(X)=np.\)</span></p>
+<p><span class="math inline">\(Var(X)=np(1-p)\)</span>.</p>
+<p><span class="math inline">\(G(t)=(1-p+pt)^n\)</span>.</p>
+<p><span class="math inline">\(M(t)=[1-p+pe^t]^n\)</span>.</p>
+<p>Una variable aleatoria binomial registra el número de éxitos en <span class="math inline">\(n\)</span> ensayos independientes Bernoulli en donde en cada ensayo la probabilidad de éxito es <span class="math inline">\(p\)</span>. La suma de dos variables independientes con distribución <span class="math inline">\(Bin(n,p)\)</span> y <span class="math inline">\(Bin(m,p)\)</span> tiene distribución <span class="math inline">\(Bin(n+m,p)\)</span>.</p>
+Nota: <span class="math inline">\(\mathbb{E}[X]&gt;Var(X)\)</span>.
+<img src="Ima%CC%81genes/4.3%20video2.png" width="70%" style="display: block; margin: auto;" />
+<p style="text-align: center">
+<a href="https://youtu.be/Tf08fZWbyV8" class="uri">https://youtu.be/Tf08fZWbyV8</a>
+</p>
+<p><strong>Distribución Binomial Negativa</strong></p>
+<p><span class="math inline">\(X\sim BinNeg(r,p) \quad\text{con}\quad r\in\mathbb{N}\hspace{0.4em}\text{y}\hspace{0.4em}\in(0,1)\)</span>.</p>
+<p><span class="math inline">\(f(x)=\binom{r+x-1}{x}p^r(1-p)^x\quad\text{para}\quad x=0,1,...\)</span></p>
+<p><span class="math inline">\(\mathbb{E}(X)=\frac{r(1-p)}{p}\)</span></p>
+<p><span class="math inline">\(Var(X)=\frac{r(1-p)}{p^2}\)</span>.</p>
+<p><span class="math inline">\(G(t)=[\frac{p}{(1-t(1-p))}]^r\)</span>.</p>
+<p><span class="math inline">\(M(t)=[\frac{p}{(1-qe^t)}]^r\)</span>.</p>
+<p>Este es el modelo que se usa para contar el número de fracasos antes de obtener el r-ésimo éxito en una sucesión de ensayos independientes Bernoulli, en donde en cada ensayo la probabilidad de éxito es <span class="math inline">\(p\)</span>. La distribución Binomial Negativa se reduce a la distribución geo métrica cuando <span class="math inline">\(r=1\)</span>.</p>
+Nota: <span class="math inline">\(\mathbb{E}[X]&lt;Var(X)\)</span>.
+<img src="Ima%CC%81genes/4.3%20video3.png" width="70%" style="display: block; margin: auto;" />
+<p style="text-align: center">
+<a href="https://youtu.be/l5uUzzUuZH4" class="uri">https://youtu.be/l5uUzzUuZH4</a>
+</p>
+<p>Observe que bajo el supuesto de clase (a,b,0), teniendo los valores de la esperanza y varianza se puede deducir la distribución.</p>
+<p>Existen diferentes parametrizaciones de las distribuciones anteriores, pero cuando nosotros hablemos de ellas, haremos referencia a las indicadas en esta sección salvo que se especifique lo contrario.</p>
+<p>En el caso de la distribución <strong>binomial negativa</strong> hay una variante importante a considerar. Tomando <span class="math inline">\(X\sim Bin Neg(r,p)\)</span> como se muestra en las distribuciones anteriores, <span class="math inline">\(X\)</span> mide el número de fracasos antes del r-ésimo éxito. Siendo este el caso, <span class="math inline">\(X\)</span> podría modelar problemas del estilo:</p>
+<ul>
+<li>Número de prendas que descartaste antes de elegir ``r’’.</li>
+<li>Número de veces que perdiste en un videojuego antes de ganar.</li>
+<li>Número de parejas tóxicas antes de tu <span class="math inline">\(2^{da}\)</span> relación sana.</li>
+</ul>
+<p>Y tomando en cuenta la modificación <span class="math inline">\(N=X+r\)</span>, entonces la función de masa de probabilidad (f.m.p.) es:</p>
+<p style="text-align: center">
+<span class="math inline">\(\mathbb{P}[N=n]=\mathbb{P}[X+r=n]=\mathbb{P}[X=n-r]=\binom{n-1}{n-r}p^r(1-p)^{n-r}\mathbb{I}_{\mathbb{N}\cup\{0\}}(n)\)</span>
+</p>
+<p>Esta es también llamada binomial negativa y cuenta el número total de ensayos:</p>
+<ul>
+<li>Número de prendas que viste en total antes de elegir ``r’’.</li>
+<li>Número de veces que jugaste un videojuego antes de ganarlo.</li>
+<li>Número de parejas que tuviste antes de tu <span class="math inline">\(2^{da}\)</span> relación sana.</li>
+</ul>
+<p>Por su naturaleza, podemos ver que tomando la recursión de clase (a,b,i) y haciendo un ajuste:</p>
+<p style="text-align: center">
+<span class="math inline">\(P_k=P_{k-1}\left(a+\frac{b}{k}\right)\Leftrightarrow k\left(\frac{P_k}{P{k-1}}\right)=ak+b\hspace{0.4em}\ddot{=}\hspace{0.4em}f(k)\)</span>
+</p>
+Obtenemos una ecuación de una línea recta <span class="math inline">\((ak+b)\)</span>, esto gráficamente muestra lo siguiente:
+<img src="Ima%CC%81genes/4.3%20distribucio%CC%81n1.png" width="70%" style="display: block; margin: auto;" />
+<p style="text-align: center">
+<span class="math inline">\(f(k)=b\quad\text{(constante)}\quad\text{donde}\quad a=0\quad ; \quad b&gt;0\)</span>
+</p>
+<img src="Ima%CC%81genes/4.3%20distribucio%CC%81n2.png" width="70%" style="display: block; margin: auto;" />
+<p style="text-align: center">
+<span class="math inline">\(f(k)=ak+b\quad \text{donde}\quad a&lt;0\quad ; \quad b&gt;0\)</span>
+</p>
+<img src="Ima%CC%81genes/4.3%20distribucio%CC%81n3.png" width="70%" style="display: block; margin: auto;" />
+<p style="text-align: center">
+<span class="math inline">\(f(k)=ak+b\quad \text{donde}\quad a\in(0,1)\quad ; \quad b\leq0\)</span>
+</p>
+<p><strong>Observación: Si <span class="math inline">\(P_{0}^{m}=0\)</span> entonces tomamos el caso de cero-truncado.</strong></p>
+<p>En páginas anteriores se afirma que la recursión de la clase <span class="math inline">\((a,b,0)\)</span> es válida para la clase <span class="math inline">\((a,b,1)\)</span>.</p>
+<p>Vamos a demostrar esto para el caso cero-modificado, ya que esto generaliza el caso cero-truncado.</p>
+<div id="proposición-cero-modificado" class="section level4 unnumbered hasAnchor">
+<h4>Proposición: Cero modificado<a href="frecuencia.html#proposición-cero-modificado" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Sea <span class="math inline">\(P_{0}^{M} \in (0,1)\)</span>.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+P_{k}^{M}&amp;=&amp;\frac{1-P_{0}^{M}}{1-P_{0}} P_{k} \quad \forall k \neq 0\\
+\end{eqnarray*}\]</span></p>
+<p><span class="math display">\[\begin{eqnarray*}
+&amp;\text{P.D.}&amp; \quad P_{k}^{M}=P_{k-1}^{M}\left( a + \frac{b}{k}  \right) \quad \forall k \in \mathbb{N}\backslash \{ 0,1\} \\
+&amp;\text{P.D.}&amp; \quad \displaystyle\sum_{i=0}^{\infty} P_{i}^{M}=1 \quad y \quad P_{i}^{M} \in[0,1] \quad \forall i
+\end{eqnarray*}\]</span></p>
+<p><em>Demostración.</em></p>
+<p><span class="math display">\[\text{P.D.} \quad P_{k}^{M}=P_{k-1}^{M}\left( a + \frac{b}{k}  \right) \]</span></p>
+<p><span class="math display">\[\begin{eqnarray*}
+P_{k}^{M}&amp;=&amp;\frac{1-P_{0}^{M}}{1-P_{0}} P_{k}\\
+&amp;\overset{\mathrm{k&gt;1}}{=}&amp; \frac{1-P_{0}^{M}}{1-P_{0}} P_{k-1}\left( a + \frac{b}{k}  \right)  \\
+&amp;=&amp; \left[ \frac{1-P_{0}^{M}}{1-P_{0}} P_{k-1}  \right] \left( a + \frac{b}{k}  \right)\\
+&amp;=&amp; P_{k-1}^{M}\left( a + \frac{b}{k}  \right)
+\end{eqnarray*}\]</span></p>
+<p>Por lo tanto:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+P_{k}^{M}&amp;=&amp;P_{k-1}^{M}\left( a + \frac{b}{k}  \right) \quad \forall k \in \mathbb{N}\backslash \{0,1\}\blacksquare\\
+\end{eqnarray*}\]</span></p>
+<p>Surge la siguiente incógnita: ¿Será el conjunto de probabilidades modificadas, una función de masa de probabilidad (f.m.p)?</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\text{P.D.} \quad \displaystyle\sum_{i=0}^{\infty} P_{i}^{M}&amp;=&amp;1
+\end{eqnarray*}\]</span></p>
+<p><em>Demostración.</em>
+<span class="math display">\[\begin{eqnarray*}
+\sum_{i=0}^{\infty} P_{i}^{M} &amp;=&amp; P_{0}^{M}+ \sum_{i=1}^{\infty}P_{i}^{M}\\
+&amp;=&amp; P_{0}^{M}+\sum_{i=1}^{\infty}\left( \frac{1-P_{0}^{M}}{1-P_{0}} P_{i} \right)\\
+&amp;=&amp; P_{0}^{M}+\left(\frac{1-P_{0}^{M}}{1-P_{0}} (1-P_{0}) \right)\\
+&amp;=&amp; P_{0}^{M}+1-P_{0}^{M}\\
+&amp;=&amp; 1\blacksquare
+\end{eqnarray*}\]</span></p>
+<p><em>Demostración.</em></p>
+<p><span class="math display">\[\begin{eqnarray*}
+P.D \quad P_{i}^{M} \in [0,1] \quad  \forall i
+\end{eqnarray*}\]</span></p>
+<p>Tenemos que, <span class="math inline">\(P_{0}^{M} \in [0,1]\)</span> por definición del modelo. Entonces:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    1-P_{0}^{M} \in [0,1]\\
+    \end{eqnarray*}\]</span></p>
+<p>Luego, <span class="math inline">\(P_{i} \in [0,1]\)</span> , ya que viene de una de las variables aleatorias que ya conocemos. De este modo:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    1-P_{i} \in [0,1] \forall i \\
+\end{eqnarray*}\]</span></p>
+<p>Entonces:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+P_{k}^{M}&amp;=&amp;\frac{1-P_{0}^{M}}{1-P_{0}} P_{k} \geq 0 \quad \forall k \in \mathbb{N}\backslash \{ 0\}\\
+\end{eqnarray*}\]</span></p>
+<p>Además, por la demostración anterior: <span class="math inline">\(\sum_{i=0}^{\infty} P_{i}^{M}=1\)</span>, es imposible que <span class="math inline">\(P_{i} &gt;1\)</span>, debido a que todos son no-negativos y en total suman 1.</p>
+<p>Por lo tanto:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+P_{i}^{M} \in [0,1] \forall i\blacksquare
+\end{eqnarray*}\]</span></p>
+<p>¿Qué finalidad tiene modificar una variable aleatoria de clase <span class="math inline">\((a,b,0)\)</span> a una de clase <span class="math inline">\((a,b,1)\)</span>?</p>
+<p>Noten que en concreto, lo que se modifica en la clase <span class="math inline">\((a,b,1)\)</span>, es la probabilidad en cero; esa es la que nosotros podemos manipular a nuestro antojo. Basándonos en el fenómeno que estamos modelando, lo que nosotros buscamos ahí, es alterar la probabilidad de observar un siniestro. Lo que sucede fuera del cero es simplemente una compensación a la modificación que nosotros hicimos, conservando la forma fuera del cero que tiene la distribución por naturaleza.</p>
+<div id="ejemplo-1." class="section level5 unnumbered hasAnchor">
+<h5>Ejemplo 1.<a href="frecuencia.html#ejemplo-1." class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Si N pertenece a la familia <span class="math inline">\((a=0, b=8)\)</span>. Encuentra: <span class="math inline">\(\mathbb{P}[N=2]\)</span> y <span class="math inline">\(M_{N}(t)\)</span>.</p>
+</div>
+<div id="solución" class="section level5 unnumbered hasAnchor">
+<h5>Solución:<a href="frecuencia.html#solución" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Como <span class="math inline">\(a=0\)</span>; <span class="math inline">\(b&gt;0\)</span>. Entonces <span class="math inline">\(N \sim P_{oi}(\lambda=b=8)\)</span>.</p>
+<p>Por lo que:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+f_{N}(n)&amp;=&amp; \mathbb{P}[N=n]\\
+&amp;=&amp; e^{-8}\left( \frac{8^{n}}{n!} \right) \mathbb{I}_{\mathbb{N} \bigcup \{0\}} \quad (n)\\
+\end{eqnarray*}\]</span></p>
+<p>Entonces:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+f_{N}(2)&amp;=&amp; e^{-8}\left( \frac{8^{2}}{2!} \right)\\
+&amp;\approx &amp; 0.0107348
+\end{eqnarray*}\]</span></p>
+<p>Por otro lado:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+M_{N}(t)&amp;=&amp; e^{\lambda(e^{t}-1)}\\
+&amp;=&amp; 0.0107348
+\end{eqnarray*}\]</span></p>
+</div>
+<div id="ejemplo-2." class="section level5 unnumbered hasAnchor">
+<h5>Ejemplo 2.<a href="frecuencia.html#ejemplo-2." class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Sabemos que N es de la familia <span class="math inline">\((a,b,0)\)</span> y <span class="math inline">\(P_{0}=e^{-1.5}\)</span>, <span class="math inline">\(P_{1}=1.5e^{-1.5}\)</span>, <span class="math inline">\(P_{2}=\frac{9}{8}e^{-1.5}\)</span>. Encontrar <span class="math inline">\(\mathbb{E}[N^{2}]\)</span></p>
+</div>
+<div id="solución-1" class="section level5 unnumbered hasAnchor">
+<h5>Solución:<a href="frecuencia.html#solución-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Recordemos que al ser familia <span class="math inline">\((a,b,0)\)</span>, entonces:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\frac{P_k}{P_{k-1}}&amp;=&amp; a+ \frac{b}{k} \quad \forall k \in \mathbb{N}\backslash \{ 0\}\\
+\end{eqnarray*}\]</span></p>
+<p>Lo cual, nos da el siguiente sistema de ecuaciones:</p>
+<p><span class="math display">\[\begin{equation*}
+   \left \{ \begin{matrix}
+    \displaystyle\frac{P_1}{P_0}=\displaystyle\frac{3}{2}=a+b\\
+    \\\displaystyle\frac{P_2}{P_1}=\displaystyle\frac{3}{4}=a+\displaystyle\frac{b}{2}
+    \\
+\end{matrix}\right.
+\end{equation*}\]</span></p>
+<p>Resolviendo el sistema de ecuaciones, obtenemos: <span class="math inline">\(a=0\)</span> y <span class="math inline">\(b=3/2\)</span>.</p>
+<p><span class="math inline">\(\therefore\)</span> N es de clase/familia <span class="math inline">\((a=0, b=3/2&gt;0,0)\)</span>. Entonces <span class="math inline">\(N \sim P_{oi}(\lambda=3/2=1.5=b)\)</span>.</p>
+<p>De este modo</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\mathbb{E}[N^{2}]&amp;=&amp; Var(N)+\mathbb{E}^{2}[N]\\
+&amp;=&amp; \lambda + \lambda^{2}\\
+&amp;=&amp; 3.75\\
+\end{eqnarray*}\]</span></p>
+<p>Por lo tanto:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\mathbb{E}[N^{2}]&amp;=&amp;3.75\\
+\end{eqnarray*}\]</span></p>
+</div>
+<div id="ejemplo-3." class="section level5 unnumbered hasAnchor">
+<h5>Ejemplo 3.<a href="frecuencia.html#ejemplo-3." class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Consideremos <span class="math inline">\(N \sim P_{oi}\)</span>(2.1), encuentre, <span class="math inline">\(P_{1}, P_{2}, P_{3}\)</span> para los casos: cero truncado y cero modificado con <span class="math inline">\(P_{0}^{M}=0.6\)</span>.</p>
+</div>
+<div id="solución-2" class="section level5 unnumbered hasAnchor">
+<h5>Solución:<a href="frecuencia.html#solución-2" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Recordemos que:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+P_{k}^{T}&amp;=&amp; \frac{P_{k}}{1-P_{0}}\\
+P_{k}^{M}&amp;=&amp; \frac{1-P_{0}^{M}}{1-P_{0}}P_{k} \quad \forall k \in \mathbb{N} \backslash \{ 0\}
+\end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(P_{k} \ddot{=} \mathbb P [N=k] = f_{N}(k) = e^{\text{2.1}}(\frac{\text{-2.1}^{n}}{n!})\)</span> <span class="math inline">\(\mathbb I_{\mathbb N \cup \{0\}}^{(n)}\)</span></p>
+<p>La recursión es válida incluso para la clase <span class="math inline">\((a,b,1)\)</span>.</p>
+<p><span class="math inline">\(\Rightarrow P_{k}^{M} = P_{k-1}^{M} (a+\frac{b}{k}) = \frac{1-P_{0}^{M}}{P_{0}}P_{k} \forall k\in\mathbb{N}\backslash\{0,1\}\)</span></p>
+</div>
+<div id="caso-cero-truncado" class="section level5 unnumbered hasAnchor">
+<h5>Caso cero truncado<a href="frecuencia.html#caso-cero-truncado" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p><span class="math display">\[\begin{eqnarray*}
+    P_{1}^{T} &amp;=&amp;\underbrace{\frac{e^{-2.1}(2.1)}{1-e^{-2.1}}}_{\substack{\frac{P_1}{1-P_0}=\frac{1-P_0^T}{1-P_0}P_1}}\approx 0.293043568\\
+    P_2^T&amp;=&amp;\underbrace{\frac{e^{-2.1}(2.1)}{1-e^{-2.1}}\left(0+\frac{2.1}{2}\right)}_{\substack{P_1^T\left(a+\frac{b}{2}\right)\\\text{(recursión)}}}=\underbrace{\frac{1-0}{1-e^{-2.1}}\left[e^{-2.1}\left(\frac{2.1^2}{2!}\right)\right]}_{\substack{\frac{1-P_0^T}{1-P_0}(P_2)\\\text{(identidad)}}}\approx 0.3076957464\\
+    P_3^T&amp;=&amp;P_2^T\left(0+\frac{b}{3}\right)\approx 0.215387
+\end{eqnarray*}\]</span></p>
+</div>
+<div id="caso-cero-truncado-1" class="section level5 unnumbered hasAnchor">
+<h5>Caso cero truncado<a href="frecuencia.html#caso-cero-truncado-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p><span class="math display">\[\begin{eqnarray*}
+    P_{0}^{M} &amp;=&amp; 0.6\mbox{ entonces:}\\
+    P_{1}^{M} &amp;=&amp;\frac{1-P_{0}^{M}}{1-P_{0}}P_{1} = \frac{1-0.6}{1-e^{-2.1}}(2.1)e^{-2.1} \approx 0.117217\\
+    P_{2}^{M} &amp;=&amp; P_{1}^{M}\left(a+\frac{b}{2}\right) \approx 0.123078\\
+    P_{3}^{M} &amp;=&amp; P_{2}^{M}\left(a+\frac{b}{3}\right) \approx 0.086154
+\end{eqnarray*}\]</span></p>
+<p>Todo es muy lindo hasta aquí pero… ¿Qué sucedería si buscamos obtener momentos utilizando las probabilidades modificadas?</p>
+<p>Buscamos la mantera de encontrar la función generadora de momentos de una <span class="math inline">\(N^{*}\)</span> de clase <span class="math inline">\((a,b,1)\)</span> en términos de su correspondiente <span class="math inline">\(N\)</span> original de clase <span class="math inline">\((a,b,0)\)</span>. Entonces, recordemos que <span class="math inline">\(\mathbb P[N^{*} = 0] \ddot{=} P_{0}^{M}\)</span> definida por nosotros. Usando la notación:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \mathbb P[N^{*} = k] &amp;\ddot{=}&amp; P_{k}^{M} \mbox{ &amp; }  \mathbb P[N = k] \ddot{=} P_{k}, \mbox{ así }:\\
+    P_{k}^{M} &amp;=&amp; \frac{1-P_{0}^{M}}{1-P_{k}}P_{k} \forall k\neq 0\\
+\end{eqnarray*}\]</span></p>
+<p>Luego, se tiene que:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\displaystyle M_{N^{*}}(t) = \mathbb E[e^{N^{*}t}] = \sum_{k=0}^{\infty}P_{k}^{M}e^{tk} &amp;=&amp; P_{0}^{M} +\sum_{k=1}^{\infty} P_{k}^{M}e^{tk}\\
+        &amp;=&amp; \displaystyle P_{0}^{M} + \sum_{k=1}^{\infty} \left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) P_{k}e^{tk}\\
+        &amp;=&amp; \displaystyle P_{0}^{M} + \left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) \sum_{k=1}^{\infty} P_{k}e^{tk}\\
+        &amp;=&amp; \displaystyle P_{0}^{M} + \left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) \left[\sum_{k=0}^{\infty} P_{k}e^{tk} - P_{0}{e^0}\hspace{0.7em} \right]\\
+        &amp;=&amp; \displaystyle P_{0}^{M} + \left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) [M_{N}(t) - P_{0}]\\
+        &amp;=&amp; \displaystyle P_{0}^{M} + \left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) [M_{N}(t)-1+1 - P_{0}]\\
+        &amp;=&amp; \displaystyle P_{0}^{M} +\left[\frac{(1-P_{0}^{M})(M_{N}(t)-1)}{1-P_{0}} +1 - P_{0}^{M}\right]\\
+        &amp;=&amp; \displaystyle 1 -\left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) (1-M_{N}(t))\\
+\end{eqnarray*}\]</span></p>
+<p style="text-align: center">
+<span class="math inline">\(M_{N^{*}}(t) = 1 -(\frac{1-P_{0}^{M}}{1-P_{0}}) (1-M_{N}(t))\)</span>
+</p>
+<p>Recordemos que en general la generadora de probabilidades de una variable aleatoria <span class="math inline">\(X\)</span> se define como:</p>
+<p><span class="math display">\[G_{X}(t) \hspace{0.4em}\ddot{=}\hspace{0.4em} \mathbb E[t^{X}]\]</span></p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \mbox{Además }M_{X}(ln(t)) \ddot{=} \mathbb E [e^{ln(t)X}] = \mathbb E [e^{ln(t^{X})}]=\mathbb E[t^{X}] \ddot{=} G_{X}^{(t)}\\
+\end{eqnarray*}\]</span></p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \Rightarrow \underline{G_{N^*}}=  M_{N^{*}}(ln(t)) = 1-\left(\frac{1-P_{0}^{M}}{1-P_{0}}\right)[1-M_{N}(ln(t))]\\
+    &amp;=&amp; \underline{1-\left(\frac{1-P_{0}^{M}}{1-P_{0}}\right)[1-G_{N}(t)]}
+\end{eqnarray*}\]</span></p>
+<p>Por lo tanto, la generadora de momentos y la generadora de probabilidad de <span class="math inline">\(N^{*}\)</span> de clase <span class="math inline">\((a,b,1)\)</span> en términos de su original <span class="math inline">\(N\)</span> de clase <span class="math inline">\((a,b,0)\)</span> son:</p>
+<p><strong>Generadora de momentos:</strong></p>
+<p><span class="math inline">\(M_{N^{*}}(t) = 1 -(\frac{1-P_{0}^{M}}{1-P_{0}}) (1-M_{N}(t))\)</span></p>
+<p><strong>Generadora de probabilidad:</strong></p>
+<p><span class="math inline">\(G_{N^{*}} = 1-(\frac{1-P_{0}^{M}}{1-P_{0}})[1-G_{N}(t)]\)</span></p>
+<p>Esto da como resultado un último lema y corolario:</p>
+<p><strong>Lema</strong></p>
+<p><span class="math display">\[\begin{eqnarray*}
+\frac{\partial^{k}}{\partial t^{k}} M_{N^{*}}(t) \doteq M_{N^{*}}^{(k)}(t) = (\frac{1-P_{0}^{M}}{1-P_{0}}) M_{N}^{(k)}(t) \doteq (\frac{1-P_{0}^{M}}{1-P_{0}}) \frac{\partial^{k}}{\partial t^{k}} M_{N}(t)
+\end{eqnarray*}\]</span></p>
+<p><em>Demostración.</em> (Inducción)</p>
+<ul>
+<li><span class="math inline">\(n=1\)</span> (Base de inducción)</li>
+</ul>
+<p><span class="math display">\[\begin{eqnarray*}
+\displaystyle M_{N^{*}}^{(1)}(t) &amp;=&amp; \frac{\partial}{\partial t} \left[1 - \left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) (1 - M_{N}(t))\right]\\
+    &amp;=&amp; \displaystyle \frac{\partial}{\partial t} \left[- \left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) + \left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) M_{N}(t)\right] \\
+    &amp;=&amp; \displaystyle \left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) M_{N}^{(1)}(t) \\
+\end{eqnarray*}\]</span></p>
+<ul>
+<li>Supongamos válido para <span class="math inline">\(k-1\)</span> (Hipotesis de inducción)</li>
+</ul>
+<p><span class="math display">\[M_{N^{*}}^{(k-1)}(t) = \left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) M_{N}^{(k-1)}(t)\]</span>
+- P.D. Válido para <span class="math inline">\(k\)</span> (Paso inductivo)</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    M_{N^{*}}^{(k)}(t) = \frac{\partial}{\partial t} M_{N^{*}}^{(k-1)}(t) &amp;=&amp; \frac{\partial}{\partial t} \left[\left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) M_{N}^{(k-1)}(t)\right]\\
+    &amp;=&amp; \left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) M_{N}^{(k)}(t)_{\blacksquare}
+\end{eqnarray*}\]</span></p>
+<p><strong>Corolario</strong></p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \mathbb E[(N^{*})^{k}] = \left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) \mathbb E [N^{k}]
+\end{eqnarray*}\]</span></p>
+<p>Script:“Familia (a,b,i)”</p>
+<p>Un vídeo donde se explica a grandes rasgos lo anterior lo podrán ver en el siguiente enlace:</p>
+<img src="Ima%CC%81genes/4.%203%20Video%20Modelos%20Actuariales.png" width="70%" style="display: block; margin: auto;" />
+<p style="text-align: center">
+<a href="https://www.youtube.com/watch?v=ZX2W59Mdaag" class="uri">https://www.youtube.com/watch?v=ZX2W59Mdaag</a>
+</p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="medidas-de-riesgo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="frecuencia-anexo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-Frecuencia.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Notas_TeoriadelRiesgo.pdf", "Notas_TeoriadelRiesgo.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

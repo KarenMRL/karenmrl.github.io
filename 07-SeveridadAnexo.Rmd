@@ -1,0 +1,490 @@
+# Severidad Anexo
+
+## Pago del asegurado con deducible y monto máximo de beneficio: {-}
+
+\begin{equation*}
+    Z\ \ddot{=}\ \text{Lo que paga el asegurado}\\ 
+    X\ \ddot{=}\ \text{Monto del siniestro, }X \in (a,b)
+\end{equation*}
+
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("Imágenes/8.Recta Asegurado y Aseguradora.png", error=FALSE)
+```
+
+\begin{equation*}
+    Z =
+    \left\{ 
+    \begin{array}{lcc}
+        X & si & X<d \Longleftrightarrow Z\in [a,d)\\\\
+        d & si & X\in [d,u] \Longleftrightarrow Z=d\\\\
+        X-u+d & si & X>u \Longleftrightarrow Z\in(d,b-u+d]\\
+    \end{array}
+    \right.
+\end{equation*}
+\begin{equation*}
+    Z = máx\{min\{ X,d\},X-(u-d)\}\\
+    \end{equation*}
+\begin{equation*}
+    \text{Si }X<d \longrightarrow f_{z}(Z) = f_{X}(Z)\ \forall\ Z \in [a,d)\\
+    \end{equation*}
+\begin{equation*}
+    \text{Si }X\in[d,u] \longrightarrow f_{z}(d) = F_{X}(u)-F_{X}(d)\\\\
+    \end{equation*}
+\begin{equation*}
+    \text{Si }X>u \longrightarrow z\in(u,b-u+d]\\\\
+    \end{equation*}
+\begin{eqnarray*}
+    \longrightarrow F_{z}(Z) &=& \mathbb P[Z\leq z]\\
+&=& \mathbb P[Z\leq z | Z\in[a,d]] \mathbb P[Z\in [a,d]]+ \mathbb P[Z\leq z | Z = d] \mathbb P[Z=d]+ .. \\
+& & ..+\mathbb P[Z\leq z | Z\in(d,b-u+d]] \mathbb P[Z\in(d,b-u+d]]\\
+&=& F_{X}(d) + F_{X}(u) - F_{X}(d) + \mathbb P[u<Z\leq b-u+d]\\
+&=& F_{X}(u) + \mathbb P [d < X -u +d \leq Z]\\
+&=& F_{X}(u) + \mathbb P [u < X \leq Z+u-d]\\
+&=& F_{X}(u) + F_{X}(Z+u-d) - F_{X}(u)\\\\
+\end{eqnarray*}
+\begin{equation*}
+    F_{X}(Z+u-d) \longrightarrow f_{z}(Z) = f_{X}(Z+u-d) \forall Z > d\\
+\end{equation*}
+\begin{equation*}
+    \therefore f_{z}(z) = 
+    \left\{ 
+        \begin{array}{lcc}
+            f_{X}(Z) & si & Z\in [a,d)\\\\
+            F_{X}(u) - F_{X}(d) & si & Z=d\\\\
+            f_{X}(Z+u-d) & si & Z\in(d,b-u+d]\\
+        \end{array}
+    \right. \\
+\end{equation*}
+
+## Generalización del cálculo de variables esperadas para $Y_p$. {-}
+
+Como ya se mencionó en las notas, hay una manera de generalizar el cálculo del valor esperado de cualquier función $Y_p$. Si $Y_p$ tiene probabilidad positiva de tomar el cero, entonces $f_{Y_{L}}(0)=\mathbb{P}[Y_{L} \equiv 0]>0$ y así:
+
+\begin{equation*}
+    \mathbb{E}[h(Y_{L})]=h(0)f_{Y_L}(0)+ \mathbb{E}[h(Y_p)]\left(1-f_{Y_L}(0)\right)
+\end{equation*}
+
+De donde se obtiene que:
+
+\begin{equation*}
+    \mathbb{E}[h(Y_{p})] = \frac{\mathbb{E}[h(Y_{L})]- h(0)f_{Y_L}(0)}{1-f_{Y_L}(0)} = \frac{\mathbb{E}[h(Y_{L})]-h(0)F_{X}\left(\frac{d}{1+r}\right)}{S_{X}\left(\frac{d}{1+r}\right)}
+\end{equation*}
+
+Por otro lado, si $Y_p$ toma el cero con probabilidad cero, entonces $Y_p \equiv Y_L$ pues la compañía siempre paga en cualquier escenario. Esto significa que en este caso, calcular valores esperados de $Y_p$ se hace de manera idéntica a los de $Y_L$.
+Más aún, gracias a estos últimos resultados, y como ya sabemos obtener valores esperados de $Y_L$, ya podemos obtener la esperanza de cualquier transformación de $Y_p$.
+
+## Generalización de la fórmula de Darth Vader. {-}
+
+**Lemma 2.2.13.** if $Y\geq 0$ and $p>0$ then $E(Y^p)=\int_{0}^{\infty}py^{p-1}P(Y>y)dy$.
+
+$Proof$. Using the definition of expected value, Fubini's theorem (for non-negative random variable), and then calculation the resulting integrals gives:
+\begin{eqnarray*}
+    \int_{0}^{\infty} py^{p-1}P(Y>y)dy &=& \int_{0}^{\infty} \int_{\Omega} py^{p-1}1_{(Y>y)}dPy\\
+    &=& \int_{\Omega} \int_{0}^{\infty}  py^{p-1}1_{(Y>y)}dydP\\
+    &=& \int_{\Omega} \int_{0}^{Y} py^{p-1}dydP = \int_{\Omega} Y^{p}dP \\
+    &=& EY^{p}\\
+\end{eqnarray*}
+which is the desired result.
+
+**2.2.6.** (i) Show that if $X \geq 0$ is integer valued $EX = \sum_{n\geq1} P(X\geq n)$.
+(ii) Find a similar expression for $EX^2$.
+
+Si $Y \geq 0$, aplicamos al Lema 2.2.13:
+
+$\mathbb E Y^{p} = \int_{0}^{\infty} Py^{p-1} \mathbb P[Y > y]dy = \sum_{n=0}^{\infty} \int_{n}^{n+1} Py^{p-1} \mathbb P[Y>y]dy$
+
+pero, tomando $y\in[n,n+1)$ $\longrightarrow$ $\mathbb P[Y>y] = \mathbb P[Y>y] \longrightarrow \mathbb E Y^{p} = \sum_{n=0}^{\infty} \int_{n}^{n+1} Py^{p-1} P[Y>n]dy$, sacando constantes:
+
+\begin{eqnarray*}
+    \mathbb E Y^{p} &=& \sum_{n=0}^{\infty} \int_{n}^{n+1} Py^{p-1} \mathbb P [Y>n] dy = 
+    \sum_{n=0}^{\infty} P \mathbb P[Y>n] \int_{n}^{n+1} y^{p-1} dy \\
+    &=& \sum_{n=0}^{\infty} \mathbb P[Y>n] ((n+1)^{p}-(n)^{p})\\
+    &=& \sum_{n=0}^{\infty} \mathbb P[Y\geq n+1] ((n+1)^{p}-n^{p}) \\
+    &=&\sum_{n=1}^{\infty} \mathbb P[Y\geq n] (n^{p}-(n+1)^{p})\\
+\end{eqnarray*}
+
+En particular, tenemos:
+
+i) $\mathbb E Y = \sum_{n=1}^{\infty} \mathbb P[Y\geq n] (n-(n-1)) = 
+\sum_{n=1}^{\infty} \mathbb P[Y\geq n]$. 
+
+    Cuando $p=2$ $\longrightarrow$ $n^2-(n-1)^2=n^2-n^2+2n-1$ $=2n-1$
+
+ii) $\mathbb E Y^2 = \sum_{n=1}^{\infty} \mathbb P[Y\geq n] (n^2-(n-1)^2) =
+\sum_{n=1}^{\infty} (2n-1) \mathbb P[Y\geq n]$
+
+Recordemos el siguiente resultado para el cálculo de la variable de cobertura.
+
+**Ejercicio para el Lector: Demuestra que la formula de la derecha es válida para $X$ cualquier v.a.**
+
+\begin{equation*}
+        F_{Y}(t) \ddot{=} \mathbb P[Y\leq t] = 
+        \left\{ 
+        \begin{array}{lcc}
+            0 & si & t<0\\\\
+            F_{\chi}(\frac{t+d\alpha}{\alpha(1+r)}) & 
+            si & t\in[0,\alpha(u-d))\\\\
+            1 & si & t\geq \alpha(u-d)\\
+        \end{array}
+        \right.
+\end{equation*}
+
+Entonces:
+
+\begin{equation*}
+        S_{Y}(t)\ \ddot{=}\ \mathbb P[Y > t] = 
+        \left\{ 
+        \begin{array}{lcc}
+            1 & si & t<0\\\\
+            S_{\chi}(\frac{t+d\alpha}{\alpha(1+r)}) & 
+            si & t\in[0,\alpha(u-d))\\\\
+            0 & si & t\geq \alpha(u-d)\\
+        \end{array}
+        \right. \\
+\end{equation*}
+
+Usando lo anterior, como $Y\geq 0$, calculamos a la Darth Vader:
+
+\begin{equation*}
+        \mathbb E[Y^{p}] = \int_{0}^{\infty} pt^{p-1} \mathbb P[Y > t] dt =
+        \int_{0}^{\alpha(u-d)} pt^{p-1} 
+        S_{\chi}(\frac{t+d\alpha}{\alpha(1+r)}) dt
+\end{equation*}
+
+En particular si $p=1$ tenemos que:
+
+\begin{eqnarray*}
+    \mathbb E[Y] &=& \mathbb E[Y^{p}] = \int_{0}^{\alpha(u-d)} pt^{p-1} 
+    S_{\chi}(\frac{t+d\alpha}{\alpha(1+r)}) dt \\
+    &=& \int_{0}^{\alpha(u-d)}
+    S_{\chi}(\frac{t+d\alpha}{\alpha(1+r)}) dt
+    \left\{ 
+    \begin{array}{lcc}
+        \chi = \frac{t+dx}{\alpha(1+r)} \longrightarrow dx = \frac{dt}{\alpha(1+r)}\\
+    \end{array}
+    \right.\\
+    &=& \alpha(1+r) \int_{\frac{d}{1+r}}^{\frac{u}{1+r}}
+    S_{\chi}dx
+\end{eqnarray*}
+Que es el resultado que ya teníamos en las notas.
+
+**2.2.7. Generalize Lemma 2.2.13**
+
+to conclude that if $H(x)=\int_{(-\infty,x)}h(y)dy$ with $h(y)\geq 0$, then 
+$$\mathbb{E}[H(X)]=\int^\infty_{-\infty}h(y)P(X\geq y)dy$$
+An important special case is $H(x)=exp(\theta x)$ with $\theta>0$.
+
+
+**Nota:** funciona con $\mathbb{P}[X>y]$ pues la integral ($dy$) en un punto es cero. Con la finalidad de aclarar/recordar algunas cosas para probar lo anterior:
+
+
+Let $(X,\mathcal{A},\mu_1)$ and $(Y,\mathcal{B},\mu_2)$ be two $\sigma$-finite measure spaces. Let 
+
+\begin{eqnarray*}
+    \Omega=X \times Y=\{(x,y):x\in X,y\in Y\}\\
+    \end{eqnarray*}
+    \begin{eqnarray*}
+    \mathcal{S}&=&\{A\times B:A\in\mathcal{A},B\in\mathcal{B}\}
+\end{eqnarray*}
+
+Sets in $S$ are called **rectangles**. Let $\mathcal{F}=\mathcal{A}\times\mathcal{B}$ be the $\sigma$-algebra generated by $\mathcal{S}$.
+
+
+**Nota:** La notación puede no ser la mejor, pero en este caso, pensándolo en términos de v.a.'s, sin pérdida de generalidad, $X$ denota un soporte, $A$ eventos del soporte y $\mu_1$ denota una medida $\sigma$-finita.
+
+
+**Theorem 1.7.1.**
+
+There is a unique measure $\mu$ on $\mathcal{F}$ with $$\mu(A\times B)=\mu_1(A)\mu_2(B)$$
+**Notation.** $\mu$ is often denoted by $\mu_1$ \times $\mu_2$.
+
+**Nota:** Pensando en un caso particular de este teorema, recuerden que puede haber dos funciones de distribución conjunta (acumulada) diferentes con las mismas marginales, pero este garantiza que hay una única dada por el producto de las marginales. De aquí, una pregunta razonable cuando se esta aprendiendo probabilidad es: Dados un par de v.a. digamos $X$ y $Y$; ¿Cuál es su densidad conjunta? La respuesta es, quién sabe... sus marginales no nos permiten observar su comportamiento de manera conjunta.
+
+### Ejercicio: {-}
+
+Muestra un ejemplo de dos funciones de densidad conjunta diferentes, que tengan las mismas marginales.
+
+
+**Nota:** Tenemos el siguiente resultado:
+
+**Theorem 1.7.2. Fubini's theorem**
+If $f\geq 0$ or $\int|f|d\mu<\infty$ then $$\int_X\int_Y f(x,y)\mu_2(dy)\mu_1(dx)=\int_{X\times Y}fd\mu=\int_Y\int_X f(x,y)\mu_1(dx)\mu_2(dy)$$
+
+
+Donde s.p.g. $\mu_1(dx)$ es notación para indicar que la función $f$ se integra sobre $x$ con respecto a la media $\mu_1$. 
+
+**Procedemos con la prueba del teorema 2.2.7.**
+
+Considerando un espacio de probabilidad ($\Omega,\mathscr{F},P$), donde $P$ es la función de distribución (acumulada) de una v.a. $X$. $P(x)\hspace{0.4em}\ddot{=}\hspace{0.4em}\mathbb{P}[X\leq x]$.
+
+$$\mathbb{E}[H(X)]\hspace{0.4em}\ddot{=}\hspace{0.4em}\int_\Omega H(x)dP=\int_{\Omega}\left(\int_{(-\infty,x]}h(y)dy\right) dP=\int_\Omega\left(\int_{\mathbb{R}}\mathbb{I}_{(-\infty,x]}h(y)dy\right)dP$$
+
+Pero gracias a las hipótesis, es claro que $\mathbb{I}_{(-\infty,x]}(y)h(y)\geq 0$ como función de $y$ (¡En serio!). Ergo, podemos invocar el teorema de fubini al resultado anterior:
+
+\begin{eqnarray*} 
+\mathbb{E}[H(X)]&=&\int_{\Omega}\left(\int_{\mathbb{R}}\mathbb{I}_{(-\infty,x]}(y)h(y)dy\right)dP\\
+&\overset{\underset{\downarrow}{\text{Fubini}}}{=}&\int_{\mathbb{R}}\left(\int_{\Omega}\mathbb{I}_{(-\infty,x]}(y)h(y)dP\right)dy\quad \left \{ \begin{matrix}
+&\mbox{Obs. } dy=\lambda(dy)\\
+&\mbox{donde } \lambda \mbox{ es la medida} \\
+&\mbox{de Lebesgue.}
+\end{matrix}\right.
+\end{eqnarray*}
+
+Pero $P$ mide con $x$,i.e., $dP=P(dx)$ entonces $y$ es constante para $dP$:
+
+\begin{eqnarray*}
+    \Rightarrow \mathbb{E}[H(X)]&=&\int_{\mathbb{R}}\left(h(y)\int_\Omega\mathbb{I}_{(-\infty,x]}(y)dP\right)dy\\
+    &=& \int_{\mathbb{R}}\left(h(y)\int_\Omega\mathbb{I}_{[y,\infty)}(x)dP\right)dy\left\{\begin{matrix}
+        \mbox{El conjunto de la indicadora}\\
+        es:-\infty<y\leq x <\infty
+    \end{matrix}\right.\\
+   &=& \int_{\mathbb{R}}\left(h(y)\int_{[y,\infty)}dP\right)dy=\int_{\mathbb{R}}h(y)\mathbb{P}[X\geq y]dy.\quad\blacksquare
+\end{eqnarray*}
+
+Un ejemplo/caso especial es el que menciona el mismo teorema:
+
+Sea $H(x)=exp(\theta x)\Rightarrow h(x)=H'(x)=\theta exp(\theta x)$ por el teorema fundamental del cálculo.
+
+Invocando el último teorema, cualquier generadora de momentos se puede calcular como: $$\mu_X(\theta)\hspace{0.4em}\ddot{=}\hspace{0.4em}\mathbb{E}[e^{\theta X}]=\mathbb{E}[H(X)]=\int_{\mathbb{R}}h(y)\mathbb{P}[X\geq y]dy=\int_{\mathbb{R}}\theta exp(\theta y)\mathbb{P}[X\geq y]dy$$  a la Darth Vader.
+
+Un ejemplo del resultado anterior es tomando $X\sim exp(\lambda)$, así:
+
+
+- \begin{eqnarray*}\mathbb{P}[X\geq y]=\mathbb{P}[X>y]\hspace{0.4em}\ddot{=}\hspace{0.4em}S_X(y)=\left\{\begin{matrix}
+        e^{-\lambda y}&\mbox{si}& y\geq 0\\
+        1 &\mbox{si}& y<0
+    \end{matrix}\right.\end{eqnarray*}
+
+
+\begin{eqnarray*}
+    \Rightarrow \int_{\mathbb{R}}\theta exp(\theta y)\mathbb{P}[X\geq y]dy &=& \overset{\text{¿Por qué es 1?}_{\hspace{0.2em}\searrow}}{{\int^0_{-\infty}\theta exp(\theta y)dy}}+\int^\infty_0 \theta exp(\theta y)e^{-\lambda y}dy\\
+    &=& 1+ \frac{\theta}{\lambda}\mu_X(\theta)\hspace{0.4em}
+        \left\{\mu_X(\theta)=\frac{\lambda}{\lambda-\theta}\right.
+    = 1+\frac{\theta}{\lambda-\theta}=\frac{\lambda}{\lambda-\theta}=\mu_X(\theta).
+    \end{eqnarray*}
+
+Cumpliéndose así lo que acabamos de probar. Hagamos otro con $X\in\mathbb{N}\cup\{0\}$, así, haciendo algo similar al ejercicio 2.2.6. podemos tomar $n\in\mathbb{N}\cup\{0\}$ y luego notar que:
+
+Si $y\in(n,n+1]\Rightarrow\mathbb{P}[X\geq y]=\mathbb{P}[X>n]=\sum\limits_{t=n+1}^\infty\mathbb{P}[X=t]$
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("Imágenes/Severidad_Anexo.png", error=FALSE)
+```
+
+Si $y\leq 0\Rightarrow \mathbb{P}[X\geq y]=1$. 
+
+Entonces:
+
+\begin{equation*}
+    \mathbb{P}[X\geq y]=\left\{
+    \begin{matrix}
+        \mathbb{P}[X>n]=\sum\limits_{t=\lceil y \rceil}^\infty\mathbb{P}[X=t]=\sum\limits_{t=n+1}^\infty\mathbb{P}[X=t]&\mbox{si}& y\in(n,n+1]\quad\forall n\in\mathbb{N}\cup\{0\} \\
+        1 &\mbox{si}& y\leq 0
+    \end{matrix}\right.
+\end{equation*}
+
+\begin{eqnarray*}
+    \Rightarrow \int_{\mathbb{R}}\theta exp(\theta y)\mathbb{P}[X\geq y]dy&=&\int^0_{-\infty}\theta exp(\theta y)dy+\int^\infty_0 \theta exp(\theta y)\mathbb{P}[X\geq y]dy\\
+    &=&1+\sum\limits_{n=0}^\infty\int^{n+1}_n\theta exp(\theta y)\mathbb{P}[X\geq y]dy \\
+    &=&1+\sum\limits_{n=0}^\infty\int^{n+1}_n\theta exp(\theta y)\mathbb{P}[X>n]dy\\
+    &=&1+\sum\limits_{n=0}^\infty\mathbb{P}[X>n]\int^{n+1}_n\theta exp(\theta y)dy\quad\left\{\int^{n+1}_n\theta exp(\theta y)dye^{\theta(n+1)}-e^{\theta n}\right.\\
+    &=& 1+\sum\limits_{n=0}^\infty \mathbb{P}[X>n](e^{\theta (n+1)}-e^{\theta n}) \\
+    &=&1+\sum\limits_{n=0}^\infty\mathbb{P}[X>n]e^{\theta n}(e^\theta-1)\\
+    &=&1+(e^\theta-1)\sum\limits_{n=0}^\infty\mathbb{P}[X>n]e^{\theta n}\\
+    &=& 1+ (e^\theta-1)\sum\limits_{n=0}^\infty\sum\limits_{t=n+1}^\infty\mathbb{P}[X=t]e^{\theta n}\\
+    &=& 1+(e^\theta-1)\sum\limits_{t=1}^\infty\sum\limits_{n=0}^{t-1}\mathbb{P}[X=t]e^{\theta n}\quad\left\{\begin{matrix}
+        \mbox{Estamos sumando }(n,t):\\\begin{matrix}
+        (0,1)& (0,2)&(0,3)&(0,4)&\cdots \\
+        x&(1,2)&(1,3)&(1,4)&\cdots \\
+        x&x&(2,3)&(2,4)&\cdots\\
+        \vdots &\ddots\end{matrix}
+    \end{matrix}\right.\\
+    &=&1+(e^\theta -1)\sum\limits_{t=1}^\infty\mathbb{P}[X=t]\sum\limits_{n=0}^{t-1}(e^\theta)^n=1+(e^\theta-1)\sum\limits_{t=1}^\infty\mathbb{P}[X=t]\frac{1-e^{\theta t}}{1-e^\theta}\\
+    &=&1+\sum\limits_{t=1}^\infty\mathbb{P}[X=t](e^{\theta t}-1)\\
+    &=& 1+\sum\limits_{t=0}^\infty\mathbb{P}[X=t](e^{\theta t}-1)=1+\mu_X(\theta)-\sum\limits_{t=0}^\infty\mathbb{P}[X=t]=\mu_X(\theta)
+\end{eqnarray*}
+Probando de nuevo la propiedad.
+
+Con esto ya verificamos la validez de los últimos resultados.
+
+## Más deducibles {-}
+Consideremos $Y=(X-d)$ la severidad de un riesgo a asumir $0\leq X$ ($Y$ es el pago de la compañía por contrato de deducible $=d$).
+
+**Proposición** 
+
+En general, si $a,b \in \mathbb{R}^{+}$ tal que $a\leq X\leq b$ entonces:
+
+\begin{eqnarray*}
+\mathbb{E}[X\wedge d ]&=& \mathbb{E}[X]-\mathbb{E}[(X-d)_{+}]\leq d \leq b 
+\end{eqnarray*}
+
+**Nota:** Aquí en general pensemos que $\mathbb{E}[X] \geq \mathbf{E}[(X-d)_{+}]$ para reducir la siniestralidad.
+
+_Demostración._
+
+\begin{eqnarray*}
+X-d \leq (X-d)_{+} \quad \forall \omega \in \Omega & \Rightarrow& \mathbb{E}[X-d] \leq \mathbb{E}[(X-d)_{+}]\\
+&\Rightarrow& \mathbb{E}[X]-\mathbb{E}[(X-d)_{+}]\leq d\\
+\end{eqnarray*}
+
+En general, tomamos $d<b$ pues en otro caso $(X-d)_{+} \equiv 0 \quad \blacksquare$.
+
+
+**Proposición**
+
+Sea $X$ v.a tal que $X>d$ c.s. $\Rightarrow d=\mathbb{E}[X]-\mathbb{E}[(X-d)_{+}]$.
+$\Leftarrow$ válido si $P[X\equiv d]=0$
+
+_Demostración._
+
+\begin{equation*}
+\mathbb{E}[X]=\displaystyle\int_{0}^{\infty} \mathbb{P}[X>t] dt \quad \quad \mathbb{E}[(X-d)_{+}] = \displaystyle\int_{0}^{\infty} S_{X}(t+d) dt= \displaystyle\int_{0}^{\infty} S_{X}(u) dt
+\end{equation*}
+
+
+**Revisar Script 4.A.1**
+
+
+\begin{eqnarray*}
+\mathbb{E}[X]-\mathbb{E}[(X-d)_{+}]&=& \displaystyle\int_{0}^{d} \mathbb{P}[X>t] dt \\
+&=& \displaystyle\int_{0}^{d} (1- \mathbb{P}[X\leq t]) dt\\
+&=& \displaystyle\int_{0}^{d} dt- \displaystyle\int_{0}^{d} \mathbb{P}[X\leq t] dt \\&=& d- \underbrace{\displaystyle\int_{0}^{d} \mathbb{P}[X\leq t] dt}_{ \text{¡ Todo depende esto !}}\\
+\end{eqnarray*}
+
+\underline{$\Rightarrow $}
+\begin{equation*}
+0 \leq \displaystyle\int_{0}^{d} \mathbb{P}[X\leq t] dt \leq \displaystyle\int_{0}^{d} \mathbb{P}[X\leq d] dt =0\\
+\end{equation*}
+
+\underline{$\Leftarrow $}
+\begin{eqnarray*}
+d&=&\mathbb{E}[X]-\mathbb{E}[(X-d)_{+}]\\
+&=& d- \displaystyle\int_{0}^{d}\mathbb{P}[X\leq t] dt
+\end{eqnarray*}
+
+Sí y solo si:
+
+\underline{$\Lefttarrow $}
+\begin{eqnarray*}
+0&=& \displaystyle\int_{0}^{d}\mathbb{P}[X\leq t] dt\\
+\end{eqnarray*}
+
+Como $0\leq \mathbb{P}[X\leq t]$ es no decreciente como función de $t$, entonces: $\mathbb{P}[X\leq t]\equiv 0 \quad \forall t\in[0,d] \Rightarrow \mathbb{P}[X <d]=0 \Rightarrow \mathbb{P}[X \geq d]=1$. Donde vemos que si $\mathbb{P}[X\equiv d]=0$, el regreso es válido.
+
+Como consecuencia. Si $\mathbb{P}[X \leq d] \approx0 \Rightarrow d \approx \mathbb{E}[X]-\mathbb{E}[(X-d)_{+}]$.
+
+En conclusión, lo anterior nos dice que si $\mathbb{E}[X]$ dista mucho de $\mathbb{E}[(X-d)_{+}]$, entonces: El deducible debe ser grande.
+
+Esto tiene sentido pues en general como $\mathbb{E}[X]>\mathbb{E}[(X-d)_{+}]$ entonces quiere decir que un deducible grande, reduce la siniestralidad.
+
+Por otro lado que tanto diste "$d$" de su cota inferior, depende totalmente de $\displaystyle\int_{0}^{d} \mathbb{P}[X\leq t]dt$, es decir, de que tanta probabilidad hay en la cola izquierda de la distribución.
+
+Esto nos da una descripción un poco mas detallada de:
+
+\begin{eqnarray*}
+     \textit{Si}  && \mathbb{E}[(X-d)_{+}] \uparrow \mathbb{E}[X] \Rightarrow d \downarrow \mathbb{E}[X]-\mathbb{E}[(X-d)_{+}] \approx 0 .\\
+    \textit{Si}  && \mathbb{E}[(X-d)_{+}]\downarrow 0 \Rightarrow d \uparrow sup\{x|x \in Sop {X}\}''=''\quad\blacksquare
+\end{eqnarray*}
+
+### Ejemplo muy sencillo de como jugar con el deducible: {-}
+
+Sea $X$ v.a tal que $SopX=\{3,12 \}$ y $\mathbb{P}[X=x]=1/2 \quad \forall x \in Sop\{ X\}$.
+
+Esta represente el monto de un siniestro. Calculamos un deducible tal que $\mathbb{E}[Y_{L}]=3. (Y_{L}= (X-d)_{+})$.
+
+### Solución {-}
+
+Hagamos algunas observaciones:
+        
+\begin{eqnarray*}
+        \mathbb{E}[X]&=&\left(\frac{1}{2} \right)(3)+ \left(\frac{1}{2} \right)(12)\\
+        &=& 7.5\\
+         \mathbb{E}[Y_{L}]&=&3\\
+\end{eqnarray*}
+        
+Como $\mathbb{E}[X]> \mathbb{E}[Y_L]$, entonces tiene sentido de hablar de un deducible con estas características.\vspace{8mm}
+
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("Imágenes/8.Fx.png", error=FALSE)
+```
+
+
+
+
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("Imágenes/8.Sx.png", error=FALSE)
+```     
+
+Resolvamos por casos:
+
+**Caso 1:**
+
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("Imágenes/8.R1.png", error=FALSE)
+```  
+
+Entonces $d < 3$.
+
+Entonces:
+
+\begin{equation*}
+Y_{L} \ddot{=} (X-d)_{+}=X-d \Rightarrow 3=\mathbb{E}[Y_{L}]= \mathbb{E}[X]-d = 7.5-d
+\end{equation*}
+
+Entonces:
+
+\begin{eqnarray*}
+d&=& 7.5-3\\
+&=& 4.5\\
+\end{eqnarray*}
+
+Esto nos hace recordar la cota inferior que hay para $d$, i.e, $\mathbb{E}[X]-\mathbb{E}[(X-d)_{+}] \leq d$. En este caso no tenía sentido buscar a $d$ antes de $4.5$ pues esa era la cota inferior.
+
+**Caso 2:**
+
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("Imágenes/8.R2.png", error=FALSE)
+```  
+
+Entonces $d >12$.
+
+\begin{equation*}
+Y_{L} \ddot{=} (X-d)_{+} \equiv 0 \Rightarrow 3= \mathbb{E}[Y_{L}]=0 \quad \text{¡ Contradicción !}
+\end{equation*}
+
+**Caso 3:**
+
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("Imágenes/8.R3.png", error=FALSE)
+``` 
+
+Entonces $d\in(3,12)$.
+
+\begin{eqnarray*}
+   Y_{L}&\ddot{=}& (X-d)_{+}\\
+    &=& \left \{ \begin{matrix} 
+   0 & \mbox{si }& X< d & \Leftrightarrow & X=3\\
+   X-d &\mbox{si }  & X \geq d & \Leftrightarrow & X=12\\  
+\end{matrix}\right. 
+\end{eqnarray*}    
+
+\begin{eqnarray*}
+3&=& \mathbb{E}[Y_{L}] \\
+&=& 0 \cdot \mathbb{P}[X=3] + (12-d) \cdot \mathbb{P}[X=12]\\
+&=& (12-d) \frac{1}{2}\\
+&=& 6- \displaystyle\frac{d}{2}\\
+& \Leftrightarrow & 6=12-d\\
+& \Leftrightarrow & d= 6 \\
+\end{eqnarray*}
+
+Okay, esto es una opción, otra es notar que puedo pensar $\mathbb{E}[Y_{L}]$ como función de $d$ con la fórmula de Darth Vader.
+
+\begin{eqnarray*}
+\mathbb{E}[Y_L]&=& \displaystyle\int_{d}^{b} S_{X}(t)dt\\
+&=& f(d)\\
+\end{eqnarray*}
+
+La cuestión es encontra $d$ tal que $f(d)=3$.
+
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("Imágenes/8.Sx II.png", error=FALSE)
+```

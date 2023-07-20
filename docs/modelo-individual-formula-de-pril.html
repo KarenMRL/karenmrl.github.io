@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 10 Modelo individual: formula de Pril | Teoría del Riesgo</title>
+  <meta name="description" content="Descripcion" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 10 Modelo individual: formula de Pril | Teoría del Riesgo" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Descripcion" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 10 Modelo individual: formula de Pril | Teoría del Riesgo" />
+  
+  <meta name="twitter:description" content="Descripcion" />
+  
+
+<meta name="author" content="Cinthya Denisse González Mendoza :o" />
+
+
+<meta name="date" content="2023-07-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="modelo-individual-bases.html"/>
+<link rel="next" href="modelo-colectivo-bases.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notas de Teoría del Riesgo</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Conceptos básicos y preeliminares</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#introducción"><i class="fa fa-check"></i><b>1.1</b> Introducción</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#algunos-antecedentes-históricos"><i class="fa fa-check"></i><b>1.2</b> Algunos antecedentes históricos</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#algunos-términos-del-seguro"><i class="fa fa-check"></i><b>1.3</b> Algunos términos del seguro</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#seguro"><i class="fa fa-check"></i>Seguro:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#riesgo"><i class="fa fa-check"></i>Riesgo:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#siniestro"><i class="fa fa-check"></i>Siniestro:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asegurador"><i class="fa fa-check"></i>Asegurador:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asegurado"><i class="fa fa-check"></i>Asegurado:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#beneficiario"><i class="fa fa-check"></i>Beneficiario:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#póliza"><i class="fa fa-check"></i>Póliza:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#prima"><i class="fa fa-check"></i>Prima:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#clase-de-primas"><i class="fa fa-check"></i><b>1.4</b> Clase de primas:</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#clasificación-de-los-seguros"><i class="fa fa-check"></i><b>1.5</b> Clasificación de los seguros</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#distribuciones-clásicas-en-teoría-del-riesgo"><i class="fa fa-check"></i><b>1.6</b> Distribuciones clásicas en Teoría del Riesgo</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asociadas-al-monto-de-una-pérdida"><i class="fa fa-check"></i>Asociadas al monto de una pérdida</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#familias-paramétricas-para-modelar-el-monto-de-riesgo"><i class="fa fa-check"></i><b>1.7</b> Familias paramétricas para modelar el monto de riesgo</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#exponencial"><i class="fa fa-check"></i>Exponencial</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#gamma"><i class="fa fa-check"></i>Gamma</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#log---normal"><i class="fa fa-check"></i>Log - Normal</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#weibull"><i class="fa fa-check"></i>Weibull</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#burr"><i class="fa fa-check"></i>Burr</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#pareto"><i class="fa fa-check"></i>Pareto</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#modelación-del-riesgo"><i class="fa fa-check"></i><b>1.8</b> Modelación del riesgo</a></li>
+<li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#ajuste-de-funciones-de-probabilidad"><i class="fa fa-check"></i><b>1.9</b> Ajuste de funciones de probabilidad</a></li>
+<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#reconocimiento-del-modelo"><i class="fa fa-check"></i><b>1.10</b> Reconocimiento del modelo</a>
+<ul>
+<li class="chapter" data-level="1.10.1" data-path="index.html"><a href="index.html#moda-de-una-función-de-densidad"><i class="fa fa-check"></i><b>1.10.1</b> Moda de una función de densidad</a></li>
+<li class="chapter" data-level="1.10.2" data-path="index.html"><a href="index.html#coeficiente-de-asimetría-skewness"><i class="fa fa-check"></i><b>1.10.2</b> Coeficiente de asimetría (Skewness)</a></li>
+<li class="chapter" data-level="1.10.3" data-path="index.html"><a href="index.html#coeficiente-de-kurtosis"><i class="fa fa-check"></i><b>1.10.3</b> Coeficiente de Kurtosis</a></li>
+<li class="chapter" data-level="1.10.4" data-path="index.html"><a href="index.html#función-de-distribución-empírica"><i class="fa fa-check"></i><b>1.10.4</b> Función de distribución empírica</a></li>
+<li class="chapter" data-level="1.10.5" data-path="index.html"><a href="index.html#cuantiles"><i class="fa fa-check"></i><b>1.10.5</b> Cuantiles</a></li>
+<li class="chapter" data-level="1.10.6" data-path="index.html"><a href="index.html#rango-intercuantílico"><i class="fa fa-check"></i><b>1.10.6</b> Rango intercuantílico</a></li>
+</ul></li>
+<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#estimación-de-parámetros"><i class="fa fa-check"></i><b>1.11</b> Estimación de parámetros</a>
+<ul>
+<li class="chapter" data-level="1.11.1" data-path="index.html"><a href="index.html#método-de-momentos"><i class="fa fa-check"></i><b>1.11.1</b> Método de momentos</a></li>
+<li class="chapter" data-level="1.11.2" data-path="index.html"><a href="index.html#máxima-verosimilitud"><i class="fa fa-check"></i><b>1.11.2</b> Máxima verosimilitud</a></li>
+</ul></li>
+<li class="chapter" data-level="1.12" data-path="index.html"><a href="index.html#pruebas-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>1.12</b> Pruebas de bondad de ajuste</a>
+<ul>
+<li class="chapter" data-level="1.12.1" data-path="index.html"><a href="index.html#planteamiento-general-de-una-prueba-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>1.12.1</b> Planteamiento general de una prueba de bondad de ajuste</a></li>
+<li class="chapter" data-level="1.12.2" data-path="index.html"><a href="index.html#algunas-pruebas-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>1.12.2</b> Algunas pruebas de bondad de ajuste</a></li>
+</ul></li>
+<li class="chapter" data-level="1.13" data-path="index.html"><a href="index.html#cómo-leer-un-p-value"><i class="fa fa-check"></i><b>1.13</b> ¿Cómo leer un p-value?</a>
+<ul>
+<li class="chapter" data-level="1.13.1" data-path="index.html"><a href="index.html#región-de-rechazo-y-no-rechazo"><i class="fa fa-check"></i><b>1.13.1</b> Región de Rechazo y no rechazo:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.14" data-path="index.html"><a href="index.html#el-proceso-de-modelación-del-riesgo"><i class="fa fa-check"></i><b>1.14</b> El proceso de modelación del Riesgo</a>
+<ul>
+<li class="chapter" data-level="1.14.1" data-path="index.html"><a href="index.html#el-proceso-de-modelado"><i class="fa fa-check"></i><b>1.14.1</b> El proceso de modelado</a></li>
+<li class="chapter" data-level="1.14.2" data-path="index.html"><a href="index.html#pasos"><i class="fa fa-check"></i><b>1.14.2</b> Pasos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html"><i class="fa fa-check"></i><b>2</b> Medidas de Riesgo</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#distribuciones-para-valores-extremos"><i class="fa fa-check"></i><b>2.1</b> Distribuciones para valores extremos</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#teoría-de-valores-extremos"><i class="fa fa-check"></i><b>2.1.1</b> Teoría de valores extremos</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#distribuciones-de-valores-extremos"><i class="fa fa-check"></i>Distribuciones de valores extremos</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#ejemplo-1-2"><i class="fa fa-check"></i>Ejemplo 1</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#ejemplo-2-1"><i class="fa fa-check"></i>Ejemplo 2</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#var-t-var"><i class="fa fa-check"></i><b>2.2</b> VaR &amp; T-VaR</a>
+<ul>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#var"><i class="fa fa-check"></i>VaR</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#t-var"><i class="fa fa-check"></i>T-VaR</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="frecuencia.html"><a href="frecuencia.html"><i class="fa fa-check"></i><b>3</b> Frecuencia</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="frecuencia.html"><a href="frecuencia.html#frecuencia-1"><i class="fa fa-check"></i><b>3.1</b> Frecuencia</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="frecuencia.html"><a href="frecuencia.html#familia-ab0"><i class="fa fa-check"></i><b>3.1.1</b> Familia (a,b,0)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="frecuencia-anexo.html"><a href="frecuencia-anexo.html"><i class="fa fa-check"></i><b>4</b> Frecuencia Anexo</a></li>
+<li class="chapter" data-level="5" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html"><i class="fa fa-check"></i><b>5</b> Severidad Coberturas</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#diferencia-entre-función-de-densidad-y-función-de-masa-de-probabilidad"><i class="fa fa-check"></i><b>5.1</b> Diferencia entre función de densidad y función de masa de probabilidad</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#visualización-de-variables-aleatorias-mixtas"><i class="fa fa-check"></i><b>5.1.1</b> Visualización de variables aleatorias mixtas</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#coberturas-en-seguros-reaseguros"><i class="fa fa-check"></i><b>5.2</b> Coberturas en Seguros / Reaseguros</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#coaseguro"><i class="fa fa-check"></i><b>5.2.1</b> Coaseguro</a></li>
+<li class="chapter" data-level="5.2.2" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#inflación"><i class="fa fa-check"></i><b>5.2.2</b> Inflación</a></li>
+<li class="chapter" data-level="5.2.3" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#deducibles"><i class="fa fa-check"></i><b>5.2.3</b> Deducibles</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#la-regla-de-darth-vader"><i class="fa fa-check"></i><b>5.3</b> La regla de Darth Vader</a></li>
+<li class="chapter" data-level="5.4" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#monto-máximo-de-beneficio"><i class="fa fa-check"></i><b>5.4</b> Monto máximo de beneficio</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html"><i class="fa fa-check"></i><b>6</b> Severidad combinacion de coberturas</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#contratos-con-deducible-y-monto-máximo-de-beneficio"><i class="fa fa-check"></i><b>6.1</b> Contratos con Deducible y monto máximo de beneficio</a></li>
+<li class="chapter" data-level="6.2" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#generalización-de-beneficio-y-monto-máximo"><i class="fa fa-check"></i><b>6.2</b> Generalización de beneficio y monto máximo</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#quitando-el-deducible-d0"><i class="fa fa-check"></i>Quitando el deducible d=0</a></li>
+<li class="chapter" data-level="" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#quitando-monto-máximo-de-beneficio-uinfty"><i class="fa fa-check"></i>Quitando Monto máximo de beneficio: <span class="math inline">\(u=\infty\)</span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html"><i class="fa fa-check"></i><b>7</b> Severidad (Costo por pérdida y por pago)</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html#costo-por-pago"><i class="fa fa-check"></i><b>7.1</b> Costo por pago</a></li>
+<li class="chapter" data-level="7.2" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html#cuantiles-para-las-coberturas"><i class="fa fa-check"></i><b>7.2</b> Cuantiles para las coberturas</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html#ejemplo-6"><i class="fa fa-check"></i>Ejemplo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="severidad-anexo.html"><a href="severidad-anexo.html"><i class="fa fa-check"></i><b>8</b> Severidad Anexo</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#pago-del-asegurado-con-deducible-y-monto-máximo-de-beneficio"><i class="fa fa-check"></i>Pago del asegurado con deducible y monto máximo de beneficio:</a></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#generalización-del-cálculo-de-variables-esperadas-para-y_p."><i class="fa fa-check"></i>Generalización del cálculo de variables esperadas para <span class="math inline">\(Y_p\)</span>.</a></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#generalización-de-la-fórmula-de-darth-vader."><i class="fa fa-check"></i>Generalización de la fórmula de Darth Vader.</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#ejercicio"><i class="fa fa-check"></i>Ejercicio:</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#más-deducibles"><i class="fa fa-check"></i>Más deducibles</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#ejemplo-muy-sencillo-de-como-jugar-con-el-deducible"><i class="fa fa-check"></i>Ejemplo muy sencillo de como jugar con el deducible:</a></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#solución-3"><i class="fa fa-check"></i>Solución</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html"><i class="fa fa-check"></i><b>9</b> Modelo individual bases</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#modelo-individual"><i class="fa fa-check"></i><b>9.1</b> Modelo individual</a></li>
+<li class="chapter" data-level="9.2" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#derivación-bajo-el-signo-integral"><i class="fa fa-check"></i><b>9.2</b> Derivación bajo el signo integral</a></li>
+<li class="chapter" data-level="9.3" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#teorema-de-probabilidad-total-en-el-caso-continuo"><i class="fa fa-check"></i><b>9.3</b> Teorema de probabilidad total en el caso continuo:</a></li>
+<li class="chapter" data-level="9.4" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#teorema-de-probabilidad-total-en-el-caso-discreto"><i class="fa fa-check"></i><b>9.4</b> Teorema de probabilidad total en el caso discreto:</a></li>
+<li class="chapter" data-level="9.5" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#aproximación-normal"><i class="fa fa-check"></i><b>9.5</b> Aproximación Normal</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#teorema-central-del-límite"><i class="fa fa-check"></i>TEOREMA CENTRAL DEL LÍMITE</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="modelo-individual-formula-de-pril.html"><a href="modelo-individual-formula-de-pril.html"><i class="fa fa-check"></i><b>10</b> Modelo individual: formula de Pril</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="modelo-individual-formula-de-pril.html"><a href="modelo-individual-formula-de-pril.html#formula-de-pril"><i class="fa fa-check"></i><b>10.1</b> Formula de Pril</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html"><i class="fa fa-check"></i><b>11</b> Modelo colectivo: Bases</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-colectivo"><i class="fa fa-check"></i>Modelo Colectivo</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-binomial-compuesto"><i class="fa fa-check"></i>Modelo Binomial Compuesto</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-binomial-negativo-compuesto"><i class="fa fa-check"></i>Modelo binomial negativo compuesto</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-poisson-compuesto"><i class="fa fa-check"></i>Modelo Poisson Compuesto</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#distribución-de-la-convoluación-de-poisson-compuestas"><i class="fa fa-check"></i>Distribución de la convoluación de Poisson compuestas</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#aproximaciones-de-probabilidad-del-modelo-colectivo"><i class="fa fa-check"></i>Aproximaciones de probabilidad del Modelo Colectivo</a>
+<ul>
+<li class="chapter" data-level="11.0.1" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#aproximación-normal-1"><i class="fa fa-check"></i><b>11.0.1</b> Aproximación Normal</a></li>
+<li class="chapter" data-level="11.0.2" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#aproximación-gamma-trasladada"><i class="fa fa-check"></i><b>11.0.2</b> Aproximación Gamma Trasladada</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="modelo-colectivo-formula-de-panjer.html"><a href="modelo-colectivo-formula-de-panjer.html"><i class="fa fa-check"></i><b>12</b> Modelo colectivo: Formula de Panjer</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="modelo-colectivo-formula-de-panjer.html"><a href="modelo-colectivo-formula-de-panjer.html#casos-especiales-de-panjer"><i class="fa fa-check"></i><b>12.1</b> Casos especiales de Panjer</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-formula-de-panjer.html"><a href="modelo-colectivo-formula-de-panjer.html#momento-de-s-para-panjer"><i class="fa fa-check"></i>Momento de S para Panjer</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="reaseguro.html"><a href="reaseguro.html"><i class="fa fa-check"></i><b>13</b> Reaseguro</a>
+<ul>
+<li class="chapter" data-level="" data-path="reaseguro.html"><a href="reaseguro.html#reaseguro-proporcional"><i class="fa fa-check"></i>Reaseguro proporcional</a>
+<ul>
+<li class="chapter" data-level="" data-path="reaseguro.html"><a href="reaseguro.html#reaseguro-no-proporcional"><i class="fa fa-check"></i>Reaseguro no proporcional</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html"><i class="fa fa-check"></i><b>14</b> Calculo de primas</a>
+<ul>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#propiedades-y-principios-del-cálculo-de-primas"><i class="fa fa-check"></i>Propiedades y Principios del cálculo de Primas</a>
+<ul>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-valor-esperado"><i class="fa fa-check"></i>Principio de valor esperado</a></li>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-la-varianza"><i class="fa fa-check"></i>Principio de la varianza</a></li>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-la-desviación-estándar"><i class="fa fa-check"></i>Principio de la desviación estándar</a></li>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-utilidad-cero"><i class="fa fa-check"></i>Principio de utilidad cero</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="credibilidad.html"><a href="credibilidad.html"><i class="fa fa-check"></i><b>15</b> Credibilidad</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="credibilidad.html"><a href="credibilidad.html#teoría-de-la-credibilidad"><i class="fa fa-check"></i><b>15.1</b> Teoría de la credibilidad</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="credibilidad.html"><a href="credibilidad.html#introducción-1"><i class="fa fa-check"></i><b>15.1.1</b> Introducción</a></li>
+<li class="chapter" data-level="15.1.2" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-completatotal"><i class="fa fa-check"></i><b>15.1.2</b> Credibilidad Completa/total</a></li>
+<li class="chapter" data-level="15.1.3" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-completa-bajo-hipótesis-de-normalidad"><i class="fa fa-check"></i><b>15.1.3</b> Credibilidad Completa Bajo Hipótesis de Normalidad</a></li>
+<li class="chapter" data-level="15.1.4" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-parcial"><i class="fa fa-check"></i><b>15.1.4</b> Credibilidad Parcial</a></li>
+<li class="chapter" data-level="15.1.5" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-parcial-bajo-hipótesis-de-normalidad"><i class="fa fa-check"></i><b>15.1.5</b> Credibilidad Parcial bajo Hipótesis de Normalidad</a></li>
+<li class="chapter" data-level="15.1.6" data-path="credibilidad.html"><a href="credibilidad.html#ajuste-de-primas-con-credibilidad-clásica"><i class="fa fa-check"></i><b>15.1.6</b> Ajuste de primas con credibilidad clásica</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="credibilidad.html"><a href="credibilidad.html#enfoque-bayesiano"><i class="fa fa-check"></i><b>15.2</b> Enfoque bayesiano</a></li>
+<li class="chapter" data-level="15.3" data-path="credibilidad.html"><a href="credibilidad.html#teorema-de-bayes"><i class="fa fa-check"></i><b>15.3</b> Teorema de Bayes</a></li>
+<li class="chapter" data-level="15.4" data-path="credibilidad.html"><a href="credibilidad.html#familias-conjugadas"><i class="fa fa-check"></i><b>15.4</b> Familias conjugadas</a></li>
+<li class="chapter" data-level="15.5" data-path="credibilidad.html"><a href="credibilidad.html#cálculo-bayesiano-de-primas-de-seguros"><i class="fa fa-check"></i><b>15.5</b> Cálculo Bayesiano de primas de seguros</a>
+<ul>
+<li class="chapter" data-level="" data-path="credibilidad.html"><a href="credibilidad.html#cómo-modelar-un-riesgo-para-obtener-una-prima-de-credibilidad-bayesiana"><i class="fa fa-check"></i>¿Cómo modelar un riesgo para obtener una prima de credibilidad Bayesiana?</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Teoría del Riesgo</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="modelo-individual-formula-de-pril" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Capítulo 10</span> Modelo individual: formula de Pril<a href="modelo-individual-formula-de-pril.html#modelo-individual-formula-de-pril" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Nuestro objetivo ahora es encontrar probabilidades exactas de <span class="math inline">\(S\)</span>. Para eso, haremos supuesto que puedan facilitar los cálculos.</p>
+<p>Bajo ciertos supuestos, existe una metodología recursiva muy conocida para calcular probabilidades exactas de <span class="math inline">\(S\)</span>. Nosotros nos enfocaremos principalmente en su aplicación</p>
+<div id="formula-de-pril" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Formula de Pril<a href="modelo-individual-formula-de-pril.html#formula-de-pril" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Presentaremos a continuación la formula de Pril. Este resultado fue mostrado por Nelson De Pril en 1986 y proporciona una expresión exacta, aunque recursiva de la distribución de probabilidad de un riesgo en el modelo individual. La formula es bastante general aunque presupone que las reclamaciones toman los valores en el conjunto <span class="math inline">\(\{1,2,...\}\)</span>. Este supuesto no es realmente una restricción fuerte pues en la práctica el pago de siniestros se realiza siempre usando alguna unidad monetaria. Para establecer la fórmula De Pril es necesario dividir el portafolio de <span class="math inline">\(n\)</span> asegurados de acuerdo a la tasa de mortalidad y la suma asegurada. Denotaremos por <span class="math inline">\(n_{ij}\)</span> al número de asegurados que tienen probabilidad de reclamación <span class="math inline">\(q_{j}\)</span> y monto de reclamación <span class="math inline">\(i\)</span>, en donde <span class="math inline">\(i\)</span> toma valores en <span class="math inline">\(\{1,2,...,I \}\)</span> y <span class="math inline">\(j\)</span> en <span class="math inline">\(\{1,2,...,J \}\)</span>. De esta forma se tiene el Cuadro 1 en donde la suma de las entradas es <span class="math inline">\(n_{i}\)</span>, es decir:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    n=\sum_{i=1}^{I}\sum_{j=1}^{J}n_{ij}\\
+\end{eqnarray*}\]</span></p>
+<p>Denotaremos por <span class="math inline">\(Y_{ij}\)</span> el monto real reclamado por un asegurado cuya probabilidad de reclamación es <span class="math inline">\(q_{j}\)</span> y posible monto reclamado <span class="math inline">\(i\)</span>, es ,decir,</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    Y_{ij}=  \left \{
+        \begin{matrix}
+        0&amp; \text{con probabilidad}&amp; 1-q_{j}  \\
+        i&amp;\text{con probabilidad} &amp; q_{j} \\
+    \end{matrix}\right.
+\end{eqnarray*}\]</span></p>
+<img src="Ima%CC%81genes/tabla1-P-M_Pril.jpg" width="70%" style="display: block; margin: auto;" />
+<p style="text-align: center">
+Cuadro 1. Probabilidad de reclamación - Monto de la reclamación
+</p>
+<p><strong>Teorema: Formula De Pril (i)</strong></p>
+<p>Sea <span class="math inline">\(n_{ij}\)</span> el número de pólizas cuyos asegurados tienen tasa de mortalidad <span class="math inline">\(q_{j}\)</span> y suma asegurada <span class="math inline">\(i\)</span>. Suponga que <span class="math inline">\(j =1,2,...,J\)</span> e <span class="math inline">\(i=1,2,...,I\)</span>. Entonces las probabilidades <span class="math inline">\(g_{x}=\mathbb{P}(S=x)\)</span> están dadas por:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    g_{x}&amp;=&amp; \displaystyle\frac{1}{x}\displaystyle\sum_{i=1}^{x\wedge I} \displaystyle\sum_{k=1}^{\left \lfloor x/i \right \rfloor} g_{x-ik}\ h(i,k), \quad \text{para } x \geq 1 \\
+    g_{0}&amp;=&amp; \displaystyle\prod_{i=1}^{I}\displaystyle\prod_{j=1}^{J}(1-q_{j})^{n_{ij}}\\
+\end{eqnarray*}\]</span></p>
+<p>En donde:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+h(i,k)&amp;=&amp; i(-1)^{k-1} \displaystyle\sum_{j=1}^{J} n_{ij} \left ( \displaystyle\frac{q_{j}}{1-q_{j}}  \right)^{k}
+\end{eqnarray*}\]</span></p>
+<p><strong>Nota:</strong> <span class="math display">\[\begin{equation*}   x\wedge I \ddot{=} mín \{ x, I\} \end{equation*}\]</span></p>
+<p><em>Demostración.</em></p>
+<p>La función generadora de probabilidad del monto reclamado <span class="math inline">\(Y_{ij}\)</span> por un asegurado con probabilidad de reclamación <span class="math inline">\(q_{j}\)</span>, y monto reclamado <span class="math inline">\(i\)</span> es:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \mathbb{E}(t^{Y_{ij}})&amp;=&amp; (1-q_{j})+q_{j}t^{i}\\
+\end{eqnarray*}\]</span></p>
+<p>Por lo tanto, usando la hipótesis de independencia, la función generadora de probabilidad de la cartera completa es:\</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    G(t)&amp;=&amp;\mathbb{E}(t^{S})\\
+    &amp;=&amp; \displaystyle\sum_{r=0}^{\infty} t^{r}g_{r}\\
+    &amp;=&amp; \displaystyle\prod_{i=1}^{I} \displaystyle\prod_{j=1}^{J} (1-q_{j}+q_{j}t^{i})^{n_{ij}}\\
+\end{eqnarray*}\]</span></p>
+<p>En donde <span class="math inline">\(q_{r}=\mathbb{P}(S=r)\)</span>. Tomando logaritmo y después derivando.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\ln(G(t))&amp;=&amp; \displaystyle\sum_{i=1}^{I}\displaystyle\sum_{j=1}^{J} n_{ij} \quad \ln(1-q_{j}+q_{j} t^{i})\\
+\displaystyle\frac{d}{dt}\ln(G(t))&amp;=&amp;\displaystyle\frac{G&#39;(t)}{G(t)} \\
+&amp;=&amp; \displaystyle\sum_{i=1}^{I}\displaystyle\sum_{j=1}^{J} n_{ij} \displaystyle\frac{iq_{j}t^{i-1}}{1-q_{j}+q_{j}t^{i}}\\
+\end{eqnarray*}\]</span></p>
+<p>Por lo tanto:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    t G&#39;(t)&amp;=&amp; G(t) \displaystyle\sum_{i=1}^{I}\displaystyle\sum_{j=1}^{J} n_{ij} \displaystyle\frac{iq_{j}t^{i}}{1-q_{j}+q_{j}t^{i}}\\
+    &amp;=&amp; G(t) \displaystyle\sum_{i=1}^{I}\displaystyle\sum_{j=1}^{J} n_{ij} i \displaystyle\frac{q_{j}t^{i}}{1-q_{j}} \left( 1+\displaystyle\frac{q_{j}t^{i}}{1-q_{j}} \right)^{-1}\\
+    &amp;=&amp; G(t) \displaystyle\sum_{i=1}^{I}\displaystyle\sum_{j=1}^{J} n_{ij} i \displaystyle\frac{q_{j}t^{i}}{1-q_{j}} \displaystyle\sum_{k=1}^{\infty}(-1)^{k-1} \left( \displaystyle\frac{q_{j}t^{i}}{1-q_{j}} \right)^{k-1} \\
+\end{eqnarray*}\]</span></p>
+<p>En donde hemos usado la expansión <span class="math inline">\((1-x)^{-1}= \displaystyle\sum_{k=0}^{\infty} x^{k}\)</span>, válida para <span class="math inline">\(|x| &lt;1\)</span>. Por lo tanto, para valores suficientemente pequeños de <span class="math inline">\(t\)</span>.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    t G&#39;(t)&amp;=&amp; G(t) \displaystyle\sum_{i=1}^{I}\displaystyle\sum_{j=1}^{J} n_{ij} i \displaystyle\sum_{k=1}^{\infty}(-1)^{k-1} \left( \displaystyle\frac{q_{j}}{1-q_{j}} \right)^{k}t^{ik}.
+\end{eqnarray*}\]</span></p>
+<p>Defina ahora la función:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    h(i,k)&amp;=&amp; i(-1)^{k-1} \displaystyle\sum_{j=1}^{J} n_{ij} \left( \displaystyle\frac{q_{j}}{1-q_{j}} \right)^{k}
+\end{eqnarray*}\]</span></p>
+<p>La doble suma respecto de los índices <span class="math inline">\(j\)</span> y <span class="math inline">\(k\)</span> es absolutamente convergente en cualquiera de los dos órdenes que se efectúen en estas sumas y el resultado es el mismo. Por lo tanto es válido el intercambio en el orden de las sumas y la expresión anterior puede escribirse como sigue:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    t G&#39;(t)&amp;=&amp; G(t) \displaystyle\sum_{i=1}^{I} \displaystyle\sum_{k=1}^{\infty}t^{ik} h(i,k)
+\end{eqnarray*}\]</span></p>
+<p>Sustituyendo de las expresiones <span class="math inline">\(G&#39;(t)\)</span> y <span class="math inline">\(G(t)\)</span> en sus correspondientes series de potencias se obtiene:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \displaystyle\sum_{r=1}^{\infty}rt^{r} g_{r} &amp;=&amp;  \displaystyle\sum_{r=0}^{\infty} t^{r} g_{r} \displaystyle\sum_{i=1}^{I} \displaystyle\sum_{k=1}^{\infty}t^{ik} h(i,k)\\
+\end{eqnarray*}\]</span></p>
+<p>Para <span class="math inline">\(x\geq 1\)</span>, el coeficiente de <span class="math inline">\(t^{x}\)</span> en el lado izquierdo es <span class="math inline">\(xg_{x}\)</span>, mientras que en el lado derecho es la suma de los términos <span class="math inline">\(g_{x-ik}h(i,k)\)</span> para aquellos valores de <span class="math inline">\(i\)</span> y <span class="math inline">\(k\)</span> tales que $ I ik x$.</p>
+<p>Se pueden establecer primero los posibles valores para <span class="math inline">\(i\)</span> de la siguiente forma <span class="math inline">\(i=1,...,x \wedge I\)</span>, y por lo tanto los valores para <span class="math inline">\(k\)</span> son <span class="math inline">\(k=1,...,[x/i]\)</span>, en donde <span class="math inline">\(x\wedge I\)</span> es el valor mínimo entre <span class="math inline">\(x\)</span> e <span class="math inline">\(I\)</span>, y <span class="math inline">\(\left \lfloor x/i \right \rfloor\)</span> es la parte entera del cociente <span class="math inline">\(x/i\)</span>. Igualando estos coeficientes se tiene que:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    xg_{x}&amp;=&amp; \displaystyle\sum_{i=1}^{x \wedge I} \displaystyle\sum_{k=1}^{\left \lfloor x/i \right \rfloor} g_{x-ik} h(i,k)\\
+\end{eqnarray*}\]</span></p>
+<p>De esta forma se llega a la siguiente expresión, para <span class="math inline">\(x \geq 1\)</span>:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    g_{x}&amp;=&amp; \displaystyle\frac{1}{x}\displaystyle\sum_{i=1}^{x\wedge I} \displaystyle\sum_{k=1}^{\left \lfloor x/i \right \rfloor} g_{x-ik} h(i,k)\\
+\end{eqnarray*}\]</span></p>
+<p>Por otro lado, como <span class="math inline">\(S=0\)</span> sólo cuando ningún asegurado efectúa ninguna reclamación, para <span class="math inline">\(x=0\)</span> se tiene que:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    g_{0}&amp;=&amp;\displaystyle\prod_{i=1}^{I}\displaystyle\prod_{j=1}^{J}(1-q_{j})^{n_{ij}}\\
+\end{eqnarray*}\]</span></p>
+<p>Notemos que lo que hace este modelo, es agrupar a los asegurados por monto de reclamación (suma asegurada) <span class="math inline">\(i\)</span> y probabilidad de reclamación <span class="math inline">\(q_{j}\)</span> (grupo (<span class="math inline">\(i,j\)</span>)). Observe que la v.a <span class="math inline">\(Y_{ij}\)</span> indica el monto que reclamó un individuo del grupo <span class="math inline">\((i,j)\)</span>, sin embargo hay <span class="math inline">\(n_{ij}\)</span> de ellos; ergo, necesitamos denotar a <span class="math inline">\(Y_{ijk}\)</span> como el monto real que puede reclamar el k-ésimo asegurado del grupo <span class="math inline">\((i,j)\)</span> para poder ser más específicos. De esta manera, podemos ver al riesgo <span class="math inline">\(S\)</span> como:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+  S&amp;=&amp; \sum_{i=1}^{I}\sum_{j=1}^{J}\sum_{k=1}^{n_{ij}} Y_{ijk}\\
+  &amp;=&amp; \underbrace{\sum_{k=1}^{n_{11}}Y_{11k}}_{\text{Grupo (1,1)}}+
+    \underbrace{\sum_{k=1}^{n_{21}}Y_{21k}}_{\text{Grupo (2,1)}}+...+
+    \underbrace{\sum_{k=1}^{n_{I1}}Y_{I1k}}_{\text{Grupo (I,1)}}+ \underbrace{\sum_{k=1}^{n_{12}}Y_{12k}}_{\text{Grupo (1,2)}}+...+\underbrace{\sum_{k=1}^{n_{I2}}Y_{I2k}}_{\text{Grupo (I,2)}}+...+\underbrace{\sum_{k=1}^{n_{IJ}}Y_{IJk}}_{\text{Grupo (I,J)}}\\
+\end{eqnarray*}\]</span></p>
+<p>No olvidemos que estamos hablando del modelo individual. Observemos que <span class="math inline">\(Y_{ij}= B_{j}(i)\)</span> donde <span class="math inline">\(B_{j} \sim Ber (q_{j})\)</span>. Ahora vamos a desagrupar a los individuos; lo que tenemos es un portafolio con <span class="math inline">\(n\)</span> individuos donde algunos tienen características diferentes entre si.</p>
+<p>Sea <span class="math inline">\(X_{t}\ddot{=}D_{t}C_{t}\)</span> con <span class="math inline">\(D_{t} \sim Ber(\gamma_{t})\)</span> y <span class="math inline">\(C_{t}\)</span> una constante que indica el monto que reclama el t-ésimo asegurado del portafolio con n-individuos.</p>
+<p>Entonces existen <span class="math inline">\(t\)</span> y <span class="math inline">\(k\)</span> tales que <span class="math inline">\(X_{t}=Y_{ijk}\)</span> en cuyo caso sucede que <span class="math inline">\(\gamma_{t}=q_{j}\)</span> y <span class="math inline">\(C_{t}=i\)</span>.</p>
+<p>Observe que esto no es más que renombrar variables por grupo y sin grupos. Entonces podríamos escribir también al riesgo <span class="math inline">\(S\)</span> como:</p>
+<p><span class="math display">\[\begin{equation*}
+    S= \displaystyle\sum_{t=1}^{n} C_{t}D_{t} =\displaystyle\sum_{i=1}^{I}\displaystyle\sum_{j=1}^{J}\displaystyle\sum_{k=1}^{n_{ij}} Y_{ijk}\\
+\end{equation*}\]</span></p>
+<p>Con lo que podemos notar que si seguimos hablando del modelo individual, solo que con ciertas etiquetas. En consecuencia cada <span class="math inline">\(Y_{ijk}\)</span> es independiente una de otra (esto puesto que los individuos son independientes entre si) y son idénticamente distribuidos por grupo(i, j).</p>
+<div id="ejemplo-7" class="section level4 unnumbered hasAnchor">
+<h4>Ejemplo<a href="modelo-individual-formula-de-pril.html#ejemplo-7" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Tomando un portafolio del estilo:</p>
+<p><img src="Ima%CC%81genes/tabla1-SA_QI.jpg" width="40%" style="display: block; margin: auto;" /></p>
+<p>En el fondo tenemos el riesgo:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    S&amp;=&amp; \displaystyle\sum_{i=1}^{I}\displaystyle\sum_{j=1}^{J}\displaystyle\sum_{k=1}^{n_{ij}} Y_{ijk}\\
+    &amp;=&amp; \displaystyle\sum_{k=1}^{2} Y_{11k} + \displaystyle\sum_{k=1}^{1} Y_{12k}+ \displaystyle\sum_{k=1}^{3} Y_{21k}+ 0\\
+    &amp;=&amp; (Y_{111} +Y_{112} )+ (Y_{121})+( Y_{211}+ Y_{212}   +  Y_{213})\\
+\end{eqnarray*}\]</span></p>
+<p><strong>Definiendo:</strong></p>
+<p><span class="math display">\[\begin{eqnarray*}
+    - D_{1} \sim Ber(q_{1}) \quad \text{y} \quad C_{1}=1 \hspace{1cm} - D_{4} \sim Ber(q_{2}) \quad \text{y} \quad C_{4}=1\\
+    - D_{2} \sim Ber(q_{1}) \quad \text{y} \quad C_{2}=1 \hspace{1cm} - D_{5} \sim Ber(q_{2}) \quad \text{y} \quad C_{5}=1\\
+    - D_{3} \sim Ber(q_{1}) \quad \text{y} \quad C_{3}=2 \hspace{1cm} - D_{6} \sim Ber(q_{2}) \quad \text{y} \quad C_{6}=1
+\end{eqnarray*}\]</span></p>
+<p><span class="math display">\[\begin{eqnarray*}
+    S &amp;=&amp; ( D_1 C_1 +  D_2 C_2 )+(D_3 C_3)+(D_4 C_4 + D_5 C_5   +D_6 C_6 )\\
+    &amp;=&amp; \displaystyle\sum_{t=1}^{6} D_{t} C_{t}
+\end{eqnarray*}\]</span></p>
+<p>Otra observación importante es que <span class="math inline">\(S\)</span> está acotada. Como <span class="math inline">\(D_{t} \in \{ 0,1\}\)</span> y <span class="math inline">\(C_{t}&gt;0\)</span>, entonces en el mejor de los escenarios <span class="math inline">\(S=0\)</span> que ocurre cuando nadie reclama. Pero si todos reclaman:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    S&amp;=&amp; \displaystyle\sum_{i=1}^{I}\displaystyle\sum_{j=1}^{J}\displaystyle\sum_{k=1}^{n_{ij}} Y_{ijk}\\
+    &amp;=&amp; \displaystyle\sum_{i=1}^{I}\displaystyle\sum_{j=1}^{J}\displaystyle\sum_{k=1}^{n_{ij}} i  \quad \text{Cuando reclaman vale i la suma asegurada}\\
+    &amp;=&amp; \displaystyle\sum_{i=1}^{I}\displaystyle\sum_{j=1}^{J}n_{ij} (i)\\
+    &amp;=&amp; \displaystyle\sum_{i=1}^{I}i \displaystyle\sum_{j=1}^{J}n_{ij}
+\end{eqnarray*}\]</span></p>
+<p>Que teniendo el cuadro:</p>
+<p><img src="Ima%CC%81genes/tabla3-Pril.jpg" width="70%" style="display: block; margin: auto;" /></p>
+<p>Se traduce a simplemente tomar:</p>
+<p><img src="Ima%CC%81genes/tabla4-Pril.jpg" width="70%" style="display: block; margin: auto;" /></p>
+<p>Viendo esto, haremos el cálculo de la esperanza del riesgo <span class="math inline">\(S\)</span>.</p>
+<p><span class="math display">\[\begin{equation*}
+    \mathbb E [S] \ \doteq \mathbb E \left[\sum_{i=1}^{I} \sum_{j=1}^{J} \sum_{k=1}^{n_{ij}} Y_{ijk}\right] = \sum_{i=1}^{I} \sum_{j=1}^{J} \sum_{k=1}^{n_{ij}} \mathbb E [Y_{ijk}]\\
+    = \sum_{i=1}^{I} \sum_{j=1}^{J} \sum_{k=1}^{n_{ij}} iq_{j}
+        \left\{
+        \begin{array}{lcc}
+            \mathbb E [Y_{ijk}]\\\\
+            =0\cdot(1-q_{i})+iq_{j}\\\\
+            =iq_{j}\\
+        \end{array}
+        \right.
+    \\
+    = \sum_{i=1}^{I} \sum_{j=1}^{J} iq_{j}n_{ij} = \sum_{i=1}^{I} i \sum_{j=1}^{J} q_{j} n_{ij}
+\end{equation*}\]</span></p>
+<p>Que es muy similar al cálculo anterior solo que ahora debemos multiplicar cada <span class="math inline">\(n_{ij}\)</span> por su correspondiente <span class="math inline">\(q_{j}\)</span>.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \mathbb E [S] &amp;=&amp; (1) \times [q_{1}n_{11} + q_{2}n_{12} + ... + ... + ... + q_{J}n_{1J} ]\\
+    &amp;&amp;   + ( 2 ) \times [ q_{1}n_{21} + q_{2}n_{22} + ... + ... + ... + q_{J}n_{2J} ]\\
+    &amp;&amp;   + ( ... ) \times [ ... + ... + ... + ... + ... + ... ]\\
+    &amp;&amp;   + ( i ) \times [ ... + ... + ... + q_{j}n_{ij} + ... + ... ]\\
+    &amp;&amp;  + ( ... ) \times [ ... + ... + ... + ... + ... + ... ]\\
+    &amp;&amp;   + ( I ) \times [ ... + ... + ... + q_{j}n_{Ij} + ... + q_{J}n_{IJ} ]\\
+\end{eqnarray*}\]</span></p>
+<p>Equivalentemente es multiplicar cada número dentro del cuadro, multiplicarlo por su <span class="math inline">\((SA,q_{j})\)</span> y sumar todo.</p>
+<p>El resultado anterior se puede deducir de la fórmula general del modelo individual simplemente agrupando por <span class="math inline">\((i,j)\)</span>. Haremos el cálculo de la varianza de esta manera para ejemplificarlo. Con base en los resultados obtenidos para el modelo individual:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    Var(S) &amp;=&amp; \sum_{t=1}^{n} [ \gamma_{t} Var(C_{t}) + \gamma_{t} (1-\gamma_{t}) \mathbb E^{2} [C_{t}] ]\\
+    &amp;=&amp; \sum_{t=1}^{n} \gamma_{t} (1-\gamma_{t}) C_{t}^{2}
+        \left\{
+        \begin{array}{lcc}
+            Como\hspace{2mm}C_{t}\hspace{2mm}es\hspace{2mm}constante\\\\
+            Var(C_{t})=0\hspace{2mm}y\hspace{2mm}\mathbb E[C_{t}]=C_{t}\\
+        \end{array}
+        \right. \\
+\end{eqnarray*}\]</span></p>
+<p>La suma anterior la podemos separar en los grupos <span class="math inline">\((i,j)\)</span> pues <span class="math inline">\(n=\sum_{i=1}^{I} \sum_{j=1}^{J} n_{ij}\)</span>, al separarla, tendremos una suma de sumas de grupos y al mismo tiempo <span class="math inline">\(\gamma_{t}\)</span> coincidirá con <span class="math inline">\(q_{j}\)</span> y <span class="math inline">\(C_{t}\)</span> con <span class="math inline">\(i\)</span> para cada grupo <span class="math inline">\((i,j)\)</span>:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    &amp;=&amp;  \underbrace{   \sum_{t=1}^{n_{11}} q_{1}(1-q_{1})(1)^{2}     }_{Grupo(1,1)} +
+    \underbrace{    \sum_{t=1}^{n_{12}} q_{2}(1-q_{2})(1)^{2}    }_{Grupo(1,2)} + ... +
+    \underbrace{    \sum_{t=1}^{n_{1J}} q_{J}(1-q_{J})(1)^{2}    }_{Grupo(1,J)}
++ \underbrace{  \sum_{t=1}^{n_{21}} q_{1}(1-q_{1})(2)^{2}     }_{Grupo(2,1)}  \\
+  &amp;&amp;  +\underbrace{    \sum_{t=1}^{n_{22}} q_{2}(1-q_{2})(2)^{2}    }_{Grupo(2,2)}+
+    \underbrace{    \sum_{t=1}^{n_{2J}} q_{J}(1-q_{J})(2)^{2}    }_{Grupo(2,J)}+...+...+...+...+...+...+...+...+...+...\\
+&amp; &amp; + ...+...+...+ \underbrace{   \sum_{t=1}^{n_{I1}} q_{1}(1-q_{1})(I)^{2}   }_{Grupo(I,1)}+
+    \underbrace{    \sum_{t=1}^{n_{I2}} q_{2}(1-q_{2})(I)^{2}    }_{Grupo(I,2)}+ ... +
+    \underbrace{   \sum_{t=1}^{n_{IJ}} q_{J}(1-q_{J})(I)^{2}    }_{Grupo(I,J)}\\
+    &amp;=&amp; \sum_{i=1}^{I} \sum_{j=1}^{J} \sum_{k=1}^{n_{ij}} q_{j} (1-q_{j}) i^{2} = \sum_{i=1}^{I} \sum_{j=1}^{J} q_{j} (1-q_{j}) i^{2} n_{ij}\\
+    &amp;=&amp; \sum_{i=1}^{I} i^{2} \sum_{j=1}^{J} q_{j} (1-q_{j}) n_{ij}\\
+
+\end{eqnarray*}\]</span></p>
+<p>Que análogo al último cálculo no es más que, tomando como referencia la tabla con frecuencias:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    Var(S) &amp;=&amp; ( 1)^{2}
+    \times [ (1-q_{1})q_{1}n_{11} +
+    (1-q_{2})q_{2}n_{12} +
+    ... +
+    ... +
+    ... +
+    (1-q_{J})q_{J}n_{1J} ]\\ &amp;&amp; + ( 2 )^{2}
+    \times [ (1-q_{1})q_{1}n_{21} +
+    (1-q_{2})q_{2}n_{22} +
+    ... +
+    ... +
+    ... +
+    (1-q_{J})q_{J}n_{2J} ]\\ &amp;&amp; + ( ... )
+    \times [ ... +
+    ... +
+    ... +
+    ... +
+    ... +
+    ... ]\\ &amp;&amp; + ( i )^{2}
+    \times [ ... +
+    ... +
+    ... +
+    (1-q_{j})q_{j}n_{ij} +
+    ... +
+    ... ]\\ &amp;&amp; + ( ... )
+    \times [ ... +
+    ... +
+    ... +
+    ... +
+    ... +
+    ... ]\\ &amp;&amp; + ( i )^{2}
+    \times [ ... +
+    ... +
+    ... + (1-q_{j})q_{j}n_{Ij} +
+    ... +
+    (1-q_{J})q_{J}n_{IJ} ]\\
+\end{eqnarray*}\]</span></p>
+<p>Que es lo mismo que la esperanza pero multiplicando <span class="math inline">\((1-q_{j})q_{j}\)</span> y no solo <span class="math inline">\(q_{j}\)</span> para cada <span class="math inline">\(j\)</span>.</p>
+<p>Con lo anterior ya tenemos maneras para calcular probabilidades de <span class="math inline">\(S\)</span>, así como varianza y esperanza. Los ejemplos los veremos en R.</p>
+<p>Para un mejor entendimiento de la fórmula recursiva de <span class="math inline">\(DePril [i]\)</span> escribiremos a continuación de manera explícita los primeros términos de este desarrollo.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    g_{0} &amp;=&amp; \prod_{i=1}^{I} \prod_{j=1}^{J} (1-q_{j})^{n_{ij}}\\
+    g_{1} &amp;=&amp; g_{0} h(1,1)\\
+    g_{2} &amp;=&amp; \frac{1}{2} \{ g_{0} [h(1.2) + h(2,1)] + g_{1} h(1,1) \}\\
+    g_{3} &amp;=&amp; \frac{1}{3} \{ g_{0} [h(1.3) + h(3,1)] + g_{1} [h(1.2) + h(2,1)] + g_{2} h(1,1) \}\\
+    ...
+\end{eqnarray*}\]</span></p>
+</div>
+<div id="ejemplo-8" class="section level4 unnumbered hasAnchor">
+<h4>Ejemplo<a href="modelo-individual-formula-de-pril.html#ejemplo-8" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Para los datos que se muestran en la tabla de la Figura 1.4 en donde se tienen 48 pólizas de seguros con las probabilidades de reclamación y los montos de reclamaciones indicados, la correspondiente función de densidad para este riesgo es la que se muestra en la Figura 1.5 Debe tenerse cuidado en la implementación numérica de esta fórmula pues dado su caracter recursivo y que algunas de las probabilidades involucradas pueden ser muy pequeñas, pueden generarse resultados incorrectos debido al inevitable redondeo de cifras en una computadora.</p>
+<p><img src="Ima%CC%81genes/Probabilidades%20de%20reclamacio%CC%81n.jpg" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="Ima%CC%81genes/Gra%CC%81fica%201.5.jpg" width="70%" style="display: block; margin: auto;" /></p>
+<p>La fórmula que hemos denominado de <span class="math inline">\(De Pril [i]\)</span> y que se encuentra expresada en el contexto de un portafolio de asegurados individuales puede escribirse como un resultado teórico de la teoría de probabilidad. Este es el contenido de la siguiente proposición. La fórmula tiene una expresión más simple y la demostración sigue los mismo lineamientos que la que hemos presentado, sin embargo, escribiremos nuevamente los detalles de la prueba en esta versión simplificada.</p>
+<p><strong>Proposición</strong> (Fórmula de De Pril [ii])</p>
+<p>Sean <span class="math inline">\(X_{1},X_{2},...,X_{n}\)</span> v.a.i.i.d. con valores en el conjunto <span class="math inline">\(\{0,1,2,...\}\)</span>. Para cada entero <span class="math inline">\(j\geq0\)</span>, defina la probabilidad <span class="math inline">\(f_{j} = P(X=j)\)</span>, y suponga <span class="math inline">\(f_{0} \neq 0\)</span>. Sea <span class="math inline">\(S = X_{1} + ... + X_{n}\)</span>. Entonces las probabilidades <span class="math inline">\(g_{x} = P(S=x)\)</span> se pueden calcular recursivamente mediante la siguiente fórmula:</p>
+<p><span class="math display">\[\begin{equation*}
+    g_{0} = (f_{0})^{n},\\
+    g_{x} = \frac{1}{f_{0}} \sum_{j=1}^{x} \left[ \frac{j(n+1)}{x} - 1 \right] f_{j}g_{x-j}, \hspace{2mm}para\hspace{2mm}x\geq1. \\
+\end{equation*}\]</span></p>
+<p><em>Demostración.</em></p>
+<p>Primeramente observemos que el evento <span class="math inline">\((S=0)\)</span> ocurre si y sólo si todos los sumandos de <span class="math inline">\(S\)</span> son cero, de modo que por independencia, <span class="math inline">\(g_{0} = (f_{0})^{n}\)</span>. Ahora veamos la forma de obtener la fórmula recursiva. Sean <span class="math inline">\(P_{X}(t)\)</span> y <span class="math inline">\(P_{S}(t)\)</span> las funciones generadoras de probabilidad de las variables discretas <span class="math inline">\(X\)</span> y <span class="math inline">\(S\)</span> respectivamente, es decir:</p>
+<p><span class="math display">\[\begin{equation*}
+    P_{X}(t) = E(t^{X}) = \sum_{k=0}^{\infty} t^{k} f_{k},\\
+    P_{S}(t) = E(t^{S}) = \sum_{k=0}^{\infty} t^{k} g_{k}.
+\end{equation*}\]</span></p>
+<p>Por independencia e idéntica distribución, <span class="math inline">\(P_{S}(t) = [P_{X}(t)]^{n}\)</span>. Derivando respecto de t:</p>
+<p><span class="math display">\[\begin{equation*}
+    P&#39;_{S}(t) = n[P_{X}(t)]^{n-1} P&#39;_{X}(t)
+\end{equation*}\]</span></p>
+<p>Multiplicando ambos lados por <span class="math inline">\(tP_{X}(t)\)</span>:</p>
+<p><span class="math display">\[\begin{equation*}
+    P_{X}(t)tP&#39;_{S}(t) = nP_{S}(t) t P&#39;_{X}(t),
+\end{equation*}\]</span></p>
+<p>que en términos de sumas se escribe como sigue:</p>
+<p><span class="math display">\[\begin{equation*}
+    \sum_{j=0}^{\infty} t^{j}f_{j} \sum_{k=1}^{\infty} kt^{k}g_{k} = n\sum_{k=0}^{\infty} t^{k}g_{k}  \sum_{j=1}^{\infty} jt^{j}f_{j}.
+\end{equation*}\]</span></p>
+<p>El siguiente paso es identificar el coeficiente del término <span class="math inline">\(t^{x}\)</span> en cada lado de la ecuación, para <span class="math inline">\(x\geq1\)</span>. Por ejemplo, para el lado izquierdo el coeficiente es el término <span class="math inline">\(f_{j}kg_{k}\)</span> para todos aquellos valores de <span class="math inline">\(j\geq0\)</span> y <span class="math inline">\(k\geq1\)</span> tales que <span class="math inline">\(j+k = x\)</span>. Esta doble suma puede escribirse como <span class="math inline">\(\sum_{j=0}^{x-1} f_{j}(x-j) g_{x-j}\)</span>. De manera similar se encuentra el coeficiente del lado derecho. Igualando estos coeficientes se llega a la identidad:</p>
+<p><span class="math display">\[\begin{equation*}
+    \sum_{j=0}^{x-1} (x-j) f_{j} g_{x-j} = n\sum_{j=1}^{x} j f_{j} g_{x-l}.
+\end{equation*}\]</span></p>
+<p>Separando el primer sumando del lado izquierdo y añadiendo en esa misma suma el término correspondiente a <span class="math inline">\(j=x\)</span>, es es cero, se obtiene:</p>
+<p><span class="math display">\[\begin{equation*}
+    xf_{0}g_{x} + \sum_{j=1}^{x} (x-j) f_{j} g_{x-j} = n\sum_{j=1}^{x} j f_{j} g_{x-l}.
+\end{equation*}\]</span></p>
+<p>Finalmente se despeja el término <span class="math inline">\(g_{x}\)</span> para llegar a la fórmula anunciada:</p>
+<p><span class="math display">\[\begin{equation*}
+    g_{x} = \frac{1}{f_{0}} \sum_{j=1}^{x} \left[ \frac{j(n+1)}{x} - 1 \right] f_{j}g_{x-j}, x\geq1.
+\end{equation*}\]</span></p>
+<p>Los primeros términos de la fórmula de De Pril [ii] se muestran a continuación:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    g_{0} &amp;=&amp; (f_{0})^{n},\\
+    g_{1} &amp;=&amp; \frac{1}{f_{0}} (n f_{1} g_{0}) =
+    \begin{pmatrix}
+        n \\
+        1
+    \end{pmatrix} f_{1}(f_{0})^{n-1},\\
+    g_{2} &amp;=&amp; \frac{1}{f_{0}} \left(\frac{n-1}{2} f_{1} g_{1} + nf_{2}g_{0}\right) =
+    \begin{pmatrix}
+        n \\
+        2
+    \end{pmatrix}(f_{1})^{2}(f_{0})^{n-2} +
+    \begin{pmatrix}
+        n \\
+        1
+    \end{pmatrix} f_{2}(f_{0})^{n-1},\\
+    g_{3} &amp;=&amp; \frac{1}{f_{0}} \left(\frac{n-1}{3} f_{1} g_{2} + \frac{2n-1}{3} f_{2} g_{1} + nf_{3}g_{0}\right)\\
+    &amp;=&amp;
+    \begin{pmatrix}
+        n \\
+        3
+    \end{pmatrix}(f_{1})^{3}(f_{0})^{n-3} + 2!
+    \begin{pmatrix}
+        n \\
+        2
+    \end{pmatrix}f_{2}f_{1}(f_{0})^{n-2} +
+    \begin{pmatrix}
+        n \\
+        1
+    \end{pmatrix} f_{3}(f_{0})^{n-1}.\\
+\end{eqnarray*}\]</span></p>
+<p>Observe que las expresiones simplificadas tienen una interpretación natural en términos combinatoriales. Por ejemplo, la expresión para <span class="math inline">\(g_{2}\)</span> involucra dos situaciones: la primera cuando dos sumandos distintos de <span class="math inline">\(S\)</span> toman cada uno el valor uno y el resto toma el valor cero, y la segunda situación cuando uno de los sumandos toma el valor dos y el resto es cero. Los coeficientes binomiales dan cuenta de las distintas formas en las que se pueden presentar estos arreglos.</p>
+</div>
+<div id="ejemplo-9" class="section level4 unnumbered hasAnchor">
+<h4>Ejemplo<a href="modelo-individual-formula-de-pril.html#ejemplo-9" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Sean <span class="math inline">\(X_{1}.X_{2},X_{3}\)</span> variables aleatorias independientes con idéntica distribución dada por la tabla que aparece abajo y cuya gráfica se muestra en la Figura 1.6(a).</p>
+<p>Usando la fórmula de De Pril [ii] encontraremos la distribución de <span class="math inline">\(S =X_{1} + X_{2} +X_{3}\)</span>.</p>
+<p><img src="Ima%CC%81genes/tabla5-Pril.jpg" width="40%" style="display: block; margin: auto;" /></p>
+<p><img src="Ima%CC%81genes/Figura%201.6.jpg" width="70%" style="display: block; margin: auto;" /></p>
+<p>Observe que la variable suma puede tomar cualquiera de los valores <span class="math inline">\(0,1,...,6\)</span>. Usando la misma notación que en la fórmula de De Pril se muestran a continuación los cálculos para encontrar la función de probabilidad de <span class="math inline">\(S\)</span> y la gráfica correspondiente aparece en la Figura 1.6(b).</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    g_{0} &amp;=&amp; (f_{0})^{3} = \textit{0.125},\\
+    g_{1} &amp;=&amp; \frac{1}{f_{0}} (3f_{1}g_{0}) = \textit{0.15},\\
+    g_{2} &amp;=&amp; \frac{1}{f_{0}} (f_{1}g_{1} + 3f_{2}g_{0}) = \textit{0.285},\\
+    g_{3} &amp;=&amp; \frac{1}{f_{0}} \left(\frac{1}{3} f_{1}g_{2} + \frac{8}{3} f_{2}g_{1}\right) = \textit{0.188},\\
+    g_{4} &amp;=&amp; \frac{1}{f_{0}} (f_{2}g_{2}) = \textit{0.171},\\
+    g_{5} &amp;=&amp; \frac{1}{f_{0}} \left(-\frac{1}{5} f_{1}g_{4} + \frac{3}{5} f_{2}g_{3}\right) = \textit{0.054},\\
+    g_{6} &amp;=&amp; \frac{1}{f_{0}} \left(-\frac{1}{3} f_{1}g_{5} + \frac{1}{3} f_{2}g_{4}\right) = \textit{0.027}.
+\end{eqnarray*}\]</span></p>
+<p>Nosotros mostraremos la implementación de esta fórmula en los scripts de R.</p>
+<p>Debemos observar la diferencia que existe entre los supuestos que se manejan en la fórmula de De Pril (<span class="math inline">\(i\)</span>) y (<span class="math inline">\(ii\)</span>). En el caso de De Pril (<span class="math inline">\(i\)</span>) el portafolio se asume como:</p>
+<p><span class="math display">\[S=\displaystyle\sum_{t=1}^{n} C_tD_t=\displaystyle\sum_{i=1}^I\displaystyle\sum_{j=1}^J\displaystyle\sum_{k=1}^{n_{ij}}Y_{ijk}\]</span></p>
+<p>Donde las <span class="math inline">\(C_tD_t\)</span> no tienen la misma distribución <span class="math inline">\(\forall t\)</span> necesariamente. Esto se ve más claro cuando vemos el cuadro que nos muestra el número de individuos por grupo <span class="math inline">\((i,j)\)</span>.\</p>
+<p><img src="Ima%CC%81genes/tabla6-Pril.jpg" width="70%" style="display: block; margin: auto;" /></p>
+<p>De aquí podemos observar que, sin pérdida de generalidad, uno de los <span class="math inline">\(n_{11}\)</span> miembros del grupo (1,1), tiene una probabilidad <span class="math inline">\(q_1\neq q_2\)</span> para alguno de los miembros del grupo (1,2) por ejemplo.</p>
+<p>Por otro lado, los supuestos que maneja la versión simplificada (De Pril (<span class="math inline">\(ii\)</span>)) son que, asumiendo un portafolio con <span class="math inline">\(n\)</span>-pólizas y tomando <span class="math inline">\(\{X_t\}_{t=1}^n\)</span> v.a.i.i.d. entonces el riesgo será:</p>
+<p><span class="math display">\[\begin{equation*}
+    S\displaystyle\sum_{t=1}^n X_t\qquad
+\end{equation*}\]</span></p>
+<p>Si meditamos un poco la relación, observemos que esta puede modelar uno de los grupos que están en los supuestos de De Pril (<span class="math inline">\(i\)</span>). Si tomamos a <span class="math inline">\(n=n_{ij}\)</span> y <span class="math inline">\(X_t=Y_{ij}=iB_j\)</span> estaríamos modelando todo el grupo (<span class="math inline">\(i,j\)</span>) con esta v.a.</p>
+<p>La simplificación en los supuestos de la fórmula de De Pril(<span class="math inline">\(ii\)</span>) nos abre un mundo de posibilidades pues ahora, la suma asegurado no es constante necesariamente y no pide más que el soporte de su severidad (<span class="math inline">\(X_t\)</span>) esté contenido en el conjunto <span class="math inline">\(\mathbb{N}\cup\{0\}\)</span>. Ahora el asegurado número <span class="math inline">\(t\)</span> puede reclamar <span class="math inline">\(X_t\in\{0,1,...\}\)</span>.</p>
+<p><strong>Nota:</strong> <span class="math inline">\(X_t=0\Rightarrow\)</span> no hubo reclamación.</p>
+<p>Recordemos la siguiente proposición:</p>
+<p><strong>Proposición:</strong></p>
+<p>Sean <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span> independientes, y sean <span class="math inline">\(g\)</span> y <span class="math inline">\(h\)</span> dos funciones de <span class="math inline">\(\mathbb{R} \text{ en } \mathbb{R}\)</span>, Borel medibles. Entonces las variables aleatorias <span class="math inline">\(g(X)\)</span> y <span class="math inline">\(h(Y)\)</span> también son independientes.</p>
+<p>Una de las ventajas más importantes que tiene este modelo es en cuando al cálculo de momentos. Notemos que, definiendo al riesgo <span class="math inline">\(S\)</span> como en las hipótesis de De Pril(<span class="math inline">\(ii\)</span>):</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    M_S(t)&amp;=&amp;\mathbb{E}\left[e^{St}\right]=\mathbb{E}\left[exp\left(t\displaystyle\sum_{i=1}^n X_i\right)\right]=\mathbb{E}\left[exp\left(\displaystyle\sum_{i=1}^n tX_i\right)\right]\\
+    &amp;=&amp; \mathbb{E}\left[\prod_{i=1}^n e^{tX_i}\right]=\prod_{i=1}^n\mathbb{E}[e^{tX_i}] \quad \left\}\begin{array}{lcc}
+         \text{Por la independencia de} \\
+         \text{las $X_i&#39;s$ y la proposición}\\
+         \text{anterior.}
+    \end{array}\right.\\
+    &amp;=&amp; \mathbb{E}^n[e^{tX}]=\mu_X^n(t)\quad \left\}\begin{array}{lcc}
+          \\
+         \text{Por ser v.a.i.i.d.}\\
+    \end{array}\right.
+\end{eqnarray*}\]</span></p>
+<p>Por tanto, utilizando las hipótesis de De Pril (<span class="math inline">\(ii\)</span>) tenemos que la generadora de momentos de <span class="math inline">\(S\)</span> es:</p>
+<p><span class="math display">\[\begin{equation*}
+    \mu_S(t)=\mu_X^n(t)
+\end{equation*}\]</span></p>
+<p>Con lo cual llegamos a los otros dos resultados importantes:</p>
+<ul>
+<li><span class="math inline">\(\mu&#39;_S(t)=n\mu_X^{n-1}(t)\cdotp \mu&#39;_X(t)\Rightarrow\mu&#39;_S(0)=n(1)\mu&#39;_X(0)\)</span>
+<span class="math display">\[\begin{equation*}
+          \therefore \mathbb{E}[S]=n\mathbb{E}[X]
+      \end{equation*}\]</span></li>
+<li>Para obtener la varianza es más fácil ver que:
+<span class="math display">\[\begin{eqnarray*}
+          Var(S)&amp;=&amp;Var(\sum_{i=1}^n X_i)\\
+          &amp;=&amp;\sum_{i=1}^{n} Var(X_i)\quad \left\}\begin{array}{lcc}
+              \text{Pues al haber independencia,}\\
+              \text{la covarianza vale cero.}
+          \end{array}\right.\\
+      &amp;=&amp; nVar(X)\quad \left\}\begin{array}{lcc}
+          \text{Pues son idénticamente distribuidas}\\
+      \end{array}\right.
+      \end{eqnarray*}\]</span>
+<span class="math display">\[\begin{equation*}
+          \therefore Var(S)=nVar(X)
+      \end{equation*}\]</span></li>
+</ul>
+<p>Los resultados anteriores se hicieron bajo el supuesto de que el riesgo <span class="math inline">\(S\)</span> sigue las hipótesis que se manejan en la fórmula de De Pril (<span class="math inline">\(ii\)</span>). Sin embargo, las demostraciones de estas propiedades no utilizaron el supuesto de que la severidad tenía un soporte discreto. De hecho, estas últimas propiedades son válidas en general para cualquier riesgo <span class="math inline">\(S=\displaystyle\sum_{i=1}^n X_i\)</span> donde cada <span class="math inline">\(X_i\)</span> es v.a.i.i.d. no importando su soporte o distribución.</p>
+<p>Pueden encontrar los vídeos con parte de la información anterior en los siguientes enlaces:</p>
+<ul>
+<li>De Pril (<span class="math inline">\(i\)</span>)
+<img src="Ima%CC%81genes/ModIndFormulas_1.png" width="70%" style="display: block; margin: auto;" />
+<p style="text-align: center">
+<a href="https://youtu.be/bFPe9cODvD4" class="uri">https://youtu.be/bFPe9cODvD4</a>
+</p></li>
+</ul>
+<p><img src="Ima%CC%81genes/ModIndFormulas_2.png" width="70%" style="display: block; margin: auto;" /></p>
+<p style="text-align:center">
+<a href="https://youtu.be/2hX1OB88BlU" class="uri">https://youtu.be/2hX1OB88BlU</a>
+</p>
+<ul>
+<li>De Pril (<span class="math inline">\(ii\)</span>)
+<img src="Ima%CC%81genes/ModIndFormulas_3.png" width="70%" style="display: block; margin: auto;" />
+<p style="text-align:center">
+<a href="https://youtu.be/2ZiBGxG_gFg" class="uri">https://youtu.be/2ZiBGxG_gFg</a>
+</p></li>
+</ul>
+<p>Inspirados en la fórmula de De Pril (<span class="math inline">\(ii\)</span>), recordemos el siguiente ejemplo:</p>
+<p>Supongamos que <span class="math inline">\(D_j\sim Ber(0.1)\)</span> y que <span class="math inline">\(C_j\)</span> tiene la siguiente f.m.p:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \mathbb{P}[C_j=c]=\left\{\begin{matrix}
+        \text{0.8} &amp;\mbox{si }&amp; c=1\\
+        \text{0.2} &amp;\mbox{si }&amp; c=2\\
+        0 &amp;\mbox{e.o.c.}&amp;
+    \end{matrix}
+    \right.
+    \qquad\forall j.
+\end{eqnarray*}\]</span></p>
+<p>Tomando un portafolio con <span class="math inline">\(n=3\)</span> pólizas bajo el modelo individual, busquemos probabilidades de <span class="math inline">\(S_3=\displaystyle\sum_{i=1}^3 D_i C_i\)</span>.</p>
+<p>Resulta que podemos resolver esto de manera rápida ahora utilizando la fórmula de De Pril (<span class="math inline">\(ii\)</span>). Tomando <span class="math inline">\(X_i=D_i C_i\)</span> entonces:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \mathbb{P}[X=x]=\left\{\begin{matrix}
+        \text{0.9} &amp;\mbox{si }&amp; x=0\\
+        \text{(0.1)(0.8)=0.08} &amp;\mbox{si }&amp; x=1\\
+        \text{(0.1)(0.2)=0.02} &amp;\mbox{si }&amp; x=2\\
+        0 &amp;\mbox{e.o.c.}&amp;
+    \end{matrix}
+    \right.
+\end{eqnarray*}\]</span></p>
+<p>Como tenemos <span class="math inline">\(X_i&#39;s\)</span> v.a.i.i.d. con soporte contenido en <span class="math inline">\(\mathbb{N}\cup\{0\}\)</span>, podemos usar la recursión.</p>
+<p>Sin embargo, un ejemplo de desarrollar De Pril (<span class="math inline">\(ii\)</span>) con esto ya se tocó anteriormente.Vamos a retomar el resultado al que habíamos llegado:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    f_{S_3}(t)=\mathbb{P}[S_3=t]\approx\left\{\begin{matrix}
+        72.9\% \ \mbox{si }\  t=0\\
+        19.44\% \ \mbox{si }\  t=1\\
+        6.588\% \ \mbox{si }\  t=2\\
+        0.9152\% \ \mbox{si }\  t=3\\
+        0.1464\% \ \mbox{si }\  t=4\\
+        0.0096\% \ \mbox{si }\  t=5\\
+        0.0008\% \ \mbox{si }\  t=6\\
+        0 \ \mbox{e.o.c.}
+    \end{matrix}
+    \right.
+\end{eqnarray*}\]</span></p>
+<p>Teniendo en mente lo anterior, vamos a definir ahora un modelo más general primero con un ejemplo. Sea <span class="math inline">\(S\)</span> un riesgo tal que:</p>
+<p><span class="math display">\[S=\displaystyle\sum_{i=1}^N X_i\]</span></p>
+<p>Donde <span class="math inline">\(N\)</span> es v.a. con f.m.p.:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \mathbb{P}[N=n]=\left\{\begin{matrix}
+        \text{0.75} &amp;\mbox{si }&amp; n=0\\
+        \text{0.25} &amp;\mbox{si }&amp; n=3
+    \end{matrix}
+    \right.
+\end{eqnarray*}\]</span></p>
+<p>Y además, <span class="math inline">\(\{X_i\}_{i=1}^3\)</span> son v.a.i.i.d. con f.m.p.:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \mathbb{P}[X=x]=\left\{\begin{matrix}
+        \text{0.9} &amp;\mbox{si }&amp; x=0\\
+        \text{0.08} &amp;\mbox{si }&amp; x=1\\
+        \text{0.02} &amp;\mbox{si }&amp; x=2\\
+        0 &amp;\mbox{e.o.c.}&amp;
+    \end{matrix}
+    \right.
+\end{eqnarray*}\]</span></p>
+<p><strong>Nota:</strong> Si <span class="math inline">\(N=0\Rightarrow S=0\)</span></p>
+<p>Observe que <span class="math inline">\(S\in\{0,1,2,3,4,5,6\}\)</span>,además:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \mathbb{P}[S=0]&amp;=&amp;\mathbb{P}[S=0 | N=0]\mathbb{P}[N=0]+\mathbb{P}[S=0|N\neq 0]\mathbb{P}[N\neq 0]\\
+    &amp;=&amp; \text{0.75}+\mathbb{P}[S=0|N=3]\mathbb{P}[N=3]\\
+    &amp;=&amp; \text{0.75}+\underbrace{f_{S_3}(0)}_{\substack{\text{probabilidad}\\\text{antes obtenida}}}(\text{0.25})\\
+    \mathbb{P}[S=1]&amp;=&amp;\mathbb{P}[S=1 | N=0]\mathbb{P}[N=0]+\mathbb{P}[S=1 | N\neq 0]\mathbb{P}[N\neq 0]\\
+    &amp;=&amp;\text{0.25}\mathbb{P}[S=1|N=3]\\
+    &amp;=&amp;\text{0.25}f_{S_3}(1)
+\end{eqnarray*}\]</span></p>
+<p>Y haciendo esto sucesivamente, la f.m.p. de <span class="math inline">\(S\)</span> será:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    f_S(t)=\mathbb{P}[S=t]=\left\{\begin{matrix}
+        \text{0.75+0.25}f_{S_3}(0) &amp;\mbox{si }&amp; t=0\\
+        \text{0.25}f_{S_3}(t) &amp;\mbox{si }&amp; t\in\{1,2,3,4,5,6\}\\
+        0 &amp;\mbox{e.o.c.}&amp;
+    \end{matrix}
+    \right.
+\end{eqnarray*}\]</span></p>
+<p>Luego observamos los siguientes cálculos:</p>
+<ul>
+<li><p><span class="math display">\[\begin{eqnarray*}
+\mathbb{E}[S]=(\text{0.25})\sum_{t=1}^6 tf_{S_3}(t)=\text{0.9}
+\end{eqnarray*}\]</span></p></li>
+<li><p><span class="math display">\[\begin{eqnarray*}
+\mathbb{E}[S^2]=(\text{0.25})\sum_{t=1}^6 t^2f_{S_3}(t)\approx\text{0.1416}
+\end{eqnarray*}\]</span>
+<span class="math display">\[\begin{eqnarray*}
+  \Rightarrow Var(S)\approx\text{0.1335}
+\end{eqnarray*}\]</span></p></li>
+</ul>
+<p>Pero además, se puede calcular la esperanza de <span class="math inline">\(S\)</span> sin conocer su función de densidad:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \mathbb{E}[S]&amp;=&amp;\mathbb{E}[\mathbb{E}[S|N]]=\underbrace{\mathbb{E}[S|N=0]}_{N=0\Rightarrow S=0}\mathbb{P}[N=0]+\mathbb{E}[S|N=3]\mathbb{P}[N=3]\\
+    &amp;=&amp;\mathbb{E}\left[\sum_{i=1}^NX_i|N=3\right]\mathbb{P}[N=3]=\mathbb{E}\left[\sum_{i=1}^3X_i\right]\mathbb{P}[N=3]\\
+    &amp;=&amp; 3\cdotp\mathbb{E}[X]\mathbb{P}[N=3]=\mathbb{E}[X](3\cdotp\mathbb{P}[N=3]+0\cdotp\mathbb{P}[N=0])\\
+    &amp;=&amp; \mathbb{E}[X]\mathbb{E}[N]
+\end{eqnarray*}\]</span></p>
+<p><strong>Veremos estos cálculos en R.</strong></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="modelo-individual-bases.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="modelo-colectivo-bases.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/09-ModeloIndividual-FormulaDePril.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Notas_TeoriadelRiesgo.pdf", "Notas_TeoriadelRiesgo.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

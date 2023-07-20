@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 8 Severidad Anexo | Teoría del Riesgo</title>
+  <meta name="description" content="Descripcion" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 8 Severidad Anexo | Teoría del Riesgo" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Descripcion" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 8 Severidad Anexo | Teoría del Riesgo" />
+  
+  <meta name="twitter:description" content="Descripcion" />
+  
+
+<meta name="author" content="Cinthya Denisse González Mendoza :o" />
+
+
+<meta name="date" content="2023-07-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="severidad-costo-por-pérdida-y-por-pago.html"/>
+<link rel="next" href="modelo-individual-bases.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notas de Teoría del Riesgo</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Conceptos básicos y preeliminares</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#introducción"><i class="fa fa-check"></i><b>1.1</b> Introducción</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#algunos-antecedentes-históricos"><i class="fa fa-check"></i><b>1.2</b> Algunos antecedentes históricos</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#algunos-términos-del-seguro"><i class="fa fa-check"></i><b>1.3</b> Algunos términos del seguro</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#seguro"><i class="fa fa-check"></i>Seguro:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#riesgo"><i class="fa fa-check"></i>Riesgo:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#siniestro"><i class="fa fa-check"></i>Siniestro:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asegurador"><i class="fa fa-check"></i>Asegurador:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asegurado"><i class="fa fa-check"></i>Asegurado:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#beneficiario"><i class="fa fa-check"></i>Beneficiario:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#póliza"><i class="fa fa-check"></i>Póliza:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#prima"><i class="fa fa-check"></i>Prima:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#clase-de-primas"><i class="fa fa-check"></i><b>1.4</b> Clase de primas:</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#clasificación-de-los-seguros"><i class="fa fa-check"></i><b>1.5</b> Clasificación de los seguros</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#distribuciones-clásicas-en-teoría-del-riesgo"><i class="fa fa-check"></i><b>1.6</b> Distribuciones clásicas en Teoría del Riesgo</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asociadas-al-monto-de-una-pérdida"><i class="fa fa-check"></i>Asociadas al monto de una pérdida</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#familias-paramétricas-para-modelar-el-monto-de-riesgo"><i class="fa fa-check"></i><b>1.7</b> Familias paramétricas para modelar el monto de riesgo</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#exponencial"><i class="fa fa-check"></i>Exponencial</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#gamma"><i class="fa fa-check"></i>Gamma</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#log---normal"><i class="fa fa-check"></i>Log - Normal</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#weibull"><i class="fa fa-check"></i>Weibull</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#burr"><i class="fa fa-check"></i>Burr</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#pareto"><i class="fa fa-check"></i>Pareto</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#modelación-del-riesgo"><i class="fa fa-check"></i><b>1.8</b> Modelación del riesgo</a></li>
+<li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#ajuste-de-funciones-de-probabilidad"><i class="fa fa-check"></i><b>1.9</b> Ajuste de funciones de probabilidad</a></li>
+<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#reconocimiento-del-modelo"><i class="fa fa-check"></i><b>1.10</b> Reconocimiento del modelo</a>
+<ul>
+<li class="chapter" data-level="1.10.1" data-path="index.html"><a href="index.html#moda-de-una-función-de-densidad"><i class="fa fa-check"></i><b>1.10.1</b> Moda de una función de densidad</a></li>
+<li class="chapter" data-level="1.10.2" data-path="index.html"><a href="index.html#coeficiente-de-asimetría-skewness"><i class="fa fa-check"></i><b>1.10.2</b> Coeficiente de asimetría (Skewness)</a></li>
+<li class="chapter" data-level="1.10.3" data-path="index.html"><a href="index.html#coeficiente-de-kurtosis"><i class="fa fa-check"></i><b>1.10.3</b> Coeficiente de Kurtosis</a></li>
+<li class="chapter" data-level="1.10.4" data-path="index.html"><a href="index.html#función-de-distribución-empírica"><i class="fa fa-check"></i><b>1.10.4</b> Función de distribución empírica</a></li>
+<li class="chapter" data-level="1.10.5" data-path="index.html"><a href="index.html#cuantiles"><i class="fa fa-check"></i><b>1.10.5</b> Cuantiles</a></li>
+<li class="chapter" data-level="1.10.6" data-path="index.html"><a href="index.html#rango-intercuantílico"><i class="fa fa-check"></i><b>1.10.6</b> Rango intercuantílico</a></li>
+</ul></li>
+<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#estimación-de-parámetros"><i class="fa fa-check"></i><b>1.11</b> Estimación de parámetros</a>
+<ul>
+<li class="chapter" data-level="1.11.1" data-path="index.html"><a href="index.html#método-de-momentos"><i class="fa fa-check"></i><b>1.11.1</b> Método de momentos</a></li>
+<li class="chapter" data-level="1.11.2" data-path="index.html"><a href="index.html#máxima-verosimilitud"><i class="fa fa-check"></i><b>1.11.2</b> Máxima verosimilitud</a></li>
+</ul></li>
+<li class="chapter" data-level="1.12" data-path="index.html"><a href="index.html#pruebas-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>1.12</b> Pruebas de bondad de ajuste</a>
+<ul>
+<li class="chapter" data-level="1.12.1" data-path="index.html"><a href="index.html#planteamiento-general-de-una-prueba-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>1.12.1</b> Planteamiento general de una prueba de bondad de ajuste</a></li>
+<li class="chapter" data-level="1.12.2" data-path="index.html"><a href="index.html#algunas-pruebas-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>1.12.2</b> Algunas pruebas de bondad de ajuste</a></li>
+</ul></li>
+<li class="chapter" data-level="1.13" data-path="index.html"><a href="index.html#cómo-leer-un-p-value"><i class="fa fa-check"></i><b>1.13</b> ¿Cómo leer un p-value?</a>
+<ul>
+<li class="chapter" data-level="1.13.1" data-path="index.html"><a href="index.html#región-de-rechazo-y-no-rechazo"><i class="fa fa-check"></i><b>1.13.1</b> Región de Rechazo y no rechazo:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.14" data-path="index.html"><a href="index.html#el-proceso-de-modelación-del-riesgo"><i class="fa fa-check"></i><b>1.14</b> El proceso de modelación del Riesgo</a>
+<ul>
+<li class="chapter" data-level="1.14.1" data-path="index.html"><a href="index.html#el-proceso-de-modelado"><i class="fa fa-check"></i><b>1.14.1</b> El proceso de modelado</a></li>
+<li class="chapter" data-level="1.14.2" data-path="index.html"><a href="index.html#pasos"><i class="fa fa-check"></i><b>1.14.2</b> Pasos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html"><i class="fa fa-check"></i><b>2</b> Medidas de Riesgo</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#distribuciones-para-valores-extremos"><i class="fa fa-check"></i><b>2.1</b> Distribuciones para valores extremos</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#teoría-de-valores-extremos"><i class="fa fa-check"></i><b>2.1.1</b> Teoría de valores extremos</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#distribuciones-de-valores-extremos"><i class="fa fa-check"></i>Distribuciones de valores extremos</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#ejemplo-1-2"><i class="fa fa-check"></i>Ejemplo 1</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#ejemplo-2-1"><i class="fa fa-check"></i>Ejemplo 2</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#var-t-var"><i class="fa fa-check"></i><b>2.2</b> VaR &amp; T-VaR</a>
+<ul>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#var"><i class="fa fa-check"></i>VaR</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#t-var"><i class="fa fa-check"></i>T-VaR</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="frecuencia.html"><a href="frecuencia.html"><i class="fa fa-check"></i><b>3</b> Frecuencia</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="frecuencia.html"><a href="frecuencia.html#frecuencia-1"><i class="fa fa-check"></i><b>3.1</b> Frecuencia</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="frecuencia.html"><a href="frecuencia.html#familia-ab0"><i class="fa fa-check"></i><b>3.1.1</b> Familia (a,b,0)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="frecuencia-anexo.html"><a href="frecuencia-anexo.html"><i class="fa fa-check"></i><b>4</b> Frecuencia Anexo</a></li>
+<li class="chapter" data-level="5" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html"><i class="fa fa-check"></i><b>5</b> Severidad Coberturas</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#diferencia-entre-función-de-densidad-y-función-de-masa-de-probabilidad"><i class="fa fa-check"></i><b>5.1</b> Diferencia entre función de densidad y función de masa de probabilidad</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#visualización-de-variables-aleatorias-mixtas"><i class="fa fa-check"></i><b>5.1.1</b> Visualización de variables aleatorias mixtas</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#coberturas-en-seguros-reaseguros"><i class="fa fa-check"></i><b>5.2</b> Coberturas en Seguros / Reaseguros</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#coaseguro"><i class="fa fa-check"></i><b>5.2.1</b> Coaseguro</a></li>
+<li class="chapter" data-level="5.2.2" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#inflación"><i class="fa fa-check"></i><b>5.2.2</b> Inflación</a></li>
+<li class="chapter" data-level="5.2.3" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#deducibles"><i class="fa fa-check"></i><b>5.2.3</b> Deducibles</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#la-regla-de-darth-vader"><i class="fa fa-check"></i><b>5.3</b> La regla de Darth Vader</a></li>
+<li class="chapter" data-level="5.4" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#monto-máximo-de-beneficio"><i class="fa fa-check"></i><b>5.4</b> Monto máximo de beneficio</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html"><i class="fa fa-check"></i><b>6</b> Severidad combinacion de coberturas</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#contratos-con-deducible-y-monto-máximo-de-beneficio"><i class="fa fa-check"></i><b>6.1</b> Contratos con Deducible y monto máximo de beneficio</a></li>
+<li class="chapter" data-level="6.2" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#generalización-de-beneficio-y-monto-máximo"><i class="fa fa-check"></i><b>6.2</b> Generalización de beneficio y monto máximo</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#quitando-el-deducible-d0"><i class="fa fa-check"></i>Quitando el deducible d=0</a></li>
+<li class="chapter" data-level="" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#quitando-monto-máximo-de-beneficio-uinfty"><i class="fa fa-check"></i>Quitando Monto máximo de beneficio: <span class="math inline">\(u=\infty\)</span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html"><i class="fa fa-check"></i><b>7</b> Severidad (Costo por pérdida y por pago)</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html#costo-por-pago"><i class="fa fa-check"></i><b>7.1</b> Costo por pago</a></li>
+<li class="chapter" data-level="7.2" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html#cuantiles-para-las-coberturas"><i class="fa fa-check"></i><b>7.2</b> Cuantiles para las coberturas</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html#ejemplo-6"><i class="fa fa-check"></i>Ejemplo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="severidad-anexo.html"><a href="severidad-anexo.html"><i class="fa fa-check"></i><b>8</b> Severidad Anexo</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#pago-del-asegurado-con-deducible-y-monto-máximo-de-beneficio"><i class="fa fa-check"></i>Pago del asegurado con deducible y monto máximo de beneficio:</a></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#generalización-del-cálculo-de-variables-esperadas-para-y_p."><i class="fa fa-check"></i>Generalización del cálculo de variables esperadas para <span class="math inline">\(Y_p\)</span>.</a></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#generalización-de-la-fórmula-de-darth-vader."><i class="fa fa-check"></i>Generalización de la fórmula de Darth Vader.</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#ejercicio"><i class="fa fa-check"></i>Ejercicio:</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#más-deducibles"><i class="fa fa-check"></i>Más deducibles</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#ejemplo-muy-sencillo-de-como-jugar-con-el-deducible"><i class="fa fa-check"></i>Ejemplo muy sencillo de como jugar con el deducible:</a></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#solución-3"><i class="fa fa-check"></i>Solución</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html"><i class="fa fa-check"></i><b>9</b> Modelo individual bases</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#modelo-individual"><i class="fa fa-check"></i><b>9.1</b> Modelo individual</a></li>
+<li class="chapter" data-level="9.2" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#derivación-bajo-el-signo-integral"><i class="fa fa-check"></i><b>9.2</b> Derivación bajo el signo integral</a></li>
+<li class="chapter" data-level="9.3" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#teorema-de-probabilidad-total-en-el-caso-continuo"><i class="fa fa-check"></i><b>9.3</b> Teorema de probabilidad total en el caso continuo:</a></li>
+<li class="chapter" data-level="9.4" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#teorema-de-probabilidad-total-en-el-caso-discreto"><i class="fa fa-check"></i><b>9.4</b> Teorema de probabilidad total en el caso discreto:</a></li>
+<li class="chapter" data-level="9.5" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#aproximación-normal"><i class="fa fa-check"></i><b>9.5</b> Aproximación Normal</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#teorema-central-del-límite"><i class="fa fa-check"></i>TEOREMA CENTRAL DEL LÍMITE</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="modelo-individual-formula-de-pril.html"><a href="modelo-individual-formula-de-pril.html"><i class="fa fa-check"></i><b>10</b> Modelo individual: formula de Pril</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="modelo-individual-formula-de-pril.html"><a href="modelo-individual-formula-de-pril.html#formula-de-pril"><i class="fa fa-check"></i><b>10.1</b> Formula de Pril</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html"><i class="fa fa-check"></i><b>11</b> Modelo colectivo: Bases</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-colectivo"><i class="fa fa-check"></i>Modelo Colectivo</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-binomial-compuesto"><i class="fa fa-check"></i>Modelo Binomial Compuesto</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-binomial-negativo-compuesto"><i class="fa fa-check"></i>Modelo binomial negativo compuesto</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-poisson-compuesto"><i class="fa fa-check"></i>Modelo Poisson Compuesto</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#distribución-de-la-convoluación-de-poisson-compuestas"><i class="fa fa-check"></i>Distribución de la convoluación de Poisson compuestas</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#aproximaciones-de-probabilidad-del-modelo-colectivo"><i class="fa fa-check"></i>Aproximaciones de probabilidad del Modelo Colectivo</a>
+<ul>
+<li class="chapter" data-level="11.0.1" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#aproximación-normal-1"><i class="fa fa-check"></i><b>11.0.1</b> Aproximación Normal</a></li>
+<li class="chapter" data-level="11.0.2" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#aproximación-gamma-trasladada"><i class="fa fa-check"></i><b>11.0.2</b> Aproximación Gamma Trasladada</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="modelo-colectivo-formula-de-panjer.html"><a href="modelo-colectivo-formula-de-panjer.html"><i class="fa fa-check"></i><b>12</b> Modelo colectivo: Formula de Panjer</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="modelo-colectivo-formula-de-panjer.html"><a href="modelo-colectivo-formula-de-panjer.html#casos-especiales-de-panjer"><i class="fa fa-check"></i><b>12.1</b> Casos especiales de Panjer</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-formula-de-panjer.html"><a href="modelo-colectivo-formula-de-panjer.html#momento-de-s-para-panjer"><i class="fa fa-check"></i>Momento de S para Panjer</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="reaseguro.html"><a href="reaseguro.html"><i class="fa fa-check"></i><b>13</b> Reaseguro</a>
+<ul>
+<li class="chapter" data-level="" data-path="reaseguro.html"><a href="reaseguro.html#reaseguro-proporcional"><i class="fa fa-check"></i>Reaseguro proporcional</a>
+<ul>
+<li class="chapter" data-level="" data-path="reaseguro.html"><a href="reaseguro.html#reaseguro-no-proporcional"><i class="fa fa-check"></i>Reaseguro no proporcional</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html"><i class="fa fa-check"></i><b>14</b> Calculo de primas</a>
+<ul>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#propiedades-y-principios-del-cálculo-de-primas"><i class="fa fa-check"></i>Propiedades y Principios del cálculo de Primas</a>
+<ul>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-valor-esperado"><i class="fa fa-check"></i>Principio de valor esperado</a></li>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-la-varianza"><i class="fa fa-check"></i>Principio de la varianza</a></li>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-la-desviación-estándar"><i class="fa fa-check"></i>Principio de la desviación estándar</a></li>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-utilidad-cero"><i class="fa fa-check"></i>Principio de utilidad cero</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="credibilidad.html"><a href="credibilidad.html"><i class="fa fa-check"></i><b>15</b> Credibilidad</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="credibilidad.html"><a href="credibilidad.html#teoría-de-la-credibilidad"><i class="fa fa-check"></i><b>15.1</b> Teoría de la credibilidad</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="credibilidad.html"><a href="credibilidad.html#introducción-1"><i class="fa fa-check"></i><b>15.1.1</b> Introducción</a></li>
+<li class="chapter" data-level="15.1.2" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-completatotal"><i class="fa fa-check"></i><b>15.1.2</b> Credibilidad Completa/total</a></li>
+<li class="chapter" data-level="15.1.3" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-completa-bajo-hipótesis-de-normalidad"><i class="fa fa-check"></i><b>15.1.3</b> Credibilidad Completa Bajo Hipótesis de Normalidad</a></li>
+<li class="chapter" data-level="15.1.4" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-parcial"><i class="fa fa-check"></i><b>15.1.4</b> Credibilidad Parcial</a></li>
+<li class="chapter" data-level="15.1.5" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-parcial-bajo-hipótesis-de-normalidad"><i class="fa fa-check"></i><b>15.1.5</b> Credibilidad Parcial bajo Hipótesis de Normalidad</a></li>
+<li class="chapter" data-level="15.1.6" data-path="credibilidad.html"><a href="credibilidad.html#ajuste-de-primas-con-credibilidad-clásica"><i class="fa fa-check"></i><b>15.1.6</b> Ajuste de primas con credibilidad clásica</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="credibilidad.html"><a href="credibilidad.html#enfoque-bayesiano"><i class="fa fa-check"></i><b>15.2</b> Enfoque bayesiano</a></li>
+<li class="chapter" data-level="15.3" data-path="credibilidad.html"><a href="credibilidad.html#teorema-de-bayes"><i class="fa fa-check"></i><b>15.3</b> Teorema de Bayes</a></li>
+<li class="chapter" data-level="15.4" data-path="credibilidad.html"><a href="credibilidad.html#familias-conjugadas"><i class="fa fa-check"></i><b>15.4</b> Familias conjugadas</a></li>
+<li class="chapter" data-level="15.5" data-path="credibilidad.html"><a href="credibilidad.html#cálculo-bayesiano-de-primas-de-seguros"><i class="fa fa-check"></i><b>15.5</b> Cálculo Bayesiano de primas de seguros</a>
+<ul>
+<li class="chapter" data-level="" data-path="credibilidad.html"><a href="credibilidad.html#cómo-modelar-un-riesgo-para-obtener-una-prima-de-credibilidad-bayesiana"><i class="fa fa-check"></i>¿Cómo modelar un riesgo para obtener una prima de credibilidad Bayesiana?</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Teoría del Riesgo</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="severidad-anexo" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Capítulo 8</span> Severidad Anexo<a href="severidad-anexo.html#severidad-anexo" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="pago-del-asegurado-con-deducible-y-monto-máximo-de-beneficio" class="section level2 unnumbered hasAnchor">
+<h2>Pago del asegurado con deducible y monto máximo de beneficio:<a href="severidad-anexo.html#pago-del-asegurado-con-deducible-y-monto-máximo-de-beneficio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><span class="math display">\[\begin{equation*}
+    Z\ \ddot{=}\ \text{Lo que paga el asegurado}\\
+    X\ \ddot{=}\ \text{Monto del siniestro, }X \in (a,b)
+\end{equation*}\]</span></p>
+<p><img src="Ima%CC%81genes/8.Recta%20Asegurado%20y%20Aseguradora.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><span class="math display">\[\begin{equation*}
+    Z =
+    \left\{
+    \begin{array}{lcc}
+        X &amp; si &amp; X&lt;d \Longleftrightarrow Z\in [a,d)\\\\
+        d &amp; si &amp; X\in [d,u] \Longleftrightarrow Z=d\\\\
+        X-u+d &amp; si &amp; X&gt;u \Longleftrightarrow Z\in(d,b-u+d]\\
+    \end{array}
+    \right.
+\end{equation*}\]</span>
+<span class="math display">\[\begin{equation*}
+    Z = máx\{min\{ X,d\},X-(u-d)\}\\
+    \end{equation*}\]</span>
+<span class="math display">\[\begin{equation*}
+    \text{Si }X&lt;d \longrightarrow f_{z}(Z) = f_{X}(Z)\ \forall\ Z \in [a,d)\\
+    \end{equation*}\]</span>
+<span class="math display">\[\begin{equation*}
+    \text{Si }X\in[d,u] \longrightarrow f_{z}(d) = F_{X}(u)-F_{X}(d)\\\\
+    \end{equation*}\]</span>
+<span class="math display">\[\begin{equation*}
+    \text{Si }X&gt;u \longrightarrow z\in(u,b-u+d]\\\\
+    \end{equation*}\]</span>
+<span class="math display">\[\begin{eqnarray*}
+    \longrightarrow F_{z}(Z) &amp;=&amp; \mathbb P[Z\leq z]\\
+&amp;=&amp; \mathbb P[Z\leq z | Z\in[a,d]] \mathbb P[Z\in [a,d]]+ \mathbb P[Z\leq z | Z = d] \mathbb P[Z=d]+ .. \\
+&amp; &amp; ..+\mathbb P[Z\leq z | Z\in(d,b-u+d]] \mathbb P[Z\in(d,b-u+d]]\\
+&amp;=&amp; F_{X}(d) + F_{X}(u) - F_{X}(d) + \mathbb P[u&lt;Z\leq b-u+d]\\
+&amp;=&amp; F_{X}(u) + \mathbb P [d &lt; X -u +d \leq Z]\\
+&amp;=&amp; F_{X}(u) + \mathbb P [u &lt; X \leq Z+u-d]\\
+&amp;=&amp; F_{X}(u) + F_{X}(Z+u-d) - F_{X}(u)\\\\
+\end{eqnarray*}\]</span>
+<span class="math display">\[\begin{equation*}
+    F_{X}(Z+u-d) \longrightarrow f_{z}(Z) = f_{X}(Z+u-d) \forall Z &gt; d\\
+\end{equation*}\]</span>
+<span class="math display">\[\begin{equation*}
+    \therefore f_{z}(z) =
+    \left\{
+        \begin{array}{lcc}
+            f_{X}(Z) &amp; si &amp; Z\in [a,d)\\\\
+            F_{X}(u) - F_{X}(d) &amp; si &amp; Z=d\\\\
+            f_{X}(Z+u-d) &amp; si &amp; Z\in(d,b-u+d]\\
+        \end{array}
+    \right. \\
+\end{equation*}\]</span></p>
+</div>
+<div id="generalización-del-cálculo-de-variables-esperadas-para-y_p." class="section level2 unnumbered hasAnchor">
+<h2>Generalización del cálculo de variables esperadas para <span class="math inline">\(Y_p\)</span>.<a href="severidad-anexo.html#generalización-del-cálculo-de-variables-esperadas-para-y_p." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Como ya se mencionó en las notas, hay una manera de generalizar el cálculo del valor esperado de cualquier función <span class="math inline">\(Y_p\)</span>. Si <span class="math inline">\(Y_p\)</span> tiene probabilidad positiva de tomar el cero, entonces <span class="math inline">\(f_{Y_{L}}(0)=\mathbb{P}[Y_{L} \equiv 0]&gt;0\)</span> y así:</p>
+<p><span class="math display">\[\begin{equation*}
+    \mathbb{E}[h(Y_{L})]=h(0)f_{Y_L}(0)+ \mathbb{E}[h(Y_p)]\left(1-f_{Y_L}(0)\right)
+\end{equation*}\]</span></p>
+<p>De donde se obtiene que:</p>
+<p><span class="math display">\[\begin{equation*}
+    \mathbb{E}[h(Y_{p})] = \frac{\mathbb{E}[h(Y_{L})]- h(0)f_{Y_L}(0)}{1-f_{Y_L}(0)} = \frac{\mathbb{E}[h(Y_{L})]-h(0)F_{X}\left(\frac{d}{1+r}\right)}{S_{X}\left(\frac{d}{1+r}\right)}
+\end{equation*}\]</span></p>
+<p>Por otro lado, si <span class="math inline">\(Y_p\)</span> toma el cero con probabilidad cero, entonces <span class="math inline">\(Y_p \equiv Y_L\)</span> pues la compañía siempre paga en cualquier escenario. Esto significa que en este caso, calcular valores esperados de <span class="math inline">\(Y_p\)</span> se hace de manera idéntica a los de <span class="math inline">\(Y_L\)</span>.
+Más aún, gracias a estos últimos resultados, y como ya sabemos obtener valores esperados de <span class="math inline">\(Y_L\)</span>, ya podemos obtener la esperanza de cualquier transformación de <span class="math inline">\(Y_p\)</span>.</p>
+</div>
+<div id="generalización-de-la-fórmula-de-darth-vader." class="section level2 unnumbered hasAnchor">
+<h2>Generalización de la fórmula de Darth Vader.<a href="severidad-anexo.html#generalización-de-la-fórmula-de-darth-vader." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Lemma 2.2.13.</strong> if <span class="math inline">\(Y\geq 0\)</span> and <span class="math inline">\(p&gt;0\)</span> then <span class="math inline">\(E(Y^p)=\int_{0}^{\infty}py^{p-1}P(Y&gt;y)dy\)</span>.</p>
+<p><span class="math inline">\(Proof\)</span>. Using the definition of expected value, Fubini’s theorem (for non-negative random variable), and then calculation the resulting integrals gives:
+<span class="math display">\[\begin{eqnarray*}
+    \int_{0}^{\infty} py^{p-1}P(Y&gt;y)dy &amp;=&amp; \int_{0}^{\infty} \int_{\Omega} py^{p-1}1_{(Y&gt;y)}dPy\\
+    &amp;=&amp; \int_{\Omega} \int_{0}^{\infty}  py^{p-1}1_{(Y&gt;y)}dydP\\
+    &amp;=&amp; \int_{\Omega} \int_{0}^{Y} py^{p-1}dydP = \int_{\Omega} Y^{p}dP \\
+    &amp;=&amp; EY^{p}\\
+\end{eqnarray*}\]</span>
+which is the desired result.</p>
+<p><strong>2.2.6.</strong> (i) Show that if <span class="math inline">\(X \geq 0\)</span> is integer valued <span class="math inline">\(EX = \sum_{n\geq1} P(X\geq n)\)</span>.
+(ii) Find a similar expression for <span class="math inline">\(EX^2\)</span>.</p>
+<p>Si <span class="math inline">\(Y \geq 0\)</span>, aplicamos al Lema 2.2.13:</p>
+<p><span class="math inline">\(\mathbb E Y^{p} = \int_{0}^{\infty} Py^{p-1} \mathbb P[Y &gt; y]dy = \sum_{n=0}^{\infty} \int_{n}^{n+1} Py^{p-1} \mathbb P[Y&gt;y]dy\)</span></p>
+<p>pero, tomando <span class="math inline">\(y\in[n,n+1)\)</span> <span class="math inline">\(\longrightarrow\)</span> <span class="math inline">\(\mathbb P[Y&gt;y] = \mathbb P[Y&gt;y] \longrightarrow \mathbb E Y^{p} = \sum_{n=0}^{\infty} \int_{n}^{n+1} Py^{p-1} P[Y&gt;n]dy\)</span>, sacando constantes:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \mathbb E Y^{p} &amp;=&amp; \sum_{n=0}^{\infty} \int_{n}^{n+1} Py^{p-1} \mathbb P [Y&gt;n] dy =
+    \sum_{n=0}^{\infty} P \mathbb P[Y&gt;n] \int_{n}^{n+1} y^{p-1} dy \\
+    &amp;=&amp; \sum_{n=0}^{\infty} \mathbb P[Y&gt;n] ((n+1)^{p}-(n)^{p})\\
+    &amp;=&amp; \sum_{n=0}^{\infty} \mathbb P[Y\geq n+1] ((n+1)^{p}-n^{p}) \\
+    &amp;=&amp;\sum_{n=1}^{\infty} \mathbb P[Y\geq n] (n^{p}-(n+1)^{p})\\
+\end{eqnarray*}\]</span></p>
+<p>En particular, tenemos:</p>
+<ol style="list-style-type: lower-roman">
+<li><p><span class="math inline">\(\mathbb E Y = \sum_{n=1}^{\infty} \mathbb P[Y\geq n] (n-(n-1)) = \sum_{n=1}^{\infty} \mathbb P[Y\geq n]\)</span>.</p>
+<p>Cuando <span class="math inline">\(p=2\)</span> <span class="math inline">\(\longrightarrow\)</span> <span class="math inline">\(n^2-(n-1)^2=n^2-n^2+2n-1\)</span> <span class="math inline">\(=2n-1\)</span></p></li>
+<li><p><span class="math inline">\(\mathbb E Y^2 = \sum_{n=1}^{\infty} \mathbb P[Y\geq n] (n^2-(n-1)^2) = \sum_{n=1}^{\infty} (2n-1) \mathbb P[Y\geq n]\)</span></p></li>
+</ol>
+<p>Recordemos el siguiente resultado para el cálculo de la variable de cobertura.</p>
+<p><strong>Ejercicio para el Lector: Demuestra que la formula de la derecha es válida para <span class="math inline">\(X\)</span> cualquier v.a.</strong></p>
+<p><span class="math display">\[\begin{equation*}
+        F_{Y}(t) \ddot{=} \mathbb P[Y\leq t] =
+        \left\{
+        \begin{array}{lcc}
+            0 &amp; si &amp; t&lt;0\\\\
+            F_{\chi}(\frac{t+d\alpha}{\alpha(1+r)}) &amp;
+            si &amp; t\in[0,\alpha(u-d))\\\\
+            1 &amp; si &amp; t\geq \alpha(u-d)\\
+        \end{array}
+        \right.
+\end{equation*}\]</span></p>
+<p>Entonces:</p>
+<p><span class="math display">\[\begin{equation*}
+        S_{Y}(t)\ \ddot{=}\ \mathbb P[Y &gt; t] =
+        \left\{
+        \begin{array}{lcc}
+            1 &amp; si &amp; t&lt;0\\\\
+            S_{\chi}(\frac{t+d\alpha}{\alpha(1+r)}) &amp;
+            si &amp; t\in[0,\alpha(u-d))\\\\
+            0 &amp; si &amp; t\geq \alpha(u-d)\\
+        \end{array}
+        \right. \\
+\end{equation*}\]</span></p>
+<p>Usando lo anterior, como <span class="math inline">\(Y\geq 0\)</span>, calculamos a la Darth Vader:</p>
+<p><span class="math display">\[\begin{equation*}
+        \mathbb E[Y^{p}] = \int_{0}^{\infty} pt^{p-1} \mathbb P[Y &gt; t] dt =
+        \int_{0}^{\alpha(u-d)} pt^{p-1}
+        S_{\chi}(\frac{t+d\alpha}{\alpha(1+r)}) dt
+\end{equation*}\]</span></p>
+<p>En particular si <span class="math inline">\(p=1\)</span> tenemos que:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \mathbb E[Y] &amp;=&amp; \mathbb E[Y^{p}] = \int_{0}^{\alpha(u-d)} pt^{p-1}
+    S_{\chi}(\frac{t+d\alpha}{\alpha(1+r)}) dt \\
+    &amp;=&amp; \int_{0}^{\alpha(u-d)}
+    S_{\chi}(\frac{t+d\alpha}{\alpha(1+r)}) dt
+    \left\{
+    \begin{array}{lcc}
+        \chi = \frac{t+dx}{\alpha(1+r)} \longrightarrow dx = \frac{dt}{\alpha(1+r)}\\
+    \end{array}
+    \right.\\
+    &amp;=&amp; \alpha(1+r) \int_{\frac{d}{1+r}}^{\frac{u}{1+r}}
+    S_{\chi}dx
+\end{eqnarray*}\]</span>
+Que es el resultado que ya teníamos en las notas.</p>
+<p><strong>2.2.7. Generalize Lemma 2.2.13</strong></p>
+<p>to conclude that if <span class="math inline">\(H(x)=\int_{(-\infty,x)}h(y)dy\)</span> with <span class="math inline">\(h(y)\geq 0\)</span>, then
+<span class="math display">\[\mathbb{E}[H(X)]=\int^\infty_{-\infty}h(y)P(X\geq y)dy\]</span>
+An important special case is <span class="math inline">\(H(x)=exp(\theta x)\)</span> with <span class="math inline">\(\theta&gt;0\)</span>.</p>
+<p><strong>Nota:</strong> funciona con <span class="math inline">\(\mathbb{P}[X&gt;y]\)</span> pues la integral (<span class="math inline">\(dy\)</span>) en un punto es cero. Con la finalidad de aclarar/recordar algunas cosas para probar lo anterior:</p>
+<p>Let <span class="math inline">\((X,\mathcal{A},\mu_1)\)</span> and <span class="math inline">\((Y,\mathcal{B},\mu_2)\)</span> be two <span class="math inline">\(\sigma\)</span>-finite measure spaces. Let</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \Omega=X \times Y=\{(x,y):x\in X,y\in Y\}\\
+    \end{eqnarray*}\]</span>
+<span class="math display">\[\begin{eqnarray*}
+    \mathcal{S}&amp;=&amp;\{A\times B:A\in\mathcal{A},B\in\mathcal{B}\}
+\end{eqnarray*}\]</span></p>
+<p>Sets in <span class="math inline">\(S\)</span> are called <strong>rectangles</strong>. Let <span class="math inline">\(\mathcal{F}=\mathcal{A}\times\mathcal{B}\)</span> be the <span class="math inline">\(\sigma\)</span>-algebra generated by <span class="math inline">\(\mathcal{S}\)</span>.</p>
+<p><strong>Nota:</strong> La notación puede no ser la mejor, pero en este caso, pensándolo en términos de v.a.’s, sin pérdida de generalidad, <span class="math inline">\(X\)</span> denota un soporte, <span class="math inline">\(A\)</span> eventos del soporte y <span class="math inline">\(\mu_1\)</span> denota una medida <span class="math inline">\(\sigma\)</span>-finita.</p>
+<p><strong>Theorem 1.7.1.</strong></p>
+<p>There is a unique measure <span class="math inline">\(\mu\)</span> on <span class="math inline">\(\mathcal{F}\)</span> with <span class="math display">\[\mu(A\times B)=\mu_1(A)\mu_2(B)\]</span>
+<strong>Notation.</strong> <span class="math inline">\(\mu\)</span> is often denoted by <span class="math inline">\(\mu_1\)</span> <span class="math inline">\(\mu_2\)</span>.</p>
+<p><strong>Nota:</strong> Pensando en un caso particular de este teorema, recuerden que puede haber dos funciones de distribución conjunta (acumulada) diferentes con las mismas marginales, pero este garantiza que hay una única dada por el producto de las marginales. De aquí, una pregunta razonable cuando se esta aprendiendo probabilidad es: Dados un par de v.a. digamos <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span>; ¿Cuál es su densidad conjunta? La respuesta es, quién sabe… sus marginales no nos permiten observar su comportamiento de manera conjunta.</p>
+<div id="ejercicio" class="section level3 unnumbered hasAnchor">
+<h3>Ejercicio:<a href="severidad-anexo.html#ejercicio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Muestra un ejemplo de dos funciones de densidad conjunta diferentes, que tengan las mismas marginales.</p>
+<p><strong>Nota:</strong> Tenemos el siguiente resultado:</p>
+<p><strong>Theorem 1.7.2. Fubini’s theorem</strong>
+If <span class="math inline">\(f\geq 0\)</span> or <span class="math inline">\(\int|f|d\mu&lt;\infty\)</span> then <span class="math display">\[\int_X\int_Y f(x,y)\mu_2(dy)\mu_1(dx)=\int_{X\times Y}fd\mu=\int_Y\int_X f(x,y)\mu_1(dx)\mu_2(dy)\]</span></p>
+<p>Donde s.p.g. <span class="math inline">\(\mu_1(dx)\)</span> es notación para indicar que la función <span class="math inline">\(f\)</span> se integra sobre <span class="math inline">\(x\)</span> con respecto a la media <span class="math inline">\(\mu_1\)</span>.</p>
+<p><strong>Procedemos con la prueba del teorema 2.2.7.</strong></p>
+<p>Considerando un espacio de probabilidad (<span class="math inline">\(\Omega,\mathscr{F},P\)</span>), donde <span class="math inline">\(P\)</span> es la función de distribución (acumulada) de una v.a. <span class="math inline">\(X\)</span>. <span class="math inline">\(P(x)\hspace{0.4em}\ddot{=}\hspace{0.4em}\mathbb{P}[X\leq x]\)</span>.</p>
+<p><span class="math display">\[\mathbb{E}[H(X)]\hspace{0.4em}\ddot{=}\hspace{0.4em}\int_\Omega H(x)dP=\int_{\Omega}\left(\int_{(-\infty,x]}h(y)dy\right) dP=\int_\Omega\left(\int_{\mathbb{R}}\mathbb{I}_{(-\infty,x]}h(y)dy\right)dP\]</span></p>
+<p>Pero gracias a las hipótesis, es claro que <span class="math inline">\(\mathbb{I}_{(-\infty,x]}(y)h(y)\geq 0\)</span> como función de <span class="math inline">\(y\)</span> (¡En serio!). Ergo, podemos invocar el teorema de fubini al resultado anterior:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\mathbb{E}[H(X)]&amp;=&amp;\int_{\Omega}\left(\int_{\mathbb{R}}\mathbb{I}_{(-\infty,x]}(y)h(y)dy\right)dP\\
+&amp;\overset{\underset{\downarrow}{\text{Fubini}}}{=}&amp;\int_{\mathbb{R}}\left(\int_{\Omega}\mathbb{I}_{(-\infty,x]}(y)h(y)dP\right)dy\quad \left \{ \begin{matrix}
+&amp;\mbox{Obs. } dy=\lambda(dy)\\
+&amp;\mbox{donde } \lambda \mbox{ es la medida} \\
+&amp;\mbox{de Lebesgue.}
+\end{matrix}\right.
+\end{eqnarray*}\]</span></p>
+<p>Pero <span class="math inline">\(P\)</span> mide con <span class="math inline">\(x\)</span>,i.e., <span class="math inline">\(dP=P(dx)\)</span> entonces <span class="math inline">\(y\)</span> es constante para <span class="math inline">\(dP\)</span>:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \Rightarrow \mathbb{E}[H(X)]&amp;=&amp;\int_{\mathbb{R}}\left(h(y)\int_\Omega\mathbb{I}_{(-\infty,x]}(y)dP\right)dy\\
+    &amp;=&amp; \int_{\mathbb{R}}\left(h(y)\int_\Omega\mathbb{I}_{[y,\infty)}(x)dP\right)dy\left\{\begin{matrix}
+        \mbox{El conjunto de la indicadora}\\
+        es:-\infty&lt;y\leq x &lt;\infty
+    \end{matrix}\right.\\
+   &amp;=&amp; \int_{\mathbb{R}}\left(h(y)\int_{[y,\infty)}dP\right)dy=\int_{\mathbb{R}}h(y)\mathbb{P}[X\geq y]dy.\quad\blacksquare
+\end{eqnarray*}\]</span></p>
+<p>Un ejemplo/caso especial es el que menciona el mismo teorema:</p>
+<p>Sea <span class="math inline">\(H(x)=exp(\theta x)\Rightarrow h(x)=H&#39;(x)=\theta exp(\theta x)\)</span> por el teorema fundamental del cálculo.</p>
+<p>Invocando el último teorema, cualquier generadora de momentos se puede calcular como: <span class="math display">\[\mu_X(\theta)\hspace{0.4em}\ddot{=}\hspace{0.4em}\mathbb{E}[e^{\theta X}]=\mathbb{E}[H(X)]=\int_{\mathbb{R}}h(y)\mathbb{P}[X\geq y]dy=\int_{\mathbb{R}}\theta exp(\theta y)\mathbb{P}[X\geq y]dy\]</span> a la Darth Vader.</p>
+<p>Un ejemplo del resultado anterior es tomando <span class="math inline">\(X\sim exp(\lambda)\)</span>, así:</p>
+<ul>
+<li><span class="math display">\[\begin{eqnarray*}\mathbb{P}[X\geq y]=\mathbb{P}[X&gt;y]\hspace{0.4em}\ddot{=}\hspace{0.4em}S_X(y)=\left\{\begin{matrix}
+      e^{-\lambda y}&amp;\mbox{si}&amp; y\geq 0\\
+      1 &amp;\mbox{si}&amp; y&lt;0
+  \end{matrix}\right.\end{eqnarray*}\]</span></li>
+</ul>
+<p><span class="math display">\[\begin{eqnarray*}
+    \Rightarrow \int_{\mathbb{R}}\theta exp(\theta y)\mathbb{P}[X\geq y]dy &amp;=&amp; \overset{\text{¿Por qué es 1?}_{\hspace{0.2em}\searrow}}{{\int^0_{-\infty}\theta exp(\theta y)dy}}+\int^\infty_0 \theta exp(\theta y)e^{-\lambda y}dy\\
+    &amp;=&amp; 1+ \frac{\theta}{\lambda}\mu_X(\theta)\hspace{0.4em}
+        \left\{\mu_X(\theta)=\frac{\lambda}{\lambda-\theta}\right.
+    = 1+\frac{\theta}{\lambda-\theta}=\frac{\lambda}{\lambda-\theta}=\mu_X(\theta).
+    \end{eqnarray*}\]</span></p>
+<p>Cumpliéndose así lo que acabamos de probar. Hagamos otro con <span class="math inline">\(X\in\mathbb{N}\cup\{0\}\)</span>, así, haciendo algo similar al ejercicio 2.2.6. podemos tomar <span class="math inline">\(n\in\mathbb{N}\cup\{0\}\)</span> y luego notar que:</p>
+<p>Si <span class="math inline">\(y\in(n,n+1]\Rightarrow\mathbb{P}[X\geq y]=\mathbb{P}[X&gt;n]=\sum\limits_{t=n+1}^\infty\mathbb{P}[X=t]\)</span>
+<img src="Ima%CC%81genes/Severidad_Anexo.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Si <span class="math inline">\(y\leq 0\Rightarrow \mathbb{P}[X\geq y]=1\)</span>.</p>
+<p>Entonces:</p>
+<p><span class="math display">\[\begin{equation*}
+    \mathbb{P}[X\geq y]=\left\{
+    \begin{matrix}
+        \mathbb{P}[X&gt;n]=\sum\limits_{t=\lceil y \rceil}^\infty\mathbb{P}[X=t]=\sum\limits_{t=n+1}^\infty\mathbb{P}[X=t]&amp;\mbox{si}&amp; y\in(n,n+1]\quad\forall n\in\mathbb{N}\cup\{0\} \\
+        1 &amp;\mbox{si}&amp; y\leq 0
+    \end{matrix}\right.
+\end{equation*}\]</span></p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \Rightarrow \int_{\mathbb{R}}\theta exp(\theta y)\mathbb{P}[X\geq y]dy&amp;=&amp;\int^0_{-\infty}\theta exp(\theta y)dy+\int^\infty_0 \theta exp(\theta y)\mathbb{P}[X\geq y]dy\\
+    &amp;=&amp;1+\sum\limits_{n=0}^\infty\int^{n+1}_n\theta exp(\theta y)\mathbb{P}[X\geq y]dy \\
+    &amp;=&amp;1+\sum\limits_{n=0}^\infty\int^{n+1}_n\theta exp(\theta y)\mathbb{P}[X&gt;n]dy\\
+    &amp;=&amp;1+\sum\limits_{n=0}^\infty\mathbb{P}[X&gt;n]\int^{n+1}_n\theta exp(\theta y)dy\quad\left\{\int^{n+1}_n\theta exp(\theta y)dye^{\theta(n+1)}-e^{\theta n}\right.\\
+    &amp;=&amp; 1+\sum\limits_{n=0}^\infty \mathbb{P}[X&gt;n](e^{\theta (n+1)}-e^{\theta n}) \\
+    &amp;=&amp;1+\sum\limits_{n=0}^\infty\mathbb{P}[X&gt;n]e^{\theta n}(e^\theta-1)\\
+    &amp;=&amp;1+(e^\theta-1)\sum\limits_{n=0}^\infty\mathbb{P}[X&gt;n]e^{\theta n}\\
+    &amp;=&amp; 1+ (e^\theta-1)\sum\limits_{n=0}^\infty\sum\limits_{t=n+1}^\infty\mathbb{P}[X=t]e^{\theta n}\\
+    &amp;=&amp; 1+(e^\theta-1)\sum\limits_{t=1}^\infty\sum\limits_{n=0}^{t-1}\mathbb{P}[X=t]e^{\theta n}\quad\left\{\begin{matrix}
+        \mbox{Estamos sumando }(n,t):\\\begin{matrix}
+        (0,1)&amp; (0,2)&amp;(0,3)&amp;(0,4)&amp;\cdots \\
+        x&amp;(1,2)&amp;(1,3)&amp;(1,4)&amp;\cdots \\
+        x&amp;x&amp;(2,3)&amp;(2,4)&amp;\cdots\\
+        \vdots &amp;\ddots\end{matrix}
+    \end{matrix}\right.\\
+    &amp;=&amp;1+(e^\theta -1)\sum\limits_{t=1}^\infty\mathbb{P}[X=t]\sum\limits_{n=0}^{t-1}(e^\theta)^n=1+(e^\theta-1)\sum\limits_{t=1}^\infty\mathbb{P}[X=t]\frac{1-e^{\theta t}}{1-e^\theta}\\
+    &amp;=&amp;1+\sum\limits_{t=1}^\infty\mathbb{P}[X=t](e^{\theta t}-1)\\
+    &amp;=&amp; 1+\sum\limits_{t=0}^\infty\mathbb{P}[X=t](e^{\theta t}-1)=1+\mu_X(\theta)-\sum\limits_{t=0}^\infty\mathbb{P}[X=t]=\mu_X(\theta)
+\end{eqnarray*}\]</span>
+Probando de nuevo la propiedad.</p>
+<p>Con esto ya verificamos la validez de los últimos resultados.</p>
+</div>
+</div>
+<div id="más-deducibles" class="section level2 unnumbered hasAnchor">
+<h2>Más deducibles<a href="severidad-anexo.html#más-deducibles" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Consideremos <span class="math inline">\(Y=(X-d)\)</span> la severidad de un riesgo a asumir <span class="math inline">\(0\leq X\)</span> (<span class="math inline">\(Y\)</span> es el pago de la compañía por contrato de deducible <span class="math inline">\(=d\)</span>).</p>
+<p><strong>Proposición</strong></p>
+<p>En general, si <span class="math inline">\(a,b \in \mathbb{R}^{+}\)</span> tal que <span class="math inline">\(a\leq X\leq b\)</span> entonces:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\mathbb{E}[X\wedge d ]&amp;=&amp; \mathbb{E}[X]-\mathbb{E}[(X-d)_{+}]\leq d \leq b
+\end{eqnarray*}\]</span></p>
+<p><strong>Nota:</strong> Aquí en general pensemos que <span class="math inline">\(\mathbb{E}[X] \geq \mathbf{E}[(X-d)_{+}]\)</span> para reducir la siniestralidad.</p>
+<p><em>Demostración.</em></p>
+<p><span class="math display">\[\begin{eqnarray*}
+X-d \leq (X-d)_{+} \quad \forall \omega \in \Omega &amp; \Rightarrow&amp; \mathbb{E}[X-d] \leq \mathbb{E}[(X-d)_{+}]\\
+&amp;\Rightarrow&amp; \mathbb{E}[X]-\mathbb{E}[(X-d)_{+}]\leq d\\
+\end{eqnarray*}\]</span></p>
+<p>En general, tomamos <span class="math inline">\(d&lt;b\)</span> pues en otro caso <span class="math inline">\((X-d)_{+} \equiv 0 \quad \blacksquare\)</span>.</p>
+<p><strong>Proposición</strong></p>
+<p>Sea <span class="math inline">\(X\)</span> v.a tal que <span class="math inline">\(X&gt;d\)</span> c.s. <span class="math inline">\(\Rightarrow d=\mathbb{E}[X]-\mathbb{E}[(X-d)_{+}]\)</span>.
+<span class="math inline">\(\Leftarrow\)</span> válido si <span class="math inline">\(P[X\equiv d]=0\)</span></p>
+<p><em>Demostración.</em></p>
+<p><span class="math display">\[\begin{equation*}
+\mathbb{E}[X]=\displaystyle\int_{0}^{\infty} \mathbb{P}[X&gt;t] dt \quad \quad \mathbb{E}[(X-d)_{+}] = \displaystyle\int_{0}^{\infty} S_{X}(t+d) dt= \displaystyle\int_{0}^{\infty} S_{X}(u) dt
+\end{equation*}\]</span></p>
+<p><strong>Revisar Script 4.A.1</strong></p>
+<p><span class="math display">\[\begin{eqnarray*}
+\mathbb{E}[X]-\mathbb{E}[(X-d)_{+}]&amp;=&amp; \displaystyle\int_{0}^{d} \mathbb{P}[X&gt;t] dt \\
+&amp;=&amp; \displaystyle\int_{0}^{d} (1- \mathbb{P}[X\leq t]) dt\\
+&amp;=&amp; \displaystyle\int_{0}^{d} dt- \displaystyle\int_{0}^{d} \mathbb{P}[X\leq t] dt \\&amp;=&amp; d- \underbrace{\displaystyle\int_{0}^{d} \mathbb{P}[X\leq t] dt}_{ \text{¡ Todo depende esto !}}\\
+\end{eqnarray*}\]</span></p>
+<p>
+<span class="math display">\[\begin{equation*}
+0 \leq \displaystyle\int_{0}^{d} \mathbb{P}[X\leq t] dt \leq \displaystyle\int_{0}^{d} \mathbb{P}[X\leq d] dt =0\\
+\end{equation*}\]</span></p>
+<p>
+<span class="math display">\[\begin{eqnarray*}
+d&amp;=&amp;\mathbb{E}[X]-\mathbb{E}[(X-d)_{+}]\\
+&amp;=&amp; d- \displaystyle\int_{0}^{d}\mathbb{P}[X\leq t] dt
+\end{eqnarray*}\]</span></p>
+<p>Sí y solo si:</p>
+<p>
+<span class="math display">\[\begin{eqnarray*}
+0&amp;=&amp; \displaystyle\int_{0}^{d}\mathbb{P}[X\leq t] dt\\
+\end{eqnarray*}\]</span></p>
+<p>Como <span class="math inline">\(0\leq \mathbb{P}[X\leq t]\)</span> es no decreciente como función de <span class="math inline">\(t\)</span>, entonces: <span class="math inline">\(\mathbb{P}[X\leq t]\equiv 0 \quad \forall t\in[0,d] \Rightarrow \mathbb{P}[X &lt;d]=0 \Rightarrow \mathbb{P}[X \geq d]=1\)</span>. Donde vemos que si <span class="math inline">\(\mathbb{P}[X\equiv d]=0\)</span>, el regreso es válido.</p>
+<p>Como consecuencia. Si <span class="math inline">\(\mathbb{P}[X \leq d] \approx0 \Rightarrow d \approx \mathbb{E}[X]-\mathbb{E}[(X-d)_{+}]\)</span>.</p>
+<p>En conclusión, lo anterior nos dice que si <span class="math inline">\(\mathbb{E}[X]\)</span> dista mucho de <span class="math inline">\(\mathbb{E}[(X-d)_{+}]\)</span>, entonces: El deducible debe ser grande.</p>
+<p>Esto tiene sentido pues en general como <span class="math inline">\(\mathbb{E}[X]&gt;\mathbb{E}[(X-d)_{+}]\)</span> entonces quiere decir que un deducible grande, reduce la siniestralidad.</p>
+<p>Por otro lado que tanto diste “<span class="math inline">\(d\)</span>” de su cota inferior, depende totalmente de <span class="math inline">\(\displaystyle\int_{0}^{d} \mathbb{P}[X\leq t]dt\)</span>, es decir, de que tanta probabilidad hay en la cola izquierda de la distribución.</p>
+<p>Esto nos da una descripción un poco mas detallada de:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+     \textit{Si}  &amp;&amp; \mathbb{E}[(X-d)_{+}] \uparrow \mathbb{E}[X] \Rightarrow d \downarrow \mathbb{E}[X]-\mathbb{E}[(X-d)_{+}] \approx 0 .\\
+    \textit{Si}  &amp;&amp; \mathbb{E}[(X-d)_{+}]\downarrow 0 \Rightarrow d \uparrow sup\{x|x \in Sop {X}\}&#39;&#39;=&#39;&#39;\quad\blacksquare
+\end{eqnarray*}\]</span></p>
+<div id="ejemplo-muy-sencillo-de-como-jugar-con-el-deducible" class="section level3 unnumbered hasAnchor">
+<h3>Ejemplo muy sencillo de como jugar con el deducible:<a href="severidad-anexo.html#ejemplo-muy-sencillo-de-como-jugar-con-el-deducible" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sea <span class="math inline">\(X\)</span> v.a tal que <span class="math inline">\(SopX=\{3,12 \}\)</span> y <span class="math inline">\(\mathbb{P}[X=x]=1/2 \quad \forall x \in Sop\{ X\}\)</span>.</p>
+<p>Esta represente el monto de un siniestro. Calculamos un deducible tal que <span class="math inline">\(\mathbb{E}[Y_{L}]=3. (Y_{L}= (X-d)_{+})\)</span>.</p>
+</div>
+<div id="solución-3" class="section level3 unnumbered hasAnchor">
+<h3>Solución<a href="severidad-anexo.html#solución-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Hagamos algunas observaciones:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+        \mathbb{E}[X]&amp;=&amp;\left(\frac{1}{2} \right)(3)+ \left(\frac{1}{2} \right)(12)\\
+        &amp;=&amp; 7.5\\
+         \mathbb{E}[Y_{L}]&amp;=&amp;3\\
+\end{eqnarray*}\]</span></p>
+<p>Como <span class="math inline">\(\mathbb{E}[X]&gt; \mathbb{E}[Y_L]\)</span>, entonces tiene sentido de hablar de un deducible con estas características.</p>
+<p><img src="Ima%CC%81genes/8.Fx.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="Ima%CC%81genes/8.Sx.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Resolvamos por casos:</p>
+<p><strong>Caso 1:</strong></p>
+<p><img src="Ima%CC%81genes/8.R1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Entonces <span class="math inline">\(d &lt; 3\)</span>.</p>
+<p>Entonces:</p>
+<p><span class="math display">\[\begin{equation*}
+Y_{L} \ddot{=} (X-d)_{+}=X-d \Rightarrow 3=\mathbb{E}[Y_{L}]= \mathbb{E}[X]-d = 7.5-d
+\end{equation*}\]</span></p>
+<p>Entonces:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+d&amp;=&amp; 7.5-3\\
+&amp;=&amp; 4.5\\
+\end{eqnarray*}\]</span></p>
+<p>Esto nos hace recordar la cota inferior que hay para <span class="math inline">\(d\)</span>, i.e, <span class="math inline">\(\mathbb{E}[X]-\mathbb{E}[(X-d)_{+}] \leq d\)</span>. En este caso no tenía sentido buscar a <span class="math inline">\(d\)</span> antes de <span class="math inline">\(4.5\)</span> pues esa era la cota inferior.</p>
+<p><strong>Caso 2:</strong></p>
+<p><img src="Ima%CC%81genes/8.R2.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Entonces <span class="math inline">\(d &gt;12\)</span>.</p>
+<p><span class="math display">\[\begin{equation*}
+Y_{L} \ddot{=} (X-d)_{+} \equiv 0 \Rightarrow 3= \mathbb{E}[Y_{L}]=0 \quad \text{¡ Contradicción !}
+\end{equation*}\]</span></p>
+<p><strong>Caso 3:</strong></p>
+<p><img src="Ima%CC%81genes/8.R3.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Entonces <span class="math inline">\(d\in(3,12)\)</span>.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+   Y_{L}&amp;\ddot{=}&amp; (X-d)_{+}\\
+    &amp;=&amp; \left \{ \begin{matrix}
+   0 &amp; \mbox{si }&amp; X&lt; d &amp; \Leftrightarrow &amp; X=3\\
+   X-d &amp;\mbox{si }  &amp; X \geq d &amp; \Leftrightarrow &amp; X=12\\  
+\end{matrix}\right.
+\end{eqnarray*}\]</span></p>
+<p><span class="math display">\[\begin{eqnarray*}
+3&amp;=&amp; \mathbb{E}[Y_{L}] \\
+&amp;=&amp; 0 \cdot \mathbb{P}[X=3] + (12-d) \cdot \mathbb{P}[X=12]\\
+&amp;=&amp; (12-d) \frac{1}{2}\\
+&amp;=&amp; 6- \displaystyle\frac{d}{2}\\
+&amp; \Leftrightarrow &amp; 6=12-d\\
+&amp; \Leftrightarrow &amp; d= 6 \\
+\end{eqnarray*}\]</span></p>
+<p>Okay, esto es una opción, otra es notar que puedo pensar <span class="math inline">\(\mathbb{E}[Y_{L}]\)</span> como función de <span class="math inline">\(d\)</span> con la fórmula de Darth Vader.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\mathbb{E}[Y_L]&amp;=&amp; \displaystyle\int_{d}^{b} S_{X}(t)dt\\
+&amp;=&amp; f(d)\\
+\end{eqnarray*}\]</span></p>
+<p>La cuestión es encontra <span class="math inline">\(d\)</span> tal que <span class="math inline">\(f(d)=3\)</span>.</p>
+<p><img src="Ima%CC%81genes/8.Sx%20II.png" width="70%" style="display: block; margin: auto;" /></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="severidad-costo-por-pérdida-y-por-pago.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="modelo-individual-bases.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-SeveridadAnexo.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Notas_TeoriadelRiesgo.pdf", "Notas_TeoriadelRiesgo.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

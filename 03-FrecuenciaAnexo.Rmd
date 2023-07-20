@@ -1,0 +1,222 @@
+# Frecuencia Anexo
+
+2. Sea $N$ una v.a. discreta con distribución $\{P_{k}: k= 0,1,...\}$ . Sean $a$ y $b$ dos constantes. Se dice que $N$  tiene distribución tipo $(a,b,0)$ si se cumple la igualdad 
+
+ $$P_{k} = \left(a+\frac{b}{k}\right)P_{k+1} \quad\mbox{para } k= 1,2,...$$
+
+
+a) Demuestre que las siguientes distribuciones son de tipo $(a,b,0)$ encontrando las constantes $a$ y $b$ con las cuales se cumple la condición mencionada:
+
+
+- a.1) $bin(n,p)$
+
+
+- a.2) $Poisson(\lambda)$
+
+
+- a.3) $bin. neg(r,p)$
+
+b) Recíprocamente, demuestre que si $N$  tiene distribución tipo (a,b,0), entonces $N$  es alguna de (a.1), (a.2) ó (a.3)
+
+
+**a)**
+
+ _a.1)_ Consideremos $X\sim{ Bin (n, \gamma) }$. Entonces su f.m.p. está dada por:
+
+$$P_{x} =
+    \begin{pmatrix}
+        n\\
+        x
+    \end{pmatrix} 
+    (1-\gamma)^{n-x}\gamma^{x}\mathbb{I} (x)_{\{0,1,...,n\}} \mbox{ para } n\in\mathbb N_{1} \mbox{ & }  \gamma\in(0,1)$$
+    
+**_Demostración:_**
+
+Tomando $k\in\{1,2,...\}$ tenemos:
+
+\begin{eqnarray*}
+    \frac{P_k}{P_{k-1}}&=&\frac{\begin{pmatrix}
+        n\\
+        k
+    \end{pmatrix}(1-\gamma)^{n-k}\gamma^k}{\begin{pmatrix}
+        n\\
+        k-1
+    \end{pmatrix}(1-\gamma)^{n-k+1}\gamma^{k-1}}\mathbb{I}_{1,2,...,n}(k)\\
+   &=&\frac{\frac{n!}{(n-k)!k!}}{\frac{n!}{(n-k+1)(k-1)}}\frac{\gamma}{1-\gamma}\\
+    &=&\frac{(n-k+1)!(k-1)!}{(n-k)!k!}\frac{\gamma}{1-\gamma}\\
+    &=&\frac{n-k+1}{k}\cdot\frac{\gamma}{1-\gamma}\\
+   &=&-\frac{\gamma}{1-\gamma}+\frac{(n+1)\left(\frac{\gamma}{1-\gamma}\right)}{k}\\
+   &=& a+\frac{b}{k}{\left\{\begin{array}{lcc}
+         \text{Tomando} \\
+         a=-\frac{\gamma}{1-\gamma}\mbox{ \& } b=(n+1)\left(\frac{\gamma}{q-\gamma}\right)
+    \end{array}\right.}\\
+    \therefore P_k&=&\left(a+\frac{b}{k}\right)P_{k-1}\mbox{ con } a=-\frac{\gamma}{1-\gamma}\mbox{ & } b=(n+1)\left(\frac{\gamma}{1-\gamma}\right)\hspace{0.5em} \forall\hspace{0.4em} k \in\{1,2,...\}_{\hspace{0.5em}\square}
+\end{eqnarray*}
+
+_a.2)_ Consideremos $X\sim{ Poi (\lambda) }$. Entonces su f.m.p. está dada por:
+
+$$P_{x} =
+    e^{-\lambda}\frac{\lambda^x}{x!}\hspace{2mm}\mathbb{I}_{\mathbb{N}_{0}} (x) \mbox{ para } \lambda>0$$
+    
+  _Demostración._
+  
+  Tomando $k\in\{1,2,...\}$ tenemos:
+  
+  \begin{eqnarray*}
+    \frac{P_{k}}{P_{k-1}} = \frac{e^{-\lambda}\frac{\lambda^k}{k!}}{e^{-\lambda}\frac{\lambda^{k-1}}{(k-1)!}}\mathbb{I}_{\{1,2,...\}}(k)=\frac{\lambda}{k}=a+\frac{b}{k}\quad{\left\{\begin{array}{lcc}
+          \text{Tomando $a=0$ & $b=\lambda$}\\
+    \end{array}\right.}\\
+    \therefore P_k=\left(a+\frac{b}{k}\right)P_{k-1} \mbox{ con } a=0 \mbox{ \& } b=\lambda.\hspace{0.5em} \forall\hspace{0.4em} k\in\{1,2,...\}_{\hspace{0.5em}\blacksquare}
+\end{eqnarray*}
+
+_a.3)_ Consideremos $X\sim{ BinNeg (r,\gamma) }$. Entonces su f.m.p. está dada por:
+$$P_{k} =\frac{\Gamma(r+k)}{\Gamma(r)\Gamma(k+1)}(1-\gamma)^{r}\gamma^{k}\hspace{2mm}\mathbb{I}_{\mathbb{N}_0} (x) \mbox{ para } r>0 \mbox{ & } \gamma\in(0,1)$$
+
+_Demostración._
+
+Tomando $k\in\{1,2,...\}$ tenemos:
+
+\begin{eqnarray*}
+    \frac{P_k}{P_{k-1}}&=&\frac{\frac{\Gamma(r+k)}{{\Gamma(r)}\Gamma(k+1)}{(1-\gamma)^r}\gamma^k}{\frac{\Gamma(r+k-1)}{{\Gamma(r)}\Gamma(k)}{(1-\gamma)^r}\gamma^{k-1}}=\frac{\Gamma(r+k)\Gamma(k)}{\Gamma(k+1)\Gamma(r+k-1)}\gamma=\frac{(r+k-1){\Gamma(r+k-1)}{\Gamma(k)}}{k{\Gamma(k)}{\Gamma(r+k-1)}}\gamma\\
+    &=&\frac{r+k-1}{k}\gamma=\gamma+\frac{r-1}{k}\gamma=a+\frac{b}{k}\quad{\left\{\begin{array}{lcc}
+          \text{Tomando $a=\gamma$ \& $b=(r-1)\gamma$}\\
+    \end{array}\right.}\\
+    \therefore P_k&=&\left(a+\frac{b}{k}\right)P_{k-1} \mbox{ con } a=\gamma \mbox{ \& } b=(r-1)\gamma\hspace{0.5em}\forall k \in \{1,2,...\}_{\hspace{0.5em}\blacksquare}
+\end{eqnarray*}
+
+**b)**
+
+_Nota 1:_ Primero notemos que los casos anteriores son excluyentes $(a,b)$
+
+_a.1)_ Como $\gamma\in(0,1)$ y $n\in\mathbb N_{1}$ entonces:
+\begin{eqnarray*}
+    &\frac{\gamma}{1-\gamma}>0 \Longleftrightarrow -\frac{\gamma}{1-\gamma}=a<0 \mbox{ y } (n+1)\left(\frac{\gamma}{1-\gamma}\right)=b>0 \\
+    &\therefore \mbox{Si } X\sim{Bin(n,p)}\Rightarrow X\in \mbox{ Tipo}(a=0,b>0)
+\end{eqnarray*}
+
+_a.2)_ Como $\lambda>0$ entonces: $\lambda=b>0$ y $a=0$
+$$\therefore\mbox{ Si } X\sim{Poi(\lambda)} \Rightarrow X\in \mbox{ Tipo}(a=0,b>0)$$
+
+_a.3)_ Como $\gamma\in(0,1)$ y $r>0$ entonces:
+\begin{eqnarray*}
+    &\gamma=a\in(0,1)\mbox{ y }(r-1)\gamma = b\geq 0\\
+    &\therefore\mbox{ Si } X\sim{BinNeg(\gamma,r)} \Rightarrow X\in \mbox{ Tipo}(a\in(0,1),b\geq0)
+\end{eqnarray*}
+
+_Nota 2:_ Si $X\in \mbox{ Tipo}(a,b=-a) \Rightarrow P_{1}=(a+\frac{b}{1})P_{0} \Rightarrow P_{k}=(a+\frac{b}{k})P_{k-1} = 0\hspace{2mm}\forall k>0.$
+
+De tal manera que $P_{0}\equiv1\hspace{0.4em}\therefore\hspace{0.4em} X\equiv 0 \in\mbox{ Tipo}(a,b=-a)$
+
+_Nota 3:_ Veamos que si $X\in \mbox{ Tipo} (a_{x},b_{x}) \mbox{ y } Y\in \mbox{ Tipo}(a_{y},b_{y}) \mbox{ con } a_{x}=a_{y} \mbox{ y } b_{x}=b_{y} \mbox{ entonces }$$X\overset{d}{\equiv} Y$.
+
+_Demostración._ Sea $P_{k}^x \ddot{=}\mathbb{P}[x=k]\mbox{ y } P_{k}^Y\equiv\mathbb{P}[Y=k]$
+
+En general 
+\begin{eqnarray*}
+P_{k}=(a+\frac{b}{k})P_{k-1} \hspace{0.4em}\forall k\in \mathbb{N}_{1} \mbox{, entonces,}P_{x} = \left[\displaystyle\prod_{n=1}^{k}\left(a+\frac{b}{k-n+1}\right)\right]P_{0}\hspace{0.4em}\forall k\in \mathbb{N}_{1}
+\end{eqnarray*}
+Así: 
+\begin{eqnarray*}
+1 &=& \displaystyle\sum_{k=0}^{\infty}P_{k}\\
+  &=& P_{0} + \sum_{k=1}^{\infty}P_{k} \\
+  &=& P_{0} + \sum_{k=1}^{\infty}\left[\displaystyle\prod_{n=1}^{k}\left(a+\frac{b}{k-n+1}\right)\right]P_0 \\
+  &=& P_{0}\left[1+\displaystyle\sum_{k=1}^{\infty}\displaystyle\prod_{n=1}^{k}\left(a+\frac{b}{k-n+1}\right)\right]
+\end{eqnarray*}
+
+\begin{eqnarray*}
+\rightarrow P_{0} = \left[1+\displaystyle\sum_{k=1}^{\infty}\displaystyle\prod_{n=1}^{k}\left(a+\frac{b}{k-n+1}\right)\right]^{-1} 
+\end{eqnarray*}
+
+De esta manera, si dos variables aleatorias tienen los mismos parámetros de tipo $(a,b)$ entonces también comparten la probabilidad en cero; esto es:
+
+\begin{eqnarray*}
+    P_{0}^{X}&=&\left[1+\displaystyle\sum_{k=1}^{\infty}\displaystyle\prod_{n=1}^{k}\left(a_{X}+\frac{b_{X}}{k-n+1}\right)\right]^{-1} = \left[1+\displaystyle\sum_{k=1}^{\infty}\displaystyle\prod_{n=1}^{k}\left(a_{Y}+\frac{b_{Y}}{k-n+1}\right)\right]^{-1} = P_{0}^{Y}\\
+    \mbox{Luego: }P_{k}^{X}&=&\left[\displaystyle\prod_{n=1}^{k}\left(a_{X}+\frac{b_{X}}{k-n+1}\right)\right]P_{0}^{X} = \left[\prod_{n=1}^{k}\left(a_{Y}+\frac{b_{Y}}{k-n+1}\right)\right]P_{0}^{Y} = P_{k}^{Y} \hspace{0.4em}\forall k\in\mathbb{N}_{1}\\
+    \therefore P_k^X&=&P_k^Y\hspace{0.4em}\forall k\in\mathbb{N}_0 \mbox{ y por lo tanto } X\overset{d}{\equiv} Y_{\hspace{0.5em}\blacksquare}
+\end{eqnarray*}
+
+_Demostración._
+
+- Región Poisson
+
+$X\in\mbox{ Tipo} (a=0,b>0) \Leftrightarrow X \sim Poi(\lambda=b) \forall b>0$. Entonces tenemos cubierta la región de la derecha.
+
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("Imágenes/Cap.4. Frecuencia Anexo_grafica1.png", error=FALSE)
+```
+
+- Región Binomial Negativa
+
+$X\in BinNeg(r,\gamma)$ con $r>0$ y $\gamma\in(0,1)$ sii $X\in \mbox{ Tipo}(a=\gamma,b=(r-1)\gamma)
+\therefore a\in(0,1)$ y $b=(r-1)a=ra-a>-a$
+
+
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("Imágenes/BinomNeg.png", error=FALSE)
+```
+
+- Región Binomial 
+
+$X\in Bin(n,\gamma)$ con $n\in \mathbb N_{1}$ y $\gamma\in(0,1)$. sii $X\in \mbox{ Tipo}(a=-\frac{\gamma}{1-\gamma},b=(n+1)\left(\frac{\gamma}{1-\gamma}\right)) \therefore a\in(-\infty,0)$ y $b=-a(n+1)$ con $n\in\mathbb{N}_{1}$
+
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("Imágenes/Binom.png", error=FALSE)
+```
+
+- Región $X\equiv0 (P_{k}=\delta_{0}^{(k)})$}\\
+$X\equiv0$ sii $X\in\mbox{ Tipo}(a,b=-a)$
+
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("Imágenes/Region.png", error=FALSE)
+```
+
+De tal manera que las regiones que ya tenemos caracterizadas son descritas en el siguiente gráfico. al conjunto puntos $(a,b)$ en la unión de estas regiones, lo llamaremos $T$. Veamos que si $X\in Tipo(a,b)$ con $(a,b)\notin T$ entonces $P_{k}^{\chi}$ no es función de probabilidad.
+
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("Imágenes/Cap.4.Frecuencia Anexo_grafica5.png", error=FALSE)
+```
+
+
+Veamos entonces que la región _I_ no es válida. $(a,b)\in$ _I_ $\Longleftrightarrow b<-a$. Si este es el caso $\longrightarrow P_{k}=(a+\frac{b}{k})P_{k-1} < a(1-\frac{1}{k})P_{k-q}$ $\forall k\in\mathbb N_{1}$. En particular si $k=1 \longrightarrow P_{1}<0$! Lo cual es imposible para una f.m.p. 
+
+Ahora, trabajando en la región _III_, tenemos que $(a,b)\in$ _III_ $\Longleftrightarrow a<0<b$ y $b\neq -a(n+1)$ $\forall n\in\mathbb N_{0}$. Para esto veamos una identidad:
+
+Cuando $a\neq0$. Podemos obtener $P_{k}$ mediante la recursión como:
+
+$P_{k} = P_{0}\displaystyle\frac{a^{k}}{k!}\displaystyle\prod_{t=1}^{k}\left(\displaystyle\frac{b}{a}+t\right)$ para $k\in\mathbb N_{1}$
+
+Para esto haremos inducción:
+
+Base: $P_{1}=(a+b)P_{0}=a\left(1+\displaystyle\frac{b}{a}\right)P_{0}=P_{0}\displaystyle\frac{a^1}{1!}\left(1+\displaystyle\frac{b}{a}\right)=P_{0}\displaystyle\frac{a^1}{1!}\left(\displaystyle\frac{b}{a}+1\right)=P_{0}\displaystyle\frac{a^1}{1!}\prod_{t=1}^{1}\left(\displaystyle\frac{b}{a}+t\right)$
+
+Paso inductivo: 
+
+$P_{k+1}=\left(a+\displaystyle\frac{b}{k+a}\right)P_{k}=\displaystyle\frac{a}{k+1}\left(k+1+\displaystyle\frac{b}{a}\right)P_{k}=\displaystyle\frac{a}{k+1}\left(\displaystyle\frac{b}{a}+k+1\right)P_{0}\displaystyle\frac{a^{k}}{k!}\prod_{t=1}^k\left(\displaystyle\frac{b}{a}+t\right)=P_{0}\displaystyle\frac{a^{k+1}}{(k+1)!}\displaystyle\prod_{t=1}^{k+1}\left(\displaystyle\frac{b}{a}+t\right)$
+
+Ahora, regresando a la región _III_, tenemos que $b\neq-a(n+1)$ $\forall n\in\mathbb N_{0}$
+
+Por lo que para cada $(a,b)\in$ _III_ $\exists m\in\mathbb N_{1} $ tal que $-am<b<-a(m+1)$ (esto por la propiedad Arquimedeana). Luego como $a<0$, tenemos: $-am<b<-a(m+1)$ $\Longleftrightarrow$ $-m = -\displaystyle\frac{am}{a}>\displaystyle\frac{b}{a}>-\displaystyle\frac{a(m+1)}{a}=-(m+1)$ $\Longleftrightarrow -m+t>\displaystyle\frac{b}{a}+t>-(m+1)+t$ para cualquier $t$. Sin embargo, notemos que $-(m+1)+t\geq0$ $\Longleftrightarrow t\geq m+1$. De tal manera que $\exists N\in\mathbb N_{1}$ tal que $\forall n\geq N$, $\displaystyle\prod_{t=1}^{n}(\displaystyle\frac{b}{a}+t)$ no cambiará su signo, pues las entradas a partir de cierto punto se hacen positivas. Pero: $P_{k}=P_{0}\frac{a^{k}}{k!}\prod_{t=1}^{k}(\displaystyle\frac{b}{a}+t)$ con $a<0$. Entonces $\exists k\in \mathbb N_{1}$ tal que $P_{k}<0$!. A menos que justo a partir de este punto $P_{k}=0$ $\Longleftrightarrow \displaystyle\frac{b}{a}+k=0$ $\Longleftrightarrow b=-ak$ con $k\in\mathbb N_{1}$ pero ese es precisamente el caso Binomial, que ya vimos.
+
+Por último, veamos que sucede cuando $(a,b)\in$ _II_. Esto significa que $a\geq1$ y $b\geq-a$. Así, $b\geq-a$ $\Longleftrightarrow a+\frac{b}{k}\geq a-\frac{a}{k}=a(1-\frac{1}{k}) = a(\displaystyle\frac{k-1}{k})\geq \displaystyle\frac{k-1}{k}$. De esta manera podemos ver que $P_{n}\geq\frac{1}{n}P_{1}$ $\forall n \geq 1$ inductivamente:
+
+Base: $P_{1}\geq\frac{1}{1}P_{1}$
+
+Paso inductivo: $P_{k+1}=(a+\frac{b}{k+1})P_{k}\geq (a+\frac{b}{k+1})\frac{1}{k}P_{1}\geq (\frac{k+1-1}{k+1})\frac{1}{k}P_{1}=\frac{1}{k+1}P_{1}$
+
+Luego, si $P_{x}$ fuera una f.m.p. entonces $1=\displaystyle\sum_{k=0}^{\infty}P_{k}=P_{0}+\displaystyle\sum_{k=1}^{\infty}P_{k}\geq P_{0}+\displaystyle\sum_{k=1}^{\infty}\displaystyle\frac{1}{k}P_{1}$
+
+
+Entonces: $1\geq P_{0}+P_{1}\displaystyle\sum_{k=1}^{\infty}\frac{1}{k}$! La suma no está acotada.
+
+En conclusión: $(a,b)\in$ _I_ $\cup$ _III_ $\longrightarrow \exists k \in\mathbb N_{1}$ con $P_{k}<0$; y si $(a,b)\in$ _II_ entonces 
+$\displaystyle\sum_{k=0}^{\infty}P_{k}$ diverge. 
+De tal manera que si $X$ es v.a. con $X\in Tipo(a,b)$, entonces $X$ tiene necesariamente, alguna de las distribuciones _a.1),a.2)_, o _a.3)_ $\blacksquare$ 
+
+_¡La respuesta que has escrito aquí es ejemplar!_ 
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/Cap.4. Frecuencia Anexo_Felicitación.png", error=FALSE)
+```
+
+
+

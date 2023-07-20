@@ -1,0 +1,3 @@
+\begin{eqnarray*}
+     \tcboxmath[width=5in,colback=tuftsblue!8!white,colframe=tuftsblue!8!tuftsblue]{p(\theta| \underline{X})= \displaystyle\frac{p(x|\theta)p(\theta)}{\displaystyle\int p(x|\theta)p(\theta) d\theta}}
+\end{eqnarray*}

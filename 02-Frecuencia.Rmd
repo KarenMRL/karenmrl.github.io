@@ -1,0 +1,432 @@
+# Frecuencia
+
+## Frecuencia
+
+Hasta el momento estuvimos hablando principalmente de variables aleatorias continuas, esto con la finalidad de modelar algo que nosotros llamamos "severidad". La severidad no es estrictamente continua (puede ser discreta o incluso una v.a. mixta) pero hay una parte de la teoría del riesgo que sí debe ser discreta, la frecuencia.
+
+En esta parte vamos a conocer las variables aleatorias más usuales que se utilizan para modelar fenómenos discretos, así como propiedades importantes que nos ayudarán a facilitar cálculos y expandir la forma en que podemos modelar un riesgo.
+
+Resulta ser, que si una variable aleatoria pertenece a un grupo conocido como **familia/clase (a,b,i)** es entonces **discreta**, alguna de las siguientes distribuciones y cuentan con una propiedad de recursividad.
+
+### Familia (a,b,0)
+
+Las siguientes distribuciones son las pertenecientes a la Familia/Clase (a,b,0), cuando hablemos de ellas, vamos a considerar las siguientes parametrizaciones:
+
+- $X\sim Binomial(n,p)\Rightarrow f_X(x)=\binom{n}{x}p^x(1-p)^{n-x} \hspace{.4em}x\in \{0,1,...,n\}, n\in\mathbb{N}-\{0\},p\in[0,1]$
+- $X\sim Geométrica(p)\Rightarrow f_X(x)=p(1-p)^x \quad x\in\mathbb{N},p\in[0,1]$
+- $X\sim Poisson(\lambda)\Rightarrow f_X(x)=e^{-\lambda}\frac{\lambda^x}{x!} \quad x\in\mathbb{N},\lambda>0$
+- $X\sim BinNeg(r,p)\Rightarrow f_X(x)=\binom{r+x-1}{x}p^r(1-p)^x \quad x\in\mathbb{N},r\geq 1,p\in[0,1]$
+
+Sea $p_k:=\mathbb{P}[X=k]$. Resulta ser que las distribuciones anteriores se pueden escribir de manera **recursiva** bajo la siguiente regla:
+
+<p style="text-align: center">$p_k = p_{k-1}(a+\frac{b}{k})$</p>
+
+Con base en la regla anterior, conociendo inicialmente nuestra distribución, y resolviendo por un sistema de ecuaciones, podríamos determinar los valores de a y b para las distribuciones anteriores. Lo cuál nos lleva al siguiente cuadro:
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/tabla1-Frecuencia.jpg", error=FALSE)
+```
+
+Notemos que si conocemos información mínima de este cuadro para alguna variable aleatoria, podemos determinar por completo de qué distribución se está hablando.
+
+**Importante.** La recursión anterior, también funciona para lo que diremos a continuación.
+
+- **Caso cero truncado.** Aquí vamos a asumir que $p^T_0=0$ y haciendo ésto, debemos modificar nuestra función de masa de probabilidad y lo haremos de la siguiente forma:
+
+<p style="text-align: center">$P^T_k=\frac{P_k}{1-P_0}\quad\forall k\neq0$</p>
+
+
+- **Caso cero modificado.** Aquí vamos a modificar la probabilidad original en cero y la reemplazaremos por  algún otro valor cualquiera $p^M_0\in(0,1)$ y haciendo ésto, debemos modificar nuestra función de masa de probabilidad y lo haremos de la siguiente forma: 
+
+<p style="text-align: center">$P^M_k=\frac{1-P^M_0}{1-P_0}P_k\quad\forall k\neq0$</p>
+
+**Estas dos últimas son la familia/clase (a,b,1).**
+
+Recordando un poco de las distribuciones:
+
+**Distribución Poisson**
+
+$X\sim Poisson(\lambda) \quad\text{con}\quad \lambda>0$.
+
+$f(x)=e^{-\lambda}\frac{\lambda^x}{x!}\quad\text{para}\quad x=0,1,...$
+
+$\mathbb{E}(X)=\lambda$.
+
+$Var(X)=\lambda$.
+
+$G(t)=e^{-\lambda(1-t)}$.
+
+$M(t)=exp[\lambda(e^t-1)]$.
+
+La suma de dos variables independientes con distribución Poisson($\lambda_1$) y Poisson($\lambda_2$) tiene distribución Poisson($\lambda_1+\lambda_2$).
+
+Nota: $Var(X)=\mathbb{E}[X]$.
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("Imágenes/4.3 video1.png", error=FALSE)
+```
+<p style="text-align: center">https://youtu.be/y_dOx8FhHpQ</p>
+
+**Distribución Binomial**
+
+$X\sim Bin(n,p) \quad\text{con}\quad n\in\mathbb{N}\hspace{0.4em}\text{y}\hspace{0.4em} p\in(0,1)$.
+
+$f(x)=\binom{n}{x}p^x(1-p)^{n-x}\quad\text{para}\quad x=0,1,...,n$.
+
+$\mathbb{E}(X)=np.$
+
+$Var(X)=np(1-p)$.
+
+$G(t)=(1-p+pt)^n$.
+
+$M(t)=[1-p+pe^t]^n$.
+
+Una variable aleatoria binomial registra el número de éxitos en $n$ ensayos independientes Bernoulli en donde en cada ensayo la probabilidad de éxito es $p$. La suma de dos variables independientes con distribución $Bin(n,p)$ y $Bin(m,p)$ tiene distribución $Bin(n+m,p)$.
+
+Nota: $\mathbb{E}[X]>Var(X)$.
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("Imágenes/4.3 video2.png", error=FALSE)
+```
+<p style="text-align: center">https://youtu.be/Tf08fZWbyV8</p>
+
+**Distribución Binomial Negativa**
+
+$X\sim BinNeg(r,p) \quad\text{con}\quad r\in\mathbb{N}\hspace{0.4em}\text{y}\hspace{0.4em}\in(0,1)$.
+
+$f(x)=\binom{r+x-1}{x}p^r(1-p)^x\quad\text{para}\quad x=0,1,...$
+
+$\mathbb{E}(X)=\frac{r(1-p)}{p}$
+
+$Var(X)=\frac{r(1-p)}{p^2}$.
+
+$G(t)=[\frac{p}{(1-t(1-p))}]^r$.
+
+$M(t)=[\frac{p}{(1-qe^t)}]^r$.
+
+Este es el modelo que se usa para contar el número de fracasos antes de obtener el r-ésimo éxito en una sucesión de ensayos independientes Bernoulli, en donde en cada ensayo la probabilidad de éxito es $p$. La distribución Binomial Negativa se reduce a la distribución geo métrica cuando $r=1$.
+
+Nota: $\mathbb{E}[X]<Var(X)$.
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("Imágenes/4.3 video3.png", error=FALSE)
+```
+<p style="text-align: center">https://youtu.be/l5uUzzUuZH4</p>
+
+Observe que bajo el supuesto de clase (a,b,0), teniendo los valores de la esperanza y varianza se puede deducir la distribución.
+
+Existen diferentes parametrizaciones de las distribuciones anteriores, pero cuando nosotros hablemos de ellas, haremos referencia a las indicadas en esta sección salvo que se especifique lo contrario.
+
+En el caso de la distribución **binomial negativa** hay una variante importante a considerar. Tomando $X\sim Bin Neg(r,p)$ como se muestra en las distribuciones anteriores, $X$ mide el número de fracasos antes del r-ésimo éxito. Siendo este el caso, $X$ podría modelar problemas del estilo:
+
+- Número de prendas que descartaste antes de elegir ``r''.
+- Número de veces que perdiste en un videojuego antes de ganar.
+- Número de parejas tóxicas antes de tu $2^{da}$ relación sana.
+
+Y tomando en cuenta la modificación $N=X+r$, entonces la función de masa de probabilidad (f.m.p.) es:
+
+<p style="text-align: center">$\mathbb{P}[N=n]=\mathbb{P}[X+r=n]=\mathbb{P}[X=n-r]=\binom{n-1}{n-r}p^r(1-p)^{n-r}\mathbb{I}_{\mathbb{N}\cup\{0\}}(n)$</p>
+
+Esta es también llamada binomial negativa y cuenta el número total de ensayos:
+
+- Número de prendas que viste en total antes de elegir ``r''.
+- Número de veces que jugaste un videojuego antes de ganarlo.
+- Número de parejas que tuviste antes de tu $2^{da}$ relación sana.
+
+Por su naturaleza, podemos ver que tomando la recursión de clase (a,b,i) y haciendo un ajuste:
+
+<p style="text-align: center">$P_k=P_{k-1}\left(a+\frac{b}{k}\right)\Leftrightarrow k\left(\frac{P_k}{P{k-1}}\right)=ak+b\hspace{0.4em}\ddot{=}\hspace{0.4em}f(k)$</p>
+
+Obtenemos una ecuación de una línea recta $(ak+b)$, esto gráficamente muestra lo siguiente:
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("Imágenes/4.3 distribución1.png", error=FALSE)
+```
+<p style="text-align: center">$f(k)=b\quad\text{(constante)}\quad\text{donde}\quad a=0\quad ; \quad b>0$</p>
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("Imágenes/4.3 distribución2.png", error=FALSE)
+```
+<p style="text-align: center">$f(k)=ak+b\quad \text{donde}\quad a<0\quad ; \quad b>0$</p>
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("Imágenes/4.3 distribución3.png", error=FALSE)
+```
+<p style="text-align: center">$f(k)=ak+b\quad \text{donde}\quad a\in(0,1)\quad ; \quad b\leq0$</p>
+
+**Observación: Si $P_{0}^{m}=0$ entonces tomamos el caso de cero-truncado.**
+
+En páginas anteriores se afirma que la recursión de la clase $(a,b,0)$ es válida para la clase $(a,b,1)$.
+
+Vamos a demostrar esto para el caso cero-modificado, ya que esto generaliza el caso cero-truncado.
+
+#### Proposición: Cero modificado {-}
+
+Sea $P_{0}^{M} \in (0,1)$.
+
+\begin{eqnarray*}
+P_{k}^{M}&=&\frac{1-P_{0}^{M}}{1-P_{0}} P_{k} \quad \forall k \neq 0\\
+\end{eqnarray*}
+
+\begin{eqnarray*}
+&\text{P.D.}& \quad P_{k}^{M}=P_{k-1}^{M}\left( a + \frac{b}{k}  \right) \quad \forall k \in \mathbb{N}\backslash \{ 0,1\} \\
+&\text{P.D.}& \quad \displaystyle\sum_{i=0}^{\infty} P_{i}^{M}=1 \quad y \quad P_{i}^{M} \in[0,1] \quad \forall i 
+\end{eqnarray*}
+
+_Demostración._
+
+$$\text{P.D.} \quad P_{k}^{M}=P_{k-1}^{M}\left( a + \frac{b}{k}  \right) $$
+ 
+\begin{eqnarray*}
+P_{k}^{M}&=&\frac{1-P_{0}^{M}}{1-P_{0}} P_{k}\\
+&\overset{\mathrm{k>1}}{=}& \frac{1-P_{0}^{M}}{1-P_{0}} P_{k-1}\left( a + \frac{b}{k}  \right)  \\
+&=& \left[ \frac{1-P_{0}^{M}}{1-P_{0}} P_{k-1}  \right] \left( a + \frac{b}{k}  \right)\\
+&=& P_{k-1}^{M}\left( a + \frac{b}{k}  \right)
+\end{eqnarray*}
+
+Por lo tanto:
+
+\begin{eqnarray*}
+P_{k}^{M}&=&P_{k-1}^{M}\left( a + \frac{b}{k}  \right) \quad \forall k \in \mathbb{N}\backslash \{0,1\}\blacksquare\\
+\end{eqnarray*}
+
+Surge la siguiente incógnita: ¿Será el conjunto de probabilidades modificadas, una función de masa de probabilidad (f.m.p)?
+
+\begin{eqnarray*}
+ \text{P.D.} \quad \displaystyle\sum_{i=0}^{\infty} P_{i}^{M}&=&1
+\end{eqnarray*}
+
+_Demostración._
+\begin{eqnarray*}
+\sum_{i=0}^{\infty} P_{i}^{M} &=& P_{0}^{M}+ \sum_{i=1}^{\infty}P_{i}^{M}\\
+&=& P_{0}^{M}+\sum_{i=1}^{\infty}\left( \frac{1-P_{0}^{M}}{1-P_{0}} P_{i} \right)\\
+&=& P_{0}^{M}+\left(\frac{1-P_{0}^{M}}{1-P_{0}} (1-P_{0}) \right)\\
+&=& P_{0}^{M}+1-P_{0}^{M}\\
+&=& 1\blacksquare
+\end{eqnarray*}
+
+_Demostración._
+
+\begin{eqnarray*}
+P.D \quad P_{i}^{M} \in [0,1] \quad  \forall i
+\end{eqnarray*}
+
+Tenemos que, $P_{0}^{M} \in [0,1]$ por definición del modelo. Entonces:
+
+\begin{eqnarray*}
+    1-P_{0}^{M} \in [0,1]\\
+    \end{eqnarray*}
+    
+Luego, $P_{i} \in [0,1]$ , ya que viene de una de las variables aleatorias que ya conocemos. De este modo:
+
+\begin{eqnarray*}
+    1-P_{i} \in [0,1] \forall i \\
+\end{eqnarray*}
+
+Entonces:
+
+\begin{eqnarray*}
+P_{k}^{M}&=&\frac{1-P_{0}^{M}}{1-P_{0}} P_{k} \geq 0 \quad \forall k \in \mathbb{N}\backslash \{ 0\}\\
+\end{eqnarray*}
+
+Además, por la demostración anterior: $\sum_{i=0}^{\infty} P_{i}^{M}=1$, es imposible que $P_{i} >1$, debido a que todos son no-negativos y en total suman 1.
+
+Por lo tanto:
+
+\begin{eqnarray*}
+P_{i}^{M} \in [0,1] \forall i\blacksquare
+\end{eqnarray*}
+
+¿Qué finalidad tiene modificar una variable aleatoria de clase $(a,b,0)$ a una de clase $(a,b,1)$?
+
+Noten que en concreto, lo que se modifica en la clase $(a,b,1)$, es la probabilidad en cero; esa es la que nosotros podemos manipular a nuestro antojo. Basándonos en el fenómeno  que estamos modelando, lo que nosotros buscamos ahí, es alterar la probabilidad de observar un siniestro. Lo que sucede fuera del cero es simplemente una compensación a la modificación que nosotros hicimos, conservando la forma fuera del cero que tiene la distribución por naturaleza.
+
+##### Ejemplo 1. {-}
+
+Si N pertenece a la familia $(a=0, b=8)$. Encuentra: $\mathbb{P}[N=2]$ y $M_{N}(t)$.
+
+
+##### Solución: {-}
+
+Como $a=0$; $b>0$. Entonces $N \sim P_{oi}(\lambda=b=8)$.
+
+Por lo que:
+
+\begin{eqnarray*}
+f_{N}(n)&=& \mathbb{P}[N=n]\\
+&=& e^{-8}\left( \frac{8^{n}}{n!} \right) \mathbb{I}_{\mathbb{N} \bigcup \{0\}} \quad (n)\\
+\end{eqnarray*}
+
+Entonces:
+
+\begin{eqnarray*}
+f_{N}(2)&=& e^{-8}\left( \frac{8^{2}}{2!} \right)\\
+&\approx & 0.0107348
+\end{eqnarray*}
+
+Por otro lado:
+
+\begin{eqnarray*}
+M_{N}(t)&=& e^{\lambda(e^{t}-1)}\\
+&=& 0.0107348
+\end{eqnarray*}
+
+##### Ejemplo 2. {-}
+
+Sabemos que N es de la familia $(a,b,0)$ y $P_{0}=e^{-1.5}$, $P_{1}=1.5e^{-1.5}$, $P_{2}=\frac{9}{8}e^{-1.5}$. Encontrar $\mathbb{E}[N^{2}]$
+
+##### Solución: {-}
+
+Recordemos que al ser familia $(a,b,0)$, entonces:
+
+\begin{eqnarray*}
+\frac{P_k}{P_{k-1}}&=& a+ \frac{b}{k} \quad \forall k \in \mathbb{N}\backslash \{ 0\}\\
+\end{eqnarray*}
+
+Lo cual, nos da el siguiente sistema de ecuaciones:
+
+\begin{equation*}
+   \left \{ \begin{matrix} 
+    \displaystyle\frac{P_1}{P_0}=\displaystyle\frac{3}{2}=a+b\\
+    \\\displaystyle\frac{P_2}{P_1}=\displaystyle\frac{3}{4}=a+\displaystyle\frac{b}{2} 
+    \\
+\end{matrix}\right. 
+\end{equation*}
+
+Resolviendo el sistema de ecuaciones, obtenemos: $a=0$ y $b=3/2$.
+
+$\therefore$ N es de clase/familia $(a=0, b=3/2>0,0)$. Entonces $N \sim P_{oi}(\lambda=3/2=1.5=b)$.
+
+De este modo
+
+\begin{eqnarray*}
+\mathbb{E}[N^{2}]&=& Var(N)+\mathbb{E}^{2}[N]\\
+&=& \lambda + \lambda^{2}\\
+&=& 3.75\\
+\end{eqnarray*}
+
+Por lo tanto:
+
+\begin{eqnarray*}
+\mathbb{E}[N^{2}]&=&3.75\\
+\end{eqnarray*}
+
+##### Ejemplo 3. {-}
+
+Consideremos $N \sim P_{oi}$(2.1), encuentre, $P_{1}, P_{2}, P_{3}$ para los casos: cero truncado y cero modificado con $P_{0}^{M}=0.6$.
+
+##### Solución: {-}
+
+Recordemos que:
+
+\begin{eqnarray*}
+P_{k}^{T}&=& \frac{P_{k}}{1-P_{0}}\\
+P_{k}^{M}&=& \frac{1-P_{0}^{M}}{1-P_{0}}P_{k} \quad \forall k \in \mathbb{N} \backslash \{ 0\}
+\end{eqnarray*}
+
+$P_{k} \ddot{=} \mathbb P [N=k] = f_{N}(k) = e^{\text{2.1}}(\frac{\text{-2.1}^{n}}{n!})$ $\mathbb I_{\mathbb N \cup \{0\}}^{(n)}$ 
+
+La recursión es válida incluso para la clase $(a,b,1)$.
+
+$\Rightarrow P_{k}^{M} = P_{k-1}^{M} (a+\frac{b}{k}) = \frac{1-P_{0}^{M}}{P_{0}}P_{k} \forall k\in\mathbb{N}\backslash\{0,1\}$
+
+##### Caso cero truncado {-}
+
+\begin{eqnarray*}
+    P_{1}^{T} &=&\underbrace{\frac{e^{-2.1}(2.1)}{1-e^{-2.1}}}_{\substack{\frac{P_1}{1-P_0}=\frac{1-P_0^T}{1-P_0}P_1}}\approx 0.293043568\\
+    P_2^T&=&\underbrace{\frac{e^{-2.1}(2.1)}{1-e^{-2.1}}\left(0+\frac{2.1}{2}\right)}_{\substack{P_1^T\left(a+\frac{b}{2}\right)\\\text{(recursión)}}}=\underbrace{\frac{1-0}{1-e^{-2.1}}\left[e^{-2.1}\left(\frac{2.1^2}{2!}\right)\right]}_{\substack{\frac{1-P_0^T}{1-P_0}(P_2)\\\text{(identidad)}}}\approx 0.3076957464\\
+    P_3^T&=&P_2^T\left(0+\frac{b}{3}\right)\approx 0.215387
+\end{eqnarray*}
+
+##### Caso cero truncado {-}
+
+\begin{eqnarray*}
+    P_{0}^{M} &=& 0.6\mbox{ entonces:}\\
+    P_{1}^{M} &=&\frac{1-P_{0}^{M}}{1-P_{0}}P_{1} = \frac{1-0.6}{1-e^{-2.1}}(2.1)e^{-2.1} \approx 0.117217\\
+    P_{2}^{M} &=& P_{1}^{M}\left(a+\frac{b}{2}\right) \approx 0.123078\\
+    P_{3}^{M} &=& P_{2}^{M}\left(a+\frac{b}{3}\right) \approx 0.086154
+\end{eqnarray*}
+
+Todo es muy lindo hasta aquí pero... ¿Qué sucedería si buscamos obtener momentos utilizando las probabilidades modificadas?
+
+Buscamos la mantera de encontrar la función generadora de momentos de una $N^{*}$ de clase $(a,b,1)$ en términos de su correspondiente $N$ original de clase $(a,b,0)$. Entonces, recordemos que $\mathbb P[N^{*} = 0] \ddot{=} P_{0}^{M}$ definida por nosotros. Usando la notación:
+
+\begin{eqnarray*}
+    \mathbb P[N^{*} = k] &\ddot{=}& P_{k}^{M} \mbox{ & }  \mathbb P[N = k] \ddot{=} P_{k}, \mbox{ así }:\\
+    P_{k}^{M} &=& \frac{1-P_{0}^{M}}{1-P_{k}}P_{k} \forall k\neq 0\\
+\end{eqnarray*}
+
+Luego, se tiene que:
+
+\begin{eqnarray*}
+\displaystyle M_{N^{*}}(t) = \mathbb E[e^{N^{*}t}] = \sum_{k=0}^{\infty}P_{k}^{M}e^{tk} &=& P_{0}^{M} +\sum_{k=1}^{\infty} P_{k}^{M}e^{tk}\\
+        &=& \displaystyle P_{0}^{M} + \sum_{k=1}^{\infty} \left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) P_{k}e^{tk}\\
+        &=& \displaystyle P_{0}^{M} + \left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) \sum_{k=1}^{\infty} P_{k}e^{tk}\\
+        &=& \displaystyle P_{0}^{M} + \left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) \left[\sum_{k=0}^{\infty} P_{k}e^{tk} - P_{0}{e^0}\hspace{0.7em} \right]\\
+        &=& \displaystyle P_{0}^{M} + \left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) [M_{N}(t) - P_{0}]\\
+        &=& \displaystyle P_{0}^{M} + \left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) [M_{N}(t)-1+1 - P_{0}]\\
+        &=& \displaystyle P_{0}^{M} +\left[\frac{(1-P_{0}^{M})(M_{N}(t)-1)}{1-P_{0}} +1 - P_{0}^{M}\right]\\
+        &=& \displaystyle 1 -\left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) (1-M_{N}(t))\\
+\end{eqnarray*}
+    
+<p style="text-align: center">$M_{N^{*}}(t) = 1 -(\frac{1-P_{0}^{M}}{1-P_{0}}) (1-M_{N}(t))$</p>
+
+Recordemos que en general la generadora de probabilidades de una variable aleatoria $X$ se define como:
+
+$$G_{X}(t) \hspace{0.4em}\ddot{=}\hspace{0.4em} \mathbb E[t^{X}]$$
+
+\begin{eqnarray*}
+    \mbox{Además }M_{X}(ln(t)) \ddot{=} \mathbb E [e^{ln(t)X}] = \mathbb E [e^{ln(t^{X})}]=\mathbb E[t^{X}] \ddot{=} G_{X}^{(t)}\\
+\end{eqnarray*}
+
+\begin{eqnarray*}
+    \Rightarrow \underline{G_{N^*}}=  M_{N^{*}}(ln(t)) = 1-\left(\frac{1-P_{0}^{M}}{1-P_{0}}\right)[1-M_{N}(ln(t))]\\
+    &=& \underline{1-\left(\frac{1-P_{0}^{M}}{1-P_{0}}\right)[1-G_{N}(t)]}
+\end{eqnarray*}
+
+Por lo tanto, la generadora de momentos y la generadora de probabilidad de $N^{*}$ de clase $(a,b,1)$ en términos de su original $N$ de clase $(a,b,0)$ son:
+
+**Generadora de momentos:**
+
+$M_{N^{*}}(t) = 1 -(\frac{1-P_{0}^{M}}{1-P_{0}}) (1-M_{N}(t))$
+
+**Generadora de probabilidad:**
+
+$G_{N^{*}} = 1-(\frac{1-P_{0}^{M}}{1-P_{0}})[1-G_{N}(t)]$
+
+Esto da como resultado un último lema y corolario:
+
+**Lema**
+
+\begin{eqnarray*}
+\frac{\partial^{k}}{\partial t^{k}} M_{N^{*}}(t) \doteq M_{N^{*}}^{(k)}(t) = (\frac{1-P_{0}^{M}}{1-P_{0}}) M_{N}^{(k)}(t) \doteq (\frac{1-P_{0}^{M}}{1-P_{0}}) \frac{\partial^{k}}{\partial t^{k}} M_{N}(t)
+\end{eqnarray*}
+
+_Demostración._ (Inducción)
+
+- $n=1$ (Base de inducción)
+
+\begin{eqnarray*}
+\displaystyle M_{N^{*}}^{(1)}(t) &=& \frac{\partial}{\partial t} \left[1 - \left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) (1 - M_{N}(t))\right]\\
+    &=& \displaystyle \frac{\partial}{\partial t} \left[- \left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) + \left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) M_{N}(t)\right] \\
+    &=& \displaystyle \left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) M_{N}^{(1)}(t) \\
+\end{eqnarray*}
+
+- Supongamos válido para $k-1$  (Hipotesis de inducción)
+
+$$M_{N^{*}}^{(k-1)}(t) = \left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) M_{N}^{(k-1)}(t)$$
+- P.D. Válido para $k$ (Paso inductivo)
+
+\begin{eqnarray*}
+    M_{N^{*}}^{(k)}(t) = \frac{\partial}{\partial t} M_{N^{*}}^{(k-1)}(t) &=& \frac{\partial}{\partial t} \left[\left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) M_{N}^{(k-1)}(t)\right]\\
+    &=& \left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) M_{N}^{(k)}(t)_{\blacksquare}
+\end{eqnarray*}
+
+**Corolario**
+
+\begin{eqnarray*}
+    \mathbb E[(N^{*})^{k}] = \left(\frac{1-P_{0}^{M}}{1-P_{0}}\right) \mathbb E [N^{k}]
+\end{eqnarray*}
+
+Script:"Familia (a,b,i)"
+
+Un vídeo donde se explica a grandes rasgos lo anterior lo podrán ver en el siguiente enlace:
+
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("Imágenes/4. 3 Video Modelos Actuariales.png", error=FALSE)
+```
+<p style="text-align: center">https://www.youtube.com/watch?v=ZX2W59Mdaag</p>

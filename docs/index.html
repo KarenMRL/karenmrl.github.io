@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Teoría del Riesgo</title>
+  <meta name="description" content="Descripcion" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Teoría del Riesgo" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Descripcion" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Teoría del Riesgo" />
+  
+  <meta name="twitter:description" content="Descripcion" />
+  
+
+<meta name="author" content="Cinthya Denisse González Mendoza :o" />
+
+
+<meta name="date" content="2023-07-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="medidas-de-riesgo.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notas de Teoría del Riesgo</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Conceptos básicos y preeliminares</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#introducción"><i class="fa fa-check"></i><b>1.1</b> Introducción</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#algunos-antecedentes-históricos"><i class="fa fa-check"></i><b>1.2</b> Algunos antecedentes históricos</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#algunos-términos-del-seguro"><i class="fa fa-check"></i><b>1.3</b> Algunos términos del seguro</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#seguro"><i class="fa fa-check"></i>Seguro:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#riesgo"><i class="fa fa-check"></i>Riesgo:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#siniestro"><i class="fa fa-check"></i>Siniestro:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asegurador"><i class="fa fa-check"></i>Asegurador:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asegurado"><i class="fa fa-check"></i>Asegurado:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#beneficiario"><i class="fa fa-check"></i>Beneficiario:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#póliza"><i class="fa fa-check"></i>Póliza:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#prima"><i class="fa fa-check"></i>Prima:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#clase-de-primas"><i class="fa fa-check"></i><b>1.4</b> Clase de primas:</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#clasificación-de-los-seguros"><i class="fa fa-check"></i><b>1.5</b> Clasificación de los seguros</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#distribuciones-clásicas-en-teoría-del-riesgo"><i class="fa fa-check"></i><b>1.6</b> Distribuciones clásicas en Teoría del Riesgo</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asociadas-al-monto-de-una-pérdida"><i class="fa fa-check"></i>Asociadas al monto de una pérdida</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#familias-paramétricas-para-modelar-el-monto-de-riesgo"><i class="fa fa-check"></i><b>1.7</b> Familias paramétricas para modelar el monto de riesgo</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#exponencial"><i class="fa fa-check"></i>Exponencial</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#gamma"><i class="fa fa-check"></i>Gamma</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#log---normal"><i class="fa fa-check"></i>Log - Normal</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#weibull"><i class="fa fa-check"></i>Weibull</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#burr"><i class="fa fa-check"></i>Burr</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#pareto"><i class="fa fa-check"></i>Pareto</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#modelación-del-riesgo"><i class="fa fa-check"></i><b>1.8</b> Modelación del riesgo</a></li>
+<li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#ajuste-de-funciones-de-probabilidad"><i class="fa fa-check"></i><b>1.9</b> Ajuste de funciones de probabilidad</a></li>
+<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#reconocimiento-del-modelo"><i class="fa fa-check"></i><b>1.10</b> Reconocimiento del modelo</a>
+<ul>
+<li class="chapter" data-level="1.10.1" data-path="index.html"><a href="index.html#moda-de-una-función-de-densidad"><i class="fa fa-check"></i><b>1.10.1</b> Moda de una función de densidad</a></li>
+<li class="chapter" data-level="1.10.2" data-path="index.html"><a href="index.html#coeficiente-de-asimetría-skewness"><i class="fa fa-check"></i><b>1.10.2</b> Coeficiente de asimetría (Skewness)</a></li>
+<li class="chapter" data-level="1.10.3" data-path="index.html"><a href="index.html#coeficiente-de-kurtosis"><i class="fa fa-check"></i><b>1.10.3</b> Coeficiente de Kurtosis</a></li>
+<li class="chapter" data-level="1.10.4" data-path="index.html"><a href="index.html#función-de-distribución-empírica"><i class="fa fa-check"></i><b>1.10.4</b> Función de distribución empírica</a></li>
+<li class="chapter" data-level="1.10.5" data-path="index.html"><a href="index.html#cuantiles"><i class="fa fa-check"></i><b>1.10.5</b> Cuantiles</a></li>
+<li class="chapter" data-level="1.10.6" data-path="index.html"><a href="index.html#rango-intercuantílico"><i class="fa fa-check"></i><b>1.10.6</b> Rango intercuantílico</a></li>
+</ul></li>
+<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#estimación-de-parámetros"><i class="fa fa-check"></i><b>1.11</b> Estimación de parámetros</a>
+<ul>
+<li class="chapter" data-level="1.11.1" data-path="index.html"><a href="index.html#método-de-momentos"><i class="fa fa-check"></i><b>1.11.1</b> Método de momentos</a></li>
+<li class="chapter" data-level="1.11.2" data-path="index.html"><a href="index.html#máxima-verosimilitud"><i class="fa fa-check"></i><b>1.11.2</b> Máxima verosimilitud</a></li>
+</ul></li>
+<li class="chapter" data-level="1.12" data-path="index.html"><a href="index.html#pruebas-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>1.12</b> Pruebas de bondad de ajuste</a>
+<ul>
+<li class="chapter" data-level="1.12.1" data-path="index.html"><a href="index.html#planteamiento-general-de-una-prueba-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>1.12.1</b> Planteamiento general de una prueba de bondad de ajuste</a></li>
+<li class="chapter" data-level="1.12.2" data-path="index.html"><a href="index.html#algunas-pruebas-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>1.12.2</b> Algunas pruebas de bondad de ajuste</a></li>
+</ul></li>
+<li class="chapter" data-level="1.13" data-path="index.html"><a href="index.html#cómo-leer-un-p-value"><i class="fa fa-check"></i><b>1.13</b> ¿Cómo leer un p-value?</a>
+<ul>
+<li class="chapter" data-level="1.13.1" data-path="index.html"><a href="index.html#región-de-rechazo-y-no-rechazo"><i class="fa fa-check"></i><b>1.13.1</b> Región de Rechazo y no rechazo:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.14" data-path="index.html"><a href="index.html#el-proceso-de-modelación-del-riesgo"><i class="fa fa-check"></i><b>1.14</b> El proceso de modelación del Riesgo</a>
+<ul>
+<li class="chapter" data-level="1.14.1" data-path="index.html"><a href="index.html#el-proceso-de-modelado"><i class="fa fa-check"></i><b>1.14.1</b> El proceso de modelado</a></li>
+<li class="chapter" data-level="1.14.2" data-path="index.html"><a href="index.html#pasos"><i class="fa fa-check"></i><b>1.14.2</b> Pasos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html"><i class="fa fa-check"></i><b>2</b> Medidas de Riesgo</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#distribuciones-para-valores-extremos"><i class="fa fa-check"></i><b>2.1</b> Distribuciones para valores extremos</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#teoría-de-valores-extremos"><i class="fa fa-check"></i><b>2.1.1</b> Teoría de valores extremos</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#distribuciones-de-valores-extremos"><i class="fa fa-check"></i>Distribuciones de valores extremos</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#ejemplo-1-2"><i class="fa fa-check"></i>Ejemplo 1</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#ejemplo-2-1"><i class="fa fa-check"></i>Ejemplo 2</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#var-t-var"><i class="fa fa-check"></i><b>2.2</b> VaR &amp; T-VaR</a>
+<ul>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#var"><i class="fa fa-check"></i>VaR</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#t-var"><i class="fa fa-check"></i>T-VaR</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="frecuencia.html"><a href="frecuencia.html"><i class="fa fa-check"></i><b>3</b> Frecuencia</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="frecuencia.html"><a href="frecuencia.html#frecuencia-1"><i class="fa fa-check"></i><b>3.1</b> Frecuencia</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="frecuencia.html"><a href="frecuencia.html#familia-ab0"><i class="fa fa-check"></i><b>3.1.1</b> Familia (a,b,0)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="frecuencia-anexo.html"><a href="frecuencia-anexo.html"><i class="fa fa-check"></i><b>4</b> Frecuencia Anexo</a></li>
+<li class="chapter" data-level="5" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html"><i class="fa fa-check"></i><b>5</b> Severidad Coberturas</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#diferencia-entre-función-de-densidad-y-función-de-masa-de-probabilidad"><i class="fa fa-check"></i><b>5.1</b> Diferencia entre función de densidad y función de masa de probabilidad</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#visualización-de-variables-aleatorias-mixtas"><i class="fa fa-check"></i><b>5.1.1</b> Visualización de variables aleatorias mixtas</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#coberturas-en-seguros-reaseguros"><i class="fa fa-check"></i><b>5.2</b> Coberturas en Seguros / Reaseguros</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#coaseguro"><i class="fa fa-check"></i><b>5.2.1</b> Coaseguro</a></li>
+<li class="chapter" data-level="5.2.2" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#inflación"><i class="fa fa-check"></i><b>5.2.2</b> Inflación</a></li>
+<li class="chapter" data-level="5.2.3" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#deducibles"><i class="fa fa-check"></i><b>5.2.3</b> Deducibles</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#la-regla-de-darth-vader"><i class="fa fa-check"></i><b>5.3</b> La regla de Darth Vader</a></li>
+<li class="chapter" data-level="5.4" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#monto-máximo-de-beneficio"><i class="fa fa-check"></i><b>5.4</b> Monto máximo de beneficio</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html"><i class="fa fa-check"></i><b>6</b> Severidad combinacion de coberturas</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#contratos-con-deducible-y-monto-máximo-de-beneficio"><i class="fa fa-check"></i><b>6.1</b> Contratos con Deducible y monto máximo de beneficio</a></li>
+<li class="chapter" data-level="6.2" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#generalización-de-beneficio-y-monto-máximo"><i class="fa fa-check"></i><b>6.2</b> Generalización de beneficio y monto máximo</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#quitando-el-deducible-d0"><i class="fa fa-check"></i>Quitando el deducible d=0</a></li>
+<li class="chapter" data-level="" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#quitando-monto-máximo-de-beneficio-uinfty"><i class="fa fa-check"></i>Quitando Monto máximo de beneficio: <span class="math inline">\(u=\infty\)</span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html"><i class="fa fa-check"></i><b>7</b> Severidad (Costo por pérdida y por pago)</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html#costo-por-pago"><i class="fa fa-check"></i><b>7.1</b> Costo por pago</a></li>
+<li class="chapter" data-level="7.2" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html#cuantiles-para-las-coberturas"><i class="fa fa-check"></i><b>7.2</b> Cuantiles para las coberturas</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html#ejemplo-6"><i class="fa fa-check"></i>Ejemplo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="severidad-anexo.html"><a href="severidad-anexo.html"><i class="fa fa-check"></i><b>8</b> Severidad Anexo</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#pago-del-asegurado-con-deducible-y-monto-máximo-de-beneficio"><i class="fa fa-check"></i>Pago del asegurado con deducible y monto máximo de beneficio:</a></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#generalización-del-cálculo-de-variables-esperadas-para-y_p."><i class="fa fa-check"></i>Generalización del cálculo de variables esperadas para <span class="math inline">\(Y_p\)</span>.</a></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#generalización-de-la-fórmula-de-darth-vader."><i class="fa fa-check"></i>Generalización de la fórmula de Darth Vader.</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#ejercicio"><i class="fa fa-check"></i>Ejercicio:</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#más-deducibles"><i class="fa fa-check"></i>Más deducibles</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#ejemplo-muy-sencillo-de-como-jugar-con-el-deducible"><i class="fa fa-check"></i>Ejemplo muy sencillo de como jugar con el deducible:</a></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#solución-3"><i class="fa fa-check"></i>Solución</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html"><i class="fa fa-check"></i><b>9</b> Modelo individual bases</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#modelo-individual"><i class="fa fa-check"></i><b>9.1</b> Modelo individual</a></li>
+<li class="chapter" data-level="9.2" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#derivación-bajo-el-signo-integral"><i class="fa fa-check"></i><b>9.2</b> Derivación bajo el signo integral</a></li>
+<li class="chapter" data-level="9.3" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#teorema-de-probabilidad-total-en-el-caso-continuo"><i class="fa fa-check"></i><b>9.3</b> Teorema de probabilidad total en el caso continuo:</a></li>
+<li class="chapter" data-level="9.4" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#teorema-de-probabilidad-total-en-el-caso-discreto"><i class="fa fa-check"></i><b>9.4</b> Teorema de probabilidad total en el caso discreto:</a></li>
+<li class="chapter" data-level="9.5" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#aproximación-normal"><i class="fa fa-check"></i><b>9.5</b> Aproximación Normal</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#teorema-central-del-límite"><i class="fa fa-check"></i>TEOREMA CENTRAL DEL LÍMITE</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="modelo-individual-formula-de-pril.html"><a href="modelo-individual-formula-de-pril.html"><i class="fa fa-check"></i><b>10</b> Modelo individual: formula de Pril</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="modelo-individual-formula-de-pril.html"><a href="modelo-individual-formula-de-pril.html#formula-de-pril"><i class="fa fa-check"></i><b>10.1</b> Formula de Pril</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html"><i class="fa fa-check"></i><b>11</b> Modelo colectivo: Bases</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-colectivo"><i class="fa fa-check"></i>Modelo Colectivo</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-binomial-compuesto"><i class="fa fa-check"></i>Modelo Binomial Compuesto</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-binomial-negativo-compuesto"><i class="fa fa-check"></i>Modelo binomial negativo compuesto</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-poisson-compuesto"><i class="fa fa-check"></i>Modelo Poisson Compuesto</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#distribución-de-la-convoluación-de-poisson-compuestas"><i class="fa fa-check"></i>Distribución de la convoluación de Poisson compuestas</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#aproximaciones-de-probabilidad-del-modelo-colectivo"><i class="fa fa-check"></i>Aproximaciones de probabilidad del Modelo Colectivo</a>
+<ul>
+<li class="chapter" data-level="11.0.1" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#aproximación-normal-1"><i class="fa fa-check"></i><b>11.0.1</b> Aproximación Normal</a></li>
+<li class="chapter" data-level="11.0.2" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#aproximación-gamma-trasladada"><i class="fa fa-check"></i><b>11.0.2</b> Aproximación Gamma Trasladada</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="modelo-colectivo-formula-de-panjer.html"><a href="modelo-colectivo-formula-de-panjer.html"><i class="fa fa-check"></i><b>12</b> Modelo colectivo: Formula de Panjer</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="modelo-colectivo-formula-de-panjer.html"><a href="modelo-colectivo-formula-de-panjer.html#casos-especiales-de-panjer"><i class="fa fa-check"></i><b>12.1</b> Casos especiales de Panjer</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-formula-de-panjer.html"><a href="modelo-colectivo-formula-de-panjer.html#momento-de-s-para-panjer"><i class="fa fa-check"></i>Momento de S para Panjer</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="reaseguro.html"><a href="reaseguro.html"><i class="fa fa-check"></i><b>13</b> Reaseguro</a>
+<ul>
+<li class="chapter" data-level="" data-path="reaseguro.html"><a href="reaseguro.html#reaseguro-proporcional"><i class="fa fa-check"></i>Reaseguro proporcional</a>
+<ul>
+<li class="chapter" data-level="" data-path="reaseguro.html"><a href="reaseguro.html#reaseguro-no-proporcional"><i class="fa fa-check"></i>Reaseguro no proporcional</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html"><i class="fa fa-check"></i><b>14</b> Calculo de primas</a>
+<ul>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#propiedades-y-principios-del-cálculo-de-primas"><i class="fa fa-check"></i>Propiedades y Principios del cálculo de Primas</a>
+<ul>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-valor-esperado"><i class="fa fa-check"></i>Principio de valor esperado</a></li>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-la-varianza"><i class="fa fa-check"></i>Principio de la varianza</a></li>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-la-desviación-estándar"><i class="fa fa-check"></i>Principio de la desviación estándar</a></li>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-utilidad-cero"><i class="fa fa-check"></i>Principio de utilidad cero</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="credibilidad.html"><a href="credibilidad.html"><i class="fa fa-check"></i><b>15</b> Credibilidad</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="credibilidad.html"><a href="credibilidad.html#teoría-de-la-credibilidad"><i class="fa fa-check"></i><b>15.1</b> Teoría de la credibilidad</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="credibilidad.html"><a href="credibilidad.html#introducción-1"><i class="fa fa-check"></i><b>15.1.1</b> Introducción</a></li>
+<li class="chapter" data-level="15.1.2" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-completatotal"><i class="fa fa-check"></i><b>15.1.2</b> Credibilidad Completa/total</a></li>
+<li class="chapter" data-level="15.1.3" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-completa-bajo-hipótesis-de-normalidad"><i class="fa fa-check"></i><b>15.1.3</b> Credibilidad Completa Bajo Hipótesis de Normalidad</a></li>
+<li class="chapter" data-level="15.1.4" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-parcial"><i class="fa fa-check"></i><b>15.1.4</b> Credibilidad Parcial</a></li>
+<li class="chapter" data-level="15.1.5" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-parcial-bajo-hipótesis-de-normalidad"><i class="fa fa-check"></i><b>15.1.5</b> Credibilidad Parcial bajo Hipótesis de Normalidad</a></li>
+<li class="chapter" data-level="15.1.6" data-path="credibilidad.html"><a href="credibilidad.html#ajuste-de-primas-con-credibilidad-clásica"><i class="fa fa-check"></i><b>15.1.6</b> Ajuste de primas con credibilidad clásica</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="credibilidad.html"><a href="credibilidad.html#enfoque-bayesiano"><i class="fa fa-check"></i><b>15.2</b> Enfoque bayesiano</a></li>
+<li class="chapter" data-level="15.3" data-path="credibilidad.html"><a href="credibilidad.html#teorema-de-bayes"><i class="fa fa-check"></i><b>15.3</b> Teorema de Bayes</a></li>
+<li class="chapter" data-level="15.4" data-path="credibilidad.html"><a href="credibilidad.html#familias-conjugadas"><i class="fa fa-check"></i><b>15.4</b> Familias conjugadas</a></li>
+<li class="chapter" data-level="15.5" data-path="credibilidad.html"><a href="credibilidad.html#cálculo-bayesiano-de-primas-de-seguros"><i class="fa fa-check"></i><b>15.5</b> Cálculo Bayesiano de primas de seguros</a>
+<ul>
+<li class="chapter" data-level="" data-path="credibilidad.html"><a href="credibilidad.html#cómo-modelar-un-riesgo-para-obtener-una-prima-de-credibilidad-bayesiana"><i class="fa fa-check"></i>¿Cómo modelar un riesgo para obtener una prima de credibilidad Bayesiana?</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Teoría del Riesgo</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Teoría del Riesgo</h1>
+<p class="author"><em>Cinthya Denisse González Mendoza :o</em></p>
+<p class="date"><em>2023-07-20</em></p>
+</div>
+<div id="conceptos-básicos-y-preeliminares" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Capítulo 1</span> Conceptos básicos y preeliminares<a href="index.html#conceptos-básicos-y-preeliminares" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introducción" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Introducción<a href="index.html#introducción" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La actividad aseguradora está difundida en el mundo entero, son de uso corriente los seguros de automóviles, incendios, robos, vida, etc. Esta actividad responde a la incertidumbre que sienten los individuos ante ciertas situaciones que pueden provocar distintos daños, tanto materiales como personales. El miedo a la posibilidad de que ocurran dichos acontecimientos se intenta eliminar mediante la compra de un seguro que compensará al asegurado en el caso de producirse algún daño. La base de esta actividad radica en la <em>existencia de un equilibrio entre la prestación que hará la compañía de seguros y la contraprestación que ella recibe del asegurado.</em></p>
+</div>
+<div id="algunos-antecedentes-históricos" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Algunos antecedentes históricos<a href="index.html#algunos-antecedentes-históricos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En sus inicios, el seguro era una forma de solidaridad entre los miembros de una comunidad. Consistía en un fondo o bolsa en la que todas las personas depositaban parte de su dinero. Con el capital que acumulaban entre todos, se pagaban los da˜nos que sufrían algunos de ellos. Por ejemplo: Antiguamente existía en algunos puertos la costumbre de que todos los armadores de barcos que hacían una determinada línea, aportaban a un fondo común una cantidad de dinero en función del número de navíos que poseían. Aquellos armadores cuyos barcos se hundían o eran saqueados por piratas, recibían una compensación económica procedente del fondo común para poder adquirir otro barco para continuar su actividad laboral.</p>
+<p>La Ciencia Actuarial tal como hoy se concibe comienza en el siglo XVII. Durante este periodo las necesidades comerciales dieron lugar a operaciones que acarreaban un interés compuesto;los seguros marítimos eran algo habitual y el cálculo de las rentas vitalicias comenzaba a aparecer. Este tipo de operaciones requería algo más que el juicio intuitivo y comercial de los primeros aseguradores. Uno de los pilares de la Ciencia Actuarial fue la <em>Teoría de Probabilidades</em>, las bases del análisis estadístico en el seguro fueron establecidas por <em>Pascal</em> en 1654 en colaboración con el también matemático <em>Pierre de Fermat</em>.</p>
+<p>Otro de los pilares es el concepto de tablas de vida, basadas en las investigaciones sobre la mortalidad. Las primeras tablas son debidas a John Graunt (1662). En 1693 Edmund Halley, matemático ingles, publicó un famoso documento describiendo la construcción de tablas de vida completas a partir de la hipótesis de estacionariedad de la población, así como el método de valoración de las rentas vitalicias, que es, en esencia, el mismo que se utiliza hoy en día. Las tablas de Halley se utilizaron por la mayor´ıa de las compañías de seguros inglesas creadas durante el siglo XVIII.</p>
+<p>En el presente siglo, la Ciencia Actuarial se enriquece con las aportaciones de las matemáticas de los seguros no vida, la teoría estadístico-matemática de la estabilidad y la moderna teoría de la decisión.</p>
+</div>
+<div id="algunos-términos-del-seguro" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Algunos términos del seguro<a href="index.html#algunos-términos-del-seguro" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La actividad aseguradora, como cualquier otra que supone una especialidad, tiene su propia forma de expresarse (jerga). Vamos a ver una serie de términos de uso frecuente:</p>
+<div id="seguro" class="section level3 unnumbered hasAnchor">
+<h3>Seguro:<a href="index.html#seguro" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Entendido como contrato, es el convenio entre dos partes, la compañía o entidad aseguradora por una parte y el contratante por otra, mediante la cual la primera se compromete a cubrir económicamente la pérdida o daño que el asegurado puede sufrir durante la vigencia del contrato. La obligación del asegurado es pagar, a la firma del contrato, el precio del seguro total o parcialmente.</p>
+</div>
+<div id="riesgo" class="section level3 unnumbered hasAnchor">
+<h3>Riesgo:<a href="index.html#riesgo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Es la posibilidad de pérdida o daño. El hombre desde que nace vive con la constante amenaza de enfermedad, accidente, muerte, etc. De la misma forma sus propiedades pueden sufrir incendios, robos, etc.</p>
+</div>
+<div id="siniestro" class="section level3 unnumbered hasAnchor">
+<h3>Siniestro:<a href="index.html#siniestro" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Es la concreción del riesgo. Por ejemplo, un incendio que destruye una fábrica, el robo de mercancías, muerte en un accidente, etc.</p>
+</div>
+<div id="asegurador" class="section level3 unnumbered hasAnchor">
+<h3>Asegurador:<a href="index.html#asegurador" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Es la persona jurídica que suscribe el compromiso de ofrecer la protección indemnizatoria cuando se produce el siniestro. Un asegurador es una sociedad anónima, una mutua de seguros, cooperativa, etc. Para que una empresa pueda ejercer legalmente como aseguradora debe tener una autorización que concede la autoridad correspondiente.</p>
+</div>
+<div id="asegurado" class="section level3 unnumbered hasAnchor">
+<h3>Asegurado:<a href="index.html#asegurado" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Es la persona titular del interés asegurado. Es quien sufre el perjuicio económico en sus bienes, en caso de que ocurra el siniestro, o la persona cuya vida o integridad física se asegura y, por lo tanto, quien percibirá la indemnización en caso de que un siniestro afectase al objeto asegurado (excepto en el caso de seguros de vida, en que recibe la indemnización, en caso de muerte. el beneficiario).</p>
+</div>
+<div id="beneficiario" class="section level3 unnumbered hasAnchor">
+<h3>Beneficiario:<a href="index.html#beneficiario" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Cuando se asegura la vida o la integridad física de una persona puede designarse a otra persona para que reciba las indemnizaciones, que es el beneficiario.</p>
+</div>
+<div id="póliza" class="section level3 unnumbered hasAnchor">
+<h3>Póliza:<a href="index.html#póliza" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Es el documento en que se plasma el contrato de seguro. Tiene dos características que la hacen especialmente importante:</p>
+<ul>
+<li>Es la prueba de que el contrato existe; y</li>
+<li>Es la normativa que regula las relaciones entre los contratantes.</li>
+</ul>
+<p>Consta básicamente de tres partes:</p>
+<ul>
+<li><strong>Condiciones generales:</strong> son una serie de cláusulas iguales para todos los contratos de la misma modalidad. Incluyen deberes y derechos, forma de atención del siniestro, riesgos cubiertos,etc.</li>
+<li><strong>Condiciones particulares:</strong> son las que individualizan cada contrato de seguro. Incluyen datos personales del asegurado, características del riesgo que se asegura (incendio, accidente, robo…), importe de la prima, etc.</li>
+<li><strong>Condiciones especiales:</strong> aparecen en algunas pólizas y suponen una adaptación para determinados casos especiales. Por ejemplo, hay unas condiciones generales para todos los seguros de robo, pero dadas las características que pueden tener el seguro de robo a joyerías, se crean para este tipo de establecimientos unas condiciones especiales.</li>
+</ul>
+</div>
+<div id="prima" class="section level3 unnumbered hasAnchor">
+<h3>Prima:<a href="index.html#prima" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Es el precio del seguro. Es la cantidad de dinero que el asegurado paga para que, a cambio, el asegurador pague en caso de siniestro. La prima es por lo general para una vigencia anual del seguro, aunque excepcionalmente puede pagarse por una sola vez, para la cobertura de varios años (prima única en seguros de vida) y también por una vigencia menor de un año (prima a corto plazo, como en el caso de un viaje, transporte de mercancías, etc.).</p>
+</div>
+</div>
+<div id="clase-de-primas" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Clase de primas:<a href="index.html#clase-de-primas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p><strong>Prima de riesgo:</strong> llamada también prima pura, natural, matemática o estadística, es la cantidad necesaria y suficiente que el asegurador debe percibir para cubrir el riesgo. Nace del concepto de esperanza matemática como precio justo de una eventualidad.</p></li>
+<li><p><strong>Prima de tarifa:</strong>también llamada prima comercial, es la prima de riesgo más los recargos.</p></li>
+</ul>
+<p>Estos recargos son de varios tipos:</p>
+<ul>
+<li><p><strong>Gastos de administración:</strong> sueldos, alquileres de locales,etc.</p></li>
+<li><p><strong>Gastos de adquisición:</strong> formado básicamente por la comisión que se le paga al corredor o intermediario.</p></li>
+<li><p><strong>Margen de beneficio:</strong> son los recargos asignados a la utilidad razonable del asegurador.</p></li>
+<li><p><strong>Prima de facturación:</strong>es la prima de tarifa más los recargos de ley, como son los impuestos sobre la prima, los derechos de emisión y otros agregados y ordenados por disposiciones legales, así como los intereses de financiación en el caso de que el asegurador otorgue facilidades de pago fraccionado de la prima anual.</p></li>
+</ul>
+</div>
+<div id="clasificación-de-los-seguros" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Clasificación de los seguros<a href="index.html#clasificación-de-los-seguros" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Los seguros se pueden clasificar en dos grandes grupos: <em>seguros de vida</em> y <em>seguros de no vida</em>.</p>
+<p>Un seguro de vida es aquel en el que una entidad aseguradora se compromete, mediante el cobro de una prima única o periódica, a pagar la prestación convenida en el caso de que se cumpla la circunstancia prevista en el contrato: que la persona o personas fallezcan o sobrevivan a un periodo de tiempo determinado. Existen distintas modalidades de seguros de vida:</p>
+<ul>
+<li>Seguro de vida en caso de muerte.</li>
+<li>Seguro de vida en caso de vida.</li>
+<li>Seguro de vida mixtos.</li>
+</ul>
+<p>Los seguros de no vida van dirigidos a cubrir daños materiales que ocasionan pérdidas económicas. Los más frecuentes son los de automóviles, incendios, robos, etc. En este caso, las prestaciones o indemnizaciones están en función de la cuantía del daño.</p>
+</div>
+<div id="distribuciones-clásicas-en-teoría-del-riesgo" class="section level2 hasAnchor" number="1.6">
+<h2><span class="header-section-number">1.6</span> Distribuciones clásicas en Teoría del Riesgo<a href="index.html#distribuciones-clásicas-en-teoría-del-riesgo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="asociadas-al-monto-de-una-pérdida" class="section level3 unnumbered hasAnchor">
+<h3>Asociadas al monto de una pérdida<a href="index.html#asociadas-al-monto-de-una-pérdida" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En esta materia se busca modelo en general las posibles pérdidas monetarias que pueden haber bajo diferentes contextos. De manera general vamos a ver que un riesgo monetario a asumir tiene dos principales componentes:</p>
+<ul>
+<li>Sea <span class="math inline">\(Y\)</span> v.a. <span class="math inline">\(\rightarrow\)</span> <strong>continua</strong> <span class="math inline">\(\rightarrow\)</span> severidad($).</li>
+<li>Sea <span class="math inline">\(N\)</span> v.a. <span class="math inline">\(\rightarrow\)</span> <strong>discreta</strong> <span class="math inline">\(\rightarrow\)</span> frecuencia(#siniestros).</li>
+</ul>
+<p>La <em>severidad</em> busca modelar pérdidas en términos monetarios, a diferencia de la <em>frecuencia</em> la cual modela la cantidad de siniestros que puede haber de cierto riesgo.</p>
+<p>Primeramente vamos a trabajar con la severidad. Al ser <span class="math inline">\(Y\)</span> una variable aleatoria que mide la severidad pérdidas de un riesgo monetario. En general se busca que <span class="math inline">\(Y\)</span> sea una v.a. no negativa y continua. Claramente esto puede venir dependiendo del tipo de riesgo que se esté modelando pero usualmente ” el dinero se comporta de forma continua”.</p>
+<div id="ejemplo" class="section level4 unnumbered hasAnchor">
+<h4>Ejemplo:<a href="index.html#ejemplo" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Se busca modelar cuánto hay que pagar si un coche nuevo cuesta (nuevo) $ $ 595,000 $ m.n. y éste sufre algún siniestro.</p>
+<p>El problema puede ponerse tan complicado como se desee, sin embargo y a priori podemos proponer:</p>
+<p><span class="math inline">\(X \ddot{=}\)</span> monto a pagar si el coche sufre un siniestro</p>
+<p><span class="math inline">\(X \sim Unif(0,595000)\)</span></p>
+<p><img src="Ima%CC%81genes/recta.png" width="100%" /></p>
+</div>
+</div>
+</div>
+<div id="familias-paramétricas-para-modelar-el-monto-de-riesgo" class="section level2 hasAnchor" number="1.7">
+<h2><span class="header-section-number">1.7</span> Familias paramétricas para modelar el monto de riesgo<a href="index.html#familias-paramétricas-para-modelar-el-monto-de-riesgo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Cuando hablemos de las siguientes distribuciones durante el curso estaremos usando las siguientes parametrizaciones salvo que se indique lo contrario.</p>
+<p>Es ideal que exploren las siguientes distribuciones analizando cambios en sus parámetros, si son de escala, forma,localización, sus diferentes parametrizaciones, etc.</p>
+<div id="exponencial" class="section level3 unnumbered hasAnchor">
+<h3>Exponencial<a href="index.html#exponencial" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<span class="math display">\[\begin{eqnarray*}
+    X &amp;\sim&amp;{ exp (\lambda )}\, \mbox{con}\ \lambda &gt;0.\\
+    f(x) &amp;=&amp; \lambda e ^{-\lambda x}\, \mbox{para}\  x &gt; 0.\\
+    F(x) &amp;=&amp; 1 - e ^{-\lambda x}\, \mbox{para}\  x &gt; 0.\\
+    \mathbb{E}[X]&amp;=&amp;\frac{1}{\lambda}.\\
+    Var(X) &amp;=&amp; \frac{1}{\lambda^2}.\\
+    M(t)&amp;=&amp;\frac{\lambda}{\lambda-t}\, \mbox{para}\  t &lt; \lambda.\\
+\end{eqnarray*}\]</span>
+<p><img src="Ima%CC%81genes/Dist_exponencial.png" width="100%" /></p>
+</div>
+<div id="gamma" class="section level3 unnumbered hasAnchor">
+<h3>Gamma<a href="index.html#gamma" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[\begin{eqnarray*}
+    X &amp;\sim&amp;{ gamma (n, \lambda)},\ \mbox{con}\ n&gt;0\ y\  \lambda &gt; 0.\\
+    f(x) &amp;=&amp; \frac{(\lambda x)^{n-1}}{\Gamma (n)} \lambda e^{-\lambda x}, \mbox{para}\ x&gt;0.\\
+\end{eqnarray*}\]</span> <span class="math display">\[\begin{eqnarray*}
+    F(x) = 1 - e^{-\lambda x} \sum_{k=0}^{n-1} \frac{(\lambda x)^{k}}{k!} \quad \text{para } x &gt; 0 \text{ y } n \text{ entero}.\\
+\end{eqnarray*}\]</span> <span class="math display">\[\begin{eqnarray*}
+    \mathbb{E}[X]&amp;=&amp;\frac{n}{\lambda}\\
+    Var(X)&amp;=&amp;\frac{n}{\lambda^2}\\
+    M(t)&amp;=&amp;\left[ \frac{\lambda}{(\lambda -t)}\right]^n\ \lambda&gt;0\ y\ n\ \mbox{entero}.
+\end{eqnarray*}\]</span></p>
+<p><img src="Ima%CC%81genes/Distribucio%CC%81n%20Gama.png" width="100%" /></p>
+</div>
+<div id="log---normal" class="section level3 unnumbered hasAnchor">
+<h3>Log - Normal<a href="index.html#log---normal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Nota:</strong> La función generadora de momentos no existe. Si X tiene distribución N(<span class="math inline">\(\mu\)</span> , <span class="math inline">\(\sigma^{2}\)</span>), entonces <span class="math inline">\(e^{x}\)</span> tiene distribución log normal <span class="math inline">\((\mu , \sigma^{2})\)</span>.</p>
+<span class="math display">\[\begin{eqnarray*}
+    X &amp;\sim&amp;{ log\ normal(\mu , \sigma^{2})}\ con\ \mu \in \mathbb R\ y\ \sigma^{2} &gt; 0.\\
+    f(x) &amp;=&amp; \frac{1}{x\sqrt{2 \pi\ \sigma^{2}}}exp\left[{-\frac{(ln(x)-\mu)^{2}}{2\sigma^{2}}}\right]\ para\ x &gt;0.\\
+    \mathbb{E}[X]&amp;=&amp; exp\left(\frac{\mu + \sigma^{2}}{2}\right).\\
+    \mathbb{[X^{n}]}&amp;=&amp; exp\left(n\mu + \frac{n^{2}\sigma^{2}}{2}\right).\\
+    Var(X)&amp;=&amp; exp(2\mu + 2\sigma^{2}) - exp(2\mu + \sigma^{2}).\\
+\end{eqnarray*}\]</span>
+<p><img src="Ima%CC%81genes/Distribucio%CC%81n%20Log-Normal.png" width="100%" /></p>
+</div>
+<div id="weibull" class="section level3 unnumbered hasAnchor">
+<h3>Weibull<a href="index.html#weibull" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<span class="math display">\[\begin{eqnarray*}
+    X &amp;\sim&amp;  Weibull (r, \lambda)\ con\ r&gt;0\ y\ \lambda &gt;0. \\
+            f(x) &amp;=&amp; e^{-(\lambda x)^{r}} r \lambda ^{r} x^{r -1}\ para\ x&gt;0.\\
+            F(x) &amp;=&amp; 1 - e^{{-(\lambda x)}^{r}}\ para\ x&gt;0.\\
+            E(X) &amp;=&amp; \frac{\Gamma \left(1+\frac{1}{r}\right)}{\lambda}.\\
+            Var(X) &amp;=&amp; \frac{\Gamma (1+\frac{2}{r})-\Gamma^{2} (1+\frac{1}{r})}{\lambda^{2}}
+\end{eqnarray*}\]</span>
+<p><strong>Nota:</strong> En R está parametrizado con <span class="math inline">\(\frac{1}{\lambda}\)</span>.</p>
+<p><img src="Ima%CC%81genes/Distribucio%CC%81n%20Weibull.png" width="100%" /></p>
+</div>
+<div id="burr" class="section level3 unnumbered hasAnchor">
+<h3>Burr<a href="index.html#burr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<span class="math display">\[\begin{eqnarray*}
+    X&amp;\sim&amp;Burr(\theta,\alpha,\beta)\\
+    f(x) &amp;=&amp; \frac{\beta \alpha \theta^{\alpha} x^{\beta-1}}{(x^{\beta} + \theta)^{\alpha + 1}}\ x \geq 0,\ \theta &gt; 0,\ \alpha &gt;0,\ \beta &gt; 0.\\
+    \mathbb E (x^{r}) &amp;=&amp; \frac{\theta^{\frac{r}{\beta}}\Gamma( \alpha-\frac{r}{\beta})\Gamma (\frac{r}{\beta +1})}{\Gamma (\alpha)}\ ,\ que\ existe\ si\ r&lt;\alpha\beta
+\end{eqnarray*}\]</span>
+<p><img src="Ima%CC%81genes/Distribucio%CC%81n%20Burr.png" width="100%" /></p>
+</div>
+<div id="pareto" class="section level3 unnumbered hasAnchor">
+<h3>Pareto<a href="index.html#pareto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="pareto-1" class="section level4 unnumbered hasAnchor">
+<h4>Pareto<a href="index.html#pareto-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<span class="math display">\[\begin{eqnarray*}
+    X &amp;\sim&amp;{Pareto (a,b)}\ con\ a&gt;0\ y \ b&gt;0.\\
+    f(x)&amp;=&amp; \frac{ab^{a}}{(b+x)^{a+1}}\ para\ x&gt;0.\\
+    F(x)&amp;=&amp; 1-\left[\frac{b}{(b+x)}\right]^{a}\ para\ x&gt;0.\\
+    \mathbb{E}[X]&amp;=&amp; \frac{b}{(a-1)}\ para\ a&gt;1.\\
+    Var(X)&amp;=&amp;\frac{ab^{2}}{(a-1)^{2}(a-2)}\ para\ a&gt;2.
+\end{eqnarray*}\]</span>
+</div>
+<div id="pareto1" class="section level4 unnumbered hasAnchor">
+<h4>Pareto1<a href="index.html#pareto1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><span class="math display">\[\begin{eqnarray*}
+    \mathbb P(X&gt;x)&amp;=&amp; \left(\frac{\theta}{x}\right)^{\alpha}\, x \geq \theta,\ \alpha&gt;0,\ \theta&gt;0.\\
+    F(x)&amp;=&amp; 1-\mathbb P (X&gt;x) = 1-\left(\frac{\theta}{x}\right)^{\alpha}\\
+    f(x; \alpha, \theta) &amp;=&amp; F&#39;(x) = \frac{\alpha\theta^{\alpha}}{x^{\alpha + 1}},\ x \geq \theta,\ \alpha&gt;0,\ \theta&gt;0.\\
+\end{eqnarray*}\]</span> <span class="math display">\[\begin{eqnarray*}
+    \mathbb E(X) &amp;=&amp; \frac{\alpha \theta}{(\alpha - 1)}; \ \mathbb V(X) = \frac{\alpha \theta^{2}}{(\alpha-2)(\alpha - 1)^{2}};\ \mathbb E (X^{r})= \frac{\alpha \theta^{r}}{(\alpha-r)},\ \alpha&gt;r,\ r=1,2,...
+\end{eqnarray*}\]</span>
+<img src="Ima%CC%81genes/Distribucio%CC%81n%20Pareto.png" width="100%" /></p>
+<p>El paquete <strong>actuar</strong> de R llama como pareto2 o bien pareto a la distribución aquí marcada como “Pareto”.</p>
+<p><strong>Revisar Script: “Distribuciones asociadas al monto de una pérdida”.</strong></p>
+</div>
+</div>
+</div>
+<div id="modelación-del-riesgo" class="section level2 hasAnchor" number="1.8">
+<h2><span class="header-section-number">1.8</span> Modelación del riesgo<a href="index.html#modelación-del-riesgo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><img src="Ima%CC%81genes/Actuario%20f.png" width="100%" /></p>
+</div>
+<div id="ajuste-de-funciones-de-probabilidad" class="section level2 hasAnchor" number="1.9">
+<h2><span class="header-section-number">1.9</span> Ajuste de funciones de probabilidad<a href="index.html#ajuste-de-funciones-de-probabilidad" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Ahora veamos cómo se hace un ajuste de modelos (distribuciones) de riesgo en una situación donde se tienen datos reales.</p>
+<p>Cuando se dispone de un conjunto de observaciones pertenecientes a una determinada variable aleatoria con distribución desconocida, lo primero que conviene hacer es tratar de identificar alguna distribución teórica (modelo) que pudiera ajustar bien dichas observaciones. En otras palabras, se trataría de comprobar si estos datos se distribuyen de acuerdo a alguna distribución conocida (Gamma, Pareto, log-normal , Binomial, Poisson, etc.), pues ello facilitaría la realización de inferencias sobre la población. Este proceso se realiza mediante tres etapas básicas.</p>
+<ul>
+<li><strong>Reconocimiento</strong> de la familia de modelos (densidades) subyacente a los datos.</li>
+<li><strong>Estimación</strong> de los parámetros que determinan la densidad particular de esta familia que ajusta a los datos recabados.</li>
+<li><strong>Verificación</strong> de lo adecuado del ajuste del modelo a los datos.</li>
+</ul>
+</div>
+<div id="reconocimiento-del-modelo" class="section level2 hasAnchor" number="1.10">
+<h2><span class="header-section-number">1.10</span> Reconocimiento del modelo<a href="index.html#reconocimiento-del-modelo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Esta primer etapa combina el conocimiento previo que el usuario posea sobre los datos a modelar, con las diferentes ́técnicas de estad ́ıstica descriptiva que puedan determinar, por ejemplo:</p>
+<ul>
+<li>Forma de la densidad subyacente.</li>
+<li>Simetría de la densidad.</li>
+<li>Unimodalidad o multimodalidad de la densidad.</li>
+<li>Forma de la función de distribución</li>
+</ul>
+<p>Dado que en la mayoría de los casos, los usuarios tienen algún conocimiento sobre el modelo que pudo generar la información , ya sea por experiencia empírica o por la literatura del ́área particular de aplicación, un buen principio es tomar en cuenta esta opinión y complementarla con las descripciones gráficas y numéricas que proporciona el análisis descriptivo de los datos.</p>
+<p>Es aquí donde nos interesa utilizar algunas herramientas estadísticas que nos permitan identificar y comprobar si la información o los datos (variables aleatorias) en cuestión, siguen alguna distribución.</p>
+<p>En esta parte hablaremos de las propiedades estadísticas que tienen las variables aleatorias que pueden caracterizarlas con la finalidad de lograr reconocerlas a partir de datos con los que contemos. A continuación algunas:</p>
+<ol style="list-style-type: decimal">
+<li>Métodos numéricos
+<ul>
+<li>Medidas de tendencia central (Media, mediana, moda)</li>
+<li>Medidas de dispersión (Varianza, desviación estándar, rango, rango intercuartilico, coeficiente de variación)</li>
+<li>Medida de forma (sesgo, curtosis)</li>
+<li>Forma de la función de distribución</li>
+</ul></li>
+<li>Métodos gráficos
+<ul>
+<li>Histogramas</li>
+<li>Diagramas de tallo y hoja</li>
+<li>Box plot</li>
+<li>Curvas suavizadas de densidad (densidades tipo kernel)</li>
+<li>Curva de la función de distribución empírica</li>
+<li>Gráficas de probabilidad</li>
+</ul></li>
+</ol>
+<p>A continuación hablaremos de algunos de estos métodos.</p>
+<div id="moda-de-una-función-de-densidad" class="section level3 hasAnchor" number="1.10.1">
+<h3><span class="header-section-number">1.10.1</span> Moda de una función de densidad<a href="index.html#moda-de-una-función-de-densidad" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Recordemos que la moda de una variable aleatoria X la definimos como el punto <span class="math inline">\(x_{0}\)</span> tal que:</p>
+<span class="math display">\[\begin{eqnarray*}
+f_{X}(x_{0})\geq f_{X}(x) \quad \forall x \in Sop\{x \} \\
+\end{eqnarray*}\]</span>
+<div id="ejemplo-1" class="section level4 unnumbered hasAnchor">
+<h4>Ejemplo<a href="index.html#ejemplo-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>La moda de una densidad <span class="math inline">\(Gamma(n, \lambda)\)</span> está dada por lo siguiente:</p>
+<span class="math display">\[\begin{eqnarray*}
+f_{X}(x)= \frac{(\lambda x)^{n-1}}{\Gamma(n)} \lambda e^{-\lambda x}\quad \mathbb{I}_{(x&gt;0)}(x)\\
+\end{eqnarray*}\]</span>
+<p>Calculamos su derivada:</p>
+<span class="math display">\[\begin{eqnarray*}
+f^{&#39;}_{X}(x)= \frac{\lambda^{n}}{\Gamma(n)} \left[ (n-1)x^{n-2}e^{-\lambda x}-x^{n-1}\lambda e^{-\lambda x} \right]
+\end{eqnarray*}\]</span>
+<p>Luego, igualamos a cero para encontrar un punto crítico</p>
+<span class="math display">\[\begin{eqnarray*}
+f^{&#39;}_{X}(x_{0})= 0 &amp;\Leftrightarrow&amp; \left[ (n-1)x_{0}^{n-2}e^{-\lambda x_{0}} \right] =x_{0}^{n-1}\lambda e^{-\lambda x}
+\end{eqnarray*}\]</span>
+<p>Finalmente, obtenemos que:</p>
+<span class="math display">\[\begin{eqnarray*}
+\therefore
+x_{0}&amp;=&amp; \frac{n-1}{\lambda}
+\end{eqnarray*}\]</span>
+<p>Entonces si se tiene un conjunto de datos <span class="math inline">\(\{d_{i}\}_{i=1}^{n}\)</span> y pudiera trazar su función de densidad empírica; si yo sospecho que esos datos tienen una distribución asociada <span class="math inline">\(Gamma(n, \lambda)\)</span> entonces su moda debería verse algo así:</p>
+<p><img src="Ima%CC%81genes/Dist_Gamma.png" width="100%" /></p>
+<p>De tal manera que al ver esto, podamos sospechar que la información que tenemos, realmente proviene de la distribución que nosotros propusimos.</p>
+<p>Existen distribuciones que tienen dos o más modas, a aquellas que tienen dos son las llamadas distribuciones bimodales.</p>
+<p>Es posible que una distribución de este estilo sea provocada por una mezcla de variables aleatorias.</p>
+<p>Una mezcla es una variable aleatoria, digamos <span class="math inline">\(Z\)</span>, cuya función de densidad es una combinación lineal de las funciones de densidad de otras dos variables aleatorias, digamos <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span>. De tal manera que, tomando <span class="math inline">\(a,b \in (0,1)\)</span> con <span class="math inline">\(a+b=1\)</span>, tenemos que:</p>
+<span class="math display">\[\begin{eqnarray*}
+f_{Z}(t)&amp;=&amp; af_{X}(t)+bf_{Y}(t)
+\end{eqnarray*}\]</span>
+<p>Dando como resultado que la función de densidad <span class="math inline">\(Z\)</span> tenga un comportamiento similar al siguiente:</p>
+<p><img src="Ima%CC%81genes/Mezclas.png" width="100%" /></p>
+<p><strong>Script: “Mezclas”</strong></p>
+</div>
+</div>
+<div id="coeficiente-de-asimetría-skewness" class="section level3 hasAnchor" number="1.10.2">
+<h3><span class="header-section-number">1.10.2</span> Coeficiente de asimetría (Skewness)<a href="index.html#coeficiente-de-asimetría-skewness" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sea <span class="math inline">\(X\)</span> una v.a, el coeficiente de asimetría usualmente se denota como <span class="math inline">\(\alpha\)</span> y se define:</p>
+<span class="math display">\[\begin{eqnarray*}\alpha \ddot{=} \displaystyle\frac{\mathbb{E}[(X-\mu_{X})^{3}]}{\sigma_{X}^{3}}
+\end{eqnarray*}\]</span>
+<p>Donde:</p>
+<span class="math display">\[\begin{eqnarray*}
+\mu_{X}&amp;\ddot{=}&amp; \mathbb{E}[X]\\
+\sigma_{X}&amp;\ddot{=}&amp; \sqrt{Var(X)}
+\end{eqnarray*}\]</span>
+<p>Este número es de interés ya que gracias a él, podemos describir de manera teórica la forma de la densidad de una variable aleatoria.</p>
+<p>Dada una muestra aleatoria <span class="math inline">\(\{X_{i}\}_{i=1}^{n}\)</span>, podemos obtener el coeficiente de asimetría de forma ’’empírica” (o muestral), simplemente tomando los estimadoras de la media y la varianza que ya conocemos:</p>
+<p>Para la esperanza tenemos: <span class="math display">\[\begin{equation*}
+  \widehat{\mathbb{E}[X]} = \frac{1}{n} \sum_{i=1}^{n} x_{i} = \bar{x}  
+\end{equation*}\]</span></p>
+<p>Y para la varianza, tenemos:</p>
+<span class="math display">\[\begin{eqnarray*}
+   \widehat{Var[X]} &amp;=&amp; \left \{ \begin{matrix}
+    \displaystyle\frac{1}{n-1} \displaystyle\sum_{i=1}^{n}(x_{i}-\bar{x})^2&amp; insesgado \\
+    \displaystyle\frac{1}{n} \displaystyle\sum_{i=1}^{n}(x_{i}-\bar{x})^2&amp; máximo \quad versosímil\\
+\end{matrix}\right.
+\end{eqnarray*}\]</span>
+<p>Por lo tanto, el coeficiente de asimetría queda definido como sigue:</p>
+<span class="math display">\[\begin{eqnarray*}
+\widehat{\alpha}= \displaystyle\frac{\displaystyle\frac{1}{n} \displaystyle\sum_{i=1}^{n}(x_{i}-\bar{x})^{3}}{(\widehat{Var[X]})^{3/2}}\\
+\end{eqnarray*}\]</span>
+<p>Dado un valor de <span class="math inline">\(\alpha\)</span> entonces:</p>
+<p>Si <span class="math inline">\(\alpha&gt;\)</span> 0, entonces la distribución es “asimétrica positiva” (o “asimétrica a la derecha”).</p>
+<p><img src="Ima%CC%81genes/asipos.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>Si <span class="math inline">\(\alpha\)</span>=0, entonces la distribución es “simétrica”.</p>
+<p><img src="Ima%CC%81genes/simetria.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>Si <span class="math inline">\(\alpha&lt;\)</span> 0, entonces la distribución es “asimétrica negativa (o”asimétrica a la izquierda).</p>
+<p><img src="Ima%CC%81genes/Asineg.png" width="50%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="coeficiente-de-kurtosis" class="section level3 hasAnchor" number="1.10.3">
+<h3><span class="header-section-number">1.10.3</span> Coeficiente de Kurtosis<a href="index.html#coeficiente-de-kurtosis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sea <span class="math inline">\(X\)</span> una v.a. el coeficiente de kurtosis, usualmente se denota como <span class="math inline">\(K\)</span> y se define:</p>
+<span class="math display">\[\begin{eqnarray*}
+  K \ddot{=} \frac{\mathbb{E}[(X-\mu_{X})^{4}]}{\sigma_{X}^{4}}\\
+\end{eqnarray*}\]</span>
+<p>Análogamente al coeficiente de asimetría podemos calcular de manera muestral el coeficiente de Kurtosis tomando los estimados de la esperanza y varianza:</p>
+<p>Para la esperanza tenemos:</p>
+<span class="math display">\[\begin{equation*}
+\widehat{\mathbb{E}[X]} = \displaystyle\frac{1}{n} \sum_{i=1}^{n}x_{i}= \bar{x}
+\end{equation*}\]</span>
+<p>Y para la varianza, tenemos:</p>
+<span class="math display">\[\begin{eqnarray*}
+   \widehat{Var[X]} &amp;=&amp; \left \{ \begin{matrix}
+    \displaystyle\frac{1}{n-1} \displaystyle\sum_{i=1}^{n}(x_{i}-\bar{x})^2&amp; insesgado \\
+    \displaystyle\frac{1}{n} \displaystyle\sum_{i=1}^{n}(x_{i}-\bar{x})^2&amp; máximo \quad versosímil\\
+\end{matrix}\right.
+\end{eqnarray*}\]</span>
+<p>Por lo tanto, el coeficiente de asimetría queda definido como sigue:</p>
+<span class="math display">\[\begin{eqnarray*}\widehat{K}= \displaystyle\frac{\displaystyle\frac{1}{n} \displaystyle\sum_{i=1}^{n}(x_{i}-\bar{x})^{4}}{(\widehat{Var[X]})^{2}}\\
+\end{eqnarray*}\]</span>
+<p>Donde <span class="math inline">\(K\)</span> también tiene una interpretación gráfica como veremos a continuación:</p>
+<p>Si <span class="math inline">\(K&gt;\)</span> 3, entonces la distribución es <strong>más apuntada</strong> y con <strong>colas menos gruesas</strong> que la normal estándar.</p>
+<p><img src="Ima%CC%81genes/lepto.png" width="30%" style="display: block; margin: auto;" /></p>
+<p>Si <span class="math inline">\(K\)</span>=3, entonces la distribución tiene una forma apuntada y con <strong>colas similares la normal estándar</strong>.</p>
+<p><img src="Ima%CC%81genes/meso.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>Si <span class="math inline">\(K&lt;\)</span> 3, entonces la distribución es <strong>menos apuntada</strong> y con <strong>colas más gruesas</strong> que la normal estándar.</p>
+<p><img src="Ima%CC%81genes/plati.png" width="50%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="función-de-distribución-empírica" class="section level3 hasAnchor" number="1.10.4">
+<h3><span class="header-section-number">1.10.4</span> Función de distribución empírica<a href="index.html#función-de-distribución-empírica" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Dada una muestra de datos <span class="math inline">\(\{X_{i}\}_{i=1}^{n}\)</span> construimos la función de distribución empírica como:</p>
+<span class="math display">\[\begin{equation*}
+F_n(t) \ddot{=} \frac{\sum_{i=1}^{n} \mathbb{I}(x_{i} \leq t)}{n}
+= \frac{\#\{ x_{i}: x_{i} \leq t\}}{n}
+\end{equation*}\]</span>
+<p>Véase:</p>
+<img src="Ima%CC%81genes/Func_dist_empirica.png" width="100%" />
+<p style="text-align: center">
+Figura 1. <a href="https://www.youtube.com/watch?v=iN3BDlmfdT0" class="uri">https://www.youtube.com/watch?v=iN3BDlmfdT0</a>
+</p>
+<p>Teniendo nuestros datos, la distribución empírica se ve de la siguiente manera:</p>
+<p><img src="Ima%CC%81genes/Distribucion%20empirica.png" width="100%" /></p>
+</div>
+<div id="cuantiles" class="section level3 hasAnchor" number="1.10.5">
+<h3><span class="header-section-number">1.10.5</span> Cuantiles<a href="index.html#cuantiles" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Recordemos que, dada una variable aleatoria <span class="math inline">\(X\)</span> si denotamos a <span class="math inline">\(F_{X}(t)\)</span> como su función de distribución (acumulada) de <span class="math inline">\(X\)</span>, entonces, tomando <span class="math inline">\(\alpha \in [0,1]\)</span>. El cuantíl del <span class="math inline">\(\alpha\)</span> de <span class="math inline">\(X\)</span> se define como:</p>
+<span class="math display">\[\begin{eqnarray*}
+q_{X}(\alpha)\ \ddot{=}\ ínf\{t \in Sop\{X\}: F_{X}(t)\geq \alpha\}\\
+\end{eqnarray*}\]</span>
+<p>La definición anterior está muy ligada con el concepto de “<strong>Inversa generalizada</strong> de la distribución acumulada”.</p>
+<p>Podemos decir que si <span class="math inline">\(t \in Sop \{X\}\)</span>:</p>
+<span class="math display">\[\begin{eqnarray*}
+F_{X}(t)= \alpha &amp;\Rightarrow&amp; t=q_{X}(\alpha)
+\end{eqnarray*}\]</span>
+<p>Como estos conceptos aplican para cualquier función de distribución (acumulada), en particular aplicará para la función de distribución empírica. En tal caso dichos cuantiles son también llamados <strong>cuantiles empíricos</strong>.</p>
+</div>
+<div id="rango-intercuantílico" class="section level3 hasAnchor" number="1.10.6">
+<h3><span class="header-section-number">1.10.6</span> Rango intercuantílico<a href="index.html#rango-intercuantílico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Dada una variable aleatoria <span class="math inline">\(X\)</span>, definimos al rango intercuantílico como:</p>
+<span class="math display">\[\begin{eqnarray*}
+     q_{X}(75\%)-q_{X}(25\%)\\
+\end{eqnarray*}\]</span>
+<p>Una vez que determinamos una posible familia paramétrica (distribución) que siguen los datos, procedemos a dar el siguiente paso.</p>
+</div>
+</div>
+<div id="estimación-de-parámetros" class="section level2 hasAnchor" number="1.11">
+<h2><span class="header-section-number">1.11</span> Estimación de parámetros<a href="index.html#estimación-de-parámetros" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Una vez que se ha reconocido la familia a la que pertenece el modelo que pueda ajustar a los datos, el siguiente paso es determinar concretamente cuál de los modelos de esta familia es el que se ajusta a nuestra información. Es decir, necesitamos estimar los parámetros de este modelo particular. Existen diversos métodos para estimar los parámetros de una distribución, los más usuales son:</p>
+<div id="método-de-momentos" class="section level3 hasAnchor" number="1.11.1">
+<h3><span class="header-section-number">1.11.1</span> Método de momentos<a href="index.html#método-de-momentos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Se tiene una muestra aleatoria <span class="math inline">\(\{{X_i}\}^n_{i=1}\)</span> de una distribución <span class="math inline">\(F(\underline{X},\underline{\theta})\)</span> donde <span class="math inline">\(\underline{\theta}\ \ddot{=}\  (\theta_1,\ldots,\theta_p)\)</span> es un vector de parámetros.</p>
+<p>Sean: <span class="math display">\[\begin{eqnarray*}
+        \mu_k(\underline{\theta})\ \ddot{=}\ \mathbb{E}[X^k | \underline{\theta}]=\int x^k f_X(x)dx\quad \rightarrow \quad \text{momentos poblacionales.}\\
+\end{eqnarray*}\]</span> <span class="math display">\[\begin{eqnarray*}
+        \mu_k\ \ddot{=}\ \frac{1}{n} \sum^n_{i=1}x^k_i \rightarrow \quad \text{momentos muestrales.}
+\end{eqnarray*}\]</span></p>
+<p>La metodología consiste en obtener momentos poblacionales (teóricos) en términos de los momentos muestrales a través de un planteamiento de sistemas de ecuaciones. En pocas palabras, si <span class="math inline">\(\underline{\theta}=(\theta_1,\ldots,\theta_p)\)</span> son los parámetros, que es lo que buscamos. Entonces podemos calcular <span class="math inline">\(\underline{\mu}=(\mu_1,\ldots,\mu_p)\)</span> y resolver:</p>
+<span class="math display">\[\begin{eqnarray*}
+\underline{\mu} = (\mu_1,\ldots,\mu_p) = (\mu_1(\underline{\theta}),\ldots,\mu_p(\underline{\theta}))\ \ddot{=}\  \underline{\mu(\underline{\theta})}
+\end{eqnarray*}\]</span>
+<div id="ejemplo-1-1" class="section level4 unnumbered hasAnchor">
+<h4>Ejemplo 1:<a href="index.html#ejemplo-1-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><span class="math inline">\(X\sim Bernoulli(\underbrace{p}_1)\)</span><span class="math inline">\(\rightsquigarrow\)</span> tiene un parámetro</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\underline{\mu} = (\underline{\mu}_1(\underline{\theta}))= \underline{\mu(\underline{\theta})}\\
+\end{eqnarray*}\]</span> <span class="math display">\[\begin{eqnarray*}
+= \frac{1}{n} \sum^n_{i=1}x_i\ \ddot{=}\ \overline{X}= \mathbb{E}[X]=p
+\end{eqnarray*}\]</span></p>
+<p>Entonces, si tú sospechas que las <span class="math inline">\(\{x_i\}^n_{i=1}\)</span> vienen de una distribución Bernoulli, entonces en tal caso, su parámetro estimado es:</p>
+<span class="math display">\[\begin{eqnarray*}
+\widehat{p}=\overline{X}
+\end{eqnarray*}\]</span>
+</div>
+<div id="ejemplo-2" class="section level4 unnumbered hasAnchor">
+<h4>Ejemplo 2:<a href="index.html#ejemplo-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><span class="math inline">\(X\sim Normal(\underbrace{\mu}_{1},\underbrace{\sigma^2}_{2})\)</span><span class="math inline">\(\rightsquigarrow\)</span> 2 parámetros</p>
+<p>necesitamos <span class="math inline">\(\mu_1\)</span> y <span class="math inline">\(\mu_2\)</span> y nosotros sabemos que <span class="math inline">\(\mathbb{E}[X]=\mu\)</span> y <span class="math inline">\(Var(X)=\sigma^2\)</span> entonces:</p>
+<span class="math display">\[\begin{equation*}
+\left\lbrace
+\begin{array}{ll}
+\mathbb{E}[X]=\mu\\
+\mathbb{E}[X^2]=Var(X)+\mathbb{E}^2[X]=\sigma^2+\mu^2
+\end{array}
+\right.
+\end{equation*}\]</span>
+<span class="math display">\[\begin{eqnarray*}
+\mu_1&amp;=&amp;\mu\\
+\mu_2&amp;=&amp;\sigma^2+\mu^2 \Leftrightarrow \sigma^2=\mu_2 - \mu^2 = \mu_2-\mu^2_1
+\end{eqnarray*}\]</span>
+<p>Luego, haciendo un poco de desarrollo algebraico:</p>
+<ul>
+<li><span class="math inline">\(\widehat{\mu}=\mu_1\ \ddot{=}\ \overline{X}\)</span></li>
+<li><span class="math inline">\(\widehat{\sigma^2}=\mu_2-\mu_1^2=\frac{1}{n} \sum\limits^n_{i=1} x^2_i-\overline{X}^2\)</span> <span class="math inline">\(=\cdots=\frac{1}{n}\sum\limits^n_{i=1}(x_i-\overline{x})^2\)</span></li>
+</ul>
+</div>
+<div id="ejemplo-3" class="section level4 unnumbered hasAnchor">
+<h4>Ejemplo 3:<a href="index.html#ejemplo-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Sea <span class="math inline">\(X\sim Gamma(\underbrace{\alpha}_{1},\underbrace{\beta}_{2})\)</span><span class="math inline">\(\rightsquigarrow\)</span> 2 parámetros</p>
+<p>Tomamos el sistema de ecuaciones:</p>
+<span class="math display">\[\begin{eqnarray*}
+\mathbb{E}[X]&amp;=&amp;\frac{\alpha}{\beta}=\mu_1=\frac{1}{n}\sum^n_{i=1}x_i=\overline{X}\rightsquigarrow \text{Muestra de tamaño n.}\\
+\mathbb{E}[X^2] &amp;=&amp; Var(X)+\mathbb{E}^2[X]\\
+&amp;=&amp;\frac{\alpha}{\beta^2}+\left(\frac{\alpha}{\beta}\right)^2=\mu_2=\frac{1}{n}\sum^n_{i=1}x^2_i
+\end{eqnarray*}\]</span>
+<span class="math display">\[\begin{equation*}
+\left\lbrace
+\begin{array}{ll}
+\mu_1=\frac{\alpha}{\beta} \Leftrightarrow \beta=\frac{\alpha}{\mu_1}\\
+\mu_2=\frac{\alpha}{\beta^2}+\frac{\alpha^2}{\beta^2}=\frac{\alpha(1+\alpha)}{\beta^2}\Leftrightarrow \mu_2=\frac{\alpha(\alpha+1)}{\left(\frac{\alpha}{\mu_1}\right)^2}
+\end{array}
+\right.
+\end{equation*}\]</span>
+<span class="math display">\[\begin{eqnarray*}
+&amp;\Leftrightarrow&amp; \mu_2=\mu^2_1\left(\frac{\alpha+1}{\alpha}\right)=\mu^2_1\left(1+\frac{1}{\alpha}\right)\\
+&amp;\Leftrightarrow&amp; \frac{1}{\alpha}=\frac{\mu_2}{\mu^2_1}-1=\frac{\mu_2-\mu^2_1}{\mu^2_1} \Leftrightarrow  \underline{\widehat{\alpha}=\frac{\mu^2_1}{\mu_2-\mu^2_1}}\\
+&amp;\Leftrightarrow&amp;\underline{\widehat{\beta}=\frac{\widehat{\alpha}}{\mu_1}=\frac{\mu_1}{\mu_2-\mu^2_1}}
+\end{eqnarray*}\]</span>
+</div>
+</div>
+<div id="máxima-verosimilitud" class="section level3 hasAnchor" number="1.11.2">
+<h3><span class="header-section-number">1.11.2</span> Máxima verosimilitud<a href="index.html#máxima-verosimilitud" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Dada una muestra <span class="math inline">\(\{X_i\}^n_{i=1}\)</span> de v.a.i.i.d. procedemos a obtener su <strong>función de verosimilitud</strong> la cual sabemos está ligada con la **función de densidad conjunta. Al ser i.i.d tendremos que:</p>
+<span class="math display">\[\begin{eqnarray*}
+\mathcal{L}(\theta,\underline{X})=f(\underline{X},\theta)=\prod^n_{i=1}f(x_i|\theta)
+\end{eqnarray*}\]</span>
+<p>La metodología nos dice que fijemos <span class="math inline">\(\underline{X}\)</span> (haciendo referencia a que esos son los datos que tenemos) y maximicemos con respecto de los parámetros. Debido a que <span class="math inline">\(ln(x)\)</span> es una función creciente, maximizar <span class="math inline">\(\ell(\theta,\underline{X})\ \ddot{=}\  ln(\mathcal{L}(\theta,\underline{X}))\)</span> resulta ser equivalente y más sencillo en la mayoría de las ocasiones.</p>
+<div id="ejemplo-4" class="section level4 unnumbered hasAnchor">
+<h4>Ejemplo:<a href="index.html#ejemplo-4" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Asumamos una muestra <span class="math inline">\(\{X_i\}^{k}_{i=1}\)</span> de v.a.i.i.d. con distribución <span class="math inline">\(Gamma(n,\lambda\)</span>). Con parámetro n conocido (como es conocido no necesito estimarlo). Entonces:</p>
+<span class="math display">\[\begin{eqnarray*}
+\mathcal{L}(\lambda|\underline{X},n)&amp;=&amp;\prod^{k}_{i=1}f(x_i|\lambda,n)=\prod^{k}_{i=1}\frac{(\lambda x_i)^{n-1}}{\Gamma(n)}\lambda e ^{-\lambda x_i}\\&amp;=&amp;\prod^{k}_{i=1}\frac{ x_i^{n-1}}{\Gamma(n)}\lambda^n e ^{-\lambda x_i}\\
+\Rightarrow \ell(\lambda|\underline{X},n)&amp;=&amp;ln(\mathcal{L}(\lambda|\underline{X},n))\\
+&amp;=&amp;\sum^{k}_{i=1}((n-1)ln(x_i)-ln(\Gamma(n))+nln(\lambda)-\lambda x_i)\\
+&amp;=&amp;(n-1)\sum^{k}_{i=1}ln(x_i)-kln(\Gamma(n))+nkln(\lambda)-\lambda\sum^{k}_{i=1}x_i
+\end{eqnarray*}\]</span>
+<span class="math display">\[\begin{eqnarray*}
+\Rightarrow \frac{\partial}{\partial\lambda}\ell(\lambda|\underline{X},n)&amp;=&amp;nk\left(\frac{1}{\lambda}\right)-\sum^{k}_{i=1}x_i\\
+&amp;=&amp;nk\frac{1}{\lambda}-k\overline{X}
+\end{eqnarray*}\]</span>
+<p>Así:</p>
+<span class="math display">\[\begin{eqnarray*}
+    \frac{\partial}{\partial \lambda}\ell(\widehat{\lambda}|\underline{X},n)= 0 &amp;\Leftrightarrow&amp; nk\left(\frac{1}{\widehat{\lambda}}\right)=k\overline{X}\\
+    &amp;\Leftrightarrow&amp; \underline{\widehat{\lambda}=\frac{n}{\overline{X}}}
+\end{eqnarray*}\]</span>
+<p>¿Cómo sabemos si es máximo?</p>
+<span class="math display">\[\begin{eqnarray*}
+    \frac{\partial^2}{\partial\lambda^2}\ell(\lambda|\underline{X},n)=-nk\left(\frac{1}{\lambda^2}\right)&lt;0\quad\forall\lambda\in\mathbb{R}\\
+    \therefore \widehat{\lambda}=\frac{n}{\overline{X}} \quad \underline{\text{es máximo}}
+\end{eqnarray*}\]</span>
+<p>Existen diversas metodologías para obtener los parámetros del modelo que nosotros estamos proponiendo. En particular, la paquetería estadística <strong>R</strong> utiliza métodos numéricos para hacer ésta estimación.</p>
+<p><strong>Propiedad de Invarianza para los estimadores máximo verosímiles:</strong> Esta propiedad establece principalmente que si <span class="math inline">\(\eta=\tau(\theta)\)</span> es una función de un parámetro de interés y <span class="math inline">\(\widehat{\theta}\)</span> es el EMV para <span class="math inline">\(\theta\)</span>, entonces el EMV para <span class="math inline">\(\eta\)</span> es <span class="math inline">\(\widehat{\eta}=\widehat{\tau(\theta)}=\tau(\widehat{\theta})\)</span>.</p>
+</div>
+<div id="ejemplo-5" class="section level4 unnumbered hasAnchor">
+<h4>Ejemplo:<a href="index.html#ejemplo-5" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>De nuestro ejemplo anterior, el EMV para <span class="math inline">\(\tau (\lambda)\)</span> es <span class="math inline">\(\tau\left(\frac{n}{\overline{X}}\right)\)</span>.</p>
+<p><strong>Un vídeo donde se explica a grandes rasgos lo anterior lo podrán ver en el siguiente enlace:</strong></p>
+<img src="Ima%CC%81genes/Video_FV.png" width="100%" />
+<p style="text-align: center">
+<a href="https://www.youtube.com/watch?v=zPSj0ltrBoc" class="uri">https://www.youtube.com/watch?v=zPSj0ltrBoc</a>
+</p>
+</div>
+</div>
+</div>
+<div id="pruebas-de-bondad-de-ajuste" class="section level2 hasAnchor" number="1.12">
+<h2><span class="header-section-number">1.12</span> Pruebas de bondad de ajuste<a href="index.html#pruebas-de-bondad-de-ajuste" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Los procedimientos para probar qué tan bien se ajusta un modelo a un conjunto de datos reciben el nombre genérico <em>pruebas de bondad de ajuste</em> y constituyen un área de desarrollo permanente en la estadística. Como mencionamos líneas arriba, en la determinación de un modelo paramétrico, es necesario asignar una distribución para los datos de severidad, de frecuencia o ambos. En el caso de las distribuciones asociadas a la frecuencia de reclamaciones, existen algunas guías que pueden sugerir el modelo a considerar en una situación particular, como el hecho que una distribución Poisson posea media y varianza iguales, mismo que puede comprobarse calculando las correspondientes versiones muestrales de estos parámetros. Si, como ocurre frecuentemente, la varianza es mayor a la media, entonces tendríamos evidencia empírica para suponer un modelo binomial negativo. No obstante esto, no existen de manera general, este tipo de indicaciones que sugieran qué distribución elegir cuando tenemos datos de severidad. Por esta razón, es necesario recurrir a procesos generales como las pruebas de bondad de ajuste, que puedan auxiliarnos en esta importante tarea.</p>
+<div id="planteamiento-general-de-una-prueba-de-bondad-de-ajuste" class="section level3 hasAnchor" number="1.12.1">
+<h3><span class="header-section-number">1.12.1</span> Planteamiento general de una prueba de bondad de ajuste<a href="index.html#planteamiento-general-de-una-prueba-de-bondad-de-ajuste" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Este tipo de pruebas son esencialmente pruebas de hipótesis, con la característica particular de que la hipótesis que queremos probar no es, como generalmente ocurre, acerca del valor particular de algún(os) parámetro(s), sino sobre una función de distribución específica. Estas pruebas se enuncian como:</p>
+<p><span class="math display">\[H_0:F(x)=F_0(x) \quad\forall x\quad vs\quad H_1: F(x) \neq F_0(x) \quad p.a.x\]</span></p>
+<p>donde <span class="math inline">\(F_0\)</span> es la distribución que suponemos siguen nuestros datos. Como podemos observar necesitamos definir qué distribución es la que consideramos que ajusta a nuestra información. A este respecto podemos tener diversas opciones:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(F_0\)</span> es totalmente conocida. En el sentido que se conoce su forma funcional y su(s) parámetro(s).</li>
+<li><span class="math inline">\(F_0\)</span> es parcialmente conocida. Se conoce su forma funcional pero se desconoce algún(os) de su(s) parámetro(s).</li>
+<li><span class="math inline">\(F_0\)</span> es totalmente desconocida. Se conoce su forma funcional pero se desconocen su(s) parámetro(s).</li>
+</ol>
+<p>Contrario a las pruebas de hipótesis usuales, en las pruebas de bondad de ajuste <em>no se especifica la hipótesis alternativa</em>, ya que el modelo que se enuncia en la hipótesis nula, <em>no se compara</em> contra un modelo alternativo que debería estar especificado en la hipótesis alternativa. La razón de este hecho es que <em>estamos interesados en verificar que la distribución de nuestros datos es la que proponemos</em> y si no lo es, no es de interés saber qué otra distribución <em>sí</em> es.</p>
+</div>
+<div id="algunas-pruebas-de-bondad-de-ajuste" class="section level3 hasAnchor" number="1.12.2">
+<h3><span class="header-section-number">1.12.2</span> Algunas pruebas de bondad de ajuste<a href="index.html#algunas-pruebas-de-bondad-de-ajuste" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Presentaremos de manera sencilla algunas de las pruebas más comunes para realizar bondad de ajuste. Dado que nuestros datos sobre la severidad de una pérdida pueden presentar <em>truncamiento por la izquierda</em>, que corresponde a aquellas pérdidas que no rebasaron el deducible, y <em>censura por la derecha</em>, que son las pérdidas que sobrepasaron el límite de póliza, las estadísticas se deben modificar para contemplar estas particularidades de los datos.</p>
+<div id="prueba-de-kolmogorov-smirnov-k-s" class="section level4 hasAnchor" number="1.12.2.1">
+<h4><span class="header-section-number">1.12.2.1</span> Prueba de Kolmogorov-Smirnov (K-S)<a href="index.html#prueba-de-kolmogorov-smirnov-k-s" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>La estadística se define como</p>
+<p><span class="math display">\[D=\mathop{sup}\limits_x\ |F_n(x)-F_0(x)|\]</span></p>
+<p>que se puede expresar mediante las dos estadísticas <span class="math display">\[D^+=\mathop{sup}\limits_x\{F_n(x)-F_0(x)\}\quad\text{y}\]</span> <span class="math display">\[D^-=\mathop{sup}\limits_x\{F_0(x)-F_n(x)\}\]</span> y se calcula mediante <span class="math display">\[\begin{eqnarray*}
+D^+ &amp;=&amp; \mathop{máx}\limits_{1\leq x\leq n}\left\{\frac{i}{n}-z_{(i)}\right\}\\
+D^- &amp;=&amp; \mathop{máx}\limits_{1\leq x\leq n}\left\{z_{(i)}-\frac{(i-1)}{n}\right\}\\
+D&amp;=&amp; máx\{D^+,D^-\}
+\end{eqnarray*}\]</span> con <span class="math inline">\(z_{(i)}=F(x_i)\)</span> y <span class="math inline">\(z_{(i)}\)</span> el i-ésimo elemento en la muestra ordenada de las <span class="math inline">\(z&#39;_is\)</span>.</p>
+<p>Esta prueba se usa para datos desagregados y para variables aleatorias continuas, i.e.,<span class="math inline">\(F_0\)</span> es una función de distribución continua <span class="math inline">\(F_n\)</span> es la función de distribución empírica, y se calcula con los datos reales.</p>
+<p><img src="Ima%CC%81genes/Detalle%20de%20las%20diferencias.png" width="100%" /></p>
+</div>
+<div id="prueba-anderson-darling-a-d" class="section level4 hasAnchor" number="1.12.2.2">
+<h4><span class="header-section-number">1.12.2.2</span> Prueba Anderson-Darling (A-D)<a href="index.html#prueba-anderson-darling-a-d" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Esta prueba es similar a la K-S pero mide las diferencias entre las funciones empírica y propuesta de distinta manera. Una característica a destacar de esta prueba es que asigna mayor peso a las colas de la distribución, es decir, enfatiza la bondad de ajuste que se tenga en las colas entre el modelo propuesto y la función de distribución empírica, que es el modelo asociado a los datos reales. La forma explícita de la Anderson-Darling es: <span class="math display">\[\begin{eqnarray*}
+A^2&amp;=&amp; n\displaystyle \int_0^1\frac{[F_n(x)-F_0(x)]^2}{F_0(x)[1-F_0(x)]}dF_0(x)dx\\
+&amp;=&amp; -n-\frac{1}{n}(2i-1)\sum^n_{i=1}\{log(z_{(i)})+log(1-z_{(n+1-i)})\}\\
+&amp;=&amp;-n-\frac{1}{n}\sum^n_{i=1}\{(2i-1)log(z_{(i)})+(2n+1-2i)log(1-z_{(i)})\}
+\end{eqnarray*}\]</span></p>
+<p>al igual que K-S esta es una prueba que no trabaja con datos agrupados.</p>
+</div>
+<div id="prueba-ji-cuadrada-de-bondad-de-ajuste" class="section level4 hasAnchor" number="1.12.2.3">
+<h4><span class="header-section-number">1.12.2.3</span> Prueba Ji-cuadrada de bondad de ajuste<a href="index.html#prueba-ji-cuadrada-de-bondad-de-ajuste" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Esta es probablemente la más popular de las pruebas de bondad de ajuste, además de que, contrario a K-S y A-D, es una prueba para distribuciones continuas y discretas; de hecho, también tiene una versión multivariada.La prueba se basa en particionar el rango de las variables observadas en <span class="math inline">\(k\)</span> celdas o clases, y calcular el número de observaciones que se esperaría tener en cada clase si la hipótesis nula fuera correcta, i.e., si <span class="math inline">\(F_0\)</span> es cierta, y compararlo contra el número de observaciones que realmente cayeron en cada celda. Si denotamos por <span class="math inline">\(\mathbb{E}_j\)</span> al número esperado y por <span class="math inline">\(O_j\)</span> al observado en la celda <span class="math inline">\(j,j=1,2,\ldots,k,\)</span> la estadística Ji-cuadrada de bondad de ajuste es: <span class="math display">\[\chi^2=\sum^k_{j=1}\frac{(\mathbb{E}_j-O_j)^2}{\mathbb{E_j}}\]</span> Si los valores observados <span class="math inline">\((O_j)\)</span> y esperados <span class="math inline">\((\mathbb{E_j})\)</span> son similares, el valor de esta estadística es pequeño, e indicaría que <span class="math inline">\(F_0\)</span> es cierta. Si, por el contrario, estos valores son muy distintos, su valor debería ser grande e implicaría que <span class="math inline">\(F_0\)</span> es falsa.</p>
+<ul>
+<li><strong>Prueba de Kolmogorov-Smirnov.</strong></li>
+</ul>
+<p>Tenemos el siguiente planteamiento de hipótesis:</p>
+<p><span class="math inline">\(H_0\)</span>: los datos provienen de la misma distribución <span class="math inline">\(F(x)=F_0(x)\)</span> vs <span class="math inline">\(H_1:F(x)\neq F_0(x).\)</span></p>
+<p>Para realizar la prueba en R, usamos el siguiente comando:</p>
+<p>Comandos para la prueba de Kolmogorov Smirnov:</p>
+<ol style="list-style-type: decimal">
+<li><code>ks.test(muestra1,muestra2)</code></li>
+<li><code>ks.test(muestra,"distribución",parámetros)</code></li>
+</ol>
+<ul>
+<li><strong>Prueba de Anderson-Darling.</strong></li>
+</ul>
+<p>Las hipótesis para la prueba de Anderson-Darling son:</p>
+<p><span class="math inline">\(H_0\)</span>: los datos siguen una distribución especificada.</p>
+<p><span class="math inline">\(H_1\)</span>: Los datos no siguen una distribución especificada. En R, haremos uso de la librería <strong>goftest</strong>, y usamos la función<code>goftest::ad.test()</code>.</p>
+<ul>
+<li><strong>Prueba Ji-Cuadrada.</strong></li>
+</ul>
+<p>En términos generales, esta prueba contrasta frecuencias (o categorías) observadas contra las frecuencias esperadas (las que te da la teoría).</p>
+<p>Donde: <span class="math inline">\(O_j: Observados\)</span> y <span class="math inline">\(e_j:Esperados\)</span></p>
+<p><span class="math display">\[X^2=\sum^k_{j=1}\frac{(O_j-e_j)^2}{e_j}\sim \chi^2_{(k-1)}\]</span></p>
+<p>Usando la función: <code>chisq.test(x=observados,p=esperados)</code>.</p>
+</div>
+</div>
+</div>
+<div id="cómo-leer-un-p-value" class="section level2 hasAnchor" number="1.13">
+<h2><span class="header-section-number">1.13</span> ¿Cómo leer un p-value?<a href="index.html#cómo-leer-un-p-value" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para eso recordemos que cada prueba de hipótesis tiene detrás un <strong>estadístico de prueba</strong>. Veamos el caso de la prueba Ji-cuadrada, si observamos el estadístico de prueba, podemos notar que si tienen un valor “muy grande” entonces “lo que espero ver se aleja demasiado de lo que realmente observé. Por lo que debería rechazar lo que yo estaba esperando (suponiendo) pues no se parece a lo que observo.”</p>
+<p>De manera genérica podemos pensar que si tengo un estadístico de prueba “muy grande” entonces “es porque estoy cometiendo errores grandes”. Llamemos Z como el estadístico de prueba, entonces el p-value es la probabilidad de superar el umbral Z.</p>
+<p>Recordemos un gráfico muy socorrido en estadística:</p>
+<div id="región-de-rechazo-y-no-rechazo" class="section level3 hasAnchor" number="1.13.1">
+<h3><span class="header-section-number">1.13.1</span> Región de Rechazo y no rechazo:<a href="index.html#región-de-rechazo-y-no-rechazo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En general, podríamos ver gráficamente una prueba de hipótesis asi:</p>
+<p><img src="Ima%CC%81genes/p-value1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Dado un estadístico de prueba, este podría caer en la <strong>región de “aceptación” (no-rechazo)</strong> o en la <strong>región de rechazo</strong>.</p>
+<p><img src="Ima%CC%81genes/p-value2.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Eso pues precisamente si el estadístico de prueba (Z) es muy grande, es porque lo que supongo <span class="math inline">\((H_0)\)</span> comente muchos errores.</p>
+<p>Bueno, pues si fijamos que la región de rechazo tenga un área del <span class="math inline">\(\alpha=5\%\)</span> (como usualmente se toma) entonces tendremos algo así:</p>
+<p><img src="Ima%CC%81genes/p-value3.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Si el p-value es la probabilidad de ver un valor más extremo que el estadístico de prueba (estadística observada) entonces existen básicamente dos casos:</p>
+<ul>
+<li>p-value <span class="math inline">\(&gt; \alpha\)</span></li>
+</ul>
+<p><img src="Ima%CC%81genes/p-value4.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Como p-value <span class="math inline">\(&gt; \alpha\)</span> en el fondo estamos diciendo que el estadístico de prueba no fue tan grande y por tanto la hipótesis nula es estadísticamente correcta al coincidir lo suficiente con lo observado.</p>
+<span class="math display">\[\begin{eqnarray*}
+\therefore p-value &gt; \alpha &amp;\Leftrightarrow&amp;\quad \text{``El estadístico de prueba cae en la región de no-rechazo&#39;&#39;}\\ &amp;\Leftrightarrow&amp; \quad\text{No Rechazamos $H_0$ a un nivel de significancia $\alpha$ (confianza 1-$\alpha)$}
+\end{eqnarray*}\]</span>
+<ul>
+<li>p-value <span class="math inline">\(&lt; \alpha\)</span></li>
+</ul>
+<p><img src="Ima%CC%81genes/p-value5.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Este es el caso contrario, por tanto, lo que estamos asumiendo como <span class="math inline">\(H_0\)</span> no está viéndose reflejado en los datos observados.</p>
+<span class="math display">\[\begin{eqnarray*}
+\therefore p-value &lt; \alpha &amp;\Leftrightarrow&amp;\quad \text{&quot;El estadístico de prueba cae en la región de rechazo&#39;&#39;}\\ &amp;\Leftrightarrow&amp; \quad\text{Rechazamos $H_0$ a un nivel de significancia $\alpha$ (confianza 1-$\alpha)$}
+\end{eqnarray*}\]</span>
+</div>
+</div>
+<div id="el-proceso-de-modelación-del-riesgo" class="section level2 hasAnchor" number="1.14">
+<h2><span class="header-section-number">1.14</span> El proceso de modelación del Riesgo<a href="index.html#el-proceso-de-modelación-del-riesgo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Recordemos que un modelo matemático, estadístico, actuarial, o de cualquier naturaleza, es una representación simplificada de algún fenómeno real. En un contexto actuarial específico, proponer un modelo para describir una situación, se basa en la experiencia y conocimiento que el Actuario tenga del fenómeno bajo estudio, así como de la información histórica que posea sobre él. El modelo debe proveer un balance entre simplicidad (<em>parsimonia</em>) y conformidad (<em>ajuste</em>) con la información disponible para elaborarlo.</p>
+<div id="el-proceso-de-modelado" class="section level3 hasAnchor" number="1.14.1">
+<h3><span class="header-section-number">1.14.1</span> El proceso de modelado<a href="index.html#el-proceso-de-modelado" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sin pretender ser exhaustivos, podemos reconocer ciertos pasos a seguir para modelar una situación actuarial. Es importante remarcar que, aunque los pasos se enumeren ordenadamente, la dinámica del proceso permite regresar a algunos puntos anteriores, para su mejor especificación. Finalmente, hay que recordar que modelar tiene algo de <em>técnica y mucho de arte</em>.</p>
+</div>
+<div id="pasos" class="section level3 hasAnchor" number="1.14.2">
+<h3><span class="header-section-number">1.14.2</span> Pasos<a href="index.html#pasos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Uno o más modelos pueden seleccionarse de acuerdo al conocimiento inicial y experiencia que posea el analista, además de la naturaleza de la información disponible.</li>
+<li>Ajustar el modelo con la información disponible.</li>
+<li>Realizar pruebas de <em>bondad de ajuste y diagnóstico</em> del modelo, para determinar si su ajuste es adecuado para los datos utilizados.</li>
+<li>Considerar, a partir del paso anterior, la posibilidad de utilizar otros modelos.</li>
+<li>Si existen varios modelos que pueden ser adecuados, entonces, es necesario compararlos con la finalidad de decidir por alguno de ellos.</li>
+<li>Finalmente, el modelo seleccionado puede adaptarse para aplicarlo en el futuro. Esto puede involucrar algún ajuste de los parámetros, previendo cambios por alguna característica exógena, como inflación, cambios del mercado asegurado o cualquier otra.</li>
+</ol>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="medidas-de-riesgo.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Notas_TeoriadelRiesgo.pdf", "Notas_TeoriadelRiesgo.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,683 @@
+# Severidad Coberturas
+
+## Diferencia entre función de densidad y función de masa de probabilidad
+
+Debemos tener en mente que siempre que hablamos de una v.a. \textcolor{rred}{continua} entonces estamos diciendo implícitamente que lo denotamos como $f_X(x)$ es una función de _densidad_. El detalle importante aquí es que:
+$$f_X(x)\ {\neq}\hspace{0.4 em}\mathbb{P}[X=x]$$ 
+
+Porque de hecho $\mathbb{P}[X=x]=0$ ya que $X$ es una v.a continua. La diferencia con una función de _masa de probabilidad_ (f.m.p) es que cuando se menciona se deja claro que su correspondiente variable aleatoria digamos $Y$ **sí** es **discreta** y por lo tanto:
+\begin{eqnarray*}
+f_Y(y)\ = \ \mathbb{P}[Y=y]
+\end{eqnarray*}
+
+Una f.m.p. también es llamada función de densidad pero se usa el término ''f.m.p.'' para dejar claro que su v.a. subyacente es discreta.
+
+Lo anterior es una observación importante ya que si estamos hablando de una v.a. continua, no se usa directamente la función de densidad para obtener probabilidades. Es necesario acudir a la _función de distribución_ $(F_Y(y))$ para poder acceder a las probabilidades de una v.a del tipo continuo. En concreto,**una función de distribución siempre hace referencia a probabilidades**. Sin importar si su v.a. subyacente es continua o discreta, siempre sucede que:
+
+$$F_Y(y)\ \ddot{=}\ \mathbb{P}[Y\leq y]$$
+
+_Nota: Entonces, cuando queramos medir, de forma probabilística, fenómenos que involucran una v.a. continua, vamos a utilizar la función de distribución_
+
+### Visualización de variables aleatorias mixtas
+
+Cuando una v.a. es **discreta**, su función de distribución puede verse como algo de este estilo:
+
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("Imágenes/5. SC_grafica1.png", error=FALSE)
+```
+
+Del gráfico se puede deducir que:
+\begin{equation*}
+    F_X(x)\ \ddot=\ \mathbb{P}[X\leq x] = \left \{ \begin{matrix} 0 & \mbox{si }& x <1
+\\ 0.2 & \mbox{si }& x\in[1,2)
+\\ 0.6 & \mbox{si }& x\in[2,3)
+\\ 0.8 & \mbox{si }& x\in[3,4)
+\\ 1 & \mbox{si }& x\geq 4\end{matrix}\right. 
+\end{equation*}
+
+Si observamos el gráfico observamos que la función tiene _saltos_ o discontinuidades.
+
+Dichos saltos nos indican que en los puntos del soporte (eje X) **existe una probabilidad puntual**. Además hay partes constantes (planas), lo cual indica que no hay probabilidad de ningún tipo en esos puntos.
+
+La función de masa de probabilidad del ejemplo anterior **se puede obtener a partir de la diferencia** entre los saltos esto pues, si $x\in sop\{X\}$:
+
+\begin{eqnarray*}
+F_X(x)-F_X(x-1)\ &\ddot=&\ \mathbb{P}[X\leq x]-\mathbb{P}[X\leq x-1]\\
+&=& (\mathbb{P}[X=x]+\mathbb{P}[X<x])-\mathbb{P}[X\leq x-1]
+\end{eqnarray*}
+
+pero $\mathbb{P}[X<x]=\mathbb{P}[X\leq x-1]$ pues $X$ es discreta (esto asumiendo que $sop\{X\}$ tiene números consecutivos).
+
+\begin{eqnarray*}
+\Leftrightarrow F_X(x)-F_X(x-1) &=& \mathbb{P}[X=x]+\mathbb{P}[X\leq x-1]-\mathbb{P}[X\leq x-1]\\
+&=& {\underbrace{\mathbb{P}[X=x] =\ f_X(x)}}_{\text{por ser una v.a. discreta}}
+\end{eqnarray*}
+
+Calculando las diferencias entre los saltos:
+\begin{equation*}
+    f_X(x)\overset{\overset{\text{v.a discreta}}{\downarrow}} = \mathbb{P}[X=x] = \left \{ \begin{matrix} 0.2 & \mbox{si }& x =1
+\\ 0.4 & \mbox{si }& x=2
+\\ 0.2 & \mbox{si }& x=3
+\\ 0.2 & \mbox{si }& x=4
+\\ 0 & \mbox{c.o.c} \end{matrix}\right. 
+\end{equation*}
+
+De tal manera que cuando vemos la función de densidad de una v.a. discreta, se verá como:
+
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("Imágenes/5. SC_grafica2.png", error=FALSE)
+```
+
+Notemos que la función solamente toma valores positivos en puntos específicos. En el resto es continua casi-seguramente como constante igual a cero.
+
+En cuanto a las v.a \textcolor{blue}{continuas} los gráficos de las funciones de distribución son algo de este estilo:
+
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("Imágenes/5. SC_grafica3.png", error=FALSE)
+```
+
+Observemos que esta gráfica **no tiene saltos**, de hecho, $\forall\hspace{0.3em}p\in [0,1]\quad \exists x \in \mathbb{R}$ tal que $F_X(x)=p$ (considerando aquellos casos donde $x\rightarrow\infty\hspace{0.4em} ó\hspace{0.4em}-\infty$). 
+
+En otras palabras $F_X:\mathbb{R}\mapsto[0,1]$ es **suprayectiva**.
+
+Si nosotros quisiéramos obtener la función de densidad de la v.a. anterior, basta con calcular su derivada. De tal manera que: $$f_X(t)=\frac{d}{dt}F_X(t)$$
+
+Haciendo esto y tomando como referencia simplemente el gráfico anterior, su función de densidad podría verse como algo del estilo:
+
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("Imágenes/5. SC_grafica4.png", error=FALSE)
+```
+
+Notemos que **esta función es continua, al menos en $(0,x_0)$ ** que tiene que ser el $sop\{X\}$ pues vemos que la distribución acumula nada (cero) antes del 0 y todo (uno) después de $x_0$.
+
+Por las mismas razones, nosotros esperaríamos ver una indicadora en este mismo intervalo para $f_X$. Lo importante a notar de este caso es que la función de distribución de una v.a continua es también continua y suprayectiva al [0,1].
+
+Cuando hablamos de una v.a **mixta** vamos a tener una **función de distribución acumulada** que es discontinua, pero cumpliendo siempre las hipótesis esenciales de una f.d.a. 
+
+Gráficamente puede verse como:
+
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("Imágenes/5. SC_grafica5.png", error=FALSE)
+```
+
+Recordemos que **una función de distribución acumulada siempre hace referencia a una probabilidad**. Entonces los saltos que tiene esta función no pueden pasar desapercibidos. De hecho, lo que sucede es que la variable aleatoria subyacente a $F_X$ del último gráfico, debe ser **mixta**.
+
+Para obtener la función de densidad a partir de la distribución en estos casos, debemos hacer ambas cosas: Derivar y tomar la diferencia en los saltos.
+
+De observar el gráfico anterior vemos que hay saltos  en los puntos 0  y $x_0$, esto quiere decir que $\mathbb{P}[X]\equiv 0>0$ y también $\mathbb{P}[X\equiv x_0]$. Lo cual significa que $X$ **toma valores puntuales con una probabilidad positiva**. Sin embargo, vemos que la función de distribución es continua en el intervalo $(0,x_0)$, eso quiere decir que **$X$ es continua en los intervalos donde $F_X$ también lo sea**. Más aún, si $x\in(0,x_0)\Rightarrow\mathbb{P}[X=x]=0$, precisamente por el efecto de la continuidad. 
+
+La función de densidad debería verse como:
+
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("Imágenes/5. SC_grafica6.png", error=FALSE)
+```
+
+## Coberturas en Seguros / Reaseguros
+
+En esta sección comenzaremos a modelar flujos de efectivo (\$) típicos de una compañía aseguradora. Los contratos más comunes que manejan las aseguradoras consideran diversos factores como el **coaseguro** y la **inflación**, los cuales son llamados de tipo **proporcional**. Por otro lado, tenemos el **deducible** y el **monto máximo de beneficio** los cuales son considerados del tipo **no-proporcional**.
+
+Comúnmente este tema está muy relacionado con los tipos de **reaseguro**, sin embargo por ahora vamos a modelar los contratos antes mencionados **desde el punto de vista de la aseguradora**. Marginalmente, se puede observar que este tipo de contratos están relacionados por lo que el desarrollo teórico de los contratos **desde el punto de vista del asegurado** quedará como ejercicio para el lector.
+
+Para introducir este tema se recomienda ver:
+
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("Imágenes/5. SC_grafica7.png", error=FALSE)
+```
+
+Sea $X$ una v.a. que modela la **severidad** de un riesgo. Cuando ocurre un siniestro, $X$ toma un valor fijo y según lo que se establezca en una póliza podemos ''dividir'' este monto en dos partes:
+
+$Z\ \ddot{=}\ $ Monto que paga el asegurado
+
+$Y\ \ddot{=}\ $ Monto que paga la aseguradora
+
+Para que juntos cubran el siniestro; $X$ = $Y$+$Z$.
+
+A esto nosotros **en este curso** le llamaremos:
+
+**Ley de conservación del riesgo**: '' Un riesgo que no se crea ni se destruye, solo se **transfiere**.''
+
+Nuesto objetivo será que para todos los tipos de seguro que tengamos, pongamos a $Y$ en términos de $X$.
+
+### Coaseguro
+
+Sea $X$ el monto de pérdida asociado a un siniestro, luego, tomemos $\alpha$ $\in[0,1]$ un **factor de coaseguro***. Este factor representa la proporción de pago que le corresponde a la aseguradora mientras el poseedor de la póliza (contrato) paga la fracción restante $1-\alpha$. La v.a. de pago por parte de la aseguradora es:
+
+  $$Y=\alpha X$$
+  
+Cuya densidad puede obtenerse de la siguiente manera:
+\begin{eqnarray*}
+F_Y(y)\ \ddot{=}&\ \mathbb{P}[Y\leq y]\ \ddot{=}\ \mathbb{P}[\alpha X\leq y]=\mathbb{P}\left[X\leq \frac{y}{\alpha}\right]\ \ddot{=}\  F_X\left(\frac{y}{\alpha}\right)
+\end{eqnarray*}
+\begin{eqnarray*}
+\Rightarrow {f_Y(y)}=\frac{d}{dy}F_Y(y)=\frac{d}{dy}F_X\left(\frac{y}{\alpha}\right)= {\frac{1}{\alpha}f_X\left(\frac{y}{\alpha}\right)}
+\end{eqnarray*}
+
+Otra manera (quizás la más conocida) de obtener el resultado anterior es con el **teorema de cambio de variable**:
+
+**TEOREMA DE CAMBIO DE VARIABLE 1.**
+
+Sea $X$ una variable aleatoria continua con valores dentro de un intervalo $(a,b)\subseteq \mathbb{R}$, y con función de densidad $f_X(x)$.Sea $\varphi:(a,b)\rightarrow\mathbb{R}$ una función continua, estrictamente creciente o decreciente y con inversa diferenciable. Entonces la variable aleatoria $Y=\varphi(X)$ toma valores dentro del intervalo $\varphi(a,b)$, y tiene función de densidad:
+\begin{equation*}
+    f_Y(y)=\left \{ \begin{matrix} f_X(\varphi^{-1}(y))|\frac{d}{dy}\varphi^{-1}(y)| & \mbox{para }& y\in \varphi(a,b)
+\\ 0 & \mbox{otro caso }&
+\end{matrix}\right. 
+\end{equation*}
+
+Así, podemos entonces hacer lo siguiente:
+
+\begin{eqnarray*}
+Y&=&\varphi(X)=\alpha X \Rightarrow\varphi^{-1}(X)=\frac{X}{\alpha}\Rightarrow \left|\frac{d}{dx}\varphi^{-1}(X)\right|=\frac{1}{\alpha}
+\end{eqnarray*}
+
+\begin{eqnarray*}
+\Rightarrow f_Y(y)=\left|\frac{d}{dy}\varphi^{-1}(y)\right| f_X(\varphi^{-1}(y))=\frac{1}{\alpha}f_X\left(\frac{y}{\alpha}\right)
+\end{eqnarray*}
+
+Por lo tanto:
+
+   $$f_Y(t)=\frac{1}{\alpha}f_X\left(\frac{t}{\alpha}\right)$$
+    
+_Nota:_ El soporte de $Y$ estará dado por 
+$$sop(Y)\hspace{0.4em}\ddot{=}\{y|\frac{y}{\alpha}\in sop(X)\}$$
+
+Obtener la esperanza de esta v.a. es fácil en términos de la esperanza de $X$, debido a la linealidad de la esperanza, se tiene que:
+
+$$\mathbb{E}[Y]=\mathbb{E}[\alpha X]=\alpha\mathbb{E}[X]$$
+
+**Ejemplo:**
+
+Suponga que el monto de un siniesto es aleatorio y con distribución $X\sim Unif(100,200)$. En una póliza de seguros se pacta un **factor de coaseguro** $\alpha=50\%$. De tal manera que lo que cubre la compañía será unicamente el 50\% del total del siniestro $(Y=\alpha X)$.
+$$\Rightarrow f_Y(t)=\frac{1}{50\%}f_X\left(\frac{t}{50\%}\right)=2f_X(2t)=2\left(\frac{1}{200-100}\right)\underset{(100,200)}{\mathbb{I}}(2t)$$
+
+_$100\leq 2t\leq 200 \Leftrightarrow 50 \leq t\leq100$_
+
+\begin{eqnarray*}
+&=& \frac{1}{50}\underset{(50,100)}{\mathbb{I}}(t)=\frac{1}{100-50}\underset{(50,100)}{\mathbb{I}}(t)\\
+&\Rightarrow& Y=50\% X\sim Unif(50,100)
+\end{eqnarray*}
+
+En este caso, hemos llegado a que $Y$ tiene otra distribución conocida. Sin embargo, esto no será siempre así, pero dado que en este caso si la tiene entonces podemos calcular la esperanza:
+
+\begin{eqnarray*}
+\mathbb{E}[Y]&=& \frac{b+a}{2}\\
+&=& \frac{100+50}{2}\\
+&=& \frac{150}{2}\\
+&=& 75
+\end{eqnarray*}
+
+Pero, es fácil ver que también se da que:
+
+\begin{eqnarray*}
+\mathbb{E}[Y]&=&\alpha \mathbb{E}[X]\\
+&=& (50\%) \left( \frac{200+100}{2}\right)\\
+&=& \left( \frac{1}{2} \right) (150)\\
+&=& 75
+\end{eqnarray*}
+
+De donde podemos observar que la propiedad anterior funciona.
+
+**NOTA: Un coaseguro entra siempre que la aseguradora tenga que pagar y se paga la fracción del monto toal a cubrir.**
+
+### Inflación
+
+Muchas veces el pago de una suma asegurada se hace a final del año. Pero, si un siniestro ocurre al principio del año hay que considerar que, lo que se valuó al momento del siniestro ya no valga lo mismo por efectos de la inflación.
+
+Para considerar la inflación, tomemos $r \geq 0$ y definamos a $X$ como: El monto asociado a un siniestro.
+
+Vamos a pensar que, de materializarse un siniestro, éste sufrirá un cambio en su valor monetario provocado por la inflación **a un año**.
+
+De tal manera que el pago de la aseguradora será: 
+
+ $$Y= (1+r)X$$
+
+En caso de que el siniestro ocurra y la aseguradora la deba pagar. De manera (muy) similar al coaseguro.
+
+\begin{eqnarray*}
+F_{Y}(t)&\ddot{=}&\mathbb{P}[Y \leq t]\\
+&=& \mathbb{P}[(1+r)X \leq t]\\
+&=& \mathbb{P}\left[X \leq \frac{t}{1+r} \right]\\
+&\ddot{=}& F_{X}\left( \frac{t}{1+r} \right)
+\end{eqnarray*}
+
+\begin{eqnarray*}
+F_{Y}(t)&\ddot{=}&\mathbb{P}[Y \leq t]\\
+&=& \mathbb{P}[(1+r)X \leq t]\\
+&=& \mathbb{P}\left[X \leq \frac{t}{1+r} \right]\\
+&\ddot{=}& F_{X}\left( \frac{t}{1+r} \right)
+\end{eqnarray*}
+
+Entonces,
+\begin{eqnarray*}
+f_{Y}(t)&=& \frac{d}{dt} F_{Y}(t)\\
+&=& \frac{d}{dt} F_{X}\left( \frac{t}{1+r} \right)\\
+&=& \frac{1}{1+r} f_{X}\left( \frac{t}{1+r} \right)\\
+\end{eqnarray*}
+
+Por lo tanto
+ \begin{eqnarray*}
+     {f_{Y}(t)= \frac{1}{1+r} f_{X}\left( \frac{t}{1+r} \right)}\\
+\end{eqnarray*}
+
+Análogamente al caso anterior, la esperanza de esta variable aleatoria estará dada por:
+
+\begin{eqnarray*}
+\mathbb{E}[Y]= \mathbb{E}[(1+r)X]= (1+r) \mathbb{E}[X]
+\end{eqnarray*}
+
+**Ejemplo:**
+
+Suponga que el monto de un siniestro es aleatorio y con distribución $X \sim Unif(0,1000)$. En una póliza de seguros se pacta una **inflación** con tasa $r=10\%$. De tal manera que, cuando ocurre un siniestro, este se valuará en cierto monto X, pero **como se pagará a final del año**, al **monto total** será de $Y=(1+r)X$. Así:
+
+\begin{eqnarray*}
+f_{Y}(t)&=& \frac{1}{1+r} f_{X}\left( \frac{t}{1+r} \right)\\
+&=& \frac{1}{1.1} f_{X} \left( \frac{t}{1.1} \right)\\
+&=& \frac{1}{1.1} \left[ \frac{1}{100} \underset{(0,1000)}{\mathbb{I}}\left(\frac{t}{1.1} \right)\right]
+\end{eqnarray*}
+
+ $0\leq \frac{t}{1.1}\leq 1000 \Leftrightarrow 0 \leq t \leq 1100$
+
+\begin{eqnarray*}
+f_{Y}(t)&=&  \frac{1}{1100} \underset{(0,1100)}{\mathbb{I}} (t)  \\
+\end{eqnarray*}
+
+Por lo tanto
+\begin{eqnarray*}
+Y&=& (1+r)X \sim Unif(0,1100)\\
+\end{eqnarray*}
+
+Al igual que en el ejemplo anterior, tenemos el caso en que Y tiene una distribución conocida. Debido a lo anterior, podemos hacer el cálculo de su esperanza.
+
+\begin{eqnarray*}
+\mathbb{E}[Y]&=& \frac{b+a}{2}\\
+&=& \frac{1100}{2}\\
+&=& 550\\
+\end{eqnarray*}
+
+Que coincide con la propiedad.
+
+\begin{eqnarray*}
+\mathbb{E}[Y]&=& (1+r)\mathbb{E}[X]\\
+&=& (1.1)\left( \frac{1000}{2} \right)\\
+&=& (1.1)500\\
+&=& 550
+\end{eqnarray*}
+
+Por lo tanto
+
+\begin{eqnarray*}
+\mathbb{E}[Y]&=& 550 \\
+\end{eqnarray*}
+
+Debemos tener en mente que este factor inflacionario aumentó el valor esperado del monto original.
+
+Ahora, vamos a observar el siguiente diagrama
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/5. Teoría del riesgo_Inflación y Coaseguro.png", error=FALSE)
+```
+
+### Deducibles
+
+¿Cómo funciona un deducible? ¿Por qué funciona?
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/5. Deducible.png", error=FALSE)
+```
+
+_Figura 1._ https://www.youtube.com/watch?v=sV0mQB42Rf4&feature=youtu.be
+
+Cuando ocurre un siniestro, el asegurado llama al seguro. En la póliza (de hecho en la mayoría) se establece un deducible, el cual debe pagar al asegurado para poder ejercer su derecho de cobro a la aseguradora. Esto es muy importante ya que **la aseguradora pagará únicamente si el monto del siniestro supera el deducible**.
+
+Visto de manera gráfica, si suponemos que el monto del siniestro puede ocurrir dentro del intervalo $[a,b]$.
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/5. Linea del tiempo.png", error=FALSE)
+```
+
+Sea $X$ el monto de pérdida asociado a un siniestro definido en el intervalo $[a,b]$ con $a \geq 0$. Sea $d \in [a,b]$ el deducible establecido en la póliza. El pago de la aseguradora tendrá un comportamiento:
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/5. Deducible y Coaseguro.png", error=FALSE)
+```
+
+Esto es debido a que podemos calcular a Y en términos de $X$ como:
+
+ \begin{eqnarray*}
+   Y&=& máx\{ X-d,0\}\\
+   &=&\left \{ \begin{matrix} 
+    0& \mbox{si }& a\leq X \leq d &  \Leftrightarrow & Y \equiv 0
+    \\X-d& \mbox{si }& d <X \leq b &  \Leftrightarrow & \quad 0< Y \leq b-d
+    \\
+\end{matrix}\right. 
+\end{eqnarray*}
+
+Que es el monto que la aseguradora cubrirá en caso de que un siniestro ocurra. Buscamos obtener una medida de probabilidad de esta v.a. Para eso podemos tomar casos. **Como $X$ es continua , mediremos probabilidades con la función de distribución**.
+
+**Observación: Noten que $Y= máx\{ X-d, 0 \}\geq 0$ siempre.**
+
+_Caso 1_
+
+\begin{eqnarray*}
+X \in [a,d]  \Leftrightarrow Y \equiv 0\\
+\end{eqnarray*}
+
+\begin{eqnarray*}
+  \mathbb{P}[Y \equiv 0] &=& \mathbb{P}[X \in [a,d]]\\
+  &=& \mathbb{P}[a \leq X \leq d]\\
+  &=& F_{X}(d)- F_{X}(a)\\
+  &=& F_{X}(d)
+\end{eqnarray*}
+
+Por lo tanto
+\begin{eqnarray*}
+\mathbb{P}[Y \equiv 0]
+&=& F_{X}(d)
+\end{eqnarray*}
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/5. DC II.png", error=FALSE)
+```
+
+Por lo tanto , vemos que $Y$ acumula probabilidad positiva en un punto. ¿Será entonces que Y es una v.a **discreta**?
+
+Recordemos la siguiente definición y el siguiente teorema.
+
+**Teorema:**
+
+Sea $A$ y $B$ dos eventos y supongamos que B tiene probabilidad estrictamente positiva. La \textcolor{tuftsblue}{ probabilidad condicional} del evento $A$ dado el evento $B$ se denota por el símbolo $P(A|B)$ y se define como el siguiente cociente:
+
+De donde se sigue que:\\
+
+\begin{eqnarray*}
+     {P(A|B)} = {P(A\cap B)}{P(B)}
+\end{eqnarray*}
+
+**Teorema:**
+
+Sea $B_{1},...,B_{n}$ una partición de $\Omega$ tal que $P(B_{i}) \neq 0, i=1,...,n$. Para  cualquier evento A.
+
+\begin{eqnarray*}
+P(A)= \displaystyle\sum_{i=1}^{n}P(A|B_{i})P(B_{i})\\
+\end{eqnarray*}
+
+_Caso 2_
+
+\begin{eqnarray*}
+Si \quad  X \in (d,b]  \Leftrightarrow 0< \gamma \leq b-d
+\end{eqnarray*}
+
+ $\Omega =Y \geq 0 \quad \Leftrightarrow \quad (Y=0 \vee  Y>0)=\Omega$
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/5. Grafica.png", error=FALSE)
+```
+
+Tomemos $t \in (0,b-d]$, ahora midamos probabilidad de $\gamma$.
+
+\begin{eqnarray*}
+    F_{Y}(t)&=& \mathbb{P}[Y \leq t]\\
+    &=& \mathbb{P}[Y \leq t| Y \equiv 0] \cdot \mathbb{P}[Y \equiv 0]+\mathbb{P}[Y \leq t| Y > 0] \cdot \mathbb{P}[\ Y > 0] \quad \text{Probabilidad total}\\
+    &=& \mathbb{P}[Y \equiv 0] + \mathbb{P} [(0<Y) \cap (Y \leq t)]\quad \text{Definición de probabilidad condicional}\\
+    &=& \mathbb{P}[Y \equiv 0]+\mathbb{P}[0 < Y \leq t]\\
+\end{eqnarray*}
+
+Por lo tanto
+
+\begin{eqnarray*}
+{F_{Y}(t)}&=& {\mathbb{P}[Y \equiv 0]+\mathbb{P}[0 < Y \leq t]}\\
+\end{eqnarray*}
+
+Esto era lógico pues los eventos:
+
+\begin{equation*}
+A\ddot{=} (Y \geq t) \quad \quad B\ddot{=}(Y \equiv0) \quad \quad C\ddot{=}(0< Y \geq t)\\
+\end{equation*}
+
+Cumplían que:
+\begin{equation*}
+A=B\cup C \quad\textit{y además} \quad B \cap C= \varnothing  \quad {\textit{(significa que son ajenos)}}  \\
+\end{equation*}
+
+Y recordando los axiomas de la probabilidad:
+
+**Axiomas de probabilidad**
+
+1. $P(A)\leq 0$
+2. $P(\Omega)=1$
+3. $P \left( \bigcup_{k=1}^{\infty} \right)$} $=$ $\displaystyle\sum_{k=1}^{\infty}P(A_{k})$ cuando $A_{1}, A_{1},...$ son ajenos dos a dos
+
+Entonces
+
+\begin{eqnarray*}
+    F_{Y}(t)&\ddot{=}& \mathbb{P}[Y \leq t]\\
+    &=& \mathbb{P}[A]\\
+    &=& \mathbb{P}[B \cup C]\\
+    &=& \mathbb{P}[B]+\mathbb{P}[C]\\
+    &=& \mathbb{P}[Y \equiv 0]+\mathbb{P}[0 < Y \leq t] \quad \text{Se separó en casos ajenos}\\
+\end{eqnarray*}
+
+Y ahí tenemos dos formas diferentes de llegar a este mismo resultado. Por otro lado, aún tenemos que encontrar a $\gamma$ en términos de $X$, así que para eso haremos lo siguiente:
+
+\begin{eqnarray*}
+F_{Y}(t)&=& { \mathbb{P}[Y \equiv 0]}+{\mathbb{P}[0 < Y \leq t]}\\
+&=& {\mathbb{P}[X\leq d]}+{\mathbb{P}[0<X-d\leq t]}
+\end{eqnarray*}
+
+Esto pues, como tenemos $t \in (0, b-d]$ entonces:
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/Linea.png", error=FALSE)
+```
+
+\begin{eqnarray*}
+0<Y \leq t \leq b-d \quad \Rightarrow \quad 0<Y \leq b-d \Rightarrow Y =X-d\\
+\end{eqnarray*}
+
+Entonces
+\begin{eqnarray*}
+F_{Y}(t)&=& F_{X}(t)+\mathbb{P}[0< X-d \leq t]\\
+&=& F_{X}(d)+\mathbb{P}[d<X\leq t+d]\\
+&=& {F_{X}(d)}+(F_{X}(t+d)-F_{X}(d))\\
+&=& F_{X}(t+d)\\
+\end{eqnarray*}
+
+Por lo tanto
+\begin{eqnarray*}
+F_{Y}(t) &=& F_{X}(t+d)\\
+\end{eqnarray*}
+
+Entonces
+\begin{eqnarray*}
+f_{Y}(t)&=& \displaystyle\frac{\partial }{\partial t}F_{Y}(t)\\
+&=& \displaystyle\frac{\partial }{\partial t}F_{X}(t+d)\\
+&=& f_{X}(t+d) \quad \forall \quad t\in (0, b-d]\\
+\end{eqnarray*}
+
+Entonces $Y$ se comporta como una v.a continua en el intervalo (0, b-d].
+
+$\therefore Y$ **es una variable aleatoria mixta.**
+
+Entonces:
+
+Si $Y \ddot{=} máx\{ X-d,0 \}$ es la v.a que mide al monto a pagar de la aseguradora por un siniestro $X \in [a,b]$ en un contrato con **deducible** d. La función de densidad de $\gamma$ en términos de la densidad de $X$ será:
+
+\begin{eqnarray*}
+    f_{Y}(t)&=& \left \{ \begin{matrix} 
+    F_{X}(d) & \mbox{si }& t0 & {\textit{Parte discreta}}\\ 
+    f_{X}(t+d)& \mbox{si }& t\in t \in (0,b-d] & {\textit{Parte continua}}\\
+    0 & & \mbox{en otro caso.}\\
+\end{matrix}\right. 
+\end{eqnarray*}
+
+Una vez esto, el cálculo de la esperanza de $Y$ está dado por:
+
+\begin{eqnarray*}
+    \mathbb{E}[Y]&=& \underbrace{\overbrace{0}^{y} \cdot \overbrace{F_{X}(d)}^{\mathbb{P}[Y=y]}}{\text{Parte discreta}}+ \int{0}^{b-d}{\underbrace{\overbrace{t}^{y}\overbrace{f_{X}(t+d)}^{f_{Y}(y)}  dt}_{\text{Parte continua}}}\\
+\end{eqnarray*}
+
+Así podríamos calcular la esperanza "Por definición" de una variable aleatoria mixta.
+
+## La regla de Darth Vader
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/5. DV.jpeg", error=FALSE)
+```
+
+El nombre del siguiente teorema no tiene un origen del todo oficial.
+
+Se dice que el nombre surgió por la impresión contraintuitiva, quizás un poco inquietante y surrealista , que el resultado puede evocar un primer encuentro.
+
+Considerando una v.a $X$ que es no-negativa casi-seguramente y cuya esperanza existe, entonces:
+
+\begin{eqnarray*}
+    \mathbb{E}[X]= \int_{0}^{\infty}S_{X}(t) \quad dt\\
+\end{eqnarray*}
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/5. DV 2.png", error=FALSE)
+```
+
+_Figura 2:_ https://www.youtube.com/watch?v=wWC7KFpuPmI&feature=youtu.be
+
+Podemos ver un ejemplo de esto, en el vídeo que se muestra a continuación
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/5. Regla-DV.png", error=FALSE)
+```
+
+_Figura 3:_ https://www.youtube.com/watch?v=wWC7KFpuPmI
+
+Por ahora no vamos a ver la demostración de la regla, pero vamos a deducirla en los casos en que pueda resultar "fácil".
+
+Nosotros vamos a decir que la esperanza está calculada **a la Darth Vader** cuando tengamos una integración de la función de supervivencia en algún intervalo para su obtención.
+
+Otro vídeo que puede ayudar a comprender esta idea lo encontrarán a continuación:
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/5. Esperanza.png", error=FALSE)
+```
+
+_Figura 4:_ https://www.youtube.com/watch?v=ZX2W59Mdaag
+
+Inspirados en la regla de Darth Vader, vamos a obtener la esperanza de $Y$ con un cálculo de este estilo.
+
+$$\mathbb E [Y] = \int_{0}^{b-d} t f_{x}(t+d) dt = \int_{d}^{b} (\alpha - d) f_{x}(\alpha)d\alpha$$
+
+_Cambio de var:_ $\alpha = t+d \longrightarrow dt = d\alpha$
+
+$$=-(\alpha-d)S_{x}(\alpha) |_{d}^{b} + \int_{d}^{b} S_{x}(\alpha) d\alpha$$
+
+_Por partes:_ 
+        \begin{array}{lcc}
+            u=\alpha-d & dv = f_{x}(\alpha)\\\\
+            du = d\alpha & v = -S_{x}(\alpha) \longrightarrow \frac{\partial}{\partial t}S_{x}(t) = -f_{x}(t) \\\\
+        \end{array}
+        
+$$=-(b-d){S_{x}(b)}+{(d-d)} S_{x}(d) + \int_{d}^{b} S_{x}(\alpha) d\alpha$$
+
+  $$=\int_{d}^{b} S_{x}(\alpha) d\alpha$$
+  
+Entonces, podemos calcular el valor esperado de $Y$ en un contrato con deducible al estilo Darth Vader en términos de $X$ como:
+
+$$\mathbb E [Y] = =\int_{d}^{b} S_{x}(t) dt$$
+_Nota:_ 
+Recuerden que $X\in[a,b]$, donde $a,v\geq0.$
+Lo anterior también es válido si $b\longrightarrow\infty,ie,X\in[a,\infty)$
+
+## Monto máximo de beneficio
+
+Similar a los deducibles, un **monto máximo de beneficio** es un límite que se fija en una póliza. De tal manera que todo monto producido por un siniestro que exceda cierto **umbral**, ya no será responsabilidad de la aseguradora.
+Cuando ocurre un siniestro en un contrato de este estilo, el asegurado llama a la aseguradora y ésta procede a cubrir todos los daños **hasta cierto monto pactado**. si el siniestro excede este monto, **el restante lo deberá cubrir el asegurado**.
+
+Visto de manera gráfica, si suponemos que el monto del siniestro puede ocurrion dentro del intervalo $[a,b]$ tendremos:
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/5. Linea del tiempo.png", error=FALSE)
+```
+
+Sea $X$ el monto de pérdida asociado a un siniestro definido en el intervalo $[a,b]$, $(a\geq0)$. Sea **u** el monto máximo de beneficio definido en la póliza con $u\in[a,b]$. La v.a. $Y$ tendrá un comportamiento del estilo:
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/5. Deducible y Coaseguro.png", error=FALSE)
+```
+
+Esto es similar al pay off de ir corto en una opción put. "vender una opción de venta."
+
+Esto es debido a que podemos calcular a $Y$ en términos de $X$ como:
+
+\begin{equation*}
+ Y = min\{ x,u\}= \begin{cases}
+            x & si & a\leq x<u {\Longleftrightarrow} a\leq Y < u\\\\
+            u & si & u\leq x \leq b {\Longleftrightarrow} Y\equiv u \\\\
+        \end{cases}
+        \end{equation*}
+        
+_Nota:_ $Y\in[a,u]$ $\forall x\in[a,b]$
+
+Una vez ya encontrada la variable aleatoria a modelar, procedemos a buscar su función de densidad. Igual que con el deducible podemos separ casos:
+
+_Caso 1:_ $X\in[a,b)$ $\Longleftrightarrow$ $Y\in[a,u)$
+Tomemos $t\in[a,u)$, entonces:
+
+\begin{align*}
+    F_{Y}(t) &\circeq \mathbb P [Y\leq t]\\
+    &= \mathbb P [a\leq Y \leq t]\hspace{3mm} \text{pues $y\geq a$ siempre}\\
+    &= \mathbb P [a\leq X \leq t]\hspace{3mm} \text{pues $t<u$}\\
+    &= F_{X}(t) - {F_{X}(a)}\  \text{pues $a\leq X \leq b$}\\
+\end{align*}
+
+$\therefore$ $F_{Y}(t) =F_{X}(t)$ $\Longleftrightarrow$ $f_{Y}(t) = f_{X}(t)$ $\forall t\in[a,u)$
+
+_Caso 2:_ $Y\equiv u$ $\Longleftrightarrow$ $u\leq x \leq b$, entonces:
+
+$F_{Y}(u) = \mathbb P [Y\leq u] = \mathbb P [a\leq Y\leq u] = 1$
+
+Vemos que hay probabilidad positiva de que $Y$ tome el valor puntual $u$. De tal manera que:
+
+\begin{align*}
+    f_{Y}(u) &= \mathbb P[Y\equiv u] = \mathbb P[u\leq x\leq b] = F_{x}(b)-F_{x}(u)\\
+    &= 1 - F_{x}(u)\hspace{3mm} {pues\hspace{2mm}x\leq b\hspace{2mm}siempre}\\
+    &= S_{x}(u) \hspace{7mm} \\
+\end{align*}    
+
+$\therefore$ $f_{Y}(u)=S_{x}(u)$
+
+Teniendo como resultado:
+
+Si $Y\circeq min\{X,u\}$ es la v.a. que mide el monto a pagar de la aseguradora por un siniestro $X\in[a,b]$ en un contrato con **monto máximo de beneficio** $"u"$, la función de densidad de $Y$ en terminos de la densidad de $X$ será:
+
+\begin{equation*}
+f_{Y}(t)= \begin{cases}
+            f_{x}(t) & si & t\in[\alpha,u]\hspace{2mm} {parte\hspace{3mm}continua}\\\\
+            S_{x}(u) & si & t\equiv u\hspace{2mm}{parte\hspace{3mm}discreta} \\\\
+            0 &  & en\hspace{2mm}otro\hspace{2mm}caso\\
+        \end{cases}
+     \end{equation*}
+     
+Mostremos el cálculo de la esperanza y obtengámosla a la Darth Vader:
+
+ $\mathbb E [Y] = \int_{a}^{u} t f_{Y}(t) dt + uS_{x}(u)$ $\longrightarrow$ por definición
+ 
+_Por partes:_ \begin{equation*}
+              \begin{cases}
+              g=t & dh = f_{Y}(t)dt\\
+              dg=dt & h = -S_{x}(t)
+               \end{cases}
+     \end{equation*}
+     
+$$\mathbb E[Y]= -tS_{x}(t)|_{a}^{u} + \int_{a}^{u} S_{x}(t)dt + uS_{x}(u) -uS_{x}(u) +a{S_{x}(a)}^{1} +\int_{a}^{u}S_{x}(t)dt +{uS_{x}(u)} $$
+$$\mathbb E[Y]= a+\int_{a}^{u}S_{x}(t)dt \Longleftrightarrow Darth Vader $$ 
+
+\begin{eqnarray*} 
+  \therefore \mathbb E[Y] &=& a+\int_{a}^{u}S_{x}(t)dt
+\end{eqnarray*}
+  _Nota:_ $a$ es el valor mínimo que puede tomar $x$, si $inf\{sop\{x\}\} = 0$ $\longrightarrow$ $a=0$.
+  
+
+
+
+
+
+
+        
+        

@@ -1,0 +1,606 @@
+# Severidad (Costo por pérdida y por pago)
+
+## Costo por pago
+
+Usando la notación de la SOA (Society of Actuaries), las variables aleatorias del pago de una aseguradora ($Y$) que hemos visto son denotadas como $Y_L$ refiriéndose al **costo por pérdida** (cost per loss).
+
+Existe una v.a. derivada de $Y_L$ llamada **costo por pago** (cost per payment) definida como:
+
+\begin{equation*}
+Y_P \ \ddot{=}\ Y_L| Y_L >0
+\end{equation*}
+
+Que se puede interpretar como el pago que la aseguradora haría de verse forzada a pagar pues el siniestro ya alcanzó su umbral de pago.
+
+Por ejemplo, en el caso particular de $Y_L$ con cobertura de deducible, entonces:
+
+\begin{equation*}
+  Y_P\ \ddot{=}\ Y_L|Y_L>0=Y_L|X>d
+\end{equation*}
+
+Que querría decir, condicionado a que el siniestro superó el deducible. Pues $Y_L \equiv 0$ si $X \leq d$.
+
+**Nota:** $Y_p>0$ siempre pues $Y_L$ es siempre positiva y más aún, $Y_p\ \ddot{=}\ Y_L|Y_L>0$, es decir, es un valor aleatorio condicionado a que dicho valor es **estrictamente positivo**.
+
+Teniendo definida la variable aleatoria $Y_p$, vamos a obtener su función de densidad. Haremos esto para la versión generalizada de $Y_L$, la cuál es teniendo todas las coberturas. Esto hará que $Y_p$ sea una v.a. mixta ya que, por definición,$Y_P\ \ddot{=}\ Y_L|Y_L>0$ son valores que toma $Y_L$ solo que "asumiendo" que $Y_L$ es ya positiva y recordemos que esta versión generalizada es continua en ($0,\alpha(u-d)$) y discreta en $\alpha(u-d)$.
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/Severidad_CP.png", error=FALSE)
+```
+
+Procedemos aplicando el teorema de probabilidad total y tomando $t \in (0,\alpha(u-d))$:
+
+\begin{eqnarray*}
+\mathbb{P}[Y_L\leq t]&=&\mathbb{P}[\underbrace{Y_L\leq t | Y_L>0}_{Y_p\leq t}]\mathbb{P}[Y_L>0]+{\mathbb{P}[Y_L\leq t|Y_L\equiv 0]}\mathbb{P}[Y_L\equiv 0]\\
+&=&\mathbb{P}[Y_p\leq t]\mathbb{P}[Y_L>0]+\mathbb{P}[Y_L\equiv 0]\\
+F_{Y_L}(t)&=&F_{Y_p}(t)S_{Y_L}(0)+f_{Y_L}(0)\Leftrightarrow F_{Y_p}(t)=\frac{F_{Y_L}(t)-f_{Y_L}(0)}{S_{Y_L}(0)}\\
+\therefore F_{Y_p}(t)&=&\frac{F_{Y_L}(t)-f_{Y_L}(0)}{1-F_{Y_L}(0)}=\frac{F_{Y_L}(t)-f_{Y_L}(0)}{1-f_{Y_L}(0)}\quad\forall t\in(0,\alpha(u-d))
+\end{eqnarray*}
+
+Como estamos en la parte continua de $Y_p$ podemos tomar la derivada y así:
+
+\begin{eqnarray*}
+f_{Y_p}(t)=\frac{f_{Y_L}(t)}{1-f_{Y_L}(0)}\quad\forall t \in(0,\alpha(u-d))
+\end{eqnarray*}
+
+Vamos a ver qué sucede en la parte discreta de $Y_p$, ie, en el punto $\alpha(u-d)$:
+
+\begin{eqnarray*}
+    f_{Y_p}(\alpha(u-d))=\mathbb{P}[Y_p\equiv \alpha(u-d)]&\ddot{=}&\mathbb{P}[Y_L\equiv \alpha(u-d)|Y_L>0]\\
+    &=&\frac{\mathbb{P}[\{Y_L\equiv \alpha(u-d)\}\bigcap\{Y_L>0\}]}{\mathbb{P}[Y_L>0]}\\
+    &=&\frac{\mathbb{P}[Y_L\equiv\alpha(u-d)]}{\mathbb{P}[Y_L>0]}=\frac{f_{Y_L}(\alpha(u-d))}{S_{Y_L}(0)}
+\end{eqnarray*}   
+
+De tal manera que podemos unir los dos casos y así escribir que:
+
+\begin{equation*}
+    f_{Y_p}(t)=\frac{f_{Y_L}(t)}{1-f_{Y_L}(0)}\mathbb{I}_{(0,\alpha(u-d)]}(t)\left\}
+    \begin{matrix}
+    \mbox{Esto sucede si}\\
+    \mathbb{P}[Y_L\equiv0]>0.\\
+    \mbox{En otro caso }\quad Y_p\overset{d}{=}Y_L.
+    \end{matrix}\right.
+\end{equation*}
+
+
+Que en términos del monto del siniestro ($X$) queda:
+
+\begin{equation*}
+        f_{Y_p}(t)=\left \{ 
+        \begin{matrix}
+            \frac{f_{X}\left(\frac{t+d\alpha}{(1+r)\alpha}\right)}{\alpha(1+r)S_{X} \left(\frac{d}{1+r}\right)}&\mbox{si}&t\in(0,\alpha(u-d))\quad (continua)\\
+            \frac{S_{X}\left(\frac{u}{1+r}\right)}{S_{X}\left(\frac{d}{1+r}\right)}&\mbox{si}&t=\alpha(u-d)\quad(discreta)\\
+            0&\mbox{en otro caso.}&
+        \end{matrix}\right.
+\end{equation*}
+
+Con base a el costo por pérdida ($Y_L$), la función de distribución acumulada del costo por pago ($Y_p$) es:
+
+\begin{equation*}
+        F_{Y_p}(t)=\left \{ \begin{matrix}
+            0 &\mbox{si}& t\leq 0\\ \frac{F_{Y_L}(t)-f_{Y_L}(0)}{1-f_{Y_L}(0)} &\mbox{si}&t\in(0,\alpha(u-d)]
+        \end{matrix}\right.
+\end{equation*}
+
+Que en términos del monto del siniestro (\textcolor{red}{$X$}) queda:
+
+\begin{equation*}
+    F_{Y_p}(t)\left \{ \begin{matrix}
+        0 &\mbox{si}& t\leq 0\\
+        \int_0^t\frac{f_{X}\left(\frac{x+d\alpha}{\alpha(1+r)}\right)}{\alpha(1+r)S_{X}\left(\frac{d}{1+r}\right)}dx&\mbox{si}& t\in(0,\alpha(u-d))\\
+        1 &\mbox{si}& t\geq \alpha(u-d)
+    \end{matrix}\right.
+\end{equation*}
+
+\begin{eqnarray*}
+    \int_0^t\frac{f_X\left(\frac{x+d\alpha}{(1+r)\alpha}\right)}{\alpha(1+r)S_X(\frac{d}{1+r})}dx&=&\frac{1}{S_X\left(\frac{d}{1+r}\right)}\int_0^t\frac{f_X\left(\frac{x+d\alpha}{\alpha(1+r)}\right)}{\alpha(1+r)}dx\\
+    &=&\frac{1}{S_X\left(\frac{d}{1+r}\right)}\int^{\frac{t+d\alpha}{\alpha(1+r)}}_{\frac{d}{1+r}}f_X(s)ds \left\{
+        \begin{matrix}
+            \mbox{Cambio de variable}\\ s=\frac{x+d\alpha}{\alpha(1+r)}\Rightarrow ds=\frac{1}{\alpha(1+r)}dx\\
+            x=0 \Rightarrow s=\frac{d}{1+r}\\
+            x=t\Rightarrow s=\frac{t+d\alpha}{\alpha(1+r)}
+        \end{matrix}\right.\\
+    &\ddot{=}&\frac{\mathbb{P}[\frac{d}{1+r}\leq X\leq\frac{t+d\alpha}{\alpha(1+r)}]}{S_X\left(\frac{d}{1+r}\right)}=\frac{F_X\left(\frac{t+d\alpha}{\alpha(1+r)}\right)-F_X\left(\frac{d}{1+r}\right)}{S_X\left(\frac{d}{1+r}\right)}
+\end{eqnarray*}
+
+
+Por lo tanto:
+
+\begin{eqnarray*}
+  F_{Y_p}(t)=\left \{
+            \begin{matrix}
+                0 &\mbox{si}& t\leq 0\\
+                \frac{F_{X}\left(\frac{t+d\alpha}{\alpha(1+r)}\right)-F_{X}\left(\frac{d}{1+r}\right)}{S_{X}\left(\frac{d}{1+´   r}\right)}&\mbox{si}& t\in(0,\alpha(u-d))\\
+                1 &\mbox{si}& t\geq \alpha(u-d)
+            \end{matrix}\right.
+\end{eqnarray*}
+            
+Recordemos que la ley de esperanza iterada establece que tomando $X,Y$ v.a. entonces: $$\mathbb{E}[X]=\mathbb{E}[\mathbb{E}[X|Y]]$$
+
+**Nota:** $\mathbb{E}[X|Y]$ es una v.a. que depende de los valores de $Y$, podríamos decir que $\mathbb{E}[X|Y]=g(Y)$, su soporte viene dado por una transformación en el soporte de Y.
+
+Sea $\mathscr{L}$ una v.a. auxiliar definida como:
+
+\begin{equation*}
+    \mathscr{L}=\left \{ 
+    \begin{matrix}
+        1 &\mbox{sii}&Y_L\equiv 0\\
+        2 &\mbox{sii}& Y_L>0
+    \end{matrix} \right.
+\end{equation*}
+
+Noten que $\mathscr{L}$ es v.a. pues depende de una. De hecho, ésta es discreta con $sop\{\mathscr{L}\}=\{1,2\}$. Obtengamos ahora la esperanza de $Y_p$ utilizando lo anterior.
+
+Llamemos $g(x)\ \ddot{=}\ \mathbb{E}[Y_L|\mathscr{L}=x]$, así:
+
+\begin{eqnarray*}
+    \mathbb{E}[Y_L]&=&\mathbb{E}[\mathbb{E}[Y_L|\mathscr{L}]]=\mathbb{E}[g(\mathscr{L})]=\sum_{k\in sop\{\mathscr{L}\}}g(k)\mathbb{P}[\mathscr{L}=k]\\
+\mathbb{E}[Y_L]&=& \displaystyle\sum_{k=1}^{2} g(k)\mathbb{P}[\mathscr{L}=k]\\
+&=&  \sum_{k=1}^{2} \mathbb{E}[Y_L|\mathscr{L}=k] \mathbb{P}[\mathscr{L}=k]\\
+&=&  \mathbb{E}[Y_L|\mathscr{L}=1] \mathbb{P}[\mathscr{L}=1]+\mathbb{E}[Y_L|\mathscr{L}=2] \mathbb{P}[\mathscr{L}=2]
+\end{eqnarray*}
+<p style="text-align: center">El evento $\mathscr{L}=1$ es equivalente al evento $Y_{L}\equiv 0$. </p>
+<p style="text-align: center">El evento $\mathscr{L}=2$ es equivalente al evento $Y_{L}>0$. </p>
+
+\begin{eqnarray*}
+\mathbb{E}[Y_L]&=&  \mathbb{E}[Y_L|Y_L\equiv 0]\mathbb{P}[Y_L \equiv0]+\mathbb{E}[Y_L|Y_L> 0]\mathbb{P}[Y_L >0]\\
+\end{eqnarray*}
+
+<p style="text-align: center">El valor esperado de algo que ya toma un valor no aleatorio, es dicho valor. </p>
+
+\begin{eqnarray*} 
+&=&\underbrace{\mathbb{E}[Y_L|Y_L> 0]}_{Y_{p}} \mathbb{P}[Y_L>0]\\
+&=&\mathbb{E}[Y_{p}]\mathbb{P}[Y_L>0]\\
+\end{eqnarray*}
+
+El resultado general anterior se conoce como "Ley de la Partición" o "Ley de Esperanza Total".
+
+Tomando $\{B_{i}\}$ partición de $\Omega$. $\mathbb{E}[X] = \sum_{\forall i} {\mathbb{E}[X|{B_{i}}]\mathbb{P}[{B_{i}}]}$
+
+Por lo tanto:
+
+\begin{eqnarray*}
+\mathbb{E}[Y_{p}]&=& \frac{\mathbb{E}[Y_{L}
+]}{\mathbb{P}[Y_{L}>0]}\\
+&=& \frac{\alpha(1+r)}{S_{X}\left( \frac{d
+}{1+r}  \right)} \int_{\frac{d}{1+r}}^{\frac{u}{1+r}} S_{X} (t) dt
+\end{eqnarray*}
+
+En general, dada una función $h: \mathbb{R}\mapsto  \mathbb{R}$ ¿Qué significa tomar $h(Y_{p})$?
+
+$Y_{p} \ddot{=} Y_{L}|Y_{L}>0$, es decir, son valores aleatorios positivos provenientes de una v.a subyacente $Y_{L}$. Entonces, aplicarle una función a $Y_{p}$ (y en general a una v.a condicionadas a algo) significa por definición.
+
+\begin{eqnarray*} 
+h(Y_{p}) &\ddot{=}& h(Y_{L})| Y_{L}>0\\
+\end{eqnarray*}
+
+Es decir que es aplicarle ``h", a los valores positivos que se obtuvieron. Tomando esto en cuenta, ya podemos saber cómo obtener momentos de $Y_{p}$.
+
+En una versión "simplificada" de lo anterior, si deseamos obtener momentos de $Y_{p}$:
+
+\begin{eqnarray*} 
+\mathbb{E}[Y_{L}^{k}]= \mathbb{E}[\mathbb{E}[Y_{L}^{k}|Y_{L}]]= \mathbb{E}[Y_{L}^{k}]\mathbb{P}[Y_{L} \equiv 0]+\mathbb{E}[Y_{L}^{k}|Y_{L}>0]\mathbb{P}[Y_{L}>0]\\
+\end{eqnarray*}
+
+\begin{equation*} 
+    \mathbb{E}[Y_{L}^{k}| Y_{L} \equiv 0] = \mathbb{E}[0^{k}]
+    =\mathbb{E}[0]
+    =0
+\end{equation*}
+\begin{equation*} 
+    \mathbb{E}[Y_{L}^{k}| Y_{L} >0]\   \ddot{=}\ \mathbb{E}[Y_{p}^{k}]
+\end{equation*} 
+\begin{eqnarray*} 
+    \mathbb{E}[Y_{L}^{k}] = \mathbb{E}[Y_{p}^{k}]\cdot \mathbb{P}[Y_{L}>0]\\
+\end{eqnarray*}
+
+Por lo tanto:
+
+\begin{eqnarray*}
+    \mathbb{E}[Y_{p}^k] &=& \frac{\mathbb{E} [Y_{L}^k] }{\mathbb{P} [Y_{L}>0]}\\
+    &=& \frac{\mathbb{E}[Y_{L}^k]}{ 1-f_{Y_{L}}(0) } \quad \quad \forall k \in\mathbb{N}
+\end{eqnarray*}
+
+De donde ya sabemos obtener momento en general para $Y_{L}$.
+
+## Cuantiles para las coberturas
+
+Una vez construido todo en esta sección, es el momento de mostrar un teorema interesante aunque poco mencionado por varios autores:
+
+Sea $X$ una v.a y $Sop$\{$X$\} su soporte. Tomando $\phi$ una función no-decreciente al menos $\forall x \in Sop$\{$X\}$ , entonces: 
+\begin{eqnarray*} 
+q_{\varphi(X)}(\alpha)= \varphi ( q_{X}(\alpha))
+\end{eqnarray*}
+
+**Nota:** $\varphi(X)$ es una v.a que depende de $X$.
+
+Notemos ahora que todas las variables aleatorias de cobertura que construimos son funciones no-decrecientes de un monto de siniestro \textcolor{magenta}{$X$}. Esto por la simple lógica en su construcción de ``A mayor el monto de siniestro, el pago de la aseguradora no puede disminuir".\\
+
+Aplicando el teorema a la v.a generalizada de perdida por una cobertura completa (coaseguro, inflación, etc):
+
+\begin{eqnarray*} 
+Y_{L} =máx\{\alpha(mín\{ X(1+r), u\}- d), 0 \}\\
+\end{eqnarray*}
+
+Entonces los cuantiles del $\gamma \in [0,1]$ de $Y_{L}$ estarán dados por:
+
+\begin{eqnarray*} 
+    q_{Y_{L}}(\gamma)&=& máx \{    \alpha (mín\{q_{X}(\gamma)(1+r),u\})-  d),0\} \quad \forall \gamma \in [0,1]
+\end{eqnarray*}
+
+Adicionalmente, si quisiéramos obtener los cuantiles de $Y_{p}$ podríamos obtenerlos de los de $Y_{L}$ haciendo:
+
+\begin{eqnarray*} 
+\gamma&=& F_{Y_{p}}(x)\\
+&=& \frac{F_{Y_{L}}(x)-f_{Y_{L}}(0)}{1-f_{Y_{L}}(0)} 
+\end{eqnarray*}
+
+Sí y solo si:
+
+\begin{eqnarray*} 
+F_{Y_{L}}(x)=(1-f_{Y_{L}}(0))\gamma + f_{Y_{L}}(0) 
+\end{eqnarray*}
+
+Sí y solo si:
+
+\begin{eqnarray*} 
+x&=& q_{Y_{p}}(\gamma)\\
+&=& q_{Y_{L}}((1-f_{Y_{L}}(0))\gamma + f_{Y_{L}})(0)\\
+\end{eqnarray*}
+
+De donde se deduce que los cuantiles de $Y_{p}$ vienen dados por los de $Y_{L}$ en función del segmento de recta.
+
+\begin{eqnarray*} 
+\textit{L}&=&\{\beta \in [0,1]: \beta =(1-f_{Y_{L}}(0)\gamma + f_{Y_{L}}(0) \quad \textit{con} \quad \gamma \in [0,1]) \}\\
+\end{eqnarray*}
+
+
+Esto significa que, mientras  $Y_{L}$ tiene un rango de probabilidades $[0,1]$ de manera "libre" . $Y_{p}$ se encuentra atrapada en un universo ``más pequeño"  que $Y_{L}$ sin siquiera notarlo.
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/Yp.png", error=FALSE)
+```
+
+De hecho:
+\begin{eqnarray*} 
+\text{Si  }\gamma =0
+\text{, entonces:}
+\end{eqnarray*}
+
+\begin{eqnarray*} 
+    q_{Y_{p}}(\gamma)&=&q_{Y_{L}}(  (1-f_{Y_{L}}(0))\gamma + f_{Y_{L}} (0))\\
+    &=& q_{Y_{L}}(f_{Y_{L}}(0))\\
+    &=& q_{Y_{L}}(F_{Y_{L}}(0))\\
+    &=& 0\\
+\end{eqnarray*}
+
+**Nota:** $0 \notin Sop\{ Y_{p}\}$ pero sí es ínfimo de su soporte.
+
+\begin{eqnarray*} 
+\text{Si  }\gamma =1
+\text{, entonces:}
+\end{eqnarray*}
+
+\begin{eqnarray*} 
+    q_{Y_{p}}(\gamma)&=&q_{Y_{L}}(  (1-f_{Y_{L}}(0))\gamma + f_{Y_{L}} (0))\\
+    &=& q_{Y_{L}}(1)\\
+    &=& \alpha (u-d) \\
+\end{eqnarray*}
+    
+Por lo tanto:
+
+\begin{eqnarray*} 
+    q_{Y_{p}}(\gamma)&=&q_{Y_{L}}(  (1-f_{Y_{L}}(0))\gamma + f_{Y_{L}} (0)) \quad \forall \gamma \in [0,1]\\
+\end{eqnarray*}
+    
+Si ponemos el segmento de recta en función del monto de siniestro (X):
+
+\begin{eqnarray*} 
+     (1-f_{Y_{L}}(0))\gamma + f_{Y_{L}} (0) &=& \left(1-F_{X}\left(\frac{d}{1+r}\right)\right)\gamma + F_{X}\left(\frac{d}{1+r   }\right)\\
+\end{eqnarray*}
+    
+Entonces:
+    
+\begin{eqnarray*} 
+    q_{Y_{p}}(\gamma) &=& \left(1-F_{X}\left(\frac{d}{1+r   }\right)\right)\gamma + F_{X}\left(\frac{d}{1+r   }\right) \quad \forall \gamma \in [0,1]  \\
+\end{eqnarray*}
+    
+Finalmente , si ponemos a $q_{Y_{L}}$ con la identidad proveniente del teorema de equivarianza en los cuantiles, obtendremos una identidad para $q_{Y_{p}} (\gamma) \quad \forall \gamma \in [0,1]$ en términos únicamente del monto de siniestro (X):
+
+\begin{eqnarray*} 
+    q_{Y_{p}}(\gamma) &=& máx\{\alpha (mín\{q_{X}(\beta (\gamma)  )( 1+r ),  u \}   -d ),0    \} \quad \forall \gamma \in [0,1]\\
+\end{eqnarray*}   
+
+Donde: 
+$$\beta(\gamma) \ddot{=} \left(1-F_{X}\left(\frac{d}{1+r   }\right)\right)\gamma + F_{X}\left(\frac{d}{1+r   }\right) $$.
+
+### Ejemplo {-}
+
+Supongamos que el monto de siniestros es $X \sim Unif (100,200)$. Consideremos con todas las coberturas: $\alpha=75\% , r=10\%, d=120$ y $u= 180$. Para las  v.a $Y_{L}$ y $Y_{P}$, obtenga:
+
+
+1. La función de densidad.
+2. La función de distribución acumulada.
+3. Valor esperado.
+4. Segundo momento.
+5. La varianza.
+6. El valor esperado del coseno de la v.a. .
+7. La mediana.
+8. El cuantil del $90\%$.
+
+
+Sabemos que:
+
+\begin{eqnarray*} 
+f_{X}(t)&=& \frac{1}{100} \mathbb{I}_{(100,200)} (t)\\ 
+F_{X}(t)&=& \frac{t-100}{100} \mathbb{I}_{(100,200)} (t)\\
+S_{X}(t)&=& \frac{200-t}{100}  \mathbb{I}_{(100,200)} (t)\\
+\end{eqnarray*}
+
+Con base en los resultados obtenidos en esta sección del curso, resolveremos primero para $Y_{L}$ y luego para $Y_{p}$.
+
+#### Soluciones para $Y_{L}$: {-}
+
+$i$) La función de densidad.
+
+\begin{eqnarray*}
+    {\large
+    f_{Y_{L}}(t) =
+    \left\{ 
+    \begin{array}{lcc}
+        F_{\chi}(\frac{d}{1+r}) & si & t=0\  (discreta)\\\\
+        \frac{f_{\chi}(\frac{t+d\alpha}{\alpha(1+r)})}{\alpha(1+r)} & si & t\in(0,\alpha(u-d)) \ (continua)\\\\
+        S_{\chi}(\frac{u}{1+r}) & si & t=\alpha(u-d) \ (discreta)\\\\
+        0 & en\ otro\ caso\\
+        \end{array}
+    \right.\\\\\\\\
+    =\left\{ 
+    \begin{array}{lcc}
+        \frac{\frac{120}{1.1}-100}{100}=\frac{1}{11} & si & t=0\\\\
+        \frac{1}{0.75(1.1)}(\frac{1}{100})=\frac{2}{165} & si & t\in(0,0.75(180-120)=45)\\\\
+        \frac{200-\frac{180}{1.1}}{100}=\frac{4}{11} & si & t=45\\\\
+        0 & en\ otro\ caso\\
+        \end{array}
+    \right.
+    }
+\end{eqnarray*}
+
+$ii$) La función de distribución acumulada.
+
+\begin{eqnarray*}
+    {\large
+    F_{Y_{L}}(t) =
+    \left\{ 
+    \begin{array}{lcc}
+        0 & si & t<0\\\\
+        F_{\chi}(\frac{t+d\alpha}{\alpha(1+r)}) & si & t\in[0,\alpha(u-d))\\\\
+        1 & si & t\geq\alpha(u-d)\\
+        \end{array}
+    \right.\\
+    =\left\{ 
+    \begin{array}{lcc}
+        0 & si & t<0\\\\
+        \frac{\frac{t+120(75\%)}{75\%(1.1)}-100}{100} = \frac{\frac{t}{0.825}+\frac{100}{11}}{100} & si & t\in[0,45)\\\\
+        1 & si & t\geq45\\
+        \end{array}
+    \right.\\
+    }
+\end{eqnarray*}
+
+$iii$) Valor esperado.
+
+\begin{eqnarray*}
+        \mathbb E [Y_{L}] &=& \alpha(1+r)
+        \int_{\frac{d}{1+r}}^{\frac{u}{1+r}} S_{\chi}(t)dt = 0.75(1.1)\int_{\frac{120}{1.1}}^{\frac{180}{1.1}} \frac{200-t}{100} dt \\
+        &=& \frac{315}{11} = 28.636\bar{3}\\
+\end{eqnarray*}
+
+$iv$) Segundo momento.
+
+\begin{eqnarray*}
+        \mathbb E[g(Y_{L})] = g(0)[F_{\chi}(\frac{d}{1+r})]+ \int_{0}^{\alpha (u-d)} g(t) \frac{f_{\chi}(\frac{1+d\alpha}{\alpha(1+r)})}{\alpha(1+r)} dt + 
+        g(\alpha(u-d)) \cdot [S_{\chi} (\frac{u}{1+r})]\\
+\end{eqnarray*}
+\begin{eqnarray*}
+        \mathbb E[Y_{L}^{2}] = 0^2(\frac{1}{11})+\int_{0}^{45} t^{2} (\frac{2}{165})dt + 45^{2}(\frac{4}{11}) = \frac{12150}{11} = 1104.545\bar{4}\\
+\end{eqnarray*}
+
+$v$) La varianza.
+
+\begin{equation*}
+        Var(Y_{L})=\mathbb E[Y_{L}^{2}] - \mathbb E^{2}[Y_{L}] = \frac{34425}{121} \approx 284.5041322\\
+\end{equation*}
+
+$vi$) El valor esperado del coseno de la v.a.
+
+\begin{equation*}
+        \mathbb E[cos(Y_{L})] = cos(0)(\frac{1}{11})+\int_{0}^{45} cos(t)(\frac{2}{165})dt + cos(45)(\frac{4}{11}) \approx 0.29224925\\
+\end{equation*}
+
+$vii$) La mediana.
+
+\begin{eqnarray*}
+        q_{Y_{L}}(\gamma) = max\{\alpha(min\{q_{\chi}(\gamma)(1+r),u\}-d),0\}\\
+\end{eqnarray*}
+
+Obtengamos $q_{\chi}(0.5)$ la medianda de $\chi$}
+\begin{eqnarray*}
+        0.5 = F_{\chi}(\chi_{0}) = \frac{\chi_{0}-100}{100} \Longleftrightarrow \chi_{0} = 150 = q_{\chi}(0.5)\\
+\end{eqnarray*}
+\begin{eqnarray*}
+        \longrightarrow q_{Y_{L}}(0.5) &=& max\{0.75(min\{q_{\chi}(0.5)(1.1),180\}-120),0\}\\
+        &=& max\{0.75(min\{150(1.1),180\}-120),0\}\\
+        &=& max\{0.75(min\{165,180\}-120),0\}\\
+        &=& max\{0.75(165-120),0\}\\
+        &=& max\{0.75(45),0\}\\
+        &=& max\{33.75,0\}=33.75\\
+\end{eqnarray*}
+
+$viii$) El cuantil del 90\%.
+
+Obtengamos el cuantil $q_{\chi}(0.9)$:
+
+\begin{eqnarray*}
+        0.9 = F_{\chi}(\chi_{0}) = \frac{\chi_{0}-100}{100} \Longleftrightarrow \chi_{0} = q_{\chi}(0.9) = 190 \\
+\end{eqnarray*}
+\begin{eqnarray*}
+  \longrightarrow q_{Y_{L}}(0.9) &=& max\{0.75(min\{q_{\chi}(0.9)(1.1),180\}-120),0\}\\
+        &=& max\{0.75(min\{190(1.1),180\}-120),0\}\\
+        &=& 45\\
+\end{eqnarray*}
+
+#### Soluciones para $Y_{p}$ {-}
+
+$i$) La función de densidad.
+
+\begin{eqnarray*}
+    f_{Y_{p}}(t) &=&
+    \left\{ 
+    \begin{array}{lcc}
+        \frac{f_{\chi}(\frac{t+d\alpha}{(1+r)\alpha})}{\alpha(1+r)S_{\chi}(\frac{d}{1+r})} & si & t\in(0,\alpha(u-d)) \ (continua)\\\\
+        \frac{S_{\chi}(\frac{u}{1+r})}{S_{\chi}(\frac{d}{1+r})} & si & t=\alpha(u-d) \ (discreta)\\\\
+        0 & en\ otro\ caso\\
+        \end{array}
+    \right.\\\\
+    &=&\left\{ 
+    \begin{array}{lcc}
+        \frac{\frac{1}{100}}{0.75(1.1)(\frac{10}{11})} = \frac{1}{75} & si & t\in(0,45)\\\\
+        \frac{\frac{200-\frac{180}{1.1}}{100}}{\frac{10}{11}} = \frac{2}{5} & si & t=45\\\\
+        0 & en\ otro\ caso\\
+        \end{array}
+    \right.\\
+\end{eqnarray*}
+
+$ii$) La función de distribución acumulada.
+
+\begin{eqnarray*}
+    F_{Y_{p}}(t)&=&
+    \left\{ 
+    \begin{array}{lcc}
+        0 & si & t\leq0\\\\
+        \frac{F_{\chi}(\frac{t+d\alpha}{\alpha(1+r)})-F_{\chi}(\frac{d}{1+r})}
+        {S_{\chi}(\frac{d}{1+r})}
+        & si & t\in(0,\alpha(u-d))\\\\
+        1 & si & t\geq\alpha(u-d)\\
+        \end{array}
+    \right.\\\\
+    &=&\left\{ 
+    \begin{array}{lcc}
+        0 & si & t\leq0\\\\
+        \frac{\frac{\frac{t}{0.825}+\frac{100}{11}}{100}-\frac{1}{11}}{\frac{10}{11}} =
+        \frac{\frac{t}{82.5}}{\frac{10}{11}} = \frac{11t}{825}
+        & si & t\in(0,45)\\\\
+        1 & si & t\geq45\\
+        \end{array}
+    \right.\\
+\end{eqnarray*}
+
+$iii$) Valor esperado.
+
+\begin{equation*}
+    \mathbb E [Y_{p}] =
+    \frac{\mathbb E [Y_{L}]}
+    {\mathbb P [Y_{L}>0]} =
+    \frac{\frac{315}{11}}{\frac{10}{11}}=\frac{315}{10}=31.4\\
+\end{equation*}
+
+$iv$) Segundo momento.
+
+\begin{equation*}
+    \mathbb E [Y_{p}^{k}] = 
+    \frac{\mathbb E [Y_{L}^{k}]}
+    {\mathbb P [Y_{L}>0]}\\
+    \longrightarrow \mathbb E [Y_{p}^{2}] = \frac{\mathbb E [Y_{L}^{2}]}{\mathbb P [Y_{L}>0]} =
+    \frac{\frac{12150}{11}}{\frac{10}{11}} = 1215\\
+\end{equation*}
+
+$v$) La varianza.
+
+\begin{equation*}
+    Var(Y_{p})=\mathbb E[Y_{p}^{2}] - \mathbb E^{2}[Y_{p}] = \frac{894}{4} = 222.75\\
+\end{equation*}
+
+$vi$) El valor esperado del coseno de la v.a.
+
+De hecho, en general tomando $h:\mathbb R \longrightarrow \mathbb R$ función tal que las cantidades expresadas existan. Siempre se satisface que cuando $\mathbb P [Y_{L}=0] \equiv f_{Y_{L}}(0)$:
+\begin{equation*}
+        \mathbb E [h(Y_{L})] = h(0) f_{Y_{L}}(0) + 
+        \mathbb E[h(Y_{p})](1-f_{Y_{L}}(0))  \\
+\end{equation*}
+
+La prueba queda como ejercicio para el lector.
+
+De donde obtenemos de forma general:
+
+\begin{equation*}
+        \mathbb E [h(Y_{p})] =
+        \frac{\mathbb E [h(Y_{L})] - h(0) f_{Y_{L}}(0)} 
+        {1-f_{Y_{L}}(0)} = 
+        \frac{\mathbb E [h(Y_{L})] - h(0)F_{\chi}(\frac{d}{1+r})}
+        {S_{\chi}(\frac{d}{1+r})} \\
+\end{equation*}
+
+Entonces:
+
+\begin{equation*}
+        \mathbb E [cos(Y_{p})] =
+        \frac{\mathbb E [cos(Y_{L})] - cos(0)F_{\chi}(\frac{d}{1+r})}
+        {S_{\chi}(\frac{d}{1+r})} =
+        \frac{\mathbb E [cos(Y_{L})] - \frac{1}{11}}
+        {\frac{10}{11}} \approx 0.2214741759\\
+\end{equation*}
+
+O bien, por definición de esperanza:
+
+\begin{equation*}
+        \mathbb E [cos(Y_{p})] =
+        \int_{0}^{45} \frac{cos(t)}{75}dt + cos(45)(\frac{2}{5})
+        \approx 0.2214741759\\
+\end{equation*}
+
+$vii$) La mediana.
+
+\begin{eqnarray*}
+    q_{Y_{p}}(\gamma) = max\{\alpha(min\{q_{\chi}(\beta(\gamma))(1+r),u\}-d),0\}\\
+\end{eqnarray*}
+\begin{eqnarray*}
+    \text{Donde: } \beta(\gamma)\ \ddot{=}\ (1-F_{\chi}(\frac{d}{1+r}))\gamma+F_{\chi}(\frac{d}{1+r})\\
+\end{eqnarray*}
+\begin{eqnarray*}
+    \gamma = 0.5 \longrightarrow \beta(\gamma) = 
+    (1-F_{\chi}(\frac{d}{1+r}))\gamma+F_{\chi}(\frac{d}{1+r}) =
+    \frac{10}{11}(0.5)+\frac{1}{11} = \frac{6}{11}\\
+\end{eqnarray*}
+\begin{eqnarray*}
+    \text{Note que: }q_{\chi}(p) &=& p(100) +100 
+    \longrightarrow q_{\chi}(\frac{6}{11}) = \frac{1700}{11} = 
+    q_{\chi}(\beta(\gamma))\\
+    \longrightarrow q_{Y_{p}}(\gamma) 
+    &=&max\{0.75(min\{\frac{1700}{11}(1.1),180\}-120),0\}\\
+    &=&max\{0.75(min\{170,180\}-120),0\}\\
+    &=&max\{0.75(170-120),0\}\\
+    &=&max\{37.5,0\}\\
+    &=&37.5\\
+\end{eqnarray*}
+
+$viii$) El cuantil del 90\%.
+
+\begin{eqnarray*}
+    \gamma = 0.9 \longrightarrow \beta(\gamma) = 
+    (1-F_{\chi}(\frac{d}{1+r}))\gamma+F_{\chi}(\frac{d}{1+r}) =
+    \frac{10}{11}(0.9)+\frac{1}{11} = \frac{10}{11}\\
+\end{eqnarray*}
+\begin{eqnarray*}
+    \longrightarrow q_{\chi}(\beta(\gamma)) = 
+    q_{\chi}(\frac{10}{11}) = 100(\frac{10}{11}+1) = \frac{2100}{11}\\
+\end{eqnarray*}
+\begin{eqnarray*}
+    \text{Por lo tanto:}\\
+    q_{Y_{p}}(\gamma) 
+    &=&max\{0.75(min\{\frac{2100}{11}(1.1),180\}-120),0\}\\
+    &=&max\{0.75(min\{210,180\}-120),0\}\\
+    &=&max\{0.75(180-120),0\}\\
+    &=&max\{45,0\}=45\\
+\end{eqnarray*}
+
+Script: "Coberturas".

@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 14 Calculo de primas | Teoría del Riesgo</title>
+  <meta name="description" content="Descripcion" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 14 Calculo de primas | Teoría del Riesgo" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Descripcion" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 14 Calculo de primas | Teoría del Riesgo" />
+  
+  <meta name="twitter:description" content="Descripcion" />
+  
+
+<meta name="author" content="Cinthya Denisse González Mendoza :o" />
+
+
+<meta name="date" content="2023-07-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="reaseguro.html"/>
+<link rel="next" href="credibilidad.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notas de Teoría del Riesgo</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Conceptos básicos y preeliminares</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#introducción"><i class="fa fa-check"></i><b>1.1</b> Introducción</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#algunos-antecedentes-históricos"><i class="fa fa-check"></i><b>1.2</b> Algunos antecedentes históricos</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#algunos-términos-del-seguro"><i class="fa fa-check"></i><b>1.3</b> Algunos términos del seguro</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#seguro"><i class="fa fa-check"></i>Seguro:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#riesgo"><i class="fa fa-check"></i>Riesgo:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#siniestro"><i class="fa fa-check"></i>Siniestro:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asegurador"><i class="fa fa-check"></i>Asegurador:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asegurado"><i class="fa fa-check"></i>Asegurado:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#beneficiario"><i class="fa fa-check"></i>Beneficiario:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#póliza"><i class="fa fa-check"></i>Póliza:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#prima"><i class="fa fa-check"></i>Prima:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#clase-de-primas"><i class="fa fa-check"></i><b>1.4</b> Clase de primas:</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#clasificación-de-los-seguros"><i class="fa fa-check"></i><b>1.5</b> Clasificación de los seguros</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#distribuciones-clásicas-en-teoría-del-riesgo"><i class="fa fa-check"></i><b>1.6</b> Distribuciones clásicas en Teoría del Riesgo</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asociadas-al-monto-de-una-pérdida"><i class="fa fa-check"></i>Asociadas al monto de una pérdida</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#familias-paramétricas-para-modelar-el-monto-de-riesgo"><i class="fa fa-check"></i><b>1.7</b> Familias paramétricas para modelar el monto de riesgo</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#exponencial"><i class="fa fa-check"></i>Exponencial</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#gamma"><i class="fa fa-check"></i>Gamma</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#log---normal"><i class="fa fa-check"></i>Log - Normal</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#weibull"><i class="fa fa-check"></i>Weibull</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#burr"><i class="fa fa-check"></i>Burr</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#pareto"><i class="fa fa-check"></i>Pareto</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#modelación-del-riesgo"><i class="fa fa-check"></i><b>1.8</b> Modelación del riesgo</a></li>
+<li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#ajuste-de-funciones-de-probabilidad"><i class="fa fa-check"></i><b>1.9</b> Ajuste de funciones de probabilidad</a></li>
+<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#reconocimiento-del-modelo"><i class="fa fa-check"></i><b>1.10</b> Reconocimiento del modelo</a>
+<ul>
+<li class="chapter" data-level="1.10.1" data-path="index.html"><a href="index.html#moda-de-una-función-de-densidad"><i class="fa fa-check"></i><b>1.10.1</b> Moda de una función de densidad</a></li>
+<li class="chapter" data-level="1.10.2" data-path="index.html"><a href="index.html#coeficiente-de-asimetría-skewness"><i class="fa fa-check"></i><b>1.10.2</b> Coeficiente de asimetría (Skewness)</a></li>
+<li class="chapter" data-level="1.10.3" data-path="index.html"><a href="index.html#coeficiente-de-kurtosis"><i class="fa fa-check"></i><b>1.10.3</b> Coeficiente de Kurtosis</a></li>
+<li class="chapter" data-level="1.10.4" data-path="index.html"><a href="index.html#función-de-distribución-empírica"><i class="fa fa-check"></i><b>1.10.4</b> Función de distribución empírica</a></li>
+<li class="chapter" data-level="1.10.5" data-path="index.html"><a href="index.html#cuantiles"><i class="fa fa-check"></i><b>1.10.5</b> Cuantiles</a></li>
+<li class="chapter" data-level="1.10.6" data-path="index.html"><a href="index.html#rango-intercuantílico"><i class="fa fa-check"></i><b>1.10.6</b> Rango intercuantílico</a></li>
+</ul></li>
+<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#estimación-de-parámetros"><i class="fa fa-check"></i><b>1.11</b> Estimación de parámetros</a>
+<ul>
+<li class="chapter" data-level="1.11.1" data-path="index.html"><a href="index.html#método-de-momentos"><i class="fa fa-check"></i><b>1.11.1</b> Método de momentos</a></li>
+<li class="chapter" data-level="1.11.2" data-path="index.html"><a href="index.html#máxima-verosimilitud"><i class="fa fa-check"></i><b>1.11.2</b> Máxima verosimilitud</a></li>
+</ul></li>
+<li class="chapter" data-level="1.12" data-path="index.html"><a href="index.html#pruebas-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>1.12</b> Pruebas de bondad de ajuste</a>
+<ul>
+<li class="chapter" data-level="1.12.1" data-path="index.html"><a href="index.html#planteamiento-general-de-una-prueba-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>1.12.1</b> Planteamiento general de una prueba de bondad de ajuste</a></li>
+<li class="chapter" data-level="1.12.2" data-path="index.html"><a href="index.html#algunas-pruebas-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>1.12.2</b> Algunas pruebas de bondad de ajuste</a></li>
+</ul></li>
+<li class="chapter" data-level="1.13" data-path="index.html"><a href="index.html#cómo-leer-un-p-value"><i class="fa fa-check"></i><b>1.13</b> ¿Cómo leer un p-value?</a>
+<ul>
+<li class="chapter" data-level="1.13.1" data-path="index.html"><a href="index.html#región-de-rechazo-y-no-rechazo"><i class="fa fa-check"></i><b>1.13.1</b> Región de Rechazo y no rechazo:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.14" data-path="index.html"><a href="index.html#el-proceso-de-modelación-del-riesgo"><i class="fa fa-check"></i><b>1.14</b> El proceso de modelación del Riesgo</a>
+<ul>
+<li class="chapter" data-level="1.14.1" data-path="index.html"><a href="index.html#el-proceso-de-modelado"><i class="fa fa-check"></i><b>1.14.1</b> El proceso de modelado</a></li>
+<li class="chapter" data-level="1.14.2" data-path="index.html"><a href="index.html#pasos"><i class="fa fa-check"></i><b>1.14.2</b> Pasos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html"><i class="fa fa-check"></i><b>2</b> Medidas de Riesgo</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#distribuciones-para-valores-extremos"><i class="fa fa-check"></i><b>2.1</b> Distribuciones para valores extremos</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#teoría-de-valores-extremos"><i class="fa fa-check"></i><b>2.1.1</b> Teoría de valores extremos</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#distribuciones-de-valores-extremos"><i class="fa fa-check"></i>Distribuciones de valores extremos</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#ejemplo-1-2"><i class="fa fa-check"></i>Ejemplo 1</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#ejemplo-2-1"><i class="fa fa-check"></i>Ejemplo 2</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#var-t-var"><i class="fa fa-check"></i><b>2.2</b> VaR &amp; T-VaR</a>
+<ul>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#var"><i class="fa fa-check"></i>VaR</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#t-var"><i class="fa fa-check"></i>T-VaR</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="frecuencia.html"><a href="frecuencia.html"><i class="fa fa-check"></i><b>3</b> Frecuencia</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="frecuencia.html"><a href="frecuencia.html#frecuencia-1"><i class="fa fa-check"></i><b>3.1</b> Frecuencia</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="frecuencia.html"><a href="frecuencia.html#familia-ab0"><i class="fa fa-check"></i><b>3.1.1</b> Familia (a,b,0)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="frecuencia-anexo.html"><a href="frecuencia-anexo.html"><i class="fa fa-check"></i><b>4</b> Frecuencia Anexo</a></li>
+<li class="chapter" data-level="5" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html"><i class="fa fa-check"></i><b>5</b> Severidad Coberturas</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#diferencia-entre-función-de-densidad-y-función-de-masa-de-probabilidad"><i class="fa fa-check"></i><b>5.1</b> Diferencia entre función de densidad y función de masa de probabilidad</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#visualización-de-variables-aleatorias-mixtas"><i class="fa fa-check"></i><b>5.1.1</b> Visualización de variables aleatorias mixtas</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#coberturas-en-seguros-reaseguros"><i class="fa fa-check"></i><b>5.2</b> Coberturas en Seguros / Reaseguros</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#coaseguro"><i class="fa fa-check"></i><b>5.2.1</b> Coaseguro</a></li>
+<li class="chapter" data-level="5.2.2" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#inflación"><i class="fa fa-check"></i><b>5.2.2</b> Inflación</a></li>
+<li class="chapter" data-level="5.2.3" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#deducibles"><i class="fa fa-check"></i><b>5.2.3</b> Deducibles</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#la-regla-de-darth-vader"><i class="fa fa-check"></i><b>5.3</b> La regla de Darth Vader</a></li>
+<li class="chapter" data-level="5.4" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#monto-máximo-de-beneficio"><i class="fa fa-check"></i><b>5.4</b> Monto máximo de beneficio</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html"><i class="fa fa-check"></i><b>6</b> Severidad combinacion de coberturas</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#contratos-con-deducible-y-monto-máximo-de-beneficio"><i class="fa fa-check"></i><b>6.1</b> Contratos con Deducible y monto máximo de beneficio</a></li>
+<li class="chapter" data-level="6.2" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#generalización-de-beneficio-y-monto-máximo"><i class="fa fa-check"></i><b>6.2</b> Generalización de beneficio y monto máximo</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#quitando-el-deducible-d0"><i class="fa fa-check"></i>Quitando el deducible d=0</a></li>
+<li class="chapter" data-level="" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#quitando-monto-máximo-de-beneficio-uinfty"><i class="fa fa-check"></i>Quitando Monto máximo de beneficio: <span class="math inline">\(u=\infty\)</span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html"><i class="fa fa-check"></i><b>7</b> Severidad (Costo por pérdida y por pago)</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html#costo-por-pago"><i class="fa fa-check"></i><b>7.1</b> Costo por pago</a></li>
+<li class="chapter" data-level="7.2" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html#cuantiles-para-las-coberturas"><i class="fa fa-check"></i><b>7.2</b> Cuantiles para las coberturas</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html#ejemplo-6"><i class="fa fa-check"></i>Ejemplo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="severidad-anexo.html"><a href="severidad-anexo.html"><i class="fa fa-check"></i><b>8</b> Severidad Anexo</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#pago-del-asegurado-con-deducible-y-monto-máximo-de-beneficio"><i class="fa fa-check"></i>Pago del asegurado con deducible y monto máximo de beneficio:</a></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#generalización-del-cálculo-de-variables-esperadas-para-y_p."><i class="fa fa-check"></i>Generalización del cálculo de variables esperadas para <span class="math inline">\(Y_p\)</span>.</a></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#generalización-de-la-fórmula-de-darth-vader."><i class="fa fa-check"></i>Generalización de la fórmula de Darth Vader.</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#ejercicio"><i class="fa fa-check"></i>Ejercicio:</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#más-deducibles"><i class="fa fa-check"></i>Más deducibles</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#ejemplo-muy-sencillo-de-como-jugar-con-el-deducible"><i class="fa fa-check"></i>Ejemplo muy sencillo de como jugar con el deducible:</a></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#solución-3"><i class="fa fa-check"></i>Solución</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html"><i class="fa fa-check"></i><b>9</b> Modelo individual bases</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#modelo-individual"><i class="fa fa-check"></i><b>9.1</b> Modelo individual</a></li>
+<li class="chapter" data-level="9.2" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#derivación-bajo-el-signo-integral"><i class="fa fa-check"></i><b>9.2</b> Derivación bajo el signo integral</a></li>
+<li class="chapter" data-level="9.3" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#teorema-de-probabilidad-total-en-el-caso-continuo"><i class="fa fa-check"></i><b>9.3</b> Teorema de probabilidad total en el caso continuo:</a></li>
+<li class="chapter" data-level="9.4" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#teorema-de-probabilidad-total-en-el-caso-discreto"><i class="fa fa-check"></i><b>9.4</b> Teorema de probabilidad total en el caso discreto:</a></li>
+<li class="chapter" data-level="9.5" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#aproximación-normal"><i class="fa fa-check"></i><b>9.5</b> Aproximación Normal</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#teorema-central-del-límite"><i class="fa fa-check"></i>TEOREMA CENTRAL DEL LÍMITE</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="modelo-individual-formula-de-pril.html"><a href="modelo-individual-formula-de-pril.html"><i class="fa fa-check"></i><b>10</b> Modelo individual: formula de Pril</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="modelo-individual-formula-de-pril.html"><a href="modelo-individual-formula-de-pril.html#formula-de-pril"><i class="fa fa-check"></i><b>10.1</b> Formula de Pril</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html"><i class="fa fa-check"></i><b>11</b> Modelo colectivo: Bases</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-colectivo"><i class="fa fa-check"></i>Modelo Colectivo</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-binomial-compuesto"><i class="fa fa-check"></i>Modelo Binomial Compuesto</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-binomial-negativo-compuesto"><i class="fa fa-check"></i>Modelo binomial negativo compuesto</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-poisson-compuesto"><i class="fa fa-check"></i>Modelo Poisson Compuesto</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#distribución-de-la-convoluación-de-poisson-compuestas"><i class="fa fa-check"></i>Distribución de la convoluación de Poisson compuestas</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#aproximaciones-de-probabilidad-del-modelo-colectivo"><i class="fa fa-check"></i>Aproximaciones de probabilidad del Modelo Colectivo</a>
+<ul>
+<li class="chapter" data-level="11.0.1" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#aproximación-normal-1"><i class="fa fa-check"></i><b>11.0.1</b> Aproximación Normal</a></li>
+<li class="chapter" data-level="11.0.2" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#aproximación-gamma-trasladada"><i class="fa fa-check"></i><b>11.0.2</b> Aproximación Gamma Trasladada</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="modelo-colectivo-formula-de-panjer.html"><a href="modelo-colectivo-formula-de-panjer.html"><i class="fa fa-check"></i><b>12</b> Modelo colectivo: Formula de Panjer</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="modelo-colectivo-formula-de-panjer.html"><a href="modelo-colectivo-formula-de-panjer.html#casos-especiales-de-panjer"><i class="fa fa-check"></i><b>12.1</b> Casos especiales de Panjer</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-formula-de-panjer.html"><a href="modelo-colectivo-formula-de-panjer.html#momento-de-s-para-panjer"><i class="fa fa-check"></i>Momento de S para Panjer</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="reaseguro.html"><a href="reaseguro.html"><i class="fa fa-check"></i><b>13</b> Reaseguro</a>
+<ul>
+<li class="chapter" data-level="" data-path="reaseguro.html"><a href="reaseguro.html#reaseguro-proporcional"><i class="fa fa-check"></i>Reaseguro proporcional</a>
+<ul>
+<li class="chapter" data-level="" data-path="reaseguro.html"><a href="reaseguro.html#reaseguro-no-proporcional"><i class="fa fa-check"></i>Reaseguro no proporcional</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html"><i class="fa fa-check"></i><b>14</b> Calculo de primas</a>
+<ul>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#propiedades-y-principios-del-cálculo-de-primas"><i class="fa fa-check"></i>Propiedades y Principios del cálculo de Primas</a>
+<ul>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-valor-esperado"><i class="fa fa-check"></i>Principio de valor esperado</a></li>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-la-varianza"><i class="fa fa-check"></i>Principio de la varianza</a></li>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-la-desviación-estándar"><i class="fa fa-check"></i>Principio de la desviación estándar</a></li>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-utilidad-cero"><i class="fa fa-check"></i>Principio de utilidad cero</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="credibilidad.html"><a href="credibilidad.html"><i class="fa fa-check"></i><b>15</b> Credibilidad</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="credibilidad.html"><a href="credibilidad.html#teoría-de-la-credibilidad"><i class="fa fa-check"></i><b>15.1</b> Teoría de la credibilidad</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="credibilidad.html"><a href="credibilidad.html#introducción-1"><i class="fa fa-check"></i><b>15.1.1</b> Introducción</a></li>
+<li class="chapter" data-level="15.1.2" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-completatotal"><i class="fa fa-check"></i><b>15.1.2</b> Credibilidad Completa/total</a></li>
+<li class="chapter" data-level="15.1.3" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-completa-bajo-hipótesis-de-normalidad"><i class="fa fa-check"></i><b>15.1.3</b> Credibilidad Completa Bajo Hipótesis de Normalidad</a></li>
+<li class="chapter" data-level="15.1.4" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-parcial"><i class="fa fa-check"></i><b>15.1.4</b> Credibilidad Parcial</a></li>
+<li class="chapter" data-level="15.1.5" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-parcial-bajo-hipótesis-de-normalidad"><i class="fa fa-check"></i><b>15.1.5</b> Credibilidad Parcial bajo Hipótesis de Normalidad</a></li>
+<li class="chapter" data-level="15.1.6" data-path="credibilidad.html"><a href="credibilidad.html#ajuste-de-primas-con-credibilidad-clásica"><i class="fa fa-check"></i><b>15.1.6</b> Ajuste de primas con credibilidad clásica</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="credibilidad.html"><a href="credibilidad.html#enfoque-bayesiano"><i class="fa fa-check"></i><b>15.2</b> Enfoque bayesiano</a></li>
+<li class="chapter" data-level="15.3" data-path="credibilidad.html"><a href="credibilidad.html#teorema-de-bayes"><i class="fa fa-check"></i><b>15.3</b> Teorema de Bayes</a></li>
+<li class="chapter" data-level="15.4" data-path="credibilidad.html"><a href="credibilidad.html#familias-conjugadas"><i class="fa fa-check"></i><b>15.4</b> Familias conjugadas</a></li>
+<li class="chapter" data-level="15.5" data-path="credibilidad.html"><a href="credibilidad.html#cálculo-bayesiano-de-primas-de-seguros"><i class="fa fa-check"></i><b>15.5</b> Cálculo Bayesiano de primas de seguros</a>
+<ul>
+<li class="chapter" data-level="" data-path="credibilidad.html"><a href="credibilidad.html#cómo-modelar-un-riesgo-para-obtener-una-prima-de-credibilidad-bayesiana"><i class="fa fa-check"></i>¿Cómo modelar un riesgo para obtener una prima de credibilidad Bayesiana?</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Teoría del Riesgo</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="calculo-de-primas" class="section level1 hasAnchor" number="14">
+<h1><span class="header-section-number">Capítulo 14</span> Calculo de primas<a href="calculo-de-primas.html#calculo-de-primas" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>A lo largo de la carrera hemos estudiado diversas formas de calcular una prima de seguros. Por ejemplo, en MASP nosotros definíamos <span class="math inline">\({T_x}\)</span> como la variable aleatoria del tiempo futuro de vida para una persona de edad <span class="math inline">\((x)\)</span>. A partir de esta, lo que hacíamos era pensar en un flujo de efectivo “$”, el cual movíamos a lo largo del tiempo <span class="math inline">\(T_x\)</span>. De esta manera, los flujos de efectivo pasaban de ser “ciertos” como en las matemáticas financieras, a ser <span class="math inline">\({Contingentes}\)</span> por el efecto de la <span class="math inline">\(v.a.\)</span>.</p>
+<p><span class="math display">\[ (\$)(1+i)^{-{T_x}}=(\$)(V^{{T_x}})= (\$){\cdot e^{-\delta {T_x}}} \]</span></p>
+<p><img src="Ima%CC%81genes/flujo.PNG" width="100%" /></p>
+<p><span class="math inline">\(V^{T_x}\)</span> es v.a.</p>
+<p>Recordemos que como <span class="math inline">\(T_x\)</span> era una <span class="math inline">\(v.a.\)</span> entonces tenía asociada una función de densidad <strong>en el caso continuo</strong>:
+<span class="math display">\[f_{T_x}(t)=~_tP_x \mu_{x+t}; \text{para} ~t\in (0,w-x)~//~ w-x=\text{límite de vida}\]</span>
+B
+ajo un contexto de seguro de personas, una suma asegurada <strong>fija</strong> <strong>SA</strong> se pagaba al <strong>instante</strong> de fallecimiento. Al ser este un momento desconocido, la <span class="math inline">\(v.a.\)</span> que indica el valor presente de la suma asegurada es: <span class="math inline">\({SA}V^{{T_x}}\)</span>. Su valor esperado se definía:</p>
+<p><span class="math display">\[{SA}\underbrace{{{A_x}}}_{notación~actuarial}= {SA} \mathbb{E}[V^{{T_x}}]= {SA} \displaystyle \int_0^{w-x}V^t f_{{T_x}}(t)dt \]</span></p>
+<p>Por otro lado el asegurado se comprometía a pagar una <strong>Prima</strong> pago que se haría hasta el momento en que la persona falleciera. En el <strong>caso discreto</strong> los pagos se ven como una anualidad vencida cuyo valor presente era modelado con la <span class="math inline">\(v.a.\)</span>:</p>
+<p><span class="math display">\[{P}\bar{a}_{{T_x}} ={P} \left(\frac{1-V^{{T_x}}}{i}\right) \]</span>
+<img src="Ima%CC%81genes/TimeLine.png" width="100%" /></p>
+<p>y generalizando esto al <strong>caso continuo</strong>, la <span class="math inline">\(v.a.\)</span> está dada por:</p>
+<p><span class="math inline">\({P}{a}_{{{T_x}}|\delta}= {P}\left( \frac{1-V^{{T_x}}}{\delta}\right)\)</span> y su valor esperado se calculaba:</p>
+<p><span class="math display">\[{P}{\bar{a_x}} = {P}\mathbb{E}
+\left[\frac{1-V^{{T_x}}}{\delta}\right]={P} \displaystyle \int_0^{w-x} \frac{1-V^t}{\delta} f_{{T_x}}(t)dt={P} \displaystyle \int_0^{w-x} \frac{1-V^t}{\delta}  _tP_x \mu_{x+t}dt\]</span></p>
+<p><em>Nota:</em> En el <strong>caso discreto</strong>, estas esperanzas se calculaban usando
+probabilidad total.</p>
+<p>Finalmente esa prima <strong>P</strong> la llamábamos <strong>Prima de Riesgo</strong> si era tal que las obligaciones entre ambas partes fueran iguales a tiempo cero (el día de hoy).</p>
+<p><span class="math display">\[{P}({\text{obligaciones futuras del asegurado}})={P}{{a}_x}={SA}{{A}_x}={SA}({\text{obligaciones futuras del asegurado}})\]</span></p>
+<p>En el mundo actuarial SOA esto se le conoce como matemáticas actuariales
+de largo plazo (Por sus siglas en inglés LTAM). Nosotros en Teoría del Riesgo veremos algunas metodologías a corto plazo (STAM).</p>
+<p>Con las herramientas que tenemos podemos definir una prima túnica que bajo la idea anterior nos cubra de una forma justa tanto para la parte del asegurado como para la compañía Prima de Riesgo y esto es tomando</p>
+<p><strong>Prima de riesgo</strong><span class="math inline">\(={P}=\mathbb{E}[{S}]\)</span></p>
+<p>Esta prima será la que cobrará la compañía de seguros.</p>
+<p>Únicamente <strong>para absorber el riesgo</strong>. Faltaría entonces agregar los gastos de administración o cualquier gasto operativo que tenga la compañía aseguradora.</p>
+<p>Resulta ser que esta prima debe ser únicamente de referencia ya que a la larga si una aseguradora cobrara la prima de riesgo podrían haber consecuencias no favorables Para ver esto consideremos un portafolio homogéneo de n pólizas de un mismo riesgo y válidas por un periodo determinado.</p>
+<p>Supongamos que cobramos la misma prima <strong>P</strong> por cada póliza y que <span class="math inline">\({S_j}\in\{ 1, \dots, n\}\)</span> representa el monto de reclamaciones efectuadas por la póliza j, tomándolas homogéneas e independientes serán v.a.i.i.d..</p>
+<p><em>Nota:</em> La v.a. S puede representar a uno o más asegurados.</p>
+<p>Sea <span class="math inline">\(u\)</span> el <strong>capital inicial</strong> de la aseguradora entonces el <strong>capital</strong> de la aseguradora <strong>al término de la vigencia de las n-pólizas es</strong>:</p>
+<p><span class="math display">\[{X_n}=\underbrace{{u}}_{capital~inicial}+n{P} -\underbrace{\sum_{j=1}^n {S_j}}_{Total~ siniestros}={u}+ \underbrace{\sum_{j=1}^n({P}-{S_j})}_{Ganancia/pérdida~por~póliza}   \]</span></p>
+<p>Notamos que tomando la esperanza de la v.a. anterior</p>
+<p><span class="math display">\[\mathbb{E}[{X_n}]={u}+ n{P}-\mathbb{E}[\sum_{j=1}^n{S_j}]= {u}+ n({P}  -\mathbb{E}[{S}] )\]</span></p>
+<p>Luego dependiendo del valor que le asignamos a {P}</p>
+<p><span class="math display">\[\lim_{n\to \infty} \mathbb{E}[{X_n}] \begin{cases}
+\infty~~~~~~si~~~~ {P}&gt;\mathbb{E}[{S}]\\
+\text{¿}{u}?~~~~si~~~~ {P}=\mathbb{E}[{S}]\\
+-\infty~~~~si~~~~ {P}&lt;\mathbb{E}[{S}]
+\end{cases}\]</span></p>
+<p>Se puede observar vía simulaciones que si <span class="math inline">\({P}=\mathbb{E}[{S}]\)</span> entonces <span class="math inline">\(\mathbb{E}{X_n}]\)</span> puede oscilar entre valores muy grandes o muy pequeños (y con pequeños, hablamos de “muy negativos”) de forma aleatoria cuando <span class="math inline">\(n\rightarrow \infty\)</span>.</p>
+<p>Lo que nos lleva a las siguientes preguntas: ¿Cómo calcular una prima?, ¿Puedo proponer una metodología?, ¿Porqué estas viendo esto si a ti te gustan las finanzas?</p>
+<div id="propiedades-y-principios-del-cálculo-de-primas" class="section level2 unnumbered hasAnchor">
+<h2>Propiedades y Principios del cálculo de Primas<a href="calculo-de-primas.html#propiedades-y-principios-del-cálculo-de-primas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Las siguientes son propiedades generales que son <strong>deseables</strong> que posea cualquier método para calcular primas:</p>
+<p><em>a)</em> <span class="math inline">\(Simplicidad:\)</span> Debe ser fácil de calcular, por ejemplo a través de esperanzas, varianzas, etc.</p>
+<p><em>Sea “<span class="math inline">\(P^{(\star)}(S)\)</span>” la prima que cobraremos al asumir el riesgo “<span class="math inline">\(S\)</span>” con la metodología (<span class="math inline">\(\star\)</span>).</em></p>
+<p><em>b)</em> <span class="math inline">\(Cota \  \ inferior:\)</span> Se debe verificar que: <span class="math inline">\(P^{(\star)}(S)\geq \mathbb{E}[S]\)</span>.</p>
+<p><em>c)</em> <span class="math inline">\(Consistencia:\)</span> Si <span class="math inline">\(a&gt;0\Rightarrow P^{(\star)}(S+a)=a+P(S).\)</span></p>
+<p><em>d)</em> <span class="math inline">\(Aditividad:\)</span> Si <span class="math inline">\(S_1 \bot S_2 \Rightarrow P^{(\star)}(S_1+S_2)=P^{(\star)}(S_1)+P^{(\star)}(S_2)\)</span>.</p>
+<p><em>e)</em> <span class="math inline">\(Invarianza\ \ de\ \ escala:\)</span> Tomemos <span class="math inline">\(c&gt;0\Rightarrow P^{(\star)}(cS)=cP^{(\star)}(S)\)</span>.</p>
+<p><em>f)</em> <span class="math inline">\(Cota\ \ superior:\)</span> Si <span class="math inline">\(\exists \mu &gt;0 \hspace{0.4em}\cdotp)\cdotp\hspace{0.4em} S\leq \mu \Rightarrow P^{(\star)}(S)\leq\mu\)</span>.</p>
+<p>Estas son propiedades <em>deseables</em>, no siempre es de interés que se cumplan.</p>
+<p>Los siguientes son algunos Principios (Metodologías) de cálculos para primas:
+(citamos repetidas veces a Luis Rincón).</p>
+<div id="principio-de-valor-esperado" class="section level3 unnumbered hasAnchor">
+<h3>Principio de valor esperado<a href="calculo-de-primas.html#principio-de-valor-esperado" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Establece que la prima puede calcularse de la siguiente manera:</p>
+<p><span class="math display">\[P^{(E)}(S)\hspace{0.4em }\ddot{=}\hspace{0.4em}(1+\theta)\mathbb{E}[S]\]</span>
+En donde <span class="math inline">\(\theta&gt;0\)</span> es una constante llamada <strong>Safety loading</strong>, la cual busca fungir como un <strong>factor de recargo</strong> para compensar los costos administrativos, entre otras cosas de la compañía de seguros.</p>
+<p><strong>En el factor de recargo se encuentran inmersos los costos administrativos y comerciales del seguro, así como los márgenes de utilidad de la aseguradora.</strong> La forma simple en la que se calculan las primas mediante este principio es una de sus características principales, sin embargo puede observarse que <strong>una desventaja de esta fórmula es que asigna la misma prima a dos riesgos con distinta distribución pero con media común, y no toma en cuenta otros aspectos. Por ejemplo, si las varianzas de los riesgos fueran distintas, entonces las primas tal vez deberían ser distintas.</strong></p>
+</div>
+<div id="principio-de-la-varianza" class="section level3 unnumbered hasAnchor">
+<h3>Principio de la varianza<a href="calculo-de-primas.html#principio-de-la-varianza" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[P^{(V)}(S)\hspace{0.4em}\ddot{=}\hspace{0.4em}\mathbb{E}[S]+\theta Var(S)\]</span></p>
+<p>Este principio hace uso de la esperanza y la varianza del riesgo. En este caso <strong>el factor de recargo <span class="math inline">\(\theta&gt;0\)</span> se aplica sobre el valor de la varianza.</strong></p>
+<p>Es importante destacar que estos principios no necesariamente cumplen todas las propiedades del cálculo de primas. Por ejemplo:</p>
+<p><span class="math inline">\(\bullet\)</span> <em>Aditividad:</em> Sean dos riesgos <span class="math inline">\(S_1\bot S_2\)</span>, ahora:
+<span class="math display">\[\begin{eqnarray*}
+    \left.
+    \begin{array}{lcc}
+        P^{V}(S_1+S_2)&amp;=&amp;\mathbb{E}[S_1+S_2]+\theta Var(S_1+S_2)\\
+        &amp;=&amp;\underbrace{\mathbb{E}[S_1]\theta Var(S_1)}+\underbrace{\mathbb{E}[S_2]+\theta Var(S_2)}\\
+        &amp;=&amp;\  P^{(V)}(S_1)\quad +\quad P^{(V)}(S_2)\quad
+    \end{array}
+    \right\}
+    \begin{array}{lcc}
+        Var(S_1+S_2) =Var(S_1)+Var(S_2)
+    \end{array}\\
+\end{eqnarray*}\]</span>
+<span class="math display">\[\therefore \mbox {Satisface aditividad}\]</span>
+<span class="math inline">\(\bullet\)</span> <em>Invarianza de escala:</em> Sea <span class="math inline">\(S\)</span> un riesgo y <span class="math inline">\(c&gt;0\)</span>:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    {
+        \left.\begin{array}{lcc}
+         {P^{(V)}(cS)=\mathbb{E}[cS]+\theta Var(cS)=c(\mathbb{E}[S]+\theta cVar(S))}  \\
+            \hspace{2.0cm}{\neq c(\mathbb{E}[S]+\theta Var(S))=cP^{V}(S)}
+        \end{array}
+        \right\} \mbox{Si } c\neq 1}
+    \end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(\therefore\)</span> No satisface la propiedad de Invarianza de escala.</p>
+</div>
+<div id="principio-de-la-desviación-estándar" class="section level3 unnumbered hasAnchor">
+<h3>Principio de la desviación estándar<a href="calculo-de-primas.html#principio-de-la-desviación-estándar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[P^{(V)}(S)\hspace{0.4em}\ddot{=}\hspace{0.4em}\mathbb{E}[S]+\theta Var(S)\]</span></p>
+<p>Sea nuevamente <span class="math inline">\(\theta&gt;0\)</span> una constante.<strong>En este principio el factor de recargo se aplica sobre la desviación estándar del riesgo</strong> como indica la fórmula que aparece arriba. <strong>A diferencia del principio de la varianza, en este caso las unidades de medición del riesgo y de la prima coinciden.Y es evidente que la prima calculada mediante este principio produce una prima menor o igual a aquella calculada mediante el principio de varianza.</strong></p>
+<p><em>Ejercicio:</em> Propón un riesgo <span class="math inline">\(S\)</span> que sirva de contra-ejemplo para está afirmación. En otras palabras, busca un riesgo <span class="math inline">\(S\)</span> tal que <span class="math inline">\(P^{(SD)}(S)&gt;P^{(V)}(S)\)</span>.</p>
+</div>
+<div id="principio-de-utilidad-cero" class="section level3 unnumbered hasAnchor">
+<h3>Principio de utilidad cero<a href="calculo-de-primas.html#principio-de-utilidad-cero" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Este principio hace uso de una función de utilidad, esto es, una función <span class="math inline">\(v(x)\)</span> definida sobre <span class="math inline">\([0,\infty)\)</span> o un subconjunto de este intervalo y con valores en <span class="math inline">\(\mathbb{R}\)</span>, que cumple las propiedades que se mencionan a continuación}</p>
+<p><span class="math inline">\(a)\)</span> Es estrictamente creciente.</p>
+<p><span class="math inline">\(b)\)</span> Es cóncava.</p>
+<p><strong>Suponiendo diferenciabilidad, la primera condición se escribe <span class="math inline">\(v&#39;(x)&gt;0\)</span>, y la segunda condición significa que <span class="math inline">\(v&#39;&#39;(x)\leq 0\)</span>.</strong> A veces se añade la condición <span class="math inline">\(v(0)=0\)</span> pues toda función de utilidad (definida en <span class="math inline">\(x=0\)</span>) puede modificarse de tal forma que cumpla esa condición sin afectar el resultado en los procesos de decisión que llevaremos a cabo usando estas funciones. La nueva función de utilidad sería <span class="math inline">\(v(x)-v(0)\)</span>.</p>
+<p>Lo que hace una función de utilidad es brindar una manera en que la entidad/individuo que está expuesto a un evento fortuito observa las cosas. Dicho de alguna forma, es la herramienta que nos permite darle peso a algo desde nuestra perspectiva, nos permite indicar preferencias, en este caso, al riesgo.</p>
+<p><img src="Ima%CC%81genes/calculo_primas1.png" width="100%" /></p>
+<p>De acuerdo al principio de utilidad cero, la prima que debemos cobrar es el número real <span class="math inline">\(P\)</span>=<span class="math inline">\(P^{(vc)}(S)\)</span> tal que:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+v({u})&amp;=&amp;\mathbb{E}[v({u}+{P}-{S})]
+\end{eqnarray*}\]</span></p>
+<p>Donde <span class="math inline">\(u\)</span> representa el capital inicial de la compañía y <span class="math inline">\(S\)</span> el riesgo a asumir. Esto significa que la utilidad del capital inicial de la compañía debe ser equivalente a la utilidad esperada al cubrir el riesgo.</p>
+<p>En general nosotros supondremos que la ecuación anterior tiene una única solución. En muchas ocasiones encontrar una solución analítica para <span class="math inline">\(P\)</span> suele ser complicado. En este caso buscaremos soluciones numéricas para este problema . A continuación, veamos un ejemplo que si tiene una solución sencilla.</p>
+<p><strong>Ejemplo:</strong></p>
+<p>Consideremos la función de utilidad: <span class="math inline">\(v(x)=1-e^{-\alpha x}: \alpha&gt;0\)</span>. (Queda como ejercicio para el lector verificar que es función de utilidad). de este manera buscamos una <span class="math inline">\(P\)</span> tal que:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    1-e^{-\alpha x}&amp;=&amp; v({u}) \quad \text{Esto queremos}\\
+    &amp;=&amp; \mathbb{E}[v( {u} + {P}  - {S}  )]\\
+    &amp;=&amp; \mathbb{E}[1-e^{-\alpha (u+P-S)}]\\
+    &amp;=&amp; 1-e^{-\alpha(u+P)}´\mathbb{E}[e^{\alpha S}\\
+    &amp;=&amp; 1-e^{-\alpha (u+P)} M_{S}(\alpha)\\
+    \Leftrightarrow e^{\alpha P}&amp;=&amp;M_{S}(\alpha)\\
+    \end{eqnarray*}\]</span></p>
+<p>Si y solo si:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    {{P} = \displaystyle\frac{1}{\alpha} ln(M_{{S}}(\alpha))}\\
+\end{eqnarray*}\]</span></p>
+<p>Nota: En este caso particular, no depende de }}
+\end{tcolorbox}
+\end{list}</p>
+<p><em>Nota:</em> En este caso particular, <span class="math inline">\(P\)</span> no depende de <span class="math inline">\(u\)</span>.</p>
+<p>Otra pregunta que viene es ¿Por qué debe ser así una función de utilidad? Recordemos que:</p>
+<p><strong>Proposición: Desigualdad de Jensen</strong></p>
+<p>Sea <span class="math inline">\(u\)</span> una función convexa ,y sea <span class="math inline">\(X\)</span> una variable aleatoria con esperanza finita.</p>
+<p><span class="math display">\[\begin{eqnarray*}
+   u(\mathbb{E}(X)) \leq \mathbb{E}(u(X))\\
+\end{eqnarray*}\]</span></p>
+<p>De aquí , sabemos que si u es convexa <span class="math inline">\(\Leftrightarrow -u \ddot{=} v\)</span> es cóncava y:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+   u(\mathbb{E}(X)) \leq \mathbb{E}[u(X)] &amp;\Leftrightarrow&amp; v(\mathbb{E}[X])=-u(\mathbb{E}[X]) \geq -\mathbb{E}[u(x)]=\mathbb{E}[v(X)]\\
+\end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(\therefore\)</span> Si <span class="math inline">\(v\)</span> es una función cóncava: <span class="math inline">\(v(\mathbb{E}[X])\geq \mathbb{E}[v(X)]\)</span></p>
+<p>Entonces si <span class="math inline">\(P\)</span> se obtiene de acuerdo al principio de utilidad cero y <span class="math inline">\(v(x)\)</span> es una función de utilidad, se satisface:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    v({u})&amp;=&amp; \mathbb{E}[v({u} + {P}   - {S})] \leq v(\mathbb{E}[{u} + {P} -{S} ])= v( {u}+{P}    - \mathbb{E}[{S}])  
+    \end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(v\)</span> <em>es cóncava y usamos Jensen</em></p>
+<p>Como <span class="math inline">\(v\)</span> es estrictamente creciente entonces tienen inversa y también es creciente. Aplicando <span class="math inline">\(v^{-1}\)</span> de ambos lados de la desigualdad, esta <strong>NO</strong> se altera y entonces:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+{u} \leq {u} + {P}  - \mathbb{E}{{S}} \Leftrightarrow  \mathbb{E}[{S}] \leq {P}
+\end{eqnarray*}\]</span></p>
+<p>Cumpliendo así una de las propiedades más importantes: <strong>Cota inferior</strong>.</p>
+<p>Si no pidiéramos que <span class="math inline">\(v\)</span> como función de utilidad, cumpliera alguno de los supuestos anteriores, no podríamos usar la prueba anterior y más aún, los resultados obtenidos podrían no cumplir la propiedad de cota inferior.</p>
+<p>Se presentan a continuación algunos ejemplos de funciones de utilidad:</p>
+<p><span class="math inline">\(a)\)</span> Función de utilidad exponencial
+<span class="math display">\[\begin{eqnarray*}
+    v(x)=1-e^{-\alpha x}, \quad \alpha &gt;0\\
+     \end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(b)\)</span> Función de utilidad cuadrática
+<span class="math display">\[\begin{eqnarray*}
+    v(x)=x-\alpha x ^{2} \quad \alpha &gt;0, \quad \text{para} 0\leq x \leq 1/(2a)\\
+     \end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(c)\)</span> Función de utilidad logarítmica
+<span class="math display">\[\begin{eqnarray*}
+    v(x)=a ln(x), \quad \alpha &gt;0\\
+     \end{eqnarray*}\]</span></p>
+<p><span class="math inline">\(d)\)</span> Función de utilidad de potencia fraccional
+<span class="math display">\[\begin{eqnarray*}
+    v(x)=x^{\alpha}, \quad 0&lt; \alpha \leq 1\\
+     \end{eqnarray*}\]</span></p>
+<p>Existen más y diversas formas de calcular la prima correspondiente a un riesgo que buscamos asumir. A continuación mostramos una serie de vídeos que explican lo anterior y más principios (metodologías). Al final, en la práctica cada aseguradora tiene su metodología técnica (a veces “ultra-secreta”) de hacer esta clase de cálculos.</p>
+<p><em>Propiedades generales</em></p>
+<p><img src="Ima%CC%81genes/14.%20a.png" width="100%" /></p>
+<p><em>Figura 1:</em> <a href="https://www.youtube.com/watch?v=QSqioUk8di8" class="uri">https://www.youtube.com/watch?v=QSqioUk8di8</a></p>
+<p><em>¿Por qué: <span class="math inline">\(P \geq \mathbb{E}[S]\)</span> ?</em></p>
+<p><img src="Ima%CC%81genes/14.%20b.png" width="100%" /></p>
+<p><em>Figura 2:</em> <a href="https://www.youtube.com/watch?v=Wk4rj2X5QKU" class="uri">https://www.youtube.com/watch?v=Wk4rj2X5QKU</a></p>
+<p><em>Principio de valor esperado</em></p>
+<p><img src="Ima%CC%81genes/14.%20c.png" width="100%" /></p>
+<p><em>Figura 3:</em> <a href="https://www.youtube.com/watch?v=4rgG755GrzI" class="uri">https://www.youtube.com/watch?v=4rgG755GrzI</a></p>
+<p><em>Principio de la Varianza</em></p>
+<p><img src="Ima%CC%81genes/14.%20d.png" width="100%" /></p>
+<p><em>Figura 4:</em> <a href="https://www.youtube.com/watch?v=8Gueak3JbmQ" class="uri">https://www.youtube.com/watch?v=8Gueak3JbmQ</a></p>
+<p><em>Principio de la desviación estándar</em></p>
+<p><img src="Ima%CC%81genes/14.%20e.png" width="100%" /></p>
+<p><em>Figura 5:</em> <a href="https://www.youtube.com/watch?v=0PO_1paX6q0" class="uri">https://www.youtube.com/watch?v=0PO_1paX6q0</a></p>
+<p><em>Principio de utilidad cero</em></p>
+<p><img src="Ima%CC%81genes/14.%20f.png" width="100%" /></p>
+<p><em>Figura 6:</em> <a href="https://www.youtube.com/watch?v=FTjJNnmtXEQ" class="uri">https://www.youtube.com/watch?v=FTjJNnmtXEQ</a></p>
+<p><em>Un caso particular: Principio exponencial</em></p>
+<p><img src="Ima%CC%81genes/14.%20g.png" width="100%" /></p>
+<p><em>Figura 7:</em> <a href="https://www.youtube.com/watch?v=G-kdmOvGQaM" class="uri">https://www.youtube.com/watch?v=G-kdmOvGQaM</a></p>
+<p><em>Similar al de utilidad cero, tenemos: Principio de valor medio</em></p>
+<p><img src="Ima%CC%81genes/14.%20h.png" width="100%" /></p>
+<p><em>Figura 8:</em> <a href="https://www.youtube.com/watch?v=zZBLfA0smzM" class="uri">https://www.youtube.com/watch?v=zZBLfA0smzM</a></p>
+<p><em>Usando una idea similar al VaR para la prima: Principio del porcentaje</em></p>
+<p><img src="Ima%CC%81genes/14.%20i.png" width="100%" /></p>
+<p><em>Figura 9:</em> <a href="https://www.youtube.com/watch?v=fB9YgXOfWJI" class="uri">https://www.youtube.com/watch?v=fB9YgXOfWJI</a></p>
+<p>Algunas metodologías más elegantes:</p>
+<p><em>Principio Esscher</em>
+<img src="Ima%CC%81genes/14.%20j.png" width="100%" /></p>
+<p><em>Figura 10:</em> <a href="https://www.youtube.com/watch?v=GrLNmeDKbec" class="uri">https://www.youtube.com/watch?v=GrLNmeDKbec</a></p>
+<p><em>Principio de riesgo ajustado</em></p>
+<p><img src="Ima%CC%81genes/14.%20k.png" width="100%" /></p>
+<p><em>Figura 11:</em> <a href="https://www.youtube.com/watch?v=qUnqBKJBXPI" class="uri">https://www.youtube.com/watch?v=qUnqBKJBXPI</a></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="reaseguro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="credibilidad.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/13-CalculoDePrimas.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Notas_TeoriadelRiesgo.pdf", "Notas_TeoriadelRiesgo.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

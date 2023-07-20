@@ -1,0 +1,360 @@
+# Calculo de primas
+
+A lo largo de la carrera hemos estudiado diversas formas de calcular una prima de seguros. Por ejemplo, en MASP nosotros definíamos ${T_x}$ como la variable aleatoria del tiempo futuro de vida para una persona de edad $(x)$. A partir de esta, lo que hacíamos era pensar en un flujo de efectivo "\$", el cual movíamos a lo largo del tiempo $T_x$. De esta manera, los flujos de efectivo pasaban de ser "ciertos" como en las matemáticas financieras, a ser ${Contingentes}$ por el efecto de la $v.a.$.
+
+$$ (\$)(1+i)^{-{T_x}}=(\$)(V^{{T_x}})= (\$){\cdot e^{-\delta {T_x}}} $$
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/flujo.PNG", error=FALSE)
+```
+
+$V^{T_x}$ es v.a.
+
+Recordemos que como $T_x$ era una $v.a.$ entonces tenía asociada una función de densidad **en el caso continuo**:
+$$f_{T_x}(t)=~_tP_x \mu_{x+t}; \text{para} ~t\in (0,w-x)~//~ w-x=\text{límite de vida}$$
+B
+ajo un contexto de seguro de personas, una suma asegurada **fija** **SA** se pagaba al **instante** de fallecimiento. Al ser este un momento desconocido, la $v.a.$ que indica el valor presente de la suma asegurada es: ${SA}V^{{T_x}}$. Su valor esperado se definía:
+
+$${SA}\underbrace{{{A_x}}}_{notación~actuarial}= {SA} \mathbb{E}[V^{{T_x}}]= {SA} \displaystyle \int_0^{w-x}V^t f_{{T_x}}(t)dt $$
+
+Por otro lado el asegurado se comprometía a pagar una **Prima** pago que se haría hasta el momento en que la persona falleciera. En el **caso discreto** los pagos se ven como una anualidad vencida cuyo valor presente era modelado con la $v.a.$: 
+
+$${P}\bar{a}_{{T_x}} ={P} \left(\frac{1-V^{{T_x}}}{i}\right) $$
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/TimeLine.png", error=FALSE)
+```
+
+y generalizando esto al **caso continuo**, la $v.a.$ está dada por:
+
+${P}{a}_{{{T_x}}|\delta}= {P}\left( \frac{1-V^{{T_x}}}{\delta}\right)$ y su valor esperado se calculaba:
+
+$${P}{\bar{a_x}} = {P}\mathbb{E}
+\left[\frac{1-V^{{T_x}}}{\delta}\right]={P} \displaystyle \int_0^{w-x} \frac{1-V^t}{\delta} f_{{T_x}}(t)dt={P} \displaystyle \int_0^{w-x} \frac{1-V^t}{\delta}  _tP_x \mu_{x+t}dt$$
+
+_Nota:_ En el **caso discreto**, estas esperanzas se calculaban usando
+probabilidad total.
+
+Finalmente esa prima **P** la llamábamos **Prima de Riesgo** si era tal que las obligaciones entre ambas partes fueran iguales a tiempo cero (el día de hoy).
+
+$${P}({\text{obligaciones futuras del asegurado}})={P}{{a}_x}={SA}{{A}_x}={SA}({\text{obligaciones futuras del asegurado}})$$
+
+En el mundo actuarial SOA esto se le conoce como matemáticas actuariales
+de largo plazo (Por sus siglas en inglés LTAM).  Nosotros en Teoría del Riesgo veremos algunas metodologías a corto plazo (STAM).
+
+Con las herramientas que tenemos podemos definir una prima túnica que bajo la idea anterior nos cubra de una forma justa tanto para la parte del asegurado como para la compañía Prima de Riesgo y esto es tomando
+
+**Prima de riesgo**$={P}=\mathbb{E}[{S}]$
+
+Esta prima será la que cobrará la compañía de seguros.
+
+Únicamente **para absorber el riesgo**. Faltaría entonces agregar los gastos de administración o cualquier gasto operativo que tenga la compañía aseguradora.
+
+Resulta ser que esta prima debe ser únicamente de referencia ya que a la larga si una aseguradora cobrara la prima de riesgo podrían haber consecuencias no favorables Para ver esto consideremos un portafolio homogéneo de n pólizas de un mismo riesgo y válidas por un periodo determinado.
+
+Supongamos que cobramos la misma prima **P** por cada póliza y que ${S_j}\in\{ 1, \dots, n\}$ representa el monto de reclamaciones efectuadas por la póliza j, tomándolas homogéneas e independientes serán v.a.i.i.d..
+
+_Nota:_ La v.a. S puede representar a uno o más asegurados.
+
+
+Sea $u$ el **capital inicial** de la aseguradora entonces el **capital** de la aseguradora **al término de la vigencia de las n-pólizas es**:
+
+$${X_n}=\underbrace{{u}}_{capital~inicial}+n{P} -\underbrace{\sum_{j=1}^n {S_j}}_{Total~ siniestros}={u}+ \underbrace{\sum_{j=1}^n({P}-{S_j})}_{Ganancia/pérdida~por~póliza}   $$
+
+Notamos que tomando la esperanza de la v.a. anterior
+
+$$\mathbb{E}[{X_n}]={u}+ n{P}-\mathbb{E}[\sum_{j=1}^n{S_j}]= {u}+ n({P}  -\mathbb{E}[{S}] )$$
+
+Luego dependiendo del valor que le asignamos a {P}
+
+$$\lim_{n\to \infty} \mathbb{E}[{X_n}] \begin{cases} 
+\infty~~~~~~si~~~~ {P}>\mathbb{E}[{S}]\\
+\text{¿}{u}?~~~~si~~~~ {P}=\mathbb{E}[{S}]\\
+-\infty~~~~si~~~~ {P}<\mathbb{E}[{S}]
+\end{cases}$$
+
+Se puede observar vía simulaciones que si ${P}=\mathbb{E}[{S}]$ entonces $\mathbb{E}{X_n}]$ puede oscilar entre valores muy grandes o muy pequeños (y con pequeños, hablamos de "muy negativos") de forma aleatoria cuando $n\rightarrow \infty$.
+
+Lo que nos lleva a las siguientes preguntas: ¿Cómo calcular una prima?, ¿Puedo proponer una metodología?, ¿Porqué estas viendo esto si a ti te gustan las finanzas?
+
+
+## Propiedades y Principios del cálculo de Primas {-}
+
+Las siguientes son propiedades generales que son **deseables** que posea cualquier método para calcular primas:
+
+_a)_ $Simplicidad:$ Debe ser fácil de calcular, por ejemplo a través de esperanzas, varianzas, etc.
+
+_Sea "$P^{(\star)}(S)$" la prima que cobraremos al asumir el riesgo "$S$" con la metodología ($\star$)._
+
+_b)_ $Cota \  \ inferior:$ Se debe verificar que: $P^{(\star)}(S)\geq \mathbb{E}[S]$.
+
+_c)_ $Consistencia:$ Si $a>0\Rightarrow P^{(\star)}(S+a)=a+P(S).$
+
+_d)_ $Aditividad:$ Si $S_1 \bot S_2 \Rightarrow P^{(\star)}(S_1+S_2)=P^{(\star)}(S_1)+P^{(\star)}(S_2)$.
+
+_e)_ $Invarianza\ \ de\ \ escala:$ Tomemos $c>0\Rightarrow P^{(\star)}(cS)=cP^{(\star)}(S)$.
+
+_f)_ $Cota\ \ superior:$ Si $\exists \mu >0 \hspace{0.4em}\cdotp)\cdotp\hspace{0.4em} S\leq \mu \Rightarrow P^{(\star)}(S)\leq\mu$.
+
+Estas son propiedades _deseables_, no siempre es de interés que se cumplan.
+
+Los siguientes son algunos Principios (Metodologías) de cálculos para primas:
+(citamos repetidas veces a Luis Rincón).
+
+### Principio de valor esperado {-}
+
+Establece que la prima puede calcularse de la siguiente manera:
+
+$$P^{(E)}(S)\hspace{0.4em }\ddot{=}\hspace{0.4em}(1+\theta)\mathbb{E}[S]$$
+En donde $\theta>0$ es una constante llamada **Safety loading**, la cual busca fungir como un **factor de recargo** para compensar los costos administrativos, entre otras cosas de la compañía de seguros.
+
+**En el factor de recargo se encuentran inmersos los costos administrativos y comerciales del seguro, así como los márgenes de utilidad de la aseguradora.** La forma simple en la que se calculan las primas mediante este principio es una de sus características principales, sin embargo puede observarse que **una desventaja de esta fórmula es que asigna la misma prima a dos riesgos con distinta distribución pero con media común, y no toma en cuenta otros aspectos. Por ejemplo, si las varianzas de los riesgos fueran distintas, entonces las primas tal vez deberían ser distintas.**
+
+### Principio de la varianza  {-}
+
+$$P^{(V)}(S)\hspace{0.4em}\ddot{=}\hspace{0.4em}\mathbb{E}[S]+\theta Var(S)$$
+
+Este principio hace uso de la esperanza y la varianza del riesgo. En este caso **el factor de recargo $\theta>0$ se aplica sobre el valor de la varianza.**
+
+Es importante destacar que estos principios no necesariamente cumplen  todas las propiedades del cálculo de primas. Por ejemplo:
+
+$\bullet$ _Aditividad:_ Sean dos riesgos $S_1\bot S_2$, ahora:
+   \begin{eqnarray*}
+    \left.
+    \begin{array}{lcc}
+        P^{V}(S_1+S_2)&=&\mathbb{E}[S_1+S_2]+\theta Var(S_1+S_2)\\
+        &=&\underbrace{\mathbb{E}[S_1]\theta Var(S_1)}+\underbrace{\mathbb{E}[S_2]+\theta Var(S_2)}\\
+        &=&\  P^{(V)}(S_1)\quad +\quad P^{(V)}(S_2)\quad 
+    \end{array}
+    \right\}
+    \begin{array}{lcc}
+        Var(S_1+S_2) =Var(S_1)+Var(S_2)
+    \end{array}\\
+\end{eqnarray*}
+$$\therefore \mbox {Satisface aditividad}$$
+$\bullet$ _Invarianza de escala:_ Sea $S$ un riesgo y $c>0$:
+
+\begin{eqnarray*}
+    {
+        \left.\begin{array}{lcc}
+         {P^{(V)}(cS)=\mathbb{E}[cS]+\theta Var(cS)=c(\mathbb{E}[S]+\theta cVar(S))}  \\
+            \hspace{2.0cm}{\neq c(\mathbb{E}[S]+\theta Var(S))=cP^{V}(S)} 
+        \end{array}
+        \right\} \mbox{Si } c\neq 1}
+    \end{eqnarray*}
+    
+$\therefore$ No satisface la propiedad de Invarianza de escala.
+
+### Principio de la desviación estándar {-}
+$$P^{(V)}(S)\hspace{0.4em}\ddot{=}\hspace{0.4em}\mathbb{E}[S]+\theta Var(S)$$
+
+Sea nuevamente $\theta>0$ una constante.**En este principio el factor de recargo se aplica sobre la desviación estándar del riesgo** como indica la fórmula que aparece arriba. **A diferencia del principio de la varianza, en este caso las unidades de medición del riesgo y de la prima coinciden.Y es evidente que la prima calculada mediante este principio produce una prima menor o igual a aquella calculada mediante el principio de varianza.**
+
+_Ejercicio:_ Propón un riesgo $S$ que sirva de contra-ejemplo para está afirmación. En otras palabras, busca un riesgo $S$ tal que $P^{(SD)}(S)>P^{(V)}(S)$.
+
+### Principio de utilidad cero {-}
+
+Este principio hace uso de una función de utilidad, esto es, una función $v(x)$ definida sobre $[0,\infty)$ o un subconjunto de este intervalo y con valores en $\mathbb{R}$, que cumple las propiedades que se mencionan a continuación}
+
+$a)$ Es estrictamente creciente.
+
+$b)$ Es cóncava.
+
+
+**Suponiendo diferenciabilidad, la primera condición se escribe $v'(x)>0$, y la segunda condición significa que $v''(x)\leq 0$.** A veces se añade la condición $v(0)=0$ pues toda función de utilidad (definida en $x=0$) puede modificarse de tal forma que cumpla esa condición sin afectar el resultado en los procesos de decisión que llevaremos a cabo usando estas funciones. La nueva función de utilidad sería $v(x)-v(0)$.
+
+Lo que hace una función de utilidad es brindar una manera en que la entidad/individuo que está expuesto a un evento fortuito observa las cosas. Dicho de alguna forma, es la herramienta que nos permite darle peso a algo desde nuestra perspectiva, nos permite indicar preferencias, en este caso, al riesgo.
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/calculo_primas1.png", error=FALSE)
+```
+
+De acuerdo al principio de utilidad cero, la prima que debemos cobrar es el número real $P$=$P^{(vc)}(S)$ tal que: 
+
+\begin{eqnarray*}
+v({u})&=&\mathbb{E}[v({u}+{P}-{S})]
+\end{eqnarray*}
+
+Donde $u$ representa el capital inicial de la compañía y $S$ el riesgo a asumir. Esto significa que la utilidad del capital inicial de la compañía debe ser equivalente a la utilidad esperada al cubrir el riesgo.
+
+En general nosotros supondremos que la ecuación anterior tiene una única solución. En muchas ocasiones encontrar una solución analítica para $P$  suele ser complicado. En este caso buscaremos soluciones numéricas para este problema . A continuación, veamos un ejemplo que si tiene una solución sencilla.
+
+**Ejemplo:**
+
+ Consideremos la función de utilidad: $v(x)=1-e^{-\alpha x}: \alpha>0$. (Queda como ejercicio para el lector verificar que es función de utilidad). de este manera buscamos una $P$ tal que:
+ 
+\begin{eqnarray*}
+    1-e^{-\alpha x}&=& v({u}) \quad \text{Esto queremos}\\
+    &=& \mathbb{E}[v( {u} + {P}  - {S}  )]\\
+    &=& \mathbb{E}[1-e^{-\alpha (u+P-S)}]\\
+    &=& 1-e^{-\alpha(u+P)}´\mathbb{E}[e^{\alpha S}\\
+    &=& 1-e^{-\alpha (u+P)} M_{S}(\alpha)\\
+    \Leftrightarrow e^{\alpha P}&=&M_{S}(\alpha)\\
+    \end{eqnarray*}
+    
+Si y solo si:
+  
+\begin{eqnarray*}
+    {{P} = \displaystyle\frac{1}{\alpha} ln(M_{{S}}(\alpha))}\\
+\end{eqnarray*}
+
+Nota: En este caso particular, \textcolor{compara}{P} no depende de \textcolor{rred}{u}}}
+\end{tcolorbox}
+\end{list}
+
+_Nota:_ En este caso particular, $P$ no depende de $u$.
+
+Otra pregunta que viene es ¿Por qué debe ser así una función de utilidad? Recordemos que:
+
+**Proposición: Desigualdad de Jensen**
+
+Sea $u$ una función convexa ,y sea $X$ una variable aleatoria con esperanza finita.
+
+\begin{eqnarray*}
+   u(\mathbb{E}(X)) \leq \mathbb{E}(u(X))\\
+\end{eqnarray*}
+
+De aquí , sabemos que si u es convexa $\Leftrightarrow -u \ddot{=} v$ es cóncava y:
+
+\begin{eqnarray*}
+   u(\mathbb{E}(X)) \leq \mathbb{E}[u(X)] &\Leftrightarrow& v(\mathbb{E}[X])=-u(\mathbb{E}[X]) \geq -\mathbb{E}[u(x)]=\mathbb{E}[v(X)]\\
+\end{eqnarray*}
+
+ $\therefore$ Si $v$ es una función cóncava: $v(\mathbb{E}[X])\geq \mathbb{E}[v(X)]$
+ 
+ Entonces si $P$ se obtiene de acuerdo al principio de utilidad cero y $v(x)$ es una función de utilidad, se satisface: 
+ 
+\begin{eqnarray*}
+    v({u})&=& \mathbb{E}[v({u} + {P}   - {S})] \leq v(\mathbb{E}[{u} + {P} -{S} ])= v( {u}+{P}    - \mathbb{E}[{S}])  
+    \end{eqnarray*}
+
+$v$ _es cóncava y usamos Jensen_
+
+Como $v$ es estrictamente creciente entonces tienen inversa y también es creciente. Aplicando $v^{-1}$ de ambos lados de la desigualdad, esta **NO** se altera y entonces: 
+
+\begin{eqnarray*}
+ {u} \leq {u} + {P}  - \mathbb{E}{{S}} \Leftrightarrow  \mathbb{E}[{S}] \leq {P}
+\end{eqnarray*}
+
+Cumpliendo así una de las propiedades más importantes: **Cota inferior**.
+
+Si no pidiéramos que $v$ como función de utilidad, cumpliera alguno de los supuestos anteriores, no podríamos  usar la prueba anterior y más aún, los resultados obtenidos podrían no cumplir la propiedad de cota inferior. 
+
+Se presentan a continuación algunos ejemplos de funciones de utilidad:
+
+$a)$ Función de utilidad exponencial
+     \begin{eqnarray*}
+    v(x)=1-e^{-\alpha x}, \quad \alpha >0\\
+     \end{eqnarray*}
+     
+$b)$ Función de utilidad cuadrática
+     \begin{eqnarray*}
+    v(x)=x-\alpha x ^{2} \quad \alpha >0, \quad \text{para} 0\leq x \leq 1/(2a)\\
+     \end{eqnarray*}
+     
+$c)$ Función de utilidad logarítmica 
+     \begin{eqnarray*}
+    v(x)=a ln(x), \quad \alpha >0\\
+     \end{eqnarray*}
+     
+$d)$ Función de utilidad de potencia fraccional
+     \begin{eqnarray*}
+    v(x)=x^{\alpha}, \quad 0< \alpha \leq 1\\
+     \end{eqnarray*}
+    
+Existen más y diversas formas de calcular la prima correspondiente  a un riesgo que buscamos asumir. A continuación mostramos una serie de vídeos que explican lo anterior y más principios (metodologías). Al final, en la práctica cada aseguradora tiene su metodología técnica (a veces "ultra-secreta") de hacer esta clase de cálculos.
+
+_Propiedades generales_
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/14. a.png", error=FALSE)
+```
+
+_Figura 1:_ https://www.youtube.com/watch?v=QSqioUk8di8
+
+
+_¿Por qué: $P \geq \mathbb{E}[S]$ ?_
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/14. b.png", error=FALSE)
+```
+
+_Figura 2:_ https://www.youtube.com/watch?v=Wk4rj2X5QKU
+
+_Principio de valor esperado_
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/14. c.png", error=FALSE)
+```
+
+_Figura 3:_ https://www.youtube.com/watch?v=4rgG755GrzI
+
+_Principio de la Varianza_
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/14. d.png", error=FALSE)
+```
+
+_Figura 4:_ https://www.youtube.com/watch?v=8Gueak3JbmQ
+
+_Principio de la desviación estándar_
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/14. e.png", error=FALSE)
+```
+
+_Figura 5:_ https://www.youtube.com/watch?v=0PO_1paX6q0
+
+_Principio de utilidad cero_
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/14. f.png", error=FALSE)
+```
+
+_Figura 6:_ https://www.youtube.com/watch?v=FTjJNnmtXEQ
+
+_Un caso particular: Principio exponencial_
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/14. g.png", error=FALSE)
+```
+
+_Figura 7:_ https://www.youtube.com/watch?v=G-kdmOvGQaM
+
+_Similar al de utilidad cero, tenemos: Principio de valor medio_
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/14. h.png", error=FALSE)
+```
+
+_Figura 8:_ https://www.youtube.com/watch?v=zZBLfA0smzM
+
+_Usando una idea similar al VaR para la prima: Principio del porcentaje_
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/14. i.png", error=FALSE)
+```
+
+_Figura 9:_ https://www.youtube.com/watch?v=fB9YgXOfWJI
+
+Algunas metodologías más elegantes:
+
+_Principio Esscher_
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/14. j.png", error=FALSE)
+```
+
+_Figura 10:_ https://www.youtube.com/watch?v=GrLNmeDKbec
+
+_Principio de riesgo ajustado_
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/14. k.png", error=FALSE)
+```
+
+_Figura 11:_ https://www.youtube.com/watch?v=qUnqBKJBXPI
+
+
+
+
+
+

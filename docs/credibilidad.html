@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 15 Credibilidad | Teoría del Riesgo</title>
+  <meta name="description" content="Descripcion" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 15 Credibilidad | Teoría del Riesgo" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Descripcion" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 15 Credibilidad | Teoría del Riesgo" />
+  
+  <meta name="twitter:description" content="Descripcion" />
+  
+
+<meta name="author" content="Cinthya Denisse González Mendoza :o" />
+
+
+<meta name="date" content="2023-07-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="calculo-de-primas.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notas de Teoría del Riesgo</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Conceptos básicos y preeliminares</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#introducción"><i class="fa fa-check"></i><b>1.1</b> Introducción</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#algunos-antecedentes-históricos"><i class="fa fa-check"></i><b>1.2</b> Algunos antecedentes históricos</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#algunos-términos-del-seguro"><i class="fa fa-check"></i><b>1.3</b> Algunos términos del seguro</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#seguro"><i class="fa fa-check"></i>Seguro:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#riesgo"><i class="fa fa-check"></i>Riesgo:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#siniestro"><i class="fa fa-check"></i>Siniestro:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asegurador"><i class="fa fa-check"></i>Asegurador:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asegurado"><i class="fa fa-check"></i>Asegurado:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#beneficiario"><i class="fa fa-check"></i>Beneficiario:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#póliza"><i class="fa fa-check"></i>Póliza:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#prima"><i class="fa fa-check"></i>Prima:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#clase-de-primas"><i class="fa fa-check"></i><b>1.4</b> Clase de primas:</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#clasificación-de-los-seguros"><i class="fa fa-check"></i><b>1.5</b> Clasificación de los seguros</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#distribuciones-clásicas-en-teoría-del-riesgo"><i class="fa fa-check"></i><b>1.6</b> Distribuciones clásicas en Teoría del Riesgo</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asociadas-al-monto-de-una-pérdida"><i class="fa fa-check"></i>Asociadas al monto de una pérdida</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#familias-paramétricas-para-modelar-el-monto-de-riesgo"><i class="fa fa-check"></i><b>1.7</b> Familias paramétricas para modelar el monto de riesgo</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#exponencial"><i class="fa fa-check"></i>Exponencial</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#gamma"><i class="fa fa-check"></i>Gamma</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#log---normal"><i class="fa fa-check"></i>Log - Normal</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#weibull"><i class="fa fa-check"></i>Weibull</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#burr"><i class="fa fa-check"></i>Burr</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#pareto"><i class="fa fa-check"></i>Pareto</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#modelación-del-riesgo"><i class="fa fa-check"></i><b>1.8</b> Modelación del riesgo</a></li>
+<li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#ajuste-de-funciones-de-probabilidad"><i class="fa fa-check"></i><b>1.9</b> Ajuste de funciones de probabilidad</a></li>
+<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#reconocimiento-del-modelo"><i class="fa fa-check"></i><b>1.10</b> Reconocimiento del modelo</a>
+<ul>
+<li class="chapter" data-level="1.10.1" data-path="index.html"><a href="index.html#moda-de-una-función-de-densidad"><i class="fa fa-check"></i><b>1.10.1</b> Moda de una función de densidad</a></li>
+<li class="chapter" data-level="1.10.2" data-path="index.html"><a href="index.html#coeficiente-de-asimetría-skewness"><i class="fa fa-check"></i><b>1.10.2</b> Coeficiente de asimetría (Skewness)</a></li>
+<li class="chapter" data-level="1.10.3" data-path="index.html"><a href="index.html#coeficiente-de-kurtosis"><i class="fa fa-check"></i><b>1.10.3</b> Coeficiente de Kurtosis</a></li>
+<li class="chapter" data-level="1.10.4" data-path="index.html"><a href="index.html#función-de-distribución-empírica"><i class="fa fa-check"></i><b>1.10.4</b> Función de distribución empírica</a></li>
+<li class="chapter" data-level="1.10.5" data-path="index.html"><a href="index.html#cuantiles"><i class="fa fa-check"></i><b>1.10.5</b> Cuantiles</a></li>
+<li class="chapter" data-level="1.10.6" data-path="index.html"><a href="index.html#rango-intercuantílico"><i class="fa fa-check"></i><b>1.10.6</b> Rango intercuantílico</a></li>
+</ul></li>
+<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#estimación-de-parámetros"><i class="fa fa-check"></i><b>1.11</b> Estimación de parámetros</a>
+<ul>
+<li class="chapter" data-level="1.11.1" data-path="index.html"><a href="index.html#método-de-momentos"><i class="fa fa-check"></i><b>1.11.1</b> Método de momentos</a></li>
+<li class="chapter" data-level="1.11.2" data-path="index.html"><a href="index.html#máxima-verosimilitud"><i class="fa fa-check"></i><b>1.11.2</b> Máxima verosimilitud</a></li>
+</ul></li>
+<li class="chapter" data-level="1.12" data-path="index.html"><a href="index.html#pruebas-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>1.12</b> Pruebas de bondad de ajuste</a>
+<ul>
+<li class="chapter" data-level="1.12.1" data-path="index.html"><a href="index.html#planteamiento-general-de-una-prueba-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>1.12.1</b> Planteamiento general de una prueba de bondad de ajuste</a></li>
+<li class="chapter" data-level="1.12.2" data-path="index.html"><a href="index.html#algunas-pruebas-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>1.12.2</b> Algunas pruebas de bondad de ajuste</a></li>
+</ul></li>
+<li class="chapter" data-level="1.13" data-path="index.html"><a href="index.html#cómo-leer-un-p-value"><i class="fa fa-check"></i><b>1.13</b> ¿Cómo leer un p-value?</a>
+<ul>
+<li class="chapter" data-level="1.13.1" data-path="index.html"><a href="index.html#región-de-rechazo-y-no-rechazo"><i class="fa fa-check"></i><b>1.13.1</b> Región de Rechazo y no rechazo:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.14" data-path="index.html"><a href="index.html#el-proceso-de-modelación-del-riesgo"><i class="fa fa-check"></i><b>1.14</b> El proceso de modelación del Riesgo</a>
+<ul>
+<li class="chapter" data-level="1.14.1" data-path="index.html"><a href="index.html#el-proceso-de-modelado"><i class="fa fa-check"></i><b>1.14.1</b> El proceso de modelado</a></li>
+<li class="chapter" data-level="1.14.2" data-path="index.html"><a href="index.html#pasos"><i class="fa fa-check"></i><b>1.14.2</b> Pasos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html"><i class="fa fa-check"></i><b>2</b> Medidas de Riesgo</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#distribuciones-para-valores-extremos"><i class="fa fa-check"></i><b>2.1</b> Distribuciones para valores extremos</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#teoría-de-valores-extremos"><i class="fa fa-check"></i><b>2.1.1</b> Teoría de valores extremos</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#distribuciones-de-valores-extremos"><i class="fa fa-check"></i>Distribuciones de valores extremos</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#ejemplo-1-2"><i class="fa fa-check"></i>Ejemplo 1</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#ejemplo-2-1"><i class="fa fa-check"></i>Ejemplo 2</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#var-t-var"><i class="fa fa-check"></i><b>2.2</b> VaR &amp; T-VaR</a>
+<ul>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#var"><i class="fa fa-check"></i>VaR</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#t-var"><i class="fa fa-check"></i>T-VaR</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="frecuencia.html"><a href="frecuencia.html"><i class="fa fa-check"></i><b>3</b> Frecuencia</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="frecuencia.html"><a href="frecuencia.html#frecuencia-1"><i class="fa fa-check"></i><b>3.1</b> Frecuencia</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="frecuencia.html"><a href="frecuencia.html#familia-ab0"><i class="fa fa-check"></i><b>3.1.1</b> Familia (a,b,0)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="frecuencia-anexo.html"><a href="frecuencia-anexo.html"><i class="fa fa-check"></i><b>4</b> Frecuencia Anexo</a></li>
+<li class="chapter" data-level="5" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html"><i class="fa fa-check"></i><b>5</b> Severidad Coberturas</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#diferencia-entre-función-de-densidad-y-función-de-masa-de-probabilidad"><i class="fa fa-check"></i><b>5.1</b> Diferencia entre función de densidad y función de masa de probabilidad</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#visualización-de-variables-aleatorias-mixtas"><i class="fa fa-check"></i><b>5.1.1</b> Visualización de variables aleatorias mixtas</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#coberturas-en-seguros-reaseguros"><i class="fa fa-check"></i><b>5.2</b> Coberturas en Seguros / Reaseguros</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#coaseguro"><i class="fa fa-check"></i><b>5.2.1</b> Coaseguro</a></li>
+<li class="chapter" data-level="5.2.2" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#inflación"><i class="fa fa-check"></i><b>5.2.2</b> Inflación</a></li>
+<li class="chapter" data-level="5.2.3" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#deducibles"><i class="fa fa-check"></i><b>5.2.3</b> Deducibles</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#la-regla-de-darth-vader"><i class="fa fa-check"></i><b>5.3</b> La regla de Darth Vader</a></li>
+<li class="chapter" data-level="5.4" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#monto-máximo-de-beneficio"><i class="fa fa-check"></i><b>5.4</b> Monto máximo de beneficio</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html"><i class="fa fa-check"></i><b>6</b> Severidad combinacion de coberturas</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#contratos-con-deducible-y-monto-máximo-de-beneficio"><i class="fa fa-check"></i><b>6.1</b> Contratos con Deducible y monto máximo de beneficio</a></li>
+<li class="chapter" data-level="6.2" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#generalización-de-beneficio-y-monto-máximo"><i class="fa fa-check"></i><b>6.2</b> Generalización de beneficio y monto máximo</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#quitando-el-deducible-d0"><i class="fa fa-check"></i>Quitando el deducible d=0</a></li>
+<li class="chapter" data-level="" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#quitando-monto-máximo-de-beneficio-uinfty"><i class="fa fa-check"></i>Quitando Monto máximo de beneficio: <span class="math inline">\(u=\infty\)</span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html"><i class="fa fa-check"></i><b>7</b> Severidad (Costo por pérdida y por pago)</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html#costo-por-pago"><i class="fa fa-check"></i><b>7.1</b> Costo por pago</a></li>
+<li class="chapter" data-level="7.2" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html#cuantiles-para-las-coberturas"><i class="fa fa-check"></i><b>7.2</b> Cuantiles para las coberturas</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html#ejemplo-6"><i class="fa fa-check"></i>Ejemplo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="severidad-anexo.html"><a href="severidad-anexo.html"><i class="fa fa-check"></i><b>8</b> Severidad Anexo</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#pago-del-asegurado-con-deducible-y-monto-máximo-de-beneficio"><i class="fa fa-check"></i>Pago del asegurado con deducible y monto máximo de beneficio:</a></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#generalización-del-cálculo-de-variables-esperadas-para-y_p."><i class="fa fa-check"></i>Generalización del cálculo de variables esperadas para <span class="math inline">\(Y_p\)</span>.</a></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#generalización-de-la-fórmula-de-darth-vader."><i class="fa fa-check"></i>Generalización de la fórmula de Darth Vader.</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#ejercicio"><i class="fa fa-check"></i>Ejercicio:</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#más-deducibles"><i class="fa fa-check"></i>Más deducibles</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#ejemplo-muy-sencillo-de-como-jugar-con-el-deducible"><i class="fa fa-check"></i>Ejemplo muy sencillo de como jugar con el deducible:</a></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#solución-3"><i class="fa fa-check"></i>Solución</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html"><i class="fa fa-check"></i><b>9</b> Modelo individual bases</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#modelo-individual"><i class="fa fa-check"></i><b>9.1</b> Modelo individual</a></li>
+<li class="chapter" data-level="9.2" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#derivación-bajo-el-signo-integral"><i class="fa fa-check"></i><b>9.2</b> Derivación bajo el signo integral</a></li>
+<li class="chapter" data-level="9.3" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#teorema-de-probabilidad-total-en-el-caso-continuo"><i class="fa fa-check"></i><b>9.3</b> Teorema de probabilidad total en el caso continuo:</a></li>
+<li class="chapter" data-level="9.4" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#teorema-de-probabilidad-total-en-el-caso-discreto"><i class="fa fa-check"></i><b>9.4</b> Teorema de probabilidad total en el caso discreto:</a></li>
+<li class="chapter" data-level="9.5" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#aproximación-normal"><i class="fa fa-check"></i><b>9.5</b> Aproximación Normal</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#teorema-central-del-límite"><i class="fa fa-check"></i>TEOREMA CENTRAL DEL LÍMITE</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="modelo-individual-formula-de-pril.html"><a href="modelo-individual-formula-de-pril.html"><i class="fa fa-check"></i><b>10</b> Modelo individual: formula de Pril</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="modelo-individual-formula-de-pril.html"><a href="modelo-individual-formula-de-pril.html#formula-de-pril"><i class="fa fa-check"></i><b>10.1</b> Formula de Pril</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html"><i class="fa fa-check"></i><b>11</b> Modelo colectivo: Bases</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-colectivo"><i class="fa fa-check"></i>Modelo Colectivo</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-binomial-compuesto"><i class="fa fa-check"></i>Modelo Binomial Compuesto</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-binomial-negativo-compuesto"><i class="fa fa-check"></i>Modelo binomial negativo compuesto</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-poisson-compuesto"><i class="fa fa-check"></i>Modelo Poisson Compuesto</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#distribución-de-la-convoluación-de-poisson-compuestas"><i class="fa fa-check"></i>Distribución de la convoluación de Poisson compuestas</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#aproximaciones-de-probabilidad-del-modelo-colectivo"><i class="fa fa-check"></i>Aproximaciones de probabilidad del Modelo Colectivo</a>
+<ul>
+<li class="chapter" data-level="11.0.1" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#aproximación-normal-1"><i class="fa fa-check"></i><b>11.0.1</b> Aproximación Normal</a></li>
+<li class="chapter" data-level="11.0.2" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#aproximación-gamma-trasladada"><i class="fa fa-check"></i><b>11.0.2</b> Aproximación Gamma Trasladada</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="modelo-colectivo-formula-de-panjer.html"><a href="modelo-colectivo-formula-de-panjer.html"><i class="fa fa-check"></i><b>12</b> Modelo colectivo: Formula de Panjer</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="modelo-colectivo-formula-de-panjer.html"><a href="modelo-colectivo-formula-de-panjer.html#casos-especiales-de-panjer"><i class="fa fa-check"></i><b>12.1</b> Casos especiales de Panjer</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-formula-de-panjer.html"><a href="modelo-colectivo-formula-de-panjer.html#momento-de-s-para-panjer"><i class="fa fa-check"></i>Momento de S para Panjer</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="reaseguro.html"><a href="reaseguro.html"><i class="fa fa-check"></i><b>13</b> Reaseguro</a>
+<ul>
+<li class="chapter" data-level="" data-path="reaseguro.html"><a href="reaseguro.html#reaseguro-proporcional"><i class="fa fa-check"></i>Reaseguro proporcional</a>
+<ul>
+<li class="chapter" data-level="" data-path="reaseguro.html"><a href="reaseguro.html#reaseguro-no-proporcional"><i class="fa fa-check"></i>Reaseguro no proporcional</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html"><i class="fa fa-check"></i><b>14</b> Calculo de primas</a>
+<ul>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#propiedades-y-principios-del-cálculo-de-primas"><i class="fa fa-check"></i>Propiedades y Principios del cálculo de Primas</a>
+<ul>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-valor-esperado"><i class="fa fa-check"></i>Principio de valor esperado</a></li>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-la-varianza"><i class="fa fa-check"></i>Principio de la varianza</a></li>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-la-desviación-estándar"><i class="fa fa-check"></i>Principio de la desviación estándar</a></li>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-utilidad-cero"><i class="fa fa-check"></i>Principio de utilidad cero</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="credibilidad.html"><a href="credibilidad.html"><i class="fa fa-check"></i><b>15</b> Credibilidad</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="credibilidad.html"><a href="credibilidad.html#teoría-de-la-credibilidad"><i class="fa fa-check"></i><b>15.1</b> Teoría de la credibilidad</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="credibilidad.html"><a href="credibilidad.html#introducción-1"><i class="fa fa-check"></i><b>15.1.1</b> Introducción</a></li>
+<li class="chapter" data-level="15.1.2" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-completatotal"><i class="fa fa-check"></i><b>15.1.2</b> Credibilidad Completa/total</a></li>
+<li class="chapter" data-level="15.1.3" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-completa-bajo-hipótesis-de-normalidad"><i class="fa fa-check"></i><b>15.1.3</b> Credibilidad Completa Bajo Hipótesis de Normalidad</a></li>
+<li class="chapter" data-level="15.1.4" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-parcial"><i class="fa fa-check"></i><b>15.1.4</b> Credibilidad Parcial</a></li>
+<li class="chapter" data-level="15.1.5" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-parcial-bajo-hipótesis-de-normalidad"><i class="fa fa-check"></i><b>15.1.5</b> Credibilidad Parcial bajo Hipótesis de Normalidad</a></li>
+<li class="chapter" data-level="15.1.6" data-path="credibilidad.html"><a href="credibilidad.html#ajuste-de-primas-con-credibilidad-clásica"><i class="fa fa-check"></i><b>15.1.6</b> Ajuste de primas con credibilidad clásica</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="credibilidad.html"><a href="credibilidad.html#enfoque-bayesiano"><i class="fa fa-check"></i><b>15.2</b> Enfoque bayesiano</a></li>
+<li class="chapter" data-level="15.3" data-path="credibilidad.html"><a href="credibilidad.html#teorema-de-bayes"><i class="fa fa-check"></i><b>15.3</b> Teorema de Bayes</a></li>
+<li class="chapter" data-level="15.4" data-path="credibilidad.html"><a href="credibilidad.html#familias-conjugadas"><i class="fa fa-check"></i><b>15.4</b> Familias conjugadas</a></li>
+<li class="chapter" data-level="15.5" data-path="credibilidad.html"><a href="credibilidad.html#cálculo-bayesiano-de-primas-de-seguros"><i class="fa fa-check"></i><b>15.5</b> Cálculo Bayesiano de primas de seguros</a>
+<ul>
+<li class="chapter" data-level="" data-path="credibilidad.html"><a href="credibilidad.html#cómo-modelar-un-riesgo-para-obtener-una-prima-de-credibilidad-bayesiana"><i class="fa fa-check"></i>¿Cómo modelar un riesgo para obtener una prima de credibilidad Bayesiana?</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Teoría del Riesgo</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="credibilidad" class="section level1 hasAnchor" number="15">
+<h1><span class="header-section-number">Capítulo 15</span> Credibilidad<a href="credibilidad.html#credibilidad" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="teoría-de-la-credibilidad" class="section level2 hasAnchor" number="15.1">
+<h2><span class="header-section-number">15.1</span> Teoría de la credibilidad<a href="credibilidad.html#teoría-de-la-credibilidad" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="introducción-1" class="section level3 hasAnchor" number="15.1.1">
+<h3><span class="header-section-number">15.1.1</span> Introducción<a href="credibilidad.html#introducción-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La teoría de la credibilidad es el conjunto de técnicas actuariales que permiten al asegurador ajustar de modelo sistemático las primas de los seguros en función de la experiencia de la siniestralidad ocurrida.</p>
+<p>En la teoría de la credibilidad tienen roles primordiales los dos tipos de riesgo ya considerados: el riesgo <em>individual</em> y el riesgo <em>colectivo</em>, y se da una solución rigurosa al problema de cómo analizar la información proveniente de estas dos fuentes, para calcular la prima de seguros y obtener una tarifa justa.</p>
+<p>La teoría de la credibilidad como disciplina matemática, utiliza diversas herramientas de varios campos de las matemáticas: Estadística Bayesiana, análisis funcional, mínimos cuadrados, modelos de espacio de esados, entre muchos otros. Varios autores, Beiley. Longley-Cook, Mayerson, Bühlmann, Straub, Jewell, entre otros, se han dado a la tarea de dar una fundamentación matemática rigurosa a esta teoría, que la ha convertido en una de las ramas más atractiva y estudiada de la ciencia actuarial. Uno de sus principales usos aparece en el seguro de automóviles, en el que las primas se van transformando paulatinamente a medida que se incorpora información sobre la siniestralidad, dando origen a los denominados sistemas de tarificación <em>bonus-malus</em>.</p>
+<p>El término <em>credibilidad</em> se introdujo por primera vez en <em>USA</em> antes de la primera guerra mundial, en relación con los sistemas de ajuste de primas en seguros de compensación obrera o seguros de accidentes. Por ese entonces, numerosas empresas ejercieron una fuerte presión a las aseguradoras dada la baja siniestralidad laboral y la elevada tasa de actividad, para que se les reconociera este hecho en los importes de primas a pagar.
+Withney (1918) publicó los primeros trabajos en esta materia con la aparición en los <em>Proceedings de la Casualty Actuarial Society</em>. de una forma simple, a través de una matemática elemental, propone que la prima que debe pagar un asegurado considere tanto la experiencia individual (del asegurado) y la del colectivo (la carta de seguros). De esta manera, la estimación del monto de la prima, se calculará como:</p>
+<p><span class="math display">\[\textbf{P}=Z\cdot\textbf{X}+(1-Z)\cdot\textbf{C}~~~~~~~~(1)\]</span></p>
+<p>Con <span class="math inline">\(\textbf{X}\)</span> la experiencia individual, <span class="math inline">\(\textbf{C}\)</span> es la información disponible del colectivo y Z es un factor que pondera estas dos informaciones, conocido como <span class="math inline">\(\textit{factor de credibilidad }\)</span>. Esta expresión dio respuesta a la idea que rondaba la mente de muchos actuarios de la época. Encontrar un mecanismo que permitiera asignar a estos dos tipos de información, la individual y la colectiva, un peso o ponderación que las complementara para la determinación de la prima a cobrar.</p>
+<p>Intuitivamente, este factor de credibilidad, Z, debería satisfacer las siguientes condiciones:</p>
+<ul>
+<li>Debe ser una función del tiempo de vigencia de la póliza, <span class="math inline">\(\textit{n}\)</span>, i.e., <span class="math inline">\(Z=Z(n)\)</span>.</li>
+<li>Debe ser una función creciente de <span class="math inline">\(n\)</span>, de tal manera que converja a <span class="math inline">\(uno\)</span> si $n$ y tienda a <span class="math inline">\(cero\)</span> cuando <span class="math inline">\(n\to 0\)</span>. Este ultimo caso, (<span class="math inline">\(n=0\)</span>), implicaría que no se tiene información sobre el asegurado (sería un contrato nuevo), y la prima a cobrar sería, <span class="math inline">\(C\)</span>, la que se basa en la información del colectivo. En la medida que se incremente la información del asegurado (que <span class="math inline">\(n\)</span> crezca), entonces esta información empezaría a tener más peso en el cálculo de la prima a cobrar, i.e., la experiencia de la siniestralidad del asegurado tendría mayor verosimilitud o credibilidad. En el caso extremo, (<span class="math inline">\(n\to\infty\)</span>), el valor de la prima debería ser <span class="math inline">\(X\)</span>, esto es, la prima debería basarse únicamente en la experiencia individualidad de la siniestralidad del asegurado.</li>
+<li>El factor de la credibilidad, <span class="math inline">\(Z\)</span>, debería ser también una función creciente de la varianza de las primas teóricas, con límite <span class="math inline">\(uno\)</span> cuando esta varianza tienda a infinito, y <span class="math inline">\(cero\)</span> cuando tienda a cero. La lógica de esta cuestión es que si la cartera no es <span class="math inline">\(\textit{heterogénea}\)</span>, i.e., es <span class="math inline">\(\textit{homogénea}\)</span> entonces la prima basada en la información del colectivo sería el mejor estimador de la prima individual. Por el contrario, una mayor heterogeneidad de la cartera, debería propiciar un mayor peso a la información individual del asegurado.</li>
+</ul>
+<p>A mediados del siglo <span class="math inline">\(XX\)</span> empezaba a tomar forma un nuevo enfoque de la estadística, la <span class="math inline">\(\textit{Estadística Bayesiana}\)</span>. No pasó mucho tiempo para que se constatara que muchos estimadores de Bayes, obtenidos para ciertas verosimilitudes (distribución conjunta de los datos) y la distribución <span class="math inline">\(\textit{A priori}\)</span> o inicial natural conjugada del parámetro o parámetros que determinan esta verosimilitud, correspondían a la expresión <span class="math inline">\((1)\)</span>. De hecho, Whetney (1918) ya señalaba que el problema de credibilidad era un caso de cálculo de probabilidades inversas (teorema de Bayes). En el trabajo de Mayerson (1964) se utilizan por primera vez los términos de credibilidad y estadística Bayesiana.</p>
+<p>Bajo el enfoque Bayesiano, la fórmula de credibilidad <span class="math inline">\((1)\)</span> puede interpretarse también de la siguiente manera. Puede verse a <span class="math inline">\(\textbf{C}\)</span> como la información a priori (basada, por ejemplo, en contratos similares) y <span class="math inline">\(\textbf{X}\)</span> la nueva información obtenida mediante la observación de la siniestralidad de los últimos años. Finalmente, la prima, <span class="math inline">\(\textbf{P}\)</span>, es el resultado de combinar la información a priori con la información adquirida para obtener un <span class="math inline">\(\textit{estimador actualizado}\)</span> de la prima. Por lo tanto, la teoría de la credibilidad es un proceso Bayesiano que combina la información inicial o apriori con la información muestral para lograr una actualización del estimador de la prima.</p>
+<p>Consideremos un riesgo determinado que proveniente de un conjunto de asegurados vigentes por un periodo determinado. Si este grupo de asegurados es homogéneo, en el sentido de que todos sus miembros tienen la misma probabilidad de realizar una reclamación, entonces es razonable aplicar una misma prima para todos ellos. Sin embargo, cuando el grupo no es homogéneo, o bien, al paso del tiempo aparecen factores de heterogeneidad dentro del mismo, habrá subgrupos de bajo riesgo y otros de alto riesgo. Cobrar una misma prima a todos resultaría injusto, y no sería conveniente para la aseguradora, pues, eventualmente, los asegurados de bajo riesgo buscarían un mejor trato con otra aseguradora. La idea fundamental es aplicar primas menores a los asegurados de bajo riesgo y primas mayores a los de alto riesgo, con base en el historial de reclamaciones que cada uno de los asegurados o subgrupos hayan realizado durante los periodos anteriores. <span class="math inline">\(\textit{En la teoría de la credibilidad}\)</span> se estudian métodos para el cálculo de primas a través de la combinación de la experiencia individual (historial de reclamaciones, datos propios) y la experiencia de grupo (datos del mercado, contratos similares, experiencia propia acumulada, datos colaterales).</p>
+<p>Con base en lo dicho anteriormente, podemos decir que la finalidad de la <span class="math inline">\(\textit{teoría de la credibilidad}\)</span> es <strong>ajustar</strong> el valor de una <span class="math inline">\(prima\)</span> con base en el <span class="math inline">\(historial\)</span>/<span class="math inline">\(experiencia\)</span> que tiene la aseguradora con cierto siniestro. Para lograr esto, nosotros en este caso vamos a trabajar ajustando la <span class="math inline">\(\textit{prima de riesgo}\)</span>, en general se puede hacer esto para que la <span class="math inline">\(\textit{prima de tarifa}\)</span> pueda ser calculada tomando como referencia a la de riesgo.</p>
+<p>Tomaremos para esta sección <span class="math inline">\(S\)</span> un riesgo arbitrario que busca absorber una aseguradora, correspondiente a un asegurado o grupo de asegurados con <span class="math inline">\(\textit{características homogéneas}\)</span> y válido por un periodo determinado. Denotaremos como <span class="math inline">\(\{ S_i \}_{i=1}^{m}\)</span> los montos registrados de las reclamaciones efectuadas por el asegurado o portafolio de asegurados durante <span class="math inline">\(m\)</span> periodos consecutivos.</p>
+<p>Con base en la estadística clásica y Bayesiana, las metodologías que hay para la teoría de la credibilidad son dos principales ramas:</p>
+<p><span class="math display">\[\begin{equation*}
+    \text{Teoría de la credibilidad}
+    \begin{cases}
+        \text{Clásica} \begin{cases}
+            \text{Completa}\\
+            \text{Parcial}
+    \end{cases}\\
+    \text{Bayesiana}
+    \end{cases}
+\end{equation*}\]</span></p>
+<p>Al igual que se hizo a lo largo de la historia, exploraremos la forma <strong>clásica</strong>, pues tiene sus fundamentos en resultados asintóticos que ya se han trabajado. Posteriormente veremos la perspectiva <strong>Bayesiana</strong> que es otra manera de atacar el problema pero con el apoyo de los fundamentos de la parte clásica.</p>
+</div>
+<div id="credibilidad-completatotal" class="section level3 hasAnchor" number="15.1.2">
+<h3><span class="header-section-number">15.1.2</span> Credibilidad Completa/total<a href="credibilidad.html#credibilidad-completatotal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para lograr el ajuste a la <span class="math inline">\(\textit{prima de riesgo}\)</span>, la cual estamos modelando como <span class="math inline">\(\mathbb{E}[S]\)</span>, con base en el histórico, vamos a recurrir a su versión muestral.</p>
+<p>Como ya lo hemos hecho antes, nos interesa conocer el comportamiento de:</p>
+<p><span class="math display">\[\overline{S}= \frac{1}{m}\sum_{i=1}^{m}S_i\]</span></p>
+<p>Esto lo haremos así pues, si la <strong>modelación del riesgo</strong> que nosotros estamos proponiendo es correcta, entonces por las leyes de los grandes números:</p>
+<p><span class="math display">\[\begin{equation*}
+    \begin{array}{cc}
+     \text{La prima de} \\ \text{riesgo que nos } \\ \text{dicen los datos.}\end{array}
+= \overline{S}= \displaystyle\frac{1}{m}\displaystyle\sum_{i=1}^{m}S_i~ \xrightarrow[m\to \infty]{c.s} ~\mathbb{E}[S]=\begin{array}{cc}
+     \text{La prima de } \\ \text{riesgo según el } \\ \text{modelo propuesto.}\end{array}
+\end{equation*}\]</span></p>
+<p>Por lo que si nuestro modelo es incorrecto, esta relación no se da.</p>
+<p>Si estamos modelando de manera correcta, tiene sentido que, mientras el portafolio se mantenga homogéneo a medida que m crezca la información nueva sustente nuestra teoría. De lo contrario, aún consiguiendo <span class="math inline">\(m\)</span> lo suficientemente grande, los datos no ajustarán el modelo.</p>
+<p><img src="Ima%CC%81genes/convergencia%20de%20s.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Por lo que nos interesa encontrar el valor de m tal que según nuestro modelo, <span class="math inline">\(\overline{S}\)</span> se encuentre “razonablemente” cercano a <span class="math inline">\(\mathbb{E}[S]\)</span>. El que esto suceda es precisamente lo que le da credibilidad al modelo.</p>
+<p><strong>Definición.</strong></p>
+<p>Sean <span class="math inline">\(k,~p\)</span> dos números fijos, se dice que <span class="math inline">\(\overline{S}\)</span> tiene <strong>Credibilidad completa</strong> (k,p) si:</p>
+<p><span class="math display">\[\begin{equation*}
+    \mathbb{P}\left[ |\overline{S}- \mathbb{E}[S]|\leq k\mathbb{E}[S]\right]\geq p
+\end{equation*}\]</span></p>
+<p><strong>Nota:</strong> En general se asume que <span class="math inline">\(\mathbb{E}[S]\neq 0\)</span> por(espero) obvias razones. Así que para que lo dicho anteriormente tenga sentido, se toman valores para <span class="math inline">\(k\)</span> cercanos a cero y <span class="math inline">\(p\)</span> cercanos a uno. Así como se toma un nivel de significación <span class="math inline">\(\alpha=0.05\)</span>, lo más usal es tomar <span class="math inline">\(k=0.05\)</span>, <span class="math inline">\(p=0.90\)</span>.</p>
+</div>
+<div id="credibilidad-completa-bajo-hipótesis-de-normalidad" class="section level3 hasAnchor" number="15.1.3">
+<h3><span class="header-section-number">15.1.3</span> Credibilidad Completa Bajo Hipótesis de Normalidad<a href="credibilidad.html#credibilidad-completa-bajo-hipótesis-de-normalidad" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Como usualmente es complicado obtener expresiones analíticas para las probabilidades de <span class="math inline">\(S\)</span>, acudiremos a las aproximaciones.</p>
+<p>Encontraremos la condición sobre el número de periodos de observación <span class="math inline">\(m\)</span>, para obtener credibilidad completa usando la distribución normal.</p>
+<div id="ejercicio-1" class="section level4 unnumbered hasAnchor">
+<h4>Ejercicio:<a href="credibilidad.html#ejercicio-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Arrastra el lápiz si no recuerdas que:</p>
+<p><span class="math display">\[\mathbb{E}[\overline{S}]=\mathbb{E}[S]~~~~~~~y~~~~~~~ Var(\overline{S})= \frac{1}{m}Var(S)\]</span></p>
+<p>Tenemos que:</p>
+<p><span class="math display">\[p\le\mathbb{P}\left[ | \overline{S} - \mathbb{E}[S] | \leq k\mathbb{E}[S] \right]=\mathbb{P} \left[ \frac{| \overline{S} - \mathbb{E}[S] |}{\sqrt{Var(\overline{S})}} \leq \frac{k\mathbb{E}[S]}{\sqrt{Var(\overline{S})}}\right]\]</span></p>
+<p>Llamando:</p>
+<p><span class="math display">\[\gamma=\frac{k\mathbb{E}[S]}{\sqrt{Var(\overline{S})}} \]</span></p>
+<p><span class="math display">\[\underbrace{p\leq \mathbb{P}\left[ -\gamma \leq   \frac{\overline{S}-\mathbb{E}[\overline{S}]}{\sqrt{Var(\overline{S})}} \leq \gamma \right]}_{Usando~ el ~valor ~absoluto ~anterior~ y~ que~ \mathbb{E}[\overline{S}]=\mathbb{E}[S]}\]</span></p>
+<p><span class="math display">\[\underbrace{\thickapprox \Phi(\gamma) - \Phi(-\gamma)}_{\text{usando ley de los grandes números}}\]</span>
+<span class="math display">\[\begin{eqnarray*}
+\Rightarrow &amp;=&amp; \underbrace{  2\Phi(\gamma)-1  }_{\text{Por la simetría de la normal}~ \Phi(-x)=1-\Phi(x)}\\
+&amp;=&amp; 2\Phi\left( \frac{k\mathbb{E}[S]}{\sqrt{Var(S)}} \right)-1     \underbrace{ =2\Phi\left( \frac{\sqrt{m}k\mathbb{E}[S]}{\sqrt{Var(S)}}\right)-1    }_{Var(\overline{S})=\frac{1}{m}Var(S)}\\
+\end{eqnarray*}\]</span></p>
+<p><span class="math display">\[\therefore p\leq 2\Phi\left( \frac{k\mathbb{E}[S]}{\sqrt{Var(S)}} \right)-1 =2\Phi\left( \frac{\sqrt{m}k\mathbb{E}[S]}{\sqrt{Var(S)}}\right)-1\]</span></p>
+<p><span class="math display">\[\Longleftrightarrow \frac{p+1}{2}\leq \Phi\left( \frac{k\mathbb{E}[S]}{\sqrt{Var(S)}} \right) =\underbrace{\Phi\left( \frac{\sqrt{m}k\mathbb{E}[S]}{\sqrt{Var(S)}}\right) }_{\text{Las operaciones realizadas respetan la igualdad}}\]</span></p>
+<p>Tomando <span class="math inline">\(Z_x\ddot{=}\)</span> cuantil del <span class="math inline">\((\alpha-100)\%\)</span> de una <span class="math inline">\(N(0,1)=\Phi^{-1}(x)\)</span>:</p>
+<p><span class="math display">\[\Longleftrightarrow Z_{(\frac{p+1}{2})}\leq \left( \frac{k\mathbb{E}[S]}{\sqrt{Var(S)}} \right)\\=\underbrace{\left( \frac{\sqrt{m}k\mathbb{E}[S]}{\sqrt{Var(S)}}\right)}_{Aplicando ~\Phi^{-1} ~de~ ambos ~lados~ respeta~ la ~desigualdad ~pues~ \Phi ~es ~creciente ~\implies \Phi^{-1}~lo~ es }\]</span></p>
+<p>De esta última expresión obtenemos las dos siguientes:</p>
+<ul>
+<li><span class="math inline">\(Var(S)\left[ \frac{ Z_{(\frac{p+1}{2})}}{k\mathbb{E}[S]} \right]^{2}\lesssim m\to\)</span> Esta es una manera de obtener la cantidad <strong>mínima de periodos</strong> <span class="math inline">\(m\)</span> a partir del modelo</li>
+<li><span class="math inline">\(Var(\overline{S})\lesssim \left[ \frac{k\mathbb{E}[S]}{Z_{(\frac{p+1}{2})}} \right]^2\to\)</span> si <span class="math inline">\(m=1\)</span> vemos una cota teórica para la varianza del riesgo <span class="math inline">\(S\)</span>.
+<strong>Nota:</strong> Recordar que <span class="math inline">\(Var(\overline{S})=\frac{Var(S)}{m}\)</span>.</li>
+</ul>
+<p><strong>Nota:</strong> Como <span class="math inline">\(m \in \mathbb{N}\)</span> si la cota inferior tiene decimales, <strong>la mínima <span class="math inline">\(m\)</span></strong> será el techo de la cota.</p>
+<p>En concreto, ¿cómo se realiza usando una muestra? Lo primero que debemos realizar es, dado nuestro modelo, calcularemos:</p>
+<p><span class="math display">\[\begin{equation*}
+    \underbrace{m_{min}\ddot{=}\left\lceil \frac{Var(S)}{\mathbb{E}^2[S]}
+    \left[\frac{Z_{(\frac{p+1}{2})}}{k} \right]
+    \right\rceil^2}_{\text{Este cálculo se hará con el modelo teórico que nosotros vamos a probar}}
+\end{equation*}\]</span></p>
+<p><strong>Nota:</strong> Como usualmente <span class="math inline">\(k=0.05\)</span> y <span class="math inline">\(p=0.9\Longrightarrow \left[\frac{Z_{(\frac{p+1}{2})}}{k} \right]^2\thickapprox 1082.217\)</span> salvo que se especifiquen otros valores para <span class="math inline">\((k,p)\)</span>.</p>
+<p>Donde <span class="math inline">\(\lceil\cdot\rceil\)</span> es la función “parte entera mayor o igual” o simplemente conocida como “techo”. De tal manera que el modelo propuesto <strong>impone</strong> una cantidad de periodos necesaria para poder verificar credibilidad.</p>
+<p>Si <span class="math inline">\(m\)</span> es la cantidad de datos disponibles <strong>una condición para poder verificar</strong> credibilidad completa (k,p)(Bajo hipótesis de normailidad) es:</p>
+<p><span class="math display">\[\begin{equation*}
+    m_{min}\leq m
+\end{equation*}\]</span></p>
+<p><strong>Nota:</strong> Observando la definición de credibilidad completa y de <span class="math inline">\(m_{min}\)</span> se vislumbra que cuando <span class="math inline">\(k\downarrow 0\)</span> o bien <span class="math inline">\(p\uparrow1\)</span> estamos siendo más estrictos con el modelo, y de hecho <span class="math inline">\(m_{min}\uparrow \infty\)</span> lo que significa que necesitaremos más periodos. Recíprocamente cuando <span class="math inline">\(k\uparrow 1\)</span> o bien <span class="math inline">\(p\downarrow0\)</span> necesitamos menos periodos.</p>
+<p>De tal manera que si tenemos m datos, usando el modelo teórico <span class="math inline">\(m_{min}\)</span> nos dirá si tenemos la cantidad suficiente de datos para verificar si nuestro modelo tiene <strong>credibilidad completa</strong> (k,p) o no.</p>
+<p>Ahora, con base en la teoría desarrollada por la SOA para el examen STAM, notemos que:</p>
+<p><span class="math display">\[\frac{Var(S)}{\overline{S}\mathbb{E}[S]}\left[\frac{Z_{(\frac{p+1}{2})}}{k}
+\right]^2\thickapprox \frac{Var(S)}{\mathbb{E}[S]^2} \left[\frac{Z_{(\frac{p+1}{2})}}{k}
+\right]^2= Var(S)\left[\frac{Z_{(\frac{p+1}{2})}}{k\mathbb{E}[S]}
+\right]^2 \leq m\]</span></p>
+<p>De aquí usaremos la muestra para verificar si se <strong>puede</strong> cumplir la <strong>credibilidad completa</strong> (k,p). Esto es:</p>
+<p>Si <span class="math inline">\(m_{min}\leq m\)</span> entonces nuestro modelo <strong>puede</strong> satisfacer credibilidad completa (k,p)(bajo hipótesis de normailidad) si:
+<span class="math display">\[\begin{equation*}
+    \underbrace{\frac{Var(S)}{\mathbb{E}[S]} }_{Modelo~ teórico}\underbrace{\left[\quad\quad\quad\frac{Z_{(\frac{p+1}{2})}}{k}
+    \right]^2}_{C.C.~(k,p)~normalidad } \underbrace{\quad\quad\quad\leq m\overline{S}= \sum_{i=1}^mS_i}_{experiencia~de~los~siniestros}
+\end{equation*}\]</span></p>
+<p>Esto nos da otra condición que deberían satisfacer los datos si deseamos verificar la credibilidad completa (k,p).</p>
+<p>De tal manera que para poder si quiera preguntarnos si nuestros datos <strong>pueden</strong> satisfacer credibilidad completa (k,p) deberían satisfacerse las siguientes <strong>condiciones</strong>:</p>
+<ul>
+<li><span class="math inline">\(m_{min}\leq m\to\)</span> cantidad mínima de periodos requeridos SOA.</li>
+<li><span class="math inline">\(\frac{Var(S)}{\mathbb{E}[S]} \left[\frac{Z_{(\frac{p+1}{2})}}{k}\right]^2 \leq \sum_{i=1}^mS_i\to\)</span> Monto total mínimo de reclamaciones experimentadas del riesgo SOA.</li>
+<li><span class="math inline">\(Var(\overline{S})\lesssim \left[ \frac{k\mathbb{E}[S]}{Z_{(\frac{p+1}{2})}} \right]^2\to\)</span> Cota superior de la volatilidad de la media de las reclamaciones experimentadas.</li>
+</ul>
+<p>Si no se satisfacen 2 y 3 son indicios de replantear el modelo. Más adelante hablamos de qué hacer si falla. Ahora estas <strong>condiciones</strong> las ponemos así porque estamos esperando que <span class="math inline">\(\overline{S}\to \mathbb{E}[S]\)</span> es decir que nuestros datos, en efecto, sean descritos por la teoría. Pero al final <span class="math inline">\(\overline{S}\)</span> se aproximará a su propia media. De tal manera que <strong>aún cumpliéndose las condiciones anteriores no significa que nuestro modelo explique los datos</strong>. Más bien de cumplirse aún falta verificar que en efecto nuestros datos explican el modelo mediante la definición de <strong>credibilidad completa</strong> (k,p) Podemos pensar que las condiciones anteriores son una puerta que necesito abrir para poder ver si mi modelo explica los datos.</p>
+<p>En resumen una vez satisfechas las condiciones hay que ver que en efecto <span class="math inline">\(| \overline{S}- \mathbb{E}[S] | \leq k\mathbb{E}[S]\)</span> con probabilidad <span class="math inline">\(\geq p\)</span>.</p>
+<p>Una posible verificación decisiva puede ser usando bootstrap para mostrar que se cumpla la definición de <strong>credibilidad completa</strong> (k,p).</p>
+<p>Lo ideal es primero verificar las <strong>condiciones</strong> y posteriormente esto.</p>
+<p><img src="Ima%CC%81genes/boot.PNG" width="70%" style="display: block; margin: auto;" /></p>
+<p>Equivalentemente decimos que <span class="math inline">\(\overline{S}\)</span> cumple <strong>credibilidad completa</strong> (k,p) bajo hipótesis de normalidad con nuestro modelo teórico.</p>
+<p>La idea es sencilla. Pensemos entonces que tenemos una muestra aleatoria <span class="math inline">\(\underline{S}_{m}= \{S_{i}, S_{2},..., {S_m} \}\)</span>. Ahora, si esta muestra cumpliera la definición de <strong>credibilidad completa</strong> con (k, p) entonces:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \mathbb{P} \left[| \overline{S}-\mathbb{E}[S]  |  \leq k \quad \mathbb{E}[S] \right]&amp; \geq p
+\end{eqnarray*}\]</span></p>
+<p>Lo que haremos es verificar que esto sucede en <span class="math inline">\(n\)</span> ensayos realizados a partir de la primera muestra.</p>
+<p>Lo que haremos será muestrear con reemplazo de <span class="math inline">\(\underline{S}\)</span> y de cada una de estas muestras veremos si <span class="math inline">\(| \overline{S}-\mathbb{E}[S] | \leq k \quad \mathbb{E}[S]\)</span> o no. Es decir, tendremos <span class="math inline">\(\{ \underline{ S }^{(i)}_m \}_{i=1}^{n}\)</span> muestras con reemplazo de <span class="math inline">\(\underline{S}_m\)</span> y luego:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \underline{ S   }^{(1)} &amp;\Rightarrow&amp; \quad \textit{Calculamos su promedio y lo llamamos} \quad  \overline{ S   }_{m}^{(1)}\\
+    \underline{ S   }^{(2)} &amp;\Rightarrow&amp; \quad \textit{Calculamos su promedio y lo llamamos} \quad  \overline{ S   }_{m}^{(2)}\\
+    \vdots \\
+    \underline{ S   }^{n} &amp;\Rightarrow&amp; \quad \textit{Calculamos su promedio y lo llamamos} \quad \overline{ S   }_{m}^{n}\\
+\end{eqnarray*}\]</span></p>
+<p>Teniendo así, una muestra de tamaño <span class="math inline">\(n\)</span> de <span class="math inline">\(\{\underline{S}^{(i)}_m \}_{i=1}^{n}\)</span> para cada una de estas estadísticas podemos calcular: <span class="math inline">\(x_{i}= \mathbb{I}\{ | \overline{S}_m-\mathbb{E}[S] | \leq k \quad \mathbb{E}[S]\}\)</span> y entonces si <span class="math inline">\(\bar{x}=\displaystyle\frac{éxitos}{ensayos} \geq p\)</span>, tendremos que el modelo satisface <strong>c.c</strong> (k,p) por <strong>bootstrap</strong>.</p>
+<ul>
+<li>Cuando no hay credibilidad completa hay que replantear el modelo.</li>
+<li>Si <span class="math inline">\({m_{mín}} &gt; m ( 1))\)</span> entonces podemos ver la siguiente alternativa.</li>
+</ul>
+</div>
+</div>
+<div id="credibilidad-parcial" class="section level3 hasAnchor" number="15.1.4">
+<h3><span class="header-section-number">15.1.4</span> Credibilidad Parcial<a href="credibilidad.html#credibilidad-parcial" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Cuando no se obtiene credibilidad completa, por ejemplo cuando no tenemos la cantidad de periodos mínima para obtener este criterio obtenemos <strong>credibilidad parcial</strong>. Para esto, tomamos
+<span class="math inline">\(\alpha \in (0,1]\)</span> y proponemos la combinación convexa del estimador de <span class="math inline">\(\mathbb{E}[S]\)</span>:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \alpha \overline{S}+ (1- \alpha) \mathbb{E}[S] \quad \textit{con Factor de credibilidad}\quad \ddot{=} \alpha \in (0,1)
+\end{eqnarray*}\]</span></p>
+<p>Mediante esta expresión se le otorga <strong>credibilidad completa</strong> a una parte de la media muestral <span class="math inline">\(\overline{S}\)</span> y el complemento a <span class="math inline">\(\mathbb{E}[S]\)</span>. Es decir:</p>
+<p><strong>Definición:</strong></p>
+<p>Sean k, p, <span class="math inline">\(\alpha \in (0,1)\)</span> tres números fijos. Diremos que <span class="math inline">\(\overline{S}\)</span> tiene <strong>credibilidad parcial</strong> (k, p, <span class="math inline">\(\alpha\)</span>) si:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+  \mathbb{P} \left[| \alpha \overline{S}+(1- \alpha)\mathbb{E}[S]  -\mathbb{E}[S] |  \leq k \quad \mathbb{E}[S] \right]&amp; \geq p\\
+\end{eqnarray*}\]</span></p>
+<p>Sin embargo, esta definición se vuelve irrelevante cuando se vislumbra que:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    p&amp;\leq&amp; \mathbb{P} \left[| \alpha \overline{S}+(1- \alpha)\mathbb{E}[S]  -\mathbb{E}[S] |  \leq k \quad \mathbb{E}[S] \right]\quad \textit{¿Qué pasa si $\alpha \equiv 0$?}\\
+  &amp;=&amp; \mathbb{P} \left[\alpha | \overline{S}- \mathbb{E}[S]|  \leq k \quad \mathbb{E}[S] \right]\\
+  &amp;=&amp; \mathbb{P} \left[| \overline{S}- \mathbb{E}[S]|  \leq \displaystyle\frac{k}{\alpha} \quad \mathbb{E}[S] \right]\\
+\end{eqnarray*}\]</span></p>
+<p>Por lo tanto:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    p&amp;\leq&amp; \mathbb{P} [| \alpha \overline{S}+(1- \alpha)\mathbb{E}[S]  -\mathbb{E}[S] |  \leq k \quad \mathbb{E}[S]]\\
+    &amp;=&amp; \mathbb{P} [| \overline{S}- \mathbb{E}[S]|  \leq \displaystyle\frac{k}{\alpha} \quad \mathbb{E}[S]]\\
+\end{eqnarray*}\]</span></p>
+<p>Es decir:</p>
+<p><strong>Credibilidad parcial</strong> (k, p, <span class="math inline">\(\alpha\)</span>) <span class="math inline">\(\Leftrightarrow\)</span> <strong>credibilidad completa</strong> <span class="math inline">\(\left(\displaystyle\frac{k}{\alpha}, p\right)\)</span>.</p>
+<p>Como <span class="math inline">\(\alpha\in(0,1] \Rightarrow \dfrac{k}{\alpha}\geq k\)</span> y esto permite un rango de error mayor con <strong>credibilidad parcial</strong> que con <strong>credibilidad completa</strong> con la misma (k, p).</p>
+</div>
+<div id="credibilidad-parcial-bajo-hipótesis-de-normalidad" class="section level3 hasAnchor" number="15.1.5">
+<h3><span class="header-section-number">15.1.5</span> Credibilidad Parcial bajo Hipótesis de Normalidad<a href="credibilidad.html#credibilidad-parcial-bajo-hipótesis-de-normalidad" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Como ya vimos, <strong>credibilidad parcial</strong> no es más que tomar <strong>credibilidad total</strong> pero modificando una de sus componentes. Por lo que bajo el supuesto de normalidad asintótica, para <strong>credibilidad parcial</strong> tenemos que:</p>
+<p><span class="math display">\[\begin{equation*}
+    Var(S) = \left[  \displaystyle\frac{ z_{\left(\frac{p+1}{2}\right)}  }{\displaystyle\frac{k}{\alpha}\mathbb{E}[S]}  \right]^{2} \lesssim m \quad ; \quad Var(\overline{S}) \lesssim \left[  \displaystyle\frac{\displaystyle\frac{k}{\alpha}\mathbb{E}[S] }{z_{\left(\frac{p+1}{2}\right)}}  \right]^{2}
+\end{equation*}\]</span></p>
+<p><strong>Nota:</strong> Observemos que el <strong>Factor de credibilidad</strong> justo hace menos estricta la condición de <strong>credibilidad completa</strong>.</p>
+<p>Las interpretaciones son idénticas al caso que ya vimos con <strong>credibilidad total</strong>. El punto interesante aquí es que si el tamaño de muestra (m) <strong>NO</strong> fuese suficientemente grande pero fijo y conocido, entonces podemos calcular el <strong>Factor de credibilidad</strong> de la información que tenemos y el modelo propuesto como:</p>
+<p><span class="math display">\[\begin{equation*}
+\alpha= \left[  \displaystyle\frac{k \cdot \mathbb{E}[S] \displaystyle\sqrt{m} }{z_{\left(\frac{p+1}{2}\right)} \displaystyle\sqrt{Var(S)}}  \right]= \left[  \displaystyle\frac{k \cdot \mathbb{E}[S] }{z_{\left(\frac{p+1}{2}\right)} \displaystyle\sqrt{Var(\overline{S})}}  \right]
+\end{equation*}\]</span></p>
+<p><strong>Nota:</strong> Si m es lo suficientemente grande <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\alpha\)</span> puede ser mayor a uno. Esto pues precisamente va alcanzando <strong>credibilidad completa</strong>. Con la finalidad de dar una versión generalizada del <strong>Factor de credibilidad</strong> tenemos que:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \alpha&amp;=&amp; mín \left \{ \underbrace{{\displaystyle\frac{k \cdot \mathbb{E}[S] \displaystyle\sqrt{m} }{z_{\left(\frac{p+1}{2}\right)} \displaystyle\sqrt{Var(S)}}}}_\textit{Usaremos este} = \displaystyle\frac{k \cdot \mathbb{E}[S] }{z_{\left(\frac{p+1}{2}\right)} \displaystyle\sqrt{Var(\overline{S})}},1 \right \}
+\end{eqnarray*}\]</span></p>
+<p>De aqui notamos que:</p>
+<p><span class="math display">\[\begin{equation*}
+    \displaystyle\frac{k \cdot \mathbb{E}[S] \displaystyle\sqrt{m} }{z_{\left(\frac{p+1}{2}\right)} \displaystyle\sqrt{Var(S)}}
+    =\displaystyle\frac{ \displaystyle\sqrt{m} }{ \displaystyle\frac{z_{\left(\frac{p+1}{2}\right)} \displaystyle\sqrt{Var(S)}}{k \cdot \mathbb{E}[S]}}
+    = \displaystyle\sqrt{\displaystyle\frac{  m   }{ \displaystyle\frac{Var(S)}{\mathbb{E}^{2}[S]}       \left[ \displaystyle\frac{z_{\left(\frac{p+1}{2}\right)}}{k}  \right]^{2}}}
+\end{equation*}\]</span></p>
+<p>Con base en la teoría desarrollada por la SAA para el examen STAM, tendremos entonces lo siguiente:</p>
+<p>Dependiendo de la cantidad de información que se tenga, el número anterior se calcula de la siguiente manera:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \displaystyle\sqrt{\displaystyle\frac{  m   }{ \displaystyle\frac{Var(S)}{\mathbb{E}^{2}[S]}       \left[ \displaystyle\frac{z_{\left(\frac{p+1}{2}\right)}}{k}  \right]^{2}}}&amp;\approx&amp; \displaystyle\sqrt{\displaystyle\frac{  m\cdot \overline{S}  }{ \displaystyle\frac{Var(S)}{\mathbb{E}[S]}       \left[ \displaystyle\frac{z_{\left(\frac{p+1}{2}\right)}}{k} \right]^{2}}}
+\end{eqnarray*}\]</span></p>
+<p><strong>Nota:</strong> En esta expresión el numerador se calcula con la muestra y el denominador con el modelo teórico.</p>
+<p><strong>Nota:</strong> Si no se tiene muestra, de hecho no tiene sentido invocar credibilidad. Sin embargo en ejercicios 100% teóricos donde se solicita el cálculo del <strong>Factor de credibilidad</strong> <strong>pero no se da una muestra</strong>, se debe tomar <span class="math inline">\(\alpha=1\)</span>.</p>
+<p>Ahora, existen diversas propuestas de diferentes autores de cómo estimar/obtener el <strong>Factor de credibilidad</strong>; Nosotros nos centraremos en la metodología prouesta por la SOA.</p>
+<p>Usando la teoría desarrollada por la SOA tenemos que:</p>
+<p>Para invocar credibilidad parcial (k, p, <span class="math inline">\(\alpha\)</span>) (Bajo el supuesto de normalidad), el cálculo del <strong>Factor de credibilidad</strong> se hace de la siguiente manera:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \alpha&amp;=&amp; mín \left \{ \displaystyle\frac{\textit{&quot;Información disponible&quot;}}{\textit{&quot;Información necesaria para credibilidad completa&quot;}}\right\}
+\end{eqnarray*}\]</span></p>
+<p>Donde:</p>
+<ul>
+<li><span class="math inline">\(\textrm{&quot;Información disponible&quot;}\)</span>. Es el numerador de las expresiones anteriores y se obtiene dependiendo de la muestra dada (o bien si no se cuenta con muestra, se hace teórica).</li>
+<li><span class="math inline">\(\textrm{&quot;Información necesaria para credibilidad completa&quot;}\)</span>. Es el denominador de las expresiones anteriores y se obtiene con el modelo propuesto.</li>
+</ul>
+<p>Las cosas pueden ponerse más interesantes dependiendo si <span class="math inline">\(S\)</span> es un modelo colectivo, algunos de los cálculos con los que se verifican o se obtienen ciertos factores tanto para credibilidad completa o parcial se modifican dependiendo de la <span class="math inline">\(\textrm{&quot;Información disponible&quot;}\)</span>.</p>
+<p><strong>Esto se hace con la finalidad de explotar los datos</strong> y la experiencia obtenida de la muestra de la forma más adecuada posible. Aunque de momento, vamos a tratar la credibilidad como hasta este punto.</p>
+</div>
+<div id="ajuste-de-primas-con-credibilidad-clásica" class="section level3 hasAnchor" number="15.1.6">
+<h3><span class="header-section-number">15.1.6</span> Ajuste de primas con credibilidad clásica<a href="credibilidad.html#ajuste-de-primas-con-credibilidad-clásica" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Finalmente llegamos al objetivo principal de esta sección; recordemos que la finalidad de la teoría de la credibilidad es dar verosimilitud al modelo que estamos proponiendo con base en el histórico que tenemos.</p>
+<p>En el caso en el que nuestro modelo cumpla <strong>credibilidad completa</strong>, como su nombre lo indica, nuestro modelo funciona correctamente a los niveles (k, p), por lo que <strong>no es necesario hacer un ajuste al modelo de prima de riesgo</strong>. Sin embargo, se acostumbra dar más peso a la información recolectada y con base en esto tener la nueva prima. Esto significa:</p>
+<p><span class="math display">\[\begin{equation*}
+    \text{credibilidad completa } (k, p) \Rightarrow \text{Prima de riesgo ajustada } \ddot{=} \overline{S} \underbrace{\approx}_{(k, p)} \mathbb{E}[S].
+\end{equation*}\]</span></p>
+<p><strong>Nota:</strong> Recuerda que buscamos <span class="math inline">\(k \approx 0\)</span> y <span class="math inline">\(p \approx 1\)</span>. Sin ser exactamente iguales.</p>
+<p>Por otro lado, en el caso en que tengamos <strong>credibilidad parcial</strong> <span class="math inline">\((k, p, \alpha)\)</span>, entonces <strong>realizamos un ajuste a la prima</strong> y de hecho podemos considerar modificar el modelo propuesto, si <span class="math inline">\(\alpha \approx0\)</span> o si el número de periodos con los que contamos es aún muy pequeño con respecto a la cota inferior de m. El ajuste de la prima en este caso será:</p>
+<p><span class="math display">\[\begin{equation*}
+    \text{credibilidad parcial } (k, p, \alpha) \Rightarrow \text{Prima de riesgo ajustada } \ddot{=} \alpha \overline{S}+(1-\alpha)\mathbb{E}[S] \underbrace{\approx}_{(k, p, \alpha)}\mathbb{E}[S].
+\end{equation*}\]</span></p>
+<p><strong>Nota:</strong> No queremos que <span class="math inline">\(\alpha \approx 0\)</span> pues hacemos que el modelo ajuste a los datos no a sí mismo.</p>
+</div>
+</div>
+<div id="enfoque-bayesiano" class="section level2 hasAnchor" number="15.2">
+<h2><span class="header-section-number">15.2</span> Enfoque bayesiano<a href="credibilidad.html#enfoque-bayesiano" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En estadística tradicional, enfoque clásico, uno de los problemas inferenciales más importantes es la estimación del parámetro <span class="math inline">\(\theta\)</span>, de una distribución de probabilidad <span class="math inline">\(f(x; \theta)\)</span>.</p>
+<p>Para realizar dicha estimación seleccionamos una muestra aleatoria de esta distribución y se tienen distintos métodos para estimar <span class="math inline">\(\theta\)</span>, considerando siempre que este parámetro tiene un valor desconocido y fijo. En el enfoque Bayesiano, <span class="math inline">\(\theta\)</span> se trata como una variable aleatoria para la que se supone una distribución de probabilidad <span class="math inline">\(p(\theta)\)</span>, llama distribución inicial o distribución a priori. Esta distribución refleja la información subjetiva o cuantitativa que el observador pueda tener sobre este parámetro <span class="math inline">\(\theta\)</span>, antes de observar la muestra.</p>
+<p><strong>Actualización de la información a través del teorema de Bayes</strong></p>
+<p>La forma en la que se actualiza la información inicial sobre nuestro parámetros de interpes <span class="math inline">\(\theta\)</span>, mediante la información contenida en la muestra <span class="math inline">\(p(x|\theta)=L(\theta, \underline{X})\)</span> (la verosimilitud), es a través del teorema de Bayes.</p>
+</div>
+<div id="teorema-de-bayes" class="section level2 hasAnchor" number="15.3">
+<h2><span class="header-section-number">15.3</span> Teorema de Bayes<a href="credibilidad.html#teorema-de-bayes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><em>Teorema de Bayes</em></p>
+<p>Dados dos eventos A y B tales que <span class="math inline">\(\mathbb{P}(B)&gt;0\)</span>, la probabilidad condicional de A dado B, <span class="math inline">\(\mathbb{P}(A|B)\)</span>, se define como:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\mathbb{P}(A|B)&amp;=&amp; \displaystyle\frac{\mathbb{P} (B\cap A) }{\mathbb{P}(B)}\\
+&amp;=&amp; \displaystyle\frac{\mathbb{P}(B|A)\mathbb{P}(A)}{\mathbb{P}(B)}\\
+\end{eqnarray*}\]</span></p>
+<p><em>Teorema de Bayes</em></p>
+<p>Si <span class="math inline">\(\{ A_{i}: i=1,2,...,M\}\)</span> en un conjunto de eventos mutuamente excluyentes, entonces:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\mathbb{P}(A_{i}|B)&amp;=&amp; \displaystyle\frac{\mathbb{P}(B|A_i)\mathbb{P}(A_i)}{\displaystyle\sum_{j=1}^{M} \mathbb{P}(B|A_{j}) \mathbb{P}(A_{j})}\\
+\end{eqnarray*}\]</span></p>
+<p>La forma esquemática de actualizar esta información a través del teorema de Bayes es la siguiente:</p>
+<p><span class="math inline">\(1.\)</span> <span class="math inline">\(\theta\)</span> debe tener una distribución de probabilidad <span class="math inline">\(p(\theta)\)</span>, que refleje nuestro conocimiento inicial acerca de su valor.</p>
+<p><span class="math inline">\(2.\)</span> La información sobre <span class="math inline">\(\theta\)</span> que contiene la muestra aleatoria seleccionada, está resumida en la verosimilitud <span class="math inline">\(p(x|\theta)=L(\theta; \underline{X})\)</span>.</p>
+<p>Por lo tanto, nuestro conocimiento acerca del valor <span class="math inline">\(\theta\)</span> queda descrito a través de su distribución final.</p>
+<p>El teorema de Bayes nos dice cómo encontrarla:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    {p(\theta| \underline{X})= \displaystyle\frac{p(x|\theta)p(\theta)}{\displaystyle\int p(x|\theta)p(\theta) d\theta}}
+\end{eqnarray*}\]</span></p>
+<p>Este proceso se conoce como el proceso de actualización de la información sobre <span class="math inline">\(\theta\)</span> ,y es la manera de combinar las dos fuentes de información que tenemos. La inicial dada a través de <span class="math inline">\(p(\theta)\)</span>, y la de la muestra, dada por medio de la verosimilitud <span class="math inline">\(p(x|\theta)\)</span>, para obtener la distribución final <span class="math inline">\(p(\theta; \underline{X})\)</span>, que contiene la suma de estas dos fuentes de información.</p>
+<p>Obsérvese que el denominador, <span class="math inline">\(p(x)=\displaystyle\int p(x|\theta)p(\theta) d\theta\)</span> no depende de <span class="math inline">\(\theta\)</span>, por lo que es común escribir esta distribución final como:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+p(\theta| \underline{X})&amp;\propto &amp; p(x|\theta)p(\theta)\\
+\end{eqnarray*}\]</span></p>
+<p>En la práctica, el cálculo de la distribución final puede ser un asunto complicado, especialmente si la dimensión del parámetro es grande.</p>
+<p>Sin embargo, para ciertas combinaciones de distribuciones iniciales y verosimilitudes es posible simplificar el análisis.</p>
+<p>En otros casos se requieren aproximaciones analíticas y/o técnicas computacionales relativamente sofisticadas.</p>
+<p>Como hemos visto, la <em>prima de riesgo</em> puede <em>cambiar</em> según el comportamiento de la muestra y que a medida que tuviéramos <em>más información</em>, se nos indica que el modelo va en dirección correcta.</p>
+<p>Todo esto es algo que nos hace pensar en <em>estadística bayesiana</em>, por lo que veremos un pequeño repaso de cómo hacer <em>estimaciones</em> con este tipo de estadística.</p>
+<p>Comencemos dejando claro un poco la notación en términos probabilísticos. Supongamos que <span class="math inline">\(X_1, X_2,...,X_n \sim Algo (\Theta)\)</span> (<span class="math inline">\(\Theta\)</span> podría ser un vector de parámetros). <span class="math inline">\(\Theta \sim Algo_{2} (\Delta)\)</span>, donde <span class="math inline">\(\Delta\)</span> asumimos totalmente conocido (propuesto).</p>
+<p><strong>Verosimilitud</strong></p>
+<p><span class="math display">\[\begin{eqnarray*}
+p(\underline{x} | \Theta) &amp; \ddot{=}&amp;  f_{x_1, x_2,...,x_n}(x_1, x_2,...,x_n)
+\end{eqnarray*}\]</span></p>
+<p>Es la <strong>función de densidad conjunta</strong> de la muestra, cuya distribución depende del parámetro de interés <span class="math inline">\(\Theta\)</span>.</p>
+<p><strong>Distribución inicial (a priori)</strong>
+<span class="math display">\[\begin{eqnarray*}
+p(\theta)&amp; \ddot{=}&amp; f_{\Theta} (\theta)
+\end{eqnarray*}\]</span></p>
+<p>Es la <strong>función de densidad</strong> del parámetro de interés, crecordando que este se piensa como v.a</p>
+<p><strong>Distribución final (a posteriori)</strong>
+<span class="math display">\[\begin{eqnarray*}
+p(\theta|\underline{x})&amp; \ddot{=}&amp; f_{\Theta|\underline{X}=\underline{x}} (\theta)
+\end{eqnarray*}\]</span></p>
+<p>Es la <strong>función de densidad</strong> que depende únicamente de <span class="math inline">\(\theta\)</span>. Tomando en cuenta valores ya observados y fijos de la muestra.</p>
+<p>El siguiente resultado <strong>NO</strong> viene directamente del teorema de Bayes, ya que aunque es muy común usar la notación ” <span class="math inline">\(p(\theta)\)</span> “, esto no necesariamente es probabilidad, pues de hecho es una <strong>función de densidad</strong>. Del Teorema de Bayes se puede encontrar que:</p>
+<p><span class="math display">\[\begin{equation*}
+   p(\theta| \underline{X})= \displaystyle\frac{p(x|\theta)p(\theta)}{\displaystyle\int_{\Omega_{\Theta}} p(x|\theta)p(\theta) d\theta} \propto p(x|\theta)p(\theta)
+   \end{equation*}\]</span></p>
+<p>Donde {<span class="math inline">\(\propto\)</span> Kernel de la v.a <span class="math inline">\(\Theta|\underline{X}\)</span>}</p>
+<p>La razón de porque <span class="math inline">\(p(\theta|\underline{X}) \propto p(x|\theta)p(\theta)\)</span>
+es porque <span class="math inline">\(\displaystyle\int_{\Omega_{\Theta}} p(x|\theta)p(\theta) d\theta\)</span> no depende de <span class="math inline">\(\theta\)</span> (Se integran) y quedan simplemente constantes para <span class="math inline">\(\theta\)</span> , como lo son <span class="math inline">\(\underline{X}\)</span> y <span class="math inline">\(\Delta\)</span>.</p>
+<p><strong>Nota:</strong> En general se asume una muestra aleatoria en <span class="math inline">\(\underline{X}\)</span> entonces la independencia queda implícita. Así: <span class="math inline">\(p(\underline{x| \theta})= \prod_{i=1}^{n}p(x_i|\theta)\)</span>}.</p>
+<p><span class="math inline">\(Definición:\)</span> Dada una <strong>distribución final</strong> y una <strong>muestra fija</strong>, decimos que <strong>estimador bayesiano</strong> para <span class="math inline">\(\Theta\)</span> es:</p>
+<p><span class="math display">\[\begin{equation*}
+\widehat{\Theta}\ddot{=} \mathbb{E}[\Theta| \underline{X}= \underline{x}]=\displaystyle\int_{\Omega_{\Theta}} \theta p(\theta| \underline{x}) d\theta
+\end{equation*}\]</span></p>
+<p>Nota: “Muestra fija” es la clave, ya que de otro modo <span class="math inline">\(\widehat{\Theta}\)</span> sería v.a.</p>
+<p><strong>Ejemplo:</strong></p>
+<p>Suponga <span class="math inline">\(\{X_i \}_{i=1}^{n}\)</span> una muestra aleatoria con distribución Bernoulli(<span class="math inline">\(\Theta\)</span>) y consideremos <span class="math inline">\(\Theta \sim Beta(\Delta=(a,b))\)</span> entonces:</p>
+<p><span class="math display">\[\begin{equation*}
+p(\theta)= \displaystyle\frac{1}{\beta(a,b)} \theta^{a-1} (1-\theta)^{b-1} \quad ; \quad \mathbb{E}[\Theta]= \displaystyle\frac{a}{b+a} \quad \quad ;\beta(a,b) \ddot{=} \displaystyle\frac{\Gamma(a \Gamma(b))}{\Gamma(a+b)}  
+\end{equation*}\]</span></p>
+<p><span class="math display">\[\begin{eqnarray*}
+p(x_i|\theta)p(\theta)&amp;=&amp; \theta^{x_i} (1-\theta)^{1-x_i}\mathbb{I}_{\{ 0,1\}} (x_{i}) \quad \quad \text{Noten que está bien definido pues $\theta \in (0,1)$}
+\end{eqnarray*}\]</span></p>
+<p><strong>Kernel</strong></p>
+<p><span class="math display">\[\begin{eqnarray*}
+p(\underline{x}|\theta)p(\theta) &amp;=&amp; \displaystyle\prod_{i=1}^{n} p(x_i| \theta) p(\theta)\\
+&amp;=&amp; \displaystyle\prod_{i=1}^{n}  \theta^{x_i} (1-\theta)^{1-x_i} \displaystyle\frac{1}{\beta(a,b)} \theta^{a-1} (1-\theta)^{b-1}\\
+&amp;=&amp; \displaystyle\frac{1}{\beta(a,b)} \theta^{n \bar{x}+a-1} (1-\theta)^{n(1- \bar{x})+b-1}\\
+&amp;\propto&amp; {\underbrace{{\theta^{n \bar{x}+a} (1-\theta)^{n(1- \bar{x})+b}}}_{\text{Un kernel conocido}}}
+\end{eqnarray*}\]</span></p>
+<p>Por lo tanto</p>
+<p>Como <span class="math inline">\(p(\theta| \underline{x}) \propto p(\underline{x}|\theta)p(\theta)\)</span> entonces <span class="math inline">\(\Theta| \underline{X}=\underline{x} \sim Beta(n \bar{x}+a-1, n(1- \bar{x})+b-1)\)</span></p>
+<p>Sin embargo, es común que la gente sea escéptica a “mandar a la … constante de integración” las cosas. Entonces, sin tomar proporciones, tenemos:</p>
+<p><strong>Kernel</strong></p>
+<ul>
+<li><span class="math inline">\(P(\underline{x}|\theta)P(\theta)=\displaystyle\frac{1}{\beta(a,b)}\theta^{n\overline{x}+a-1}(1-\theta)^{n(1-\overline{x})+b-1}\)</span></li>
+</ul>
+<p><strong>Constante de integración</strong></p>
+<p><span class="math display">\[\displaystyle\int_{\Omega_{\Theta}}P(\underline{x}|\theta)P(\theta)d\theta\]</span>
+<span class="math inline">\(=\displaystyle\int_0^1\frac{1}{\beta(a,b)}\theta^{n\overline{x}+a-1}(1-\theta)^{n(1-\overline{x})+b-1}d\theta\)</span></p>
+<p><span class="math inline">\(=\displaystyle\frac{1}{\beta(a,b)}{\beta(a+n\overline{x},b(1-\overline{x}+b))}{\underbrace{{\displaystyle\int_0^1{1}{{\frac{1}{\beta(a+n\overline{x},n(1-\overline{x})+b)}}\theta^{n\overline{x}+a-1}(1-\theta)^{n(1-\overline{x})+b-1}}d\theta}}_{\mbox{Una densidad Beta sobre todo su soporte}}}\)</span></p>
+<p><span class="math inline">\(=\displaystyle\frac{1}{\beta(a,b)}{\beta(a+n\overline{x},n(1-\overline{x})+b)}\)</span>
+<span class="math display">\[\begin{eqnarray*}
+   \therefore P(\theta|\underline{x})&amp;=&amp;\displaystyle\frac{P(\underline{x}|\theta)P(\theta)}{\displaystyle\int_{\Omega_{\Theta}}P(\underline{x}|\theta)P(\theta)d\theta}\\
+   &amp;=&amp;\displaystyle\frac{{\frac{1}{\beta(a,b)}}\theta^{n\overline{x}+a-1}(1-\theta)^{n(1-\overline{x})+b-1}}{{\frac{1}{\beta(a,b)}}{\beta(a+n\overline{x},n(1-\overline{x})+b)}}\\
+   
+  &amp;=&amp;\displaystyle\frac{1}{\beta(a+n\overline{x},n(1-\overline{x})+b)}\theta^{n\overline{x}+a-1}(1-\theta)^{n(1-\overline{x})+b-1}\\
+\end{eqnarray*}\]</span>
+<span class="math inline">\(\therefore\Theta|\underline{X}=\underline{x}\sim Beta(b\overline{x}+a,n(1-\overline{x})+b)\)</span>,también haciendo más cuentas.
+<span class="math inline">\(\Rightarrow \widehat{\Theta}={E}[\Theta| \underline{X}=\underline{x}]=\displaystyle\frac{n\overline{x}+a}{(n\overline{x}+a)+(n(1-\overline{x})+b)}=\frac{n\overline{x}+a}{n+a+b}\)</span></p>
+<p>En este caso, la distribución final tuvo una distribución conocida, sin embargo, esto no sucede necesariamente. Afortunadamente, existen distribuciones que si las utilizamos para la <strong>verosimilitud</strong> y la <strong>inicial</strong>,tendremos una <strong>final conocida</strong>. Esto se conoce como <strong>familias conjugadas</strong>.</p>
+</div>
+<div id="familias-conjugadas" class="section level2 hasAnchor" number="15.4">
+<h2><span class="header-section-number">15.4</span> Familias conjugadas<a href="credibilidad.html#familias-conjugadas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Comentamos en uno de los puntos anteriores, que <strong>existen cierta combinaciones de distribuciones y verosimilitudes, que simplifican el análisis Bayesiano</strong>, esencialmente, porque <strong>el modelo de la distribución final de <span class="math inline">\(\theta\)</span>, pertenece a la misma familia que el de la inicial</strong>.</p>
+<p><span class="math inline">\(Definición.\)</span> Sea {<span class="math inline">\(\mathscr{P}\)</span>}=<span class="math inline">\(\{p(x|\theta):\theta\in\Theta\}\)</span> una <strong>familia paramétrica</strong>. Una clase (o colección) de distribuciones de probabilidad <span class="math inline">\(\mathscr{F}\)</span> es una <strong>familia conjugada</strong> para <span class="math inline">\(\mathscr{P}\)</span> si para toda <span class="math inline">\(p(x|\theta)\in\mathscr{P}\)</span> y <span class="math inline">\(p(\theta)\in\mathscr{F}\)</span> se tiene que <span class="math inline">\(p(\theta |x)\in \mathscr{F}\)</span></p>
+<p>Algunos modelos paramétricos univariados con sus respectivas familias conjugadas:</p>
+<p><img src="Ima%CC%81genes/FamParam.png" width="100%" /></p>
+<p><strong>Ejemplo:</strong></p>
+<p>Consideremos la <strong>familia paramétrica</strong> <span class="math inline">\(\mathscr{P}=\{\mbox{Poisson}(x|\lambda):\lambda\in{P}^+\}\)</span>. Si utilizamos como <strong>distribución inicial</strong> <span class="math inline">\(p(\lambda)\in\mathscr{F}=\{\mbox{Gamma}(\lambda|\alpha,\beta):\alpha,\beta\in{R}^+\}\)</span>}. Entonces, <strong>si se tiene una muestra aleatoria <span class="math inline">\(\mbox{x}=(x_1,...,x_n)\)</span>, la distribución final es</strong></p>
+<p><span class="math display">\[{ p(\lambda|\underline{X})=\mbox{Gamma}(\lambda|\alpha+r,n+\beta) }\qquad \mbox{con } r =\displaystyle\sum_{i=1}^n x_i\]</span></p>
+<p><em>Demostración.</em></p>
+<p>Solo demostraremos que el <em>kernel</em> de la distribución final, pertenece a la distribución <span class="math inline">\(Gamma(\lambda|\alpha+r,n+\beta)\)</span>.</p>
+<p>Sabemos, por Bayes, que</p>
+<p><span class="math display">\[p(\lambda|\underline{X})=\displaystyle\frac{{p(x|\lambda)p(\lambda)}}{\displaystyle\int p(x|\lambda)p(\lambda)d\lambda}\]</span>
+con</p>
+<p><span class="math inline">\(p(x|\lambda)\)</span> =<span class="math inline">\(\displaystyle\prod_{i=1}^n\displaystyle\frac{\lambda^{x_i}e^{-\lambda}}{x_i!}\varpropto \lambda^{\displaystyle\sum_{i=1}^nx_i}e^{-n\lambda}\)</span> y</p>
+<p><span class="math inline">\(p(\lambda)\)</span>=<span class="math inline">\(\displaystyle\frac{\beta^\alpha\lambda^{\alpha-1}e^{-\beta\lambda}}{\Gamma(\alpha)}\)</span>, por lo que</p>
+<p><span class="math inline">\(p(\lambda|\underline{X})\varpropto\)</span><span class="math inline">\(\lambda^{\displaystyle\sum_{i=1}^nx_i}e^{-n\lambda}\lambda^{\alpha-1}e^{-\beta\lambda}=\lambda^{\alpha+\displaystyle\sum_{i=1}^n x_i-1}e^{-\lambda(\beta+n)}\varpropto Gamma\left(\alpha+\displaystyle\sum_{i=1}^n x_i,\beta+n\right)\)</span></p>
+</div>
+<div id="cálculo-bayesiano-de-primas-de-seguros" class="section level2 hasAnchor" number="15.5">
+<h2><span class="header-section-number">15.5</span> Cálculo Bayesiano de primas de seguros<a href="credibilidad.html#cálculo-bayesiano-de-primas-de-seguros" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><em>El uso de las distribuciones iniciales que tienen un carácter evidentemente subjetivo</em>, resulta de <em>utilidad en el mercado de seguros</em>, sobre todo si se tiene en cuenta que <em>cuando se quiere tarifar un riesgo nuevo no se dispone de información para ello</em>.</p>
+<p>La visión Bayesiana se incorporó rápidamente a la disciplina actuarial, demostrando que <em>algunas primas que se obtienen a través de la metodología Bayesiana pueden escribirse como fórmulas de credibilidad</em>.</p>
+<p>En estos términos actuariales, <em>la cuestión básica de credibilidad es determinar una prima establecida como una combinación lineal convexa entre la experiencia particular de un asegurado y la experiencia del colectivo</em>,esto es, toda la cartera. Es decir</p>
+<p><span class="math display">\[\mathbb{P}_j=Z\hat{\mathbb{P}}+(1-Z){P}_0\]</span></p>
+<p><span class="math inline">\(\bullet\)</span> <em><span class="math inline">\(\mathbb{P}_j\)</span> prima a aplicar a los asegurados</em> por el riesgo <span class="math inline">\(j\)</span>. <em>(final-posterior)</em></p>
+<p><span class="math inline">\(\bullet\)</span> <em><span class="math inline">\(\mathbb{P}_0\)</span> prima a aplicar a un colectivo</em> al que pertenece el asegurado <span class="math inline">\(j\)</span>. <em>(inicial-propuesta)</em></p>
+<p><span class="math inline">\(\bullet\)</span> <em><span class="math inline">\(\hat{\mathbb{P}}\)</span> Prima calculada con base en la experiencia</em> del asegurado <span class="math inline">\(j\)</span>. <em>(muestral)</em></p>
+<p><span class="math inline">\(\bullet\)</span> <em><span class="math inline">\(Z\)</span> Factor de credibilidad</em> Que debe verificar las condiciones:
+<span class="math inline">\(\lim\limits_{m\rightarrow\infty}Z=1\)</span>, con <span class="math inline">\(m\)</span> el número de sujetos expuestos al riesgo <span class="math inline">\(j\)</span> o el periodo de observación de la póliza <span class="math inline">\(j\)</span>. Entonces,si <span class="math inline">\(Z=1\)</span> la experiencia del asegurados recibe credibilidad total o del 100%, mientras que si <span class="math inline">\(Z=0,\mathbb{P}_j=\mathbb{P}_0\)</span> y la prima del asegurado <span class="math inline">\(j\)</span> coincide con la del colectivo} a la que pertenece dicha póliza, o la experiencia del colectivo recibe credibilidad total o del 100%</p>
+<p>Entonces, desde el punto de vista Bayesiano, esta fórmula de credibilidad puede interpretarse como: Podemos considerar <span class="math inline">\(\mathbb{P}_0\)</span> como la información inicial o A <span class="math inline">\(\mathbb{P}_0\)</span> como la nueva información que se obtiene mediante la observación de la siniestralidad del riesgo <span class="math inline">\(j\)</span> (los datos recabados; la información recabada) y <span class="math inline">\(\mathbb{P}_j\)</span> la actualización del cálculo de la póliza (prima a posteriori), resultado de combinar la información inicial con la información recabada.</p>
+<p>Por lo tanto</p>
+<p><em>Prima (a posteriori)</em> =<span class="math inline">\((1-Z)\ast\)</span> <em>Prima a priori</em>+ <span class="math inline">\(Z\ast\)</span> <em>Experiencia dada por los datos</em>;</p>
+<p>De esta manera, la teoría de la credibilidad Bayesiana, sigue un esquema donde la información a priori sobre el cálculo de las primas, se actualiza con la información dada por la observación del siniestro (muestra), dando como resultado la actualización de la prima, mediante el cálculo de la prima a posteriori.</p>
+<div id="cómo-modelar-un-riesgo-para-obtener-una-prima-de-credibilidad-bayesiana" class="section level3 unnumbered hasAnchor">
+<h3>¿Cómo modelar un riesgo para obtener una prima de credibilidad Bayesiana?<a href="credibilidad.html#cómo-modelar-un-riesgo-para-obtener-una-prima-de-credibilidad-bayesiana" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ahora aplicaremos estas ideas al problema del cálculo de primas tomando en cuenta la experiencia de un riesgo. Suponga que las variables <span class="math inline">\(S_1,...,S_m\)</span> representan el historial de reclamaciones en <span class="math inline">\(m\)</span> años o periodos que se han registrado de un riesgo dado. Suponga además que estas variables son independientes y todas ellas tienen una distribución común dependiente de un parámetro desconocido <span class="math inline">\(\theta\)</span>, y esta distribución es tal que <span class="math inline">\(E(S)=\theta\)</span>. Bajo el enfoque Bayesiano se considera que el parámetro <span class="math inline">\(\theta\)</span> es una variable aleatoria para la cual se asume una distribución de probabilidad a priori. La esperanza a porteriori de <span class="math inline">\(\theta\)</span>, es decir, <span class="math inline">\(E(\theta|S_1,...,S_m)\)</span>, representa una estimación para <span class="math inline">\(E(S)=\theta\)</span> tomando en cuenta el historial <span class="math inline">\(S_1,...,S_m\)</span>. A esta esperanza posteriori se le llama prima de credibilidad Bayesiana. En los casos que analizaremos esta prima tiene la forma de la credibilidad parcial mencionada antes. Los casos que consideraremos para la distribución de <span class="math inline">\(S\)</span> son: la distribución Poisson con media <span class="math inline">\(\lambda\)</span>, y la distribución normal con media <span class="math inline">\(\theta\)</span>.</p>
+<p><span class="math inline">\(\blacksquare\)</span> <em>Modelo Poisson-Gamma</em></p>
+<p>Este modelo adquiere su nombre a partir de las siguientes hipótesis: se postula que cada una de las variables aleatorias independientes <span class="math inline">\(S_1,...,S_m\)</span> tiene distribución Poisson con parámetro <span class="math inline">\(\lambda\)</span>, el cual se considera aleatorio con una distribución a priori gamma<span class="math inline">\((\gamma,\alpha)\)</span>,con <span class="math inline">\(\gamma\mbox{ y }\alpha\)</span> parámetros conocidos. Observe que en este modelo se considera que los montos de las reclamaciones toman valores enteros. La función de densidad a posteriori de <span class="math inline">\(\lambda\)</span> es, para <span class="math inline">\(x&gt;0\)</span>,</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    g(\lambda|S_1,...,S_m)&amp;=&amp;\displaystyle\frac{f(S_1,...,S_m|\lambda)h(\lambda)}{\displaystyle\int_0^\infty f(S_1,...,S_m|\lambda)h(\lambda)d\lambda}\\
+    &amp;=&amp;\displaystyle\frac{\displaystyle\prod_{j=1}^m\left(\frac{\lambda^{S_j}}{S_j!}e^{-\lambda}\right)\frac{\alpha^\gamma}{\Gamma(\gamma)}\lambda^{\gamma-1}e^{-\alpha\lambda}}{\displaystyle\int_0^\infty\displaystyle\prod_{j=1}^m\left(\frac{\lambda^{S_j}}{S_j!}\right)\frac{\alpha^\gamma}{\Gamma(\gamma)}\lambda^{\gamma-1}e^{-\alpha\lambda}d\lambda}\\
+    &amp;=&amp;\displaystyle\frac{\lambda^{m\overline{S}+\gamma-1}e^{-(m+\alpha)\lambda}}{\displaystyle\int_0^\infty \lambda^{m\overline{S}+\gamma-1}e^{-(m+\alpha)\lambda}d\lambda}\\
+    &amp;=&amp; \displaystyle\frac{(m+\alpha)^{m\overline{S}+\gamma}}{\Gamma(m\overline{S}+\gamma)}\lambda^{m\overline{S}+\gamma-1}e^{-(m+\alpha)\lambda}.
+\end{eqnarray*}\]</span></p>
+<p>Es decir, la densidad a posteriori es gamma(<span class="math inline">\(m\overline{S}+\gamma,m+\alpha\)</span>).Por lo tanto, la prima por credibilidad, esperanza de esta densidad, es</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    {\text{prima}}&amp;=&amp; E(\lambda|S_1,...,S_m)\\
+    &amp;=&amp;\displaystyle\frac{m\overline{S}+\gamma}{m+\alpha}\\
+    &amp;=&amp; \displaystyle\frac{m}{m+\alpha}\overline{S}+\displaystyle\frac{\alpha}{m+\alpha}\displaystyle\frac{\gamma}{\alpha}\\
+    &amp;=&amp;{z\overline{S}+(1-z)\displaystyle\frac{\gamma}{\alpha}},
+\end{eqnarray*}\]</span></p>
+<p>en donde <span class="math inline">\(z=\frac{m}{(m+\alpha)}\)</span> es llamado factor de credibilidad. Esta cantidad crece monótonamente a uno cuando <span class="math inline">\(m\)</span> crece a infinito, dando cada vez más credibilidad a la media muestral <span class="math inline">\(\overline{S}\)</span> y favoreciendo cada vez menos a la media teórica <span class="math inline">\(\frac{\gamma}{\alpha}\)</span>. Observe además que cuando <span class="math inline">\(m\)</span> crece a infinito, la media de la distribución a posteriori converge a la media muestral límite dado por el historial de reclamaciones, y que la varianza de <span class="math inline">\(\lambda\)</span> dada por <span class="math inline">\(Var(\lambda|\underline{S}) =\frac{(m\overline{S}+\gamma)}{(m+\alpha)^2}\)</span> converge a cero, lo cual indica que la distribución posteriori se concentra cada vez más alrededor de su media.</p>
+<p><span class="math inline">\(\blacksquare\)</span> <em>Modelo Normal-Normal</em></p>
+<p>En este modelo se postula que cada una de las reclamaciones <span class="math inline">\(S_1,...,S_m\)</span> tiene distribución <span class="math inline">\(N(\theta,\sigma^2)\)</span>, en donde el parámetro <span class="math inline">\(\sigma^2\)</span> es conocido y la media <span class="math inline">\(\theta\)</span> es una variable aleatoria con distribución <span class="math inline">\(N(\mu,\eta)\)</span>, con <span class="math inline">\(\mu\mbox{ y }\eta^2\)</span> conocidos. La primera hipótesis puede ser justificada en el caso cuando los montos anuales se componen de un gran número de reclamaciones individuales, para ello no es necesario suponer que las reclamaciones individuales tienen la misma distribución. La segunda hipótesis podría ser razonable si es que los parámetros <span class="math inline">\(\mu\mbox{ y }\eta^2\)</span> son tales que la probabilidad asignada a la parte negativa del eje es muy pequeña.La función de densidad a posteriori de <span class="math inline">\(\theta\)</span> es</p>
+<p><span class="math display">\[\begin{eqnarray*}
+   g(\theta|S_1,...,S_m)&amp;=&amp; \displaystyle\frac{f(S_1,...,S_m|\theta)h(\theta)}{\displaystyle\int_{-\infty}^\infty f(S_1,...,S_m|\theta)h(\theta)\theta d\theta}\\
+   
+&amp;=&amp; \displaystyle\frac{\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\sum_{j=1}^m(S_j-\theta)^2/2\sigma^2}\frac{1}{\sqrt{2\pi\eta^2}}e^{-(\theta-\mu)^2/2\eta^2}}{\displaystyle\int_{-\infty}^\infty \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\sum_{j=1}^m(S_j-\theta)^2/2\sigma^2}\frac{1}{\sqrt{2\pi\eta^2}}e^{-(\theta-\mu)^2/2\eta^2}d\theta}\\
+\end{eqnarray*}\]</span></p>
+<p>Nos concentramos en analizar únicamente el exponente y tenemos que</p>
+<p><span class="math display">\[-\displaystyle\sum_{j=1}^m\displaystyle\frac{(S_j-\theta)^2}{2\sigma^2}-\displaystyle\frac{(\theta-\mu)^2}{2\eta^2}=-\theta^2\left(\frac{m}{2\sigma^2}+\frac{1}{2\eta^2}\right)+2\theta\left(\frac{m\overline{S}}{2\sigma^2}+\frac{\mu}{2\eta^2}\right)-\left(\displaystyle\sum_{j=1}^m\displaystyle\frac{S_j^2}{2\sigma^2}\right)-\frac{\mu^2}{2\eta^2}.\]</span>
+Completando el cuadrado en <span class="math inline">\(\theta\)</span>, este exponente se puede escribir como sigue
+<span class="math display">\[-\displaystyle\frac{\left[\theta-\left(\frac{m\overline{S}}{\sigma^2}+\frac{\mu}{\eta^2}\right)/\left(\frac{m}{\sigma^2}+\frac{1}{\eta^2}\right)\right]}{2\left(\frac{m}{\sigma^2}+\frac{1}{\eta^2}\right)^{-1}}+\displaystyle\frac{\left(\frac{m\overline{S}}{\sigma^2}+\frac{\mu}{\eta^2}\right)^2}{2\left(\frac{m}{\sigma^2}+\frac{1}{\eta^2}\right)}-\left(\displaystyle\sum_{j=1}^m\frac{S_j^2}{2\sigma^2}\right)-\frac{\mu^2}{2\eta^2}.\]</span>
+Este exponente aparece tanto en el numerador como en el denominador, y como los últimos dos sumandos no dependen de <span class="math inline">\(\theta\)</span> éstos desaparecen completamente al hacer el cociente. Lo que resulta es nuevamente la distribución normal
+<span class="math display">\[g(\theta|S_1,...,S_m)=\displaystyle\frac{1}{\sqrt{2\pi \left(\frac{m}{\sigma^2}+\frac{1}{\eta^2}\right)^{-1}}}exp\left\{-\frac{\left[\theta-{\left(\frac{m\overline{S}}{\sigma^2}+\frac{\mu}{\eta^2}\right)/\left(\frac{m}{\sigma^2}+\frac{1}{\eta^2}\right)}\right]^2}{2\left(\frac{m}{\sigma^2}+\frac{1}{\eta^2}\right)^{-1}}\right\}.\]</span></p>
+<p>La media de esta distribución es entonces la prima por credibilidad, es decir,</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    {prima}&amp;=&amp; E(\theta|S_1,...,S_m)\\
+    &amp;=&amp; {\left(\frac{m\overline{S}}{\sigma^2}+\frac{\mu}{\eta^2}\right)/\left(\frac{m}{\sigma^2}+\frac{1}{\eta^2}\right)}\\
+    &amp;=&amp; \displaystyle\frac{m\eta^2}{m\eta^2+\sigma^2}\overline{S}+\displaystyle\frac{\sigma^2}{m\eta^2+\sigma^2}\mu\\
+    &amp;=&amp; z\overline{S}+(1-z)\mu,
+\end{eqnarray*}\]</span></p>
+<p>en donde <span class="math inline">\(z=\frac{m\eta^2}{(m\eta^2+\sigma^2)}\)</span> es el factor de credibilidad, el cual tiene nuevamente comportamiento monótono creciente a uno conforme <span class="math inline">\(m\)</span> crece a infinito. Observe además que <span class="math inline">\(Var(\theta|\underline{S})=(\frac{m}{\sigma^2}+\frac{1}{\eta^2})^{-1}\)</span> y que esta cantidad converge a cero cuando el tamaño de muestra <span class="math inline">\(m\)</span> crece a infinito, indicando nuevamente que la distribución a posteriori se concentra cada vez más alrededor de su media.</p>
+<p><strong>Ejemplo:</strong></p>
+<p>Suponga <span class="math inline">\(\{X_i\}_{i=1}^n\)</span> una muestra aleatoria con distribución <span class="math inline">\(Bernoulli(\Theta)\)</span> y consideremos <span class="math inline">\(\Theta\sim Beta(\Lambda=(a,b))\)</span>.
+Con base en esto, ya vimos que:</p>
+<p><span class="math inline">\(\hat{\Theta}=\displaystyle\frac{n\overline{X}+a}{n+a+b}=\displaystyle\frac{n}{n+a+b}\overline{X}+\frac{1}{n+a+b}a\)</span></p>
+<p>Sea <span class="math inline">\(Z\)</span> tal que: <span class="math inline">\(\displaystyle\frac{1}{n+a+b}={Z}\frac{1}{a+b}\Leftrightarrow{Z}=\displaystyle\frac{a+b}{n+a+b}\in(0,1)\)</span>, además notemos que:</p>
+<p><span class="math inline">\(1-{Z}=1-\displaystyle\frac{a+b}{n+a+b}\)</span>. De tal manera que:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\hat{\Theta}&amp;=&amp;\displaystyle\frac{n}{n+a+b}\overline{X}+\frac{1}{n+a+b}a=(1-{Z})\overline{X}+{Z}\frac{a}{a+b}\\
+&amp;=&amp;(1-{Z})\overline{X}+{Z}{\mathbb{E}[\theta]};\mbox{ si }{Z&#39;}\ \ \ddot{=}\ \ 1-{Z}
+\end{eqnarray*}\]</span></p>
+<p><span class="math display">\[\begin{eqnarray*}    
+    \therefore \underset{{\hookrightarrow\mbox{ De credibilidad Bayesiana}}}{\begin{array}{cc}
+     {\text{Prima final}}  
+     {\text{(Posterior)}}
+    \end{array}={\hat{\Theta}}} &amp;=&amp;{Z&#39;}{\overline{X}}+(1-{Z&#39;}){\mathbb{E}[\Theta]}\\ &amp;=&amp;{Z&#39;}{\left(\begin{array}{cc}
+         \text{Experiencia}  \\
+         \text{de los datos}
+    \end{array}\right)}+(1-{Z&#39;}){\left(\begin{array}{cc}
+         \text{Prima inicial}  \\
+         \text{(a priori)}
+    \end{array}\right)}
+\end{eqnarray*}\]</span><br />
+</p>
+<p><strong>Nota:</strong> En esta metodología, debemos tener en cuenta que pensamos a la prima de riesgo como una v.a. que cambia con base en la muestra y <span class="math inline">\(\mathbb{E}[S|\Theta=\theta]=\theta\)</span>. Pero puede ser que <span class="math inline">\(\mathbb{E}[S|\Theta=\theta]=\tau(\theta)\)</span></p>
+<p>Un par de últimas observaciones de lo que se está haciendo. Noten que la prima de credibilidad bayesiana se puede obtener sin calcular el factor de credibilidad <span class="math inline">\(Z\)</span>, más bien, se obtiene simplemente de actualizar la distribución inicial.</p>
+<p>La aparición de <span class="math inline">\(Z\)</span> se hace para observar qué tanto se otorga en la transformación lineal convexa, a la experiencia muestral y a la propuesta teórica.</p>
+<p><span class="math display">\[{Z}{\overline{X}}+(1-{Z}){\mathbb{E}[\Theta]}\]</span>
+Por eso en credibilidad Bayesiana es fundamentar proponer una distribución inicial que tenga como media (al menos de forma numérica) la Prima de Riesgo teórica que se propone en el modelo inicial.</p>
+<p>También se debe recalcar que el modelo que se propone inicialmente es para <span class="math inline">\(p(\underline{x}| \theta)\)</span> (la verosimilitud) no para <span class="math inline">\(p(\theta)\)</span> (la distribución inicial). Esto significa que todo lo que vimos en la primera parte del curso es para <span class="math inline">\(p(\underline{x}|\theta)\)</span>. Mientras que <span class="math inline">\(p(\theta)\)</span> se propone “a colmillo” y tal teóricamente:</p>
+<p>si <span class="math inline">\(\mathbb{E}[{S}]=\mathbb{E}[{S}|\Theta={\theta}]={\tau({\theta})}\Rightarrow{\tau({\mathbb{E}[\Theta]})}={\tau({\theta})}\)</span></p>
+<p>Más aún, la prima de riesgo de Credibilidad Beyesiana y el factor de credibilidad Bayesiana son respectivamente:</p>
+<p><span class="math inline">\({\tau({\hat{\Theta}})}={\tau({\mathbb{E}[\Theta|\underline{S}]})}\)</span>   y <span class="math inline">\({Z}\hspace{0.4em} \cdot)\cdot\)</span>   <span class="math inline">\({\tau({\hat{\Theta}})}{Z}{\overline{S}}+(1-{Z}){\tau({\mathbb{E}[\Theta]})}\)</span></p>
+<p>Todo esto significa que debemos plantear la distribución inicial con base en nuestro modelo y luego simplemente actualizarlo. Vía estadística Bayesiana.</p>
+<p><strong>Ejemplo:</strong> Por muchos años un investigador ha estudiado una muestra de observaciones <span class="math inline">\({S}_i\)</span>. Él ha dicho en diversos artículos que <span class="math inline">\({S}_i\sim Exp({\lambda}),\mathbb{E}[{S}_i]=2\hspace{0.4em}\forall i\)</span>. Hoy en día existe un fenómeno natural que hace dudar que <span class="math inline">\({\lambda}=\frac{1}{2}\)</span>.</p>
+<p>Pero no se sabe qué valor pueda tomar <span class="math inline">\(\lambda\)</span>, así que los expertos en las <span class="math inline">\({S}_i\)</span>’s han dicho que <span class="math inline">\(\lambda\)</span>, podría tener un comportamiento <span class="math inline">\({\Lambda\sim Gamma(\alpha,\beta)}\)</span> con <span class="math inline">\(\alpha=2\)</span>. Hoy se tomó una muestra aleatoria de <span class="math inline">\({S}\)</span> la cual es la siguiente: <span class="math inline">\(2.71,11.04,0.53,0.88,0.14,7.13,5.35,2.82,1.14,5.09\)</span>.</p>
+<p>Si <span class="math inline">\({S}\)</span> está asociado a un monto de siniestros. ¿Cuál sería una prima de riesgo adecuada dada esta información?</p>
+<p><em>Solución:</em></p>
+<p>Como el investigador decía que antes <span class="math inline">\(\mathbb{E}[{S}_i]=2\)</span> y se ha propuesto una distribución inicial <span class="math inline">\({\Lambda}\sim Gamma(2,\beta)\)</span> entonces:</p>
+<p><span class="math inline">\(\mathbb{E}[|\Lambda=\lambda]={{\tau({\lambda})}=\displaystyle\frac{{1}}{{\lambda}}}= 2 \Rightarrow \frac{\beta}{2}=\frac{{1}}{{\mathbb{E}[\Lambda]}}= {\tau({\mathbb{E}[\Lambda]})}={\tau({\lambda})}=2\)</span></p>
+<p>Los expertos proponen una distribución inicial <span class="math inline">\({\Lambda}\sim Gamma({\alpha}=2,{\beta}=4)\)</span>.</p>
+<p>Trabajando con la <em>nueva información</em>:</p>
+<ul>
+<li><p><em>Distribución inicial</em>: <span class="math inline">\(P(\lambda)\sim Gamma({\alpha}=2,{\beta}=4)\)</span></p></li>
+<li><p><em>Verosimilitud</em>: <span class="math inline">\(P(\underline{S}|\lambda)\sim Exp({\Lambda})\)</span>.</p></li>
+</ul>
+<p><span class="math display">\[\begin{eqnarray*}
+
+  &amp;\Rightarrow&amp; \mbox{ Distribución final: }p(\lambda|\underline{S})\sim {\underbrace{{Gamma({\alpha}+{n}=12,{\beta}+{\displaystyle\sum_{i=1}^n S_i}=\text{40.83})}}_{\mbox{ejercicio para el lector}}}\\
+  
+  
+   &amp;\Rightarrow&amp; {\hat{\Lambda}}\ \ddot{=} {\mathbb{E}[\Lambda|\underline{S}]}=\frac{12}{\text{40.83}}=\frac{400}{1361}\approx \text{0.293901543}\\
+  
+   &amp;\Rightarrow&amp; \mbox{Prima de Riesgo de C.B.}={\tau({\hat{\Lambda}}})=\frac{1361}{400}
+\end{eqnarray*}\]</span></p>
+<p><img src="Ima%CC%81genes/Credi.png" width="50%" /></p>
+<p><span class="math inline">\(\therefore\)</span> La prima de riesgo actualizada es 3.4025.</p>
+<p><strong>Ejemplo (Parte 2):</strong> Del ejemplo anterior ¿cuál sería el factor de credibilidad?</p>
+<p><em>Solución:</em> Buscamos <span class="math inline">\({Z}\)</span> tal que:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    {Z}\left(\frac{\text{36.83}}{10}\right)+(1-{Z})(2)={Z}{\overline{S}}+(1-{Z}){\tau\left({\mathbb{E}[\Lambda]}\right)}=\begin{array}{cc}
+         {\text{Prima}}  \\
+         {\text{de}}\\
+         {\text{Riesgo}}
+    \end{array}={\tau({\hat{\Lambda}})}=\text{3.4025}\\
+\end{eqnarray*}\]</span>
+<span class="math display">\[\begin{eqnarray*}
+    &amp;\Rightarrow &amp;\text{3.683}Z+\text{2.2}Z=2+\text{1.6837}=\text{3.4025}\Leftrightarrow {Z}=\frac{\text{3.4025}-2}{\text{1.683}}\hspace{3.3cm}\\
+    &amp;\therefore&amp; \text{El factor de credibilidad es} {Z}=\frac{\text{3.4025}-2}{\text{1.683}}=\frac{5}{6}\approx\text{83.3}\overline{3}\%\hspace{2.4cm}
+\end{eqnarray*}\]</span></p>
+<p><em>Moraleja:</em> Recuerda siempre lo que se está haciendo y cómo se está haciendo.</p>
+<p><strong>Nota:</strong> Todo esto tiene sentido pues el autor obtuvo los datos de una <span class="math inline">\(Exponencial(\lambda=\frac{1}{4})\)</span></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="calculo-de-primas.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/14-Credibilidad.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Notas_TeoriadelRiesgo.pdf", "Notas_TeoriadelRiesgo.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

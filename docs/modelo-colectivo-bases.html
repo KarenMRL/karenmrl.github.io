@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 11 Modelo colectivo: Bases | Teoría del Riesgo</title>
+  <meta name="description" content="Descripcion" />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 11 Modelo colectivo: Bases | Teoría del Riesgo" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Descripcion" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 11 Modelo colectivo: Bases | Teoría del Riesgo" />
+  
+  <meta name="twitter:description" content="Descripcion" />
+  
+
+<meta name="author" content="Cinthya Denisse González Mendoza :o" />
+
+
+<meta name="date" content="2023-07-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="modelo-individual-formula-de-pril.html"/>
+<link rel="next" href="modelo-colectivo-formula-de-panjer.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notas de Teoría del Riesgo</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Conceptos básicos y preeliminares</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#introducción"><i class="fa fa-check"></i><b>1.1</b> Introducción</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#algunos-antecedentes-históricos"><i class="fa fa-check"></i><b>1.2</b> Algunos antecedentes históricos</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#algunos-términos-del-seguro"><i class="fa fa-check"></i><b>1.3</b> Algunos términos del seguro</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#seguro"><i class="fa fa-check"></i>Seguro:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#riesgo"><i class="fa fa-check"></i>Riesgo:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#siniestro"><i class="fa fa-check"></i>Siniestro:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asegurador"><i class="fa fa-check"></i>Asegurador:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asegurado"><i class="fa fa-check"></i>Asegurado:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#beneficiario"><i class="fa fa-check"></i>Beneficiario:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#póliza"><i class="fa fa-check"></i>Póliza:</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#prima"><i class="fa fa-check"></i>Prima:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#clase-de-primas"><i class="fa fa-check"></i><b>1.4</b> Clase de primas:</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#clasificación-de-los-seguros"><i class="fa fa-check"></i><b>1.5</b> Clasificación de los seguros</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#distribuciones-clásicas-en-teoría-del-riesgo"><i class="fa fa-check"></i><b>1.6</b> Distribuciones clásicas en Teoría del Riesgo</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asociadas-al-monto-de-una-pérdida"><i class="fa fa-check"></i>Asociadas al monto de una pérdida</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#familias-paramétricas-para-modelar-el-monto-de-riesgo"><i class="fa fa-check"></i><b>1.7</b> Familias paramétricas para modelar el monto de riesgo</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#exponencial"><i class="fa fa-check"></i>Exponencial</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#gamma"><i class="fa fa-check"></i>Gamma</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#log---normal"><i class="fa fa-check"></i>Log - Normal</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#weibull"><i class="fa fa-check"></i>Weibull</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#burr"><i class="fa fa-check"></i>Burr</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#pareto"><i class="fa fa-check"></i>Pareto</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#modelación-del-riesgo"><i class="fa fa-check"></i><b>1.8</b> Modelación del riesgo</a></li>
+<li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#ajuste-de-funciones-de-probabilidad"><i class="fa fa-check"></i><b>1.9</b> Ajuste de funciones de probabilidad</a></li>
+<li class="chapter" data-level="1.10" data-path="index.html"><a href="index.html#reconocimiento-del-modelo"><i class="fa fa-check"></i><b>1.10</b> Reconocimiento del modelo</a>
+<ul>
+<li class="chapter" data-level="1.10.1" data-path="index.html"><a href="index.html#moda-de-una-función-de-densidad"><i class="fa fa-check"></i><b>1.10.1</b> Moda de una función de densidad</a></li>
+<li class="chapter" data-level="1.10.2" data-path="index.html"><a href="index.html#coeficiente-de-asimetría-skewness"><i class="fa fa-check"></i><b>1.10.2</b> Coeficiente de asimetría (Skewness)</a></li>
+<li class="chapter" data-level="1.10.3" data-path="index.html"><a href="index.html#coeficiente-de-kurtosis"><i class="fa fa-check"></i><b>1.10.3</b> Coeficiente de Kurtosis</a></li>
+<li class="chapter" data-level="1.10.4" data-path="index.html"><a href="index.html#función-de-distribución-empírica"><i class="fa fa-check"></i><b>1.10.4</b> Función de distribución empírica</a></li>
+<li class="chapter" data-level="1.10.5" data-path="index.html"><a href="index.html#cuantiles"><i class="fa fa-check"></i><b>1.10.5</b> Cuantiles</a></li>
+<li class="chapter" data-level="1.10.6" data-path="index.html"><a href="index.html#rango-intercuantílico"><i class="fa fa-check"></i><b>1.10.6</b> Rango intercuantílico</a></li>
+</ul></li>
+<li class="chapter" data-level="1.11" data-path="index.html"><a href="index.html#estimación-de-parámetros"><i class="fa fa-check"></i><b>1.11</b> Estimación de parámetros</a>
+<ul>
+<li class="chapter" data-level="1.11.1" data-path="index.html"><a href="index.html#método-de-momentos"><i class="fa fa-check"></i><b>1.11.1</b> Método de momentos</a></li>
+<li class="chapter" data-level="1.11.2" data-path="index.html"><a href="index.html#máxima-verosimilitud"><i class="fa fa-check"></i><b>1.11.2</b> Máxima verosimilitud</a></li>
+</ul></li>
+<li class="chapter" data-level="1.12" data-path="index.html"><a href="index.html#pruebas-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>1.12</b> Pruebas de bondad de ajuste</a>
+<ul>
+<li class="chapter" data-level="1.12.1" data-path="index.html"><a href="index.html#planteamiento-general-de-una-prueba-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>1.12.1</b> Planteamiento general de una prueba de bondad de ajuste</a></li>
+<li class="chapter" data-level="1.12.2" data-path="index.html"><a href="index.html#algunas-pruebas-de-bondad-de-ajuste"><i class="fa fa-check"></i><b>1.12.2</b> Algunas pruebas de bondad de ajuste</a></li>
+</ul></li>
+<li class="chapter" data-level="1.13" data-path="index.html"><a href="index.html#cómo-leer-un-p-value"><i class="fa fa-check"></i><b>1.13</b> ¿Cómo leer un p-value?</a>
+<ul>
+<li class="chapter" data-level="1.13.1" data-path="index.html"><a href="index.html#región-de-rechazo-y-no-rechazo"><i class="fa fa-check"></i><b>1.13.1</b> Región de Rechazo y no rechazo:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.14" data-path="index.html"><a href="index.html#el-proceso-de-modelación-del-riesgo"><i class="fa fa-check"></i><b>1.14</b> El proceso de modelación del Riesgo</a>
+<ul>
+<li class="chapter" data-level="1.14.1" data-path="index.html"><a href="index.html#el-proceso-de-modelado"><i class="fa fa-check"></i><b>1.14.1</b> El proceso de modelado</a></li>
+<li class="chapter" data-level="1.14.2" data-path="index.html"><a href="index.html#pasos"><i class="fa fa-check"></i><b>1.14.2</b> Pasos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html"><i class="fa fa-check"></i><b>2</b> Medidas de Riesgo</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#distribuciones-para-valores-extremos"><i class="fa fa-check"></i><b>2.1</b> Distribuciones para valores extremos</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#teoría-de-valores-extremos"><i class="fa fa-check"></i><b>2.1.1</b> Teoría de valores extremos</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#distribuciones-de-valores-extremos"><i class="fa fa-check"></i>Distribuciones de valores extremos</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#ejemplo-1-2"><i class="fa fa-check"></i>Ejemplo 1</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#ejemplo-2-1"><i class="fa fa-check"></i>Ejemplo 2</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#var-t-var"><i class="fa fa-check"></i><b>2.2</b> VaR &amp; T-VaR</a>
+<ul>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#var"><i class="fa fa-check"></i>VaR</a></li>
+<li class="chapter" data-level="" data-path="medidas-de-riesgo.html"><a href="medidas-de-riesgo.html#t-var"><i class="fa fa-check"></i>T-VaR</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="frecuencia.html"><a href="frecuencia.html"><i class="fa fa-check"></i><b>3</b> Frecuencia</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="frecuencia.html"><a href="frecuencia.html#frecuencia-1"><i class="fa fa-check"></i><b>3.1</b> Frecuencia</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="frecuencia.html"><a href="frecuencia.html#familia-ab0"><i class="fa fa-check"></i><b>3.1.1</b> Familia (a,b,0)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="frecuencia-anexo.html"><a href="frecuencia-anexo.html"><i class="fa fa-check"></i><b>4</b> Frecuencia Anexo</a></li>
+<li class="chapter" data-level="5" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html"><i class="fa fa-check"></i><b>5</b> Severidad Coberturas</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#diferencia-entre-función-de-densidad-y-función-de-masa-de-probabilidad"><i class="fa fa-check"></i><b>5.1</b> Diferencia entre función de densidad y función de masa de probabilidad</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#visualización-de-variables-aleatorias-mixtas"><i class="fa fa-check"></i><b>5.1.1</b> Visualización de variables aleatorias mixtas</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#coberturas-en-seguros-reaseguros"><i class="fa fa-check"></i><b>5.2</b> Coberturas en Seguros / Reaseguros</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#coaseguro"><i class="fa fa-check"></i><b>5.2.1</b> Coaseguro</a></li>
+<li class="chapter" data-level="5.2.2" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#inflación"><i class="fa fa-check"></i><b>5.2.2</b> Inflación</a></li>
+<li class="chapter" data-level="5.2.3" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#deducibles"><i class="fa fa-check"></i><b>5.2.3</b> Deducibles</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#la-regla-de-darth-vader"><i class="fa fa-check"></i><b>5.3</b> La regla de Darth Vader</a></li>
+<li class="chapter" data-level="5.4" data-path="severidad-coberturas.html"><a href="severidad-coberturas.html#monto-máximo-de-beneficio"><i class="fa fa-check"></i><b>5.4</b> Monto máximo de beneficio</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html"><i class="fa fa-check"></i><b>6</b> Severidad combinacion de coberturas</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#contratos-con-deducible-y-monto-máximo-de-beneficio"><i class="fa fa-check"></i><b>6.1</b> Contratos con Deducible y monto máximo de beneficio</a></li>
+<li class="chapter" data-level="6.2" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#generalización-de-beneficio-y-monto-máximo"><i class="fa fa-check"></i><b>6.2</b> Generalización de beneficio y monto máximo</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#quitando-el-deducible-d0"><i class="fa fa-check"></i>Quitando el deducible d=0</a></li>
+<li class="chapter" data-level="" data-path="severidad-combinacion-de-coberturas.html"><a href="severidad-combinacion-de-coberturas.html#quitando-monto-máximo-de-beneficio-uinfty"><i class="fa fa-check"></i>Quitando Monto máximo de beneficio: <span class="math inline">\(u=\infty\)</span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html"><i class="fa fa-check"></i><b>7</b> Severidad (Costo por pérdida y por pago)</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html#costo-por-pago"><i class="fa fa-check"></i><b>7.1</b> Costo por pago</a></li>
+<li class="chapter" data-level="7.2" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html#cuantiles-para-las-coberturas"><i class="fa fa-check"></i><b>7.2</b> Cuantiles para las coberturas</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-costo-por-pérdida-y-por-pago.html"><a href="severidad-costo-por-pérdida-y-por-pago.html#ejemplo-6"><i class="fa fa-check"></i>Ejemplo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="severidad-anexo.html"><a href="severidad-anexo.html"><i class="fa fa-check"></i><b>8</b> Severidad Anexo</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#pago-del-asegurado-con-deducible-y-monto-máximo-de-beneficio"><i class="fa fa-check"></i>Pago del asegurado con deducible y monto máximo de beneficio:</a></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#generalización-del-cálculo-de-variables-esperadas-para-y_p."><i class="fa fa-check"></i>Generalización del cálculo de variables esperadas para <span class="math inline">\(Y_p\)</span>.</a></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#generalización-de-la-fórmula-de-darth-vader."><i class="fa fa-check"></i>Generalización de la fórmula de Darth Vader.</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#ejercicio"><i class="fa fa-check"></i>Ejercicio:</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#más-deducibles"><i class="fa fa-check"></i>Más deducibles</a>
+<ul>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#ejemplo-muy-sencillo-de-como-jugar-con-el-deducible"><i class="fa fa-check"></i>Ejemplo muy sencillo de como jugar con el deducible:</a></li>
+<li class="chapter" data-level="" data-path="severidad-anexo.html"><a href="severidad-anexo.html#solución-3"><i class="fa fa-check"></i>Solución</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html"><i class="fa fa-check"></i><b>9</b> Modelo individual bases</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#modelo-individual"><i class="fa fa-check"></i><b>9.1</b> Modelo individual</a></li>
+<li class="chapter" data-level="9.2" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#derivación-bajo-el-signo-integral"><i class="fa fa-check"></i><b>9.2</b> Derivación bajo el signo integral</a></li>
+<li class="chapter" data-level="9.3" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#teorema-de-probabilidad-total-en-el-caso-continuo"><i class="fa fa-check"></i><b>9.3</b> Teorema de probabilidad total en el caso continuo:</a></li>
+<li class="chapter" data-level="9.4" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#teorema-de-probabilidad-total-en-el-caso-discreto"><i class="fa fa-check"></i><b>9.4</b> Teorema de probabilidad total en el caso discreto:</a></li>
+<li class="chapter" data-level="9.5" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#aproximación-normal"><i class="fa fa-check"></i><b>9.5</b> Aproximación Normal</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-individual-bases.html"><a href="modelo-individual-bases.html#teorema-central-del-límite"><i class="fa fa-check"></i>TEOREMA CENTRAL DEL LÍMITE</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="modelo-individual-formula-de-pril.html"><a href="modelo-individual-formula-de-pril.html"><i class="fa fa-check"></i><b>10</b> Modelo individual: formula de Pril</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="modelo-individual-formula-de-pril.html"><a href="modelo-individual-formula-de-pril.html#formula-de-pril"><i class="fa fa-check"></i><b>10.1</b> Formula de Pril</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html"><i class="fa fa-check"></i><b>11</b> Modelo colectivo: Bases</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-colectivo"><i class="fa fa-check"></i>Modelo Colectivo</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-binomial-compuesto"><i class="fa fa-check"></i>Modelo Binomial Compuesto</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-binomial-negativo-compuesto"><i class="fa fa-check"></i>Modelo binomial negativo compuesto</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#modelo-poisson-compuesto"><i class="fa fa-check"></i>Modelo Poisson Compuesto</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#distribución-de-la-convoluación-de-poisson-compuestas"><i class="fa fa-check"></i>Distribución de la convoluación de Poisson compuestas</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#aproximaciones-de-probabilidad-del-modelo-colectivo"><i class="fa fa-check"></i>Aproximaciones de probabilidad del Modelo Colectivo</a>
+<ul>
+<li class="chapter" data-level="11.0.1" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#aproximación-normal-1"><i class="fa fa-check"></i><b>11.0.1</b> Aproximación Normal</a></li>
+<li class="chapter" data-level="11.0.2" data-path="modelo-colectivo-bases.html"><a href="modelo-colectivo-bases.html#aproximación-gamma-trasladada"><i class="fa fa-check"></i><b>11.0.2</b> Aproximación Gamma Trasladada</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="modelo-colectivo-formula-de-panjer.html"><a href="modelo-colectivo-formula-de-panjer.html"><i class="fa fa-check"></i><b>12</b> Modelo colectivo: Formula de Panjer</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="modelo-colectivo-formula-de-panjer.html"><a href="modelo-colectivo-formula-de-panjer.html#casos-especiales-de-panjer"><i class="fa fa-check"></i><b>12.1</b> Casos especiales de Panjer</a></li>
+<li class="chapter" data-level="" data-path="modelo-colectivo-formula-de-panjer.html"><a href="modelo-colectivo-formula-de-panjer.html#momento-de-s-para-panjer"><i class="fa fa-check"></i>Momento de S para Panjer</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="reaseguro.html"><a href="reaseguro.html"><i class="fa fa-check"></i><b>13</b> Reaseguro</a>
+<ul>
+<li class="chapter" data-level="" data-path="reaseguro.html"><a href="reaseguro.html#reaseguro-proporcional"><i class="fa fa-check"></i>Reaseguro proporcional</a>
+<ul>
+<li class="chapter" data-level="" data-path="reaseguro.html"><a href="reaseguro.html#reaseguro-no-proporcional"><i class="fa fa-check"></i>Reaseguro no proporcional</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html"><i class="fa fa-check"></i><b>14</b> Calculo de primas</a>
+<ul>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#propiedades-y-principios-del-cálculo-de-primas"><i class="fa fa-check"></i>Propiedades y Principios del cálculo de Primas</a>
+<ul>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-valor-esperado"><i class="fa fa-check"></i>Principio de valor esperado</a></li>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-la-varianza"><i class="fa fa-check"></i>Principio de la varianza</a></li>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-la-desviación-estándar"><i class="fa fa-check"></i>Principio de la desviación estándar</a></li>
+<li class="chapter" data-level="" data-path="calculo-de-primas.html"><a href="calculo-de-primas.html#principio-de-utilidad-cero"><i class="fa fa-check"></i>Principio de utilidad cero</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="credibilidad.html"><a href="credibilidad.html"><i class="fa fa-check"></i><b>15</b> Credibilidad</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="credibilidad.html"><a href="credibilidad.html#teoría-de-la-credibilidad"><i class="fa fa-check"></i><b>15.1</b> Teoría de la credibilidad</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="credibilidad.html"><a href="credibilidad.html#introducción-1"><i class="fa fa-check"></i><b>15.1.1</b> Introducción</a></li>
+<li class="chapter" data-level="15.1.2" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-completatotal"><i class="fa fa-check"></i><b>15.1.2</b> Credibilidad Completa/total</a></li>
+<li class="chapter" data-level="15.1.3" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-completa-bajo-hipótesis-de-normalidad"><i class="fa fa-check"></i><b>15.1.3</b> Credibilidad Completa Bajo Hipótesis de Normalidad</a></li>
+<li class="chapter" data-level="15.1.4" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-parcial"><i class="fa fa-check"></i><b>15.1.4</b> Credibilidad Parcial</a></li>
+<li class="chapter" data-level="15.1.5" data-path="credibilidad.html"><a href="credibilidad.html#credibilidad-parcial-bajo-hipótesis-de-normalidad"><i class="fa fa-check"></i><b>15.1.5</b> Credibilidad Parcial bajo Hipótesis de Normalidad</a></li>
+<li class="chapter" data-level="15.1.6" data-path="credibilidad.html"><a href="credibilidad.html#ajuste-de-primas-con-credibilidad-clásica"><i class="fa fa-check"></i><b>15.1.6</b> Ajuste de primas con credibilidad clásica</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="credibilidad.html"><a href="credibilidad.html#enfoque-bayesiano"><i class="fa fa-check"></i><b>15.2</b> Enfoque bayesiano</a></li>
+<li class="chapter" data-level="15.3" data-path="credibilidad.html"><a href="credibilidad.html#teorema-de-bayes"><i class="fa fa-check"></i><b>15.3</b> Teorema de Bayes</a></li>
+<li class="chapter" data-level="15.4" data-path="credibilidad.html"><a href="credibilidad.html#familias-conjugadas"><i class="fa fa-check"></i><b>15.4</b> Familias conjugadas</a></li>
+<li class="chapter" data-level="15.5" data-path="credibilidad.html"><a href="credibilidad.html#cálculo-bayesiano-de-primas-de-seguros"><i class="fa fa-check"></i><b>15.5</b> Cálculo Bayesiano de primas de seguros</a>
+<ul>
+<li class="chapter" data-level="" data-path="credibilidad.html"><a href="credibilidad.html#cómo-modelar-un-riesgo-para-obtener-una-prima-de-credibilidad-bayesiana"><i class="fa fa-check"></i>¿Cómo modelar un riesgo para obtener una prima de credibilidad Bayesiana?</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Teoría del Riesgo</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="modelo-colectivo-bases" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Capítulo 11</span> Modelo colectivo: Bases<a href="modelo-colectivo-bases.html#modelo-colectivo-bases" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Resulta ser que pensando a <span class="math inline">\(N\)</span> como una v.a. que mide el número de reclamaciones las propiedades en general que presenta S son manejables.</p>
+<p>Es el momento de mezclar todos los temas que hemos desarrollado para crear una variable aleatoria que puede generalizar en cierto sentido a todas las demás.</p>
+<p>Desde el principio se habló de dos conceptos por separado, la frecuencia y la severidad. Veremos que estos dos se pueden Unificar. En la vida práctica es necesario estudiar y modelar por separado estos conceptos para que una vez bien identificados además de modelados se puedan mezclar en uno de los modelos más populares cuando se habla de riesgo: <strong>El Modelo colectivo</strong> o <strong>Modelo de pérdidas agregadas</strong>.</p>
+<div id="modelo-colectivo" class="section level2 unnumbered hasAnchor">
+<h2>Modelo Colectivo<a href="modelo-colectivo-bases.html#modelo-colectivo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Considere un conjunto de un número no determinado de contratos de seguros</strong> con vigencia en un periodo de tiempo <span class="math inline">\([0,T]\)</span> . Este periodo puede corresponder a un año por ejemplo. <strong>Sea <span class="math inline">\(N\)</span> la variable aleatoria que denota el número de reclamaciones ocurridas en este intervalo, y sean las variables positivas <span class="math inline">\(Y_1,...,Y_N\)</span> los montos de estas reclamaciones</strong>. Gráficamente una posible realización de tal esquema se muestra en la <em>Figura 1.7</em>.</p>
+<p><img src="Ima%CC%81genes/fig1punto7.png" width="100%" /></p>
+<p><em>Nota:</em></p>
+<ul>
+<li><p><span class="math inline">\(Y\to\)</span> <em>frecuencia</em></p></li>
+<li><p><span class="math inline">\(\gamma\to\)</span> <em>severidad</em></p></li>
+</ul>
+<p><strong>Consideraremos que el número de reclamaciones y los montos de éstas son variables aleatorias independientes. Más aún, supondremos que las reclamaciones mismas son independientes entre sí, y que comparten la misma distribución de probabilidad</strong>.</p>
+<p><em>Definición:</em> El monto agregado o monto acumulado de todas las reclamaciones efectuadas es la variable aleatoria <span class="math inline">\(S\)</span>, llamado riesgo y definida como sigue:</p>
+<p><span class="math inline">\(S=\sum_{j=1}^N Y_j\)</span> ~~~~~~~~~~ (1.2)</p>
+<p>Observe que cada sumando es una variable aleatoria y que el número de sumandos es también aleatorio. La suma (1.2) se define como cero cuando <span class="math inline">\(N=0\)</span>}. Observe además que <strong><span class="math inline">\(S\)</span> puede ser una variable aleatoria mixta</strong>, es decir, no ser discreta ni continua, pues cuando los montos de las reclamaciones <span class="math inline">\(Y\)</span> son variables continuas estrictamente positivas, la variable <span class="math inline">\(S\)</span> puede tomar el valor 0 con probabilidad <span class="math inline">\(P( S=0)= P( N =0)&gt; 0\)</span>, y puede además tomar cualquier valor en el intervalo <span class="math inline">\((0,\infty)\)</span> <strong>La ecuación (1.2) representa el modelo colectivo para un contrato de seguros</strong>, cuyas posibles realizaciones **como función del tiempo tienen la forma de la gráfica de la <em>Figura 1.8</em>:</p>
+<p><img src="Ima%CC%81genes/fig1punto8.png" width="100%" /></p>
+<p><strong>A la función de distribución de cada reclamación Y la denotaremos por la
+letra <span class="math inline">\(G\)</span>. Se asume naturalmente que <span class="math inline">\(G(0)=0\)</span>, ello equivale a decir que la
+variable <span class="math inline">\(Y\)</span> es positiva. Adicionalmente usaremos la notación <span class="math inline">\(\mu_n :\mathbb{E}[Y^n]\)</span>,
+en particular se escribe <span class="math inline">\(\mu\)</span> en lugar de <span class="math inline">\(\mu_1:= \mathbb{E}(Y)\)</span>. Nuevamente el problema
+central es encontrar la distribución de probabilidad de <span class="math inline">\(S\)</span>, la cual depende
+de la distribución de <span class="math inline">\(Y\)</span> y de <span class="math inline">\(N\)</span>. Un primer resultado general al respecto
+es el que aparece a continuación. Antes de enunciarlo recordemos que la
+0-convolución de una función de distribución G se define como:</strong></p>
+<p><span class="math display">\[G^{*0}(x)= \begin{cases}
+1~~~si~~~x\geq0\\
+0~~~si~~~x&lt;0
+\end{cases}\]</span></p>
+<p><strong>Proposición:</strong> La función de distribución del riesgo <span class="math inline">\(S\)</span> en el modelo colectivo es:</p>
+<p><span class="math display">\[F(x)=\sum_{n=0}^{\infty}G^{*n}(x)P(N=n)\]</span>
+<em>Demostración.</em></p>
+<p><span class="math display">\[\begin{eqnarray*}
+  F(x)&amp;=&amp;\sum_{n=0}^{\infty}P(S\leq x| N=n)P(N=n)\\
+&amp;=&amp;P(S\leq x| N=0)P(N=0)+\sum_{n=1}^{\infty} P(Y_1, \dots , Y_n\leq x)P(N=n)\\
+&amp;=&amp;G^{*0}(x)P(N=0)+\sum_{n=1}^{\infty}G^{*n}(x)P(N=n)\\
+&amp;=&amp;\sum_{n=0}^{\infty}G^{*n}(x)P(N=n)\\
+\end{eqnarray*}\]</span></p>
+<p>Algunas características numéricas de la variable <span class="math inline">\(S\)</span> se muestran a continuación:</p>
+<p><strong>Proposición 1.4:</strong> Suponiendo que las cantidades y funciones indicadas
+existen, el riesgo <span class="math inline">\(S\)</span> en el modelo colectivo cumple las siguientes propiedades.</p>
+<ul>
+<li><em>1.</em> <span class="math inline">\(\mathbb{E}[S]=\mathbb{E}[N]\mathbb{E}[Y]\)</span></li>
+<li><em>2.</em> <span class="math inline">\(\mathbb{E}[S^2]=Var(N)\mathbb{E}[Y^2]+\mathbb{E}[(N(N-1))\mathbb{E}^2[Y]\)</span></li>
+<li><em>3.</em> <span class="math inline">\(Var(S)=Var(N)\mathbb{E}^2[Y]+Var(Y)\mathbb{E}[Y]\)</span></li>
+<li><em>4.</em> <span class="math inline">\(M_s(t)=M_N(ln(M_Y(t)))\)</span></li>
+</ul>
+<p><em>Nota:</em> Estos resultados son válidos para <span class="math inline">\(\gamma &#39;s\)</span> discretas, continuas, mixtas y hasta con soporte en <span class="math inline">\(\mathbb{R}\)</span></p>
+<p><em>Demostración.</em></p>
+<p><em>1.</em> Condicionaremos sobre le valor de N y después usaremos la hipótesis de independencia. El resultado del cálculo es el mismo cuando la variable <span class="math inline">\(N\)</span> inicia en el valor 0 o en valor 1</p>
+<p><span class="math display">\[\begin{eqnarray*}
+E(S)&amp;=&amp;\sum_{n=0}^{\infty} E(\sum_{j=1}^{N}Y_j|N=n)P(N=n)\\
+&amp;=&amp;\sum_{n=0}^{\infty} E(\sum_{j=1}^{n}Y_j|N=n)P(N=n)\\
+&amp;=&amp;\sum_{n=0}^{\infty} nE(Y)P(N=n)\\
+&amp;=&amp;E(N)E(Y)\\
+\end{eqnarray*}\]</span></p>
+<p><em>2.</em> Nuevamente condicionando sobre el valor de <span class="math inline">\(N\)</span></p>
+<p><span class="math display">\[\begin{aligned}
+E\left(S^{2}\right) &amp;=\sum_{n=0}^{\infty} E\left(\left(\sum_{j=1}^{N} Y_{j}\right)^{2} \mid N=n\right) P(N=n) \\
+&amp;=\sum_{n=0}^{\infty} E\left(\left(\sum_{j=1}^{n} Y_{j}\right)^{2} \mid N=n\right) P(N=n) \\
+&amp;=\sum_{n=0}^{\infty} E\left(\left(\sum_{j=1}^{n} Y_{j}\right)^{2}\right) P(N=n) \\
+&amp;=\sum_{n=0}^{\infty}\left[\sum_{j=1}^{n} E\left(Y_{j}^{2}\right)+\sum_{j, k=1 \atop j \neq k}^{n} E\left(Y_{j} Y_{k}\right)\right] P(N=n) .
+\end{aligned}\]</span></p>
+<p>Observe que segunda suma es nula cuando <span class="math inline">\(n=0\)</span>, y a su vez la tercera suma se anula cuando <span class="math inline">\(n=0\)</span> o 1 . Así, por la idéntica distribución tenemos que</p>
+<p><span class="math display">\[
+\begin{aligned}
+E\left(S^{2}\right) &amp;=\sum_{n=0}^{\infty} n E\left(Y^{2}\right) P(N=n)+\sum_{n=0}^{\infty} n(n-1) E^{2}(Y) P(N=n) \\
+&amp;=E(N) E\left(Y^{2}\right)+E(N(N-1)) E^{2}(Y)
+\end{aligned}
+\]</span>
+<em>3.</em> Por las fórmulas anteriores,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\operatorname{Var}(S) &amp;=E\left(S^{2}\right)-E^{2}(S) \\
+&amp;=E(N) E\left(Y^{2}\right)+E(N(N-1)) E^{2}(Y)-E^{2}(N) E^{2}(Y) \\
+&amp;=E(N)\left[E\left(Y^{2}\right)-E^{2}(Y)\right]+\left[E\left(N^{2}\right)-E^{2}(N)\right] E^{2}(Y) \\
+&amp;=E(N) \operatorname{Var}(Y)+\operatorname{Var}(N) E^{2}(Y)
+\end{aligned}
+\]</span></p>
+<p><em>4.</em> De manera análoga a los dos primeros incisos,</p>
+<p><span class="math display">\[
+\begin{aligned}
+M_{S}(t) &amp;=\sum_{n=0}^{\infty} E\left(e^{r\left(Y_{1}+\cdots+Y_{N}\right)} \mid N=n\right) P(N=n) \\
+&amp;=\sum_{n=0}^{\infty} E\left(e^{r\left(Y_{1}+\cdots+Y_{n}\right)}\right) P(N=n) \\
+&amp;=\sum_{n=0}^{\infty}\left(M_{Y}(t)\right)^{n} P(N=n) \\
+&amp;=E\left(\left(M_{Y}(t)\right)^{N}\right) \\
+&amp;=E\left(e^{N \ln \left(M_{Y}(t)\right)}\right) \\
+&amp;=M_{N}\left(\ln \left(M_{Y}(t)\right)\right)
+\end{aligned}
+\]</span></p>
+</div>
+<div id="modelo-binomial-compuesto" class="section level2 unnumbered hasAnchor">
+<h2>Modelo Binomial Compuesto<a href="modelo-colectivo-bases.html#modelo-binomial-compuesto" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Cuando el número de reclamaciones <span class="math inline">\(N\)</span> tiene una distribución <span class="math inline">\(Bin\sim(n,p)\)</span> se dice que el riesgo <span class="math inline">\(S\)</span> tiene una distribución binomial compuesta</strong>, y se escribe <span class="math inline">\(S\sim BinComp(n,p,G)\)</span> donde <span class="math inline">\(G\)</span> es la función de distribución de cada sumando en la definición de <span class="math inline">\(S\)</span>. Bajo esta hipótesis se tienen los siguientes
+resultados.</p>
+<p><strong>Proposición:</strong> Si <span class="math inline">\(N\)</span> tiene distribución <span class="math inline">\(Bin(n,p)\)</span> entonces</p>
+<p><em>a)</em> <span class="math inline">\(E(S)=n p \mu\)</span>.</p>
+<p><em>b)</em> <span class="math inline">\(E\left(S^{2}\right)=n p \mu_{2}+n(n-1) p^{2} \mu^{2}\)</span>.</p>
+<p><em>c)</em> <span class="math inline">\(\operatorname{Var}(S)=n p\left(\mu_{2}-p \mu^{2}\right)\)</span>.</p>
+<p><em>d)</em> <span class="math inline">\(M_{S}(t)=\left(1-p+p M_{Y}(t)\right)^{n}\)</span>.</p>
+<p><em>Nota:</em> <span class="math inline">\(\mathbb{E}[\gamma^n]=\mu_n\)</span></p>
+<p>Estas expresiones se siguen fácilmente de las fórmulas generales demostradas antes, basta recordar que si <span class="math inline">\(N\)</span> tiene distribución <span class="math inline">\(bin(n,p)\)</span>, entonces <span class="math inline">\(E(N)=np\)</span>, <span class="math inline">\(Var(N)=np(1-p)\)</span> y <span class="math inline">\(M_N(t)=(1-p+pe^t)^n\)</span></p>
+</div>
+<div id="modelo-binomial-negativo-compuesto" class="section level2 unnumbered hasAnchor">
+<h2>Modelo binomial negativo compuesto<a href="modelo-colectivo-bases.html#modelo-binomial-negativo-compuesto" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Cuando el número de reclamaciones <span class="math inline">\(N\)</span> tiene una distribución binomial negativa se dice que el riesgo S tiene una distribución binomial negativa compuesta</strong>. Esto es, si <span class="math inline">\(N \sim bin neg (k, p)\)</span> entonces <span class="math inline">\(S \sim bin neg comp (k, p, G)\)</span> donde nuevamente <span class="math inline">\(G\)</span> hace referencia a la función de distribución</p>
+<p><strong>Proposición:</strong> Si <span class="math inline">\(N\)</span> tiene distribución bin <span class="math inline">\(n e g(k, p)\)</span>, entonces</p>
+<p><em>a)</em> <span class="math inline">\(E(S)=k(1 / p-1) \mu\)</span>.</p>
+<p><em>b)</em> <span class="math inline">\(E\left(S^{2}\right)=\)</span>.</p>
+<p><em>c)</em> <span class="math inline">\(\operatorname{Var}(S)=k(1 / p-1)(1 / p) \mu^{2}+k(1 / p-1)\left(\mu_{2}-\mu^{2}\right)\)</span>.</p>
+<p><em>d)</em> <span class="math inline">\(M_{S}(t)=\left(\frac{p}{1-(1-p) M_{Y}(t)}\right)^{k}\)</span>.</p>
+<p>Para encontrar estas fórmulas es suficiente recordar que si <span class="math inline">\(N\)</span> tiene distribución <span class="math inline">\(bin ~neg (k, p)\)</span>, entonces <span class="math inline">\(E(N)=\frac{k(1-p)}{p},~~ Var(N)=\frac{k(1-p)}{p^2}~~y~~ M_N(t)=\left[ \frac{p}{(1-p)e^t} \right]^k\)</span></p>
+<p>En el caso particular cuando <span class="math inline">\(k=1\)</span>, la distribución de <span class="math inline">\(N\)</span> se reduce a la distribución geométrica de parámetro <span class="math inline">\(p\)</span>, y se dice que <span class="math inline">\(S\)</span> tiene distribución geométrica compuesta.</p>
+</div>
+<div id="modelo-poisson-compuesto" class="section level2 unnumbered hasAnchor">
+<h2>Modelo Poisson Compuesto<a href="modelo-colectivo-bases.html#modelo-poisson-compuesto" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Cuando el número de reclamaciones <span class="math inline">\(N\)</span> tiene una distribución Poisson se
+dice que el riesgo <span class="math inline">\(S\)</span> tiene una distribución Poisson compuesta</strong>, y se escribe <span class="math inline">\(S \sim Poisson ~comp (\lambda, G)\)</span> , en donde <span class="math inline">\(\lambda\)</span> es el parámetro de la distribución
+Poisson y <span class="math inline">\(G\)</span> es la función de distribución de cada sumando de <span class="math inline">\(S\)</span>.</p>
+<p>Para este modelo se tienen los siguientes resultados:</p>
+<p><strong>Proposición:</strong> Si <span class="math inline">\(N\)</span> tiene distribución <span class="math inline">\(\operatorname{Poisson}(\lambda)\)</span>, entonces</p>
+<p><em>a)</em> <span class="math inline">\(E(S)=\lambda\mu\)</span>.</p>
+<p><em>b)</em> <span class="math inline">\(E\left(S^{2}\right)=\lambda\mu_{2}+\lambda^{2} \mu^{2}\)</span>.</p>
+<p><em>c)</em> <span class="math inline">\(\operatorname{Var}(S)=\lambda\mu_{2}\)</span>.</p>
+<p><em>d)</em> <span class="math inline">\(M_{S}(t)=\exp\left[\lambda\left(M_{Y}(t)-1\right)\right]\)</span>.</p>
+<p>Nuevamente estas expresiones son consecuencia de las fórmulas generales demostradas antes, <span class="math inline">\(\mathrm{y}\)</span> del hecho de que si <span class="math inline">\(N\)</span> tiene distribución Poisson <span class="math inline">\((\lambda)\)</span> entonces <span class="math inline">\(E(N)=\lambda, \operatorname{Var}(N)=\lambda\)</span>, y <span class="math inline">\(M_{N}(t)=\exp \left(\lambda\left(e^{t}-1\right)\right)\)</span>. Véase la sección de ejercicios para los terceros momentos de este modelo. Observe que el parámetro <span class="math inline">\(\lambda\)</span> y la distribución de la variable <span class="math inline">\(Y\)</span> determinan por completo al modelo Poisson compuesto. Estudiaremos con más detalle este modelo en la siguiente sección.</p>
+<p><strong>Proposición:</strong> Si <span class="math inline">\(N\)</span> tiene distribución Poisson(<span class="math inline">\(\lambda\)</span>) entonces.</p>
+<p><em>a)</em> <span class="math inline">\(\mathbb{E}(S)= \lambda\mu\)</span></p>
+<p><em>b)</em> <span class="math inline">\(\mathbb{E}(S^{2})= \lambda \mu_{2}+\lambda^{2}\mu^{2}\)</span></p>
+<p><em>c)</em> <span class="math inline">\(Var(S)=\lambda \mu_{2}\)</span></p>
+<p><em>d)</em> <span class="math inline">\(M_{S}(t)= exp[\lambda(M_{Y}(t)-1)]\)</span></p>
+<p>Nuevamente estas expresiones son consecuencia de las fórmulas generales demostradas antes, y del hecho que si <span class="math inline">\(N\)</span> tiene distribución Poisson(<span class="math inline">\(\lambda\)</span>), entonces <span class="math inline">\(\mathbb{E}(N)=\lambda, Var(N) \quad \text{y}\quad M_{N}(t)=exp[\lambda(e^{t}-1)]\)</span>. Véase la sección de ejercicios para los terceros momentos de este modelo. Observe que el parámetro <span class="math inline">\(\lambda\)</span> y la distribución de la variable <span class="math inline">\(Y\)</span> determinan por completo al modelo Poisson compuesto. Estudiaremos con más detalle este modelo en la siguiente sección.</p>
+</div>
+<div id="distribución-de-la-convoluación-de-poisson-compuestas" class="section level2 unnumbered hasAnchor">
+<h2>Distribución de la convoluación de Poisson compuestas<a href="modelo-colectivo-bases.html#distribución-de-la-convoluación-de-poisson-compuestas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Una característica muy útil para nuestros fines, es que la Poisson compuesta es cerrada bajo convolución.</p>
+<p>Específicamente:</p>
+<p>Supongase que <span class="math inline">\(S_{j}\)</span> tiene una distribución Poisson compuesta con parametros <span class="math inline">\(\lambda_{j}\)</span> y función de distribución para severidades <span class="math inline">\(F_{j}(x)\)</span> para <span class="math inline">\(j=1,2,...,n\)</span>. Además que <span class="math inline">\(S_{1},S_{2},...,S_{n}\)</span> son independientes.</p>
+<p>Entonces <span class="math inline">\(S=S_{1}+S_{2}+...+S_{n}\)</span> tiene una distribución Poisson compuesta con parametro: <span class="math inline">\(\lambda= \displaystyle\sum_{j=1}^{n} \lambda_{j}\)</span> y función de distribución de severidad <span class="math inline">\(F(x)= \displaystyle\sum_{j=1}^{n}\displaystyle\frac{\lambda_{j}}{\lambda}F_{j}(x)\)</span></p>
+<p><em>Demostración.</em></p>
+<p>Sea <span class="math inline">\(M_{j}(t)\)</span> la f.g.m de <span class="math inline">\(F_{j}(x)\)</span> para <span class="math inline">\(j=1,2,...,n\)</span>. Entonces <span class="math inline">\(S_{j}\)</span> tiene f.g.m dada por: <span class="math inline">\(M_{S_{j}}(t)=\mathbb{E}(e^{tS_{j}})= e^{\lambda_{j}(M_{j}(t)-1)}\)</span> y por la independencia de las <span class="math inline">\(S_{j}´s\)</span>. S tiene f.g.m:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+M_{S}(t)&amp;=&amp; \displaystyle\prod_{j=1}^{n}M_{S_{j}}(t)\\
+&amp;=&amp; \displaystyle\prod_{j=1}^{n} exp(\lambda_{j}[M_{j}(t)-1])\\
+&amp;=&amp; exp \left(  \left[ \displaystyle\sum_{j=1}^{n} \lambda_{j}M_{j}(t) - \displaystyle\sum_{j=1}^{n} \lambda_{j}\right]   \right)\\
+&amp;=&amp; exp\left(  \left[ \displaystyle\sum_{j=1}^{n} \lambda_{j}M_{j}(t)  -\lambda\right]   \right)\\
+&amp;=&amp; exp \left( \lambda \left[ \displaystyle\sum_{j=1}^{n} \displaystyle\frac{\lambda_{j}}{\lambda}M_{j}(t)  -\lambda\right]  \right)\\
+\end{eqnarray*}\]</span></p>
+<p>Debido a que <span class="math inline">\(\displaystyle\sum_{j=1}^{n}\displaystyle\frac{\lambda_{j}}{\lambda}M_{j}(t)\)</span> es la f.g.m de <span class="math inline">\(F(x)= \displaystyle\sum_{j=1}^{n}\displaystyle\frac{\lambda_{j}}{\lambda}F_{j}(x)\)</span> entonces <span class="math inline">\(M_{S}(t)\)</span> tiene la forma de la f.g.m de una distribución Poisson compuesta.</p>
+<p><strong>Nota: Al igual que los resultados anteriores, la severidad en este resultado puede ser discreta, continua, mixta o con soporte en los reales.</strong></p>
+<p>Este último resultado se puede enunciar de la siguiente manera:</p>
+<p>Supongamos una muestra de riesgos <span class="math inline">\(\{S_{j} \}_{j=1}^{n}\)</span> v.a.i.i.d con <span class="math inline">\(S_{j} \sim PoiComp(\lambda_{j}, F_{Y_{j}})\)</span>, entonces:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+S &amp;\ddot{=} &amp;\displaystyle\sum_{j=1}^{n}S_{j} \sim PoiComp\left(\lambda= \displaystyle\sum_{j=1}^{n} \lambda_{j},F_{Y_{j}}= \displaystyle\sum_{j=1}^{n}  \displaystyle\frac{\lambda_{j}}{\lambda}F_{Y_{j}}(x) \right)
+\end{eqnarray*}\]</span></p>
+<p>De este resultado una de las partes interesantes es la severidad resultante de esta acción (<span class="math inline">\(Y^{*}\)</span>). Principalmente porque, a pesar de que el resultado está dado en términos de la d.f.a, se deriva que:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+f_{Y^{*}}(t)&amp;=&amp; \displaystyle\sum_{j=1}^{n} \displaystyle\frac{\lambda_{j}}{\lambda} f_{Y_{j}}(t)
+\end{eqnarray*}\]</span></p>
+<p>Sin importar que haya <span class="math inline">\(Y_{j}´s\)</span> discretas, continuas, mixtas; este resultado quedará como ejercicio para el lector.</p>
+<p>Una demostración del resultado anterior, se puede dar si suponemos tener <span class="math inline">\(n_{1}\)</span> v.a continuas y <span class="math inline">\(n_{2}\)</span> v.a discretas con <span class="math inline">\(n=n_{1}+n_{2}\)</span>. Llamemos a <span class="math inline">\(\{ Y_{1i}\}_{i=1}^{n_{1}}\)</span> a las v.a´s de severidad <strong>continuas</strong> y llamemos <span class="math inline">\(\lambda_{1i}\)</span> a sus correspondientes parámetros de frecuencia. Análogamente, llamaremos <span class="math inline">\(\{ Y_{2k}\}_{k=1}^{n_{2}}\)</span> a las v.a´s de severidad <strong>discretas</strong> y <span class="math inline">\(\lambda_{2k}\)</span> a sus correspondientes parámetros de frecuencia. De esta manera, tendremos que:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+                    F_{Y^{*}}(t) &amp;=&amp; \displaystyle\sum_{j=1}^{n} \displaystyle\frac{\lambda_{j}}{j} F_{Y_{j}}(t)\\
+                    &amp;=&amp; \underbrace{ \displaystyle\sum_{i=1}^{n_{1}} \displaystyle\frac{\lambda_{1i}}{\lambda} F_{Y_{1i}}(t) }_\text{continuas} + \underbrace{{ \displaystyle\sum_{k=1}^{n_{2}} \displaystyle\frac{\lambda_{2k}}{\lambda} F_{Y_{2k}}(t) }}_\text{discretas}\\
+                    \end{eqnarray*}\]</span></p>
+<p>Entonces:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    f_{Y^{*}}(t)&amp;=&amp;\displaystyle\frac{d}{dt}\displaystyle\sum_{i=1}^{n_{1}} \displaystyle\frac{\lambda_{1i}}{\lambda} F_{Y_{1i}}(t) \quad + \underbrace{ \displaystyle\sum_{k=1}^{n_{2}} \displaystyle\frac{\lambda_{2k}}{\lambda} F_{Y_{2k}}(t)- F_{Y_{2k}}(t-1)}_\text{Asumiendo que las discretas tienen un soporte consecutivo}\\
+    &amp;=&amp; \underbrace{\displaystyle\sum_{i=1}^{n_{1}} \displaystyle\frac{\lambda_{1i}}{\lambda} f_{Y_{1i}}(t) + \displaystyle\sum_{k=1}^{n_{2}} \displaystyle\frac{\lambda_{2k}}{\lambda} f_{Y_{2k}}(t)}_\text{por la linealidad de la derivada y la probabilidad puntual de las discretas
+    }\\
+    &amp;=&amp; \displaystyle\sum_{j=1}^{n} \displaystyle\frac{\lambda_{j}}{\lambda} f_{Y_{j}}(t) \quad \text{Juntando todo en un solo índice}\\
+\end{eqnarray*}\]</span></p>
+<p>Notemos que entonces la severidad resultante de la suma de modelos Poisson compuestos, resulta ser una <strong>mezcla</strong> de las severidades de los riesgos sumados.</p>
+<p><em>Nota:</em> <span class="math inline">\(\displaystyle\frac{\lambda_{i}}{\lambda}\in (0,1]\)</span> y <span class="math inline">\(\displaystyle\sum_{i=1}^{n}\displaystyle\frac{\lambda_{i}}{\lambda}=1\)</span></p>
+<p>Esto nos da pie a que, en general, los momentos de la severidad de la suma (<span class="math inline">\(Y^{*}\)</span>) vendrán dados por:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\mathbb{E}[(Y^{*})^{m}]&amp;=&amp; \displaystyle\frac{1}{\lambda} \displaystyle\sum_{j=1}^{n} \lambda_{j} \mathbb{E}[(Y_{i})^{m}]\\
+\end{eqnarray*}\]</span></p>
+<p>Nuevamente, esto se da sin importar el soporte de los <span class="math inline">\(Y_{i}´s\)</span> pues una demostración con las hipótesis y notación anteriores puede verse como:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\mathbb{E}[Y^{*m}]
+&amp;=&amp;\displaystyle\sum_{i=1}^{n_{1}} \frac{\lambda_{1i}}{\lambda} \displaystyle\int_{\mathbb{R}} t^{m} f_{Y_{1i}}(t) dt + \frac{\lambda_{2k}}{\lambda} \displaystyle\sum_{\forall t} t^{m} f_{Y_{2k}}(t) \\
+&amp;=&amp; \displaystyle\sum_{i=1}^{n_{1}} \frac{\lambda_{1i}}{\lambda} \mathbb{E}[Y_{1i}^{m}]  + \frac{\lambda_{2k}}{\lambda} \mathbb{E}[Y_{2k}^{m}]\\
+&amp;=&amp; \displaystyle\sum_{j=1}^{n} \frac{\lambda_{i}}{\lambda} \mathbb{E}[Y_{j}^{m}]
+\end{eqnarray*}\]</span></p>
+<p><strong>Ejemplo:</strong></p>
+<p><span class="math inline">\(S_{1}\)</span> y <span class="math inline">\(S_{2}\)</span> son distribuciones Poisson compuestas con parámetros <span class="math inline">\(\lambda_{1}=3\)</span> y <span class="math inline">\(\lambda_{2}=2\)</span>, y función de severidad individual; asumiendo <span class="math inline">\(S_{1} \perp S_{2}\)</span>.</p>
+<p><img src="Ima%CC%81genes/Tablita.png" width="50%" /></p>
+<p>Determine la media y la varianza de <span class="math inline">\(S\)</span>.</p>
+<p><span class="math inline">\(S=S_{1}+S_{2}\)</span> tiene una distribución Poisson compuesta con media <span class="math inline">\(\lambda=3+2=5\)</span>, y con función de severidad.</p>
+<p><em>Solución:</em></p>
+<p>Sea <span class="math inline">\(X_{1}\)</span> <span class="math inline">\(X_{2}\)</span> las severidades de <span class="math inline">\(S_{1}\)</span> <span class="math inline">\(S_{2}\)</span> respectivamente.</p>
+<p><span class="math display">\[\begin{align*}
+    \mathbb{E}[X_{1}]&amp;= (1)(0.25)+(2)(0.75)=1.75\\
+    \mathbb{E}[X_{1}^{2}]&amp;= (1^{2})(0.25)+(2^{2})(0.75)=3.75\\
+    \mathbb{E}[X_{2}]&amp;= (1)(0.1)+(2)(0.4)+(3)(0.4)+(4)(0.1)=2.5\\
+    \mathbb{E}[X_{2}^{2}]&amp;= (1^{2})(0.1)+(2^{2})(0.4)+(3^{2})(0.4)+(4^{2})(0.1)=6.9\\
+\end{align*}\]</span></p>
+<p><strong>Solución 1: Por propiedades básicas</strong></p>
+<p><span class="math display">\[\begin{eqnarray*}
+\mathbb{E}[S] &amp;=&amp; \mathbb{E}[S_{1}+ S_{2}]\\
+&amp;=&amp;  \mathbb{E}[S_{1}]  +\mathbb{E} [S_{2}]\\
+&amp;=&amp; \lambda_{1} \mathbb{E}[X_{1}] +\lambda_{2} \mathbb{E}[X_{2}]\\
+&amp;=&amp; 3(1.75)+2(2.5)\\
+&amp;=&amp; 10.25\\
+\end{eqnarray*}\]</span></p>
+<p><span class="math display">\[\begin{eqnarray*}
+Var[S] &amp;=&amp; Var[S_{1}+ S_{2}]\\
+&amp;=&amp;  Var[S_{1}]  +Var[S_{2}] + {2Cov(S_{1},S_{2})}\\
+&amp;=&amp; \lambda_{1} \mathbb{E}[X_{1}^{2}] +\lambda_{2} \mathbb{E}[X_{2}^{2}]\\
+&amp;=&amp; 3(3.75)+2(6.9)\\
+&amp;=&amp; 25.05\\
+\end{eqnarray*}\]</span></p>
+<p><strong>Solución 2: Por propiedades de convolución de Poisson compuestas</strong></p>
+<p><span class="math display">\[\begin{eqnarray*}
+\mathbb{E}[S] &amp;=&amp; \lambda \mathbb{E}[Y^{*}]\\
+&amp;=&amp; \lambda \left( \displaystyle\frac{\lambda_{1}}{\lambda}   \mathbb{E}[X_{1}]   + \displaystyle\frac{\lambda_{2}}{\lambda}  \mathbb{E}[X_{2}]\right)\\
+&amp;=&amp; 5 \left( \displaystyle\frac{3}{5}  (1.75) + \displaystyle\frac{2}{5}  (2.5)  \right)\\
+&amp;=&amp; 10.25
+\end{eqnarray*}\]</span></p>
+<p><span class="math display">\[\begin{eqnarray*}
+Var[S] &amp;=&amp; \lambda \mathbb{E}[(Y^{*})^{2}]\\
+&amp;=&amp; \lambda \left( \displaystyle\frac{\lambda_{1}}{\lambda}   \mathbb{E}[X_{1}^{2}]   + \displaystyle\frac{\lambda_{2}}{\lambda}  \mathbb{E}[X_{2}^{2}]\right)\\
+&amp;=&amp; 5 \left( \displaystyle\frac{3}{5}  (3.75) + \displaystyle\frac{2}{5}  (6.9)  \right)\\
+&amp;=&amp; 25.05\\
+\end{eqnarray*}\]</span></p>
+<p>Esas son dos maneras de obtener el mismo resultado aplicando las propiedades básicas de la probabilidad vistas en cursos anteriores y los resultados a los que acabamos de llegar.</p>
+<p>Lo siguiente que nos interesa buscar es la manera de obtener probabilidades del riesgo <span class="math inline">\(S\)</span>. Para esto podemos deducir que las probabilidades exactas de <span class="math inline">\(S\)</span> son difíciles de calcular , por tanto, en la siguiente sección veremos algunas metodologías para estimar dichos valores.</p>
+<p>A continuación facilitamos algunos vídeos que ayuden al entendimiento del tema anterior.</p>
+<p><img src="Ima%CC%81genes/11.%20a.png" width="100%" /></p>
+<p><em>Link de YouTube:</em> <a href="https://www.youtube.com/watch?v=YFKFsSIHod4" class="uri">https://www.youtube.com/watch?v=YFKFsSIHod4</a></p>
+<p><img src="Ima%CC%81genes/11.%20b.png" width="100%" /></p>
+<p><em>Link de YouTube:</em> <a href="https://www.youtube.com/watch?v=uNZiUUW6VaA" class="uri">https://www.youtube.com/watch?v=uNZiUUW6VaA</a></p>
+<p><img src="Ima%CC%81genes/MC_Bases1.png" width="100%" /></p>
+<p><em>Link de YouTube:</em> <a href="https://youtu.be/z73RugHd_cU" class="uri">https://youtu.be/z73RugHd_cU</a></p>
+<p><img src="Ima%CC%81genes/MC_Bases2.png" width="100%" /></p>
+<p><em>Link de YouTube:</em> <a href="https://youtu.be/4g0qQG2gvbU" class="uri">https://youtu.be/4g0qQG2gvbU</a></p>
+</div>
+<div id="aproximaciones-de-probabilidad-del-modelo-colectivo" class="section level2 unnumbered hasAnchor">
+<h2>Aproximaciones de probabilidad del Modelo Colectivo<a href="modelo-colectivo-bases.html#aproximaciones-de-probabilidad-del-modelo-colectivo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Este tipo de aproximaciones se utilizan generalmente cuando la severidad es una v.a. continua o con modelos más sofisticados de riesgo.</p>
+<div id="aproximación-normal-1" class="section level3 hasAnchor" number="11.0.1">
+<h3><span class="header-section-number">11.0.1</span> Aproximación Normal<a href="modelo-colectivo-bases.html#aproximación-normal-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sea <span class="math inline">\(S\)</span> un riesgo con media y varianza finitas, entonces, si la variable aleatoria de frecuencia toma en general valores grandes, para cualquier <span class="math inline">\(x\geq 0\)</span> se tiene:</p>
+<p><span class="math display">\[F_S(t)\hspace{0.4em}\ddot{=}\hspace{0.4em}\mathbb{P}[S\leq t]\approx \Phi\left(\frac{t-\mathbb{E}[S]}{\sqrt{Var(S)}}\right)\]</span></p>
+<p>De donde se obtiene el siguiente resultado:</p>
+<p><span class="math display">\[f_S(t)\approx\frac{1}{\sqrt{Var(S)}}\phi\left(\frac{t-\mathbb{E}[S]}{\sqrt{Var(S)}}\right)\]</span></p>
+<p>Recordando que <span class="math inline">\(\Phi(t)\)</span> es la función de distribución de una normal estándar y <span class="math inline">\(\phi(t)\)</span> la densidad de la misma.</p>
+</div>
+<div id="aproximación-gamma-trasladada" class="section level3 hasAnchor" number="11.0.2">
+<h3><span class="header-section-number">11.0.2</span> Aproximación Gamma Trasladada<a href="modelo-colectivo-bases.html#aproximación-gamma-trasladada" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Observemos lo siguiente:</p>
+<p><em>Ejemplo de densidades de Gamma</em></p>
+<p><img src="Ima%CC%81genes/ModeloColectivoGamma.png" width="50%" /></p>
+<p><em>Ejemplo de densidad de S</em></p>
+<p><img src="Ima%CC%81genes/Imagen1.png" width="50%" /></p>
+<p>Existen algunos riesgos <span class="math inline">\((S)\)</span> en modelos colectivos que presentan un comportamiento similar al de una densidad Gamma. Es por eso que suena razonable intentar ajustar una densidad Gamma a nuestro modelo. Para esto, intentaremos ajustar una densidad <strong>Gamma trasladada</strong> para buscar ser más exactos en nuestro modelo. Entonces, definiremos <span class="math inline">\(Z\sim Gamma({\beta},{\lambda})\)</span> y tomaremos <span class="math inline">\({c}\in \mathbb{R}\)</span>, de tal manera que se buscará ajustar la variable <span class="math inline">\(G\hspace{0.4em}\ddot{=}\hspace{0.4em}Z+{c}\sim Gamma T({\beta},{\alpha},{c})\)</span> a nuestro riesgo <span class="math inline">\(S\)</span>.</p>
+<p>Para lograr esto emplearemos un método similar al de momentos, necesitamos estimar 3 parámetros: <span class="math inline">\({\beta},{\alpha}\mbox{ y }{c}\)</span>.Supongamos conocidos o estimadas las siguientes cantidades:</p>
+<p><span class="math inline">\(\mathbb{E}[S]=\mu\quad\rightarrow\quad\)</span> la media</p>
+<p><span class="math inline">\(Var(S)=\sigma^2\quad\rightarrow\quad\)</span> la varianza</p>
+<p><span class="math inline">\(\frac{\mathbb{E}[(S-\mathbb{E}[S])^3]}{\sqrt{Var^3(S)}}=\alpha\quad\rightarrow\)</span> el coeficiente de asimetría</p>
+<p>Con base en estas 3 cantidades estimaremos los parámetros.</p>
+<p>Haciendo los cálculos, las cantidades correspondientes para nuestra variable aleatoria <span class="math inline">\(G\)</span> en términos de los parámetros de interés son las siguientes:</p>
+<ul>
+<li><p><span class="math inline">\(\mathbb{E}[G]=\mathbb{E}[{c}+Z]={c}+\frac{\beta}{\lambda}\)</span></p></li>
+<li><p><span class="math inline">\(Var(G)=Var({c}+Z)=\frac{{\beta}}{{\lambda}^2}\)</span></p></li>
+<li><p><span class="math inline">\(\frac{\mathbb{E}[(G-\mathbb{E}[G])^3]}{Var(G)^{\frac{3}{2}}}=\frac{\mathbb{E}[(({c}+Z)-\mathbb{E}[{c}+Z])^3]}{Var{c}+Z)^{\frac{3}{2}}}=\frac{2}{\sqrt{{\beta}}}\)</span></p></li>
+</ul>
+<p>Análogo al método de momentos tenemos el siguiente sistema de ecuaciones:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \left\{ \begin{array}{lcc}
+        -\hspace{0.4em} \mathbb{E}[S]={\mu}={c}+\frac{{\beta}}{{\lambda}}=\mathbb{E}[G]   \\
+        -\hspace{0.4em} Var(S)={\sigma}^2=\frac{{\beta}}{{\lambda}^2}=Var(G)\\
+        -\hspace{0.4em}\frac{\mathbb{E}[(S-\mathbb{E}[S])^3]}{\sqrt{Var^3(S)}}={\alpha}=\frac{2}{\sqrt{{\beta}}}=\frac{\mathbb{E}[(G-\mathbb{E}[G])^3]}{Var(G)^{\frac{3}{2}}}
+    \end{array}
+    \right.
+\end{eqnarray*}\]</span></p>
+<p>Resolviendo el sistema de ecuaciones:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+    \left\{
+\begin{array}{lcc}
+    {\left.{c}={\mu}{-\frac{2{\sigma}}{{\alpha}}}\right\}\text{Parámetro de traslación}}\\
+    {\left.\begin{array}{lcc}
+    {\beta}={\frac{4}{{\alpha}^2}}\\
+    {\lambda}={\frac{2}{{\sigma}{\alpha}}}\end{array}\right\} \text{Parámetros de la Gamma}}
+\end{array}
+    \right.
+\end{eqnarray*}\]</span></p>
+<p>Para más de la aproximación Gamma-T:</p>
+<p><img src="Ima%CC%81genes/MC_Bases3.png" width="100%" /></p>
+<p><em>Link de YouTube:</em> <a href="https://youtu.be/veGk-C-m_sk" class="uri">https://youtu.be/veGk-C-m_sk</a></p>
+<p>La distribución del riesgo <span class="math inline">\(S\)</span> en el modelo colectivo puede aproximarse mediante la distribución de la variable aleatoria <span class="math inline">\(G={c}+Z={\mu}-\frac{2{\sigma}}{{\alpha}}+z\)</span> donde <span class="math inline">\(Z\sim Gamma\left({\beta}=\frac{4}{{\alpha}^2},{\lambda}=\frac{2}{{\sigma}{\alpha}}\right)\)</span>. Es decir:</p>
+<p><span class="math display">\[
+            F_S(t)\hspace{0.4em}\ddot{=}\hspace{0.4em}\mathbb{P}[S\leq t]\approx\mathbb{P}[G\leq t]=\mathbb{P}\left[z\leq t-{\mu}+\frac{2{\sigma}}{{\alpha}}\right]\hspace{0.4em}\ddot{=}\hspace{0.4em}F_Z\left(t-{\mu}+\frac{2{\sigma}}{{\alpha}}\right)
+        \]</span>
+<span class="math inline">\(\mathbb{E}[S]=\mu\)</span> <span class="math inline">\(\hspace{0.4em}\)</span> <span class="math inline">\(\hspace{0.4em}\)</span> <span class="math inline">\(\hspace{0.4em}\)</span> <span class="math inline">\(\hspace{0.4em}\)</span> <span class="math inline">\(Var(S)=\sigma^2\)</span> <span class="math inline">\(\hspace{0.4em}\)</span> <span class="math inline">\(\hspace{0.4em}\)</span> <span class="math inline">\(\hspace{0.4em}\)</span> <span class="math inline">\(\hspace{0.4em}\)</span> <span class="math inline">\(\frac{\mathbb{E}[(S-\mathbb{E}[S])^3]}{\sqrt{Var^3(S)}}=\alpha\)</span></p>
+<p>Cuando la severidad al igual que la frecuencia del modelo son discretas entonces la distribución del riesgo será también discreta. Por lo cual, si se desea utilizar estos métodos de aproximación en el caso discreto, es necesario aplicar antes una <strong>corrección por continuidad</strong>. En general:</p>
+<p>Suponiendo que se desea aproximar <span class="math inline">\(\mathbb{P}[n\leq S \leq m]\)</span> con <span class="math inline">\(S\)</span> discreta la <strong>corrección por continuidad</strong> será expandiendo el intervalo <span class="math inline">\([n,m]\)</span> al intervalo <span class="math inline">\(\left[n-\frac{1}{2},m+\frac{1}{2}\right]\)</span>:
+<span class="math display">\[
+            \mathbb{P}[n\leq S\leq m]\approx \mathbb{P}\left[n-\frac{1}{2}\leq S\leq m+\frac{1}{2}\right]
+        \]</span>
+<strong>Ejemplo Gamma Trasladada:</strong></p>
+<p><img src="Ima%CC%81genes/GammaTras.png" width="40%" /></p>
+<p>Vamos a estimar en R con una muestra de <span class="math inline">\(S\)</span> los parámetros de la Gamma Trasladada y veamos que en efecto la distribución obtenida ajusta a los datos.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="modelo-individual-formula-de-pril.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="modelo-colectivo-formula-de-panjer.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/10-ModeloColectivoBases.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Notas_TeoriadelRiesgo.pdf", "Notas_TeoriadelRiesgo.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

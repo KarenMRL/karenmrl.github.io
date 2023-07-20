@@ -1,0 +1,729 @@
+# Credibilidad
+## Teoría de la credibilidad
+### Introducción
+
+La teoría de la credibilidad es el conjunto de técnicas actuariales que permiten al asegurador ajustar de modelo sistemático las primas de los seguros en función de la experiencia de la siniestralidad ocurrida.
+
+En la teoría de la credibilidad tienen roles primordiales los dos tipos de riesgo ya considerados: el riesgo _individual_ y el riesgo _colectivo_, y se da una solución rigurosa al problema de cómo analizar la información proveniente de estas dos fuentes, para calcular la prima de seguros y obtener una tarifa justa.
+
+La teoría de la credibilidad como disciplina matemática, utiliza diversas herramientas de varios campos de las matemáticas: Estadística Bayesiana, análisis funcional, mínimos cuadrados, modelos de espacio de esados, entre muchos otros. Varios autores, Beiley. Longley-Cook, Mayerson, Bühlmann, Straub, Jewell, entre otros, se han dado a la tarea de dar una fundamentación matemática rigurosa a esta teoría, que la ha convertido en una de las ramas más atractiva y estudiada de la ciencia actuarial. Uno de sus principales usos aparece en el seguro de automóviles, en el que las primas se van transformando paulatinamente a medida que se incorpora información sobre la siniestralidad, dando origen  a los denominados sistemas de tarificación _bonus-malus_.
+
+El término _credibilidad_ se introdujo por primera vez en _USA_ antes de la primera guerra mundial, en relación con los sistemas de ajuste de primas en seguros de compensación obrera o seguros de accidentes. Por ese entonces, numerosas empresas ejercieron una fuerte presión a las aseguradoras dada la baja siniestralidad laboral y la elevada tasa de actividad, para que se les reconociera este hecho en los importes de primas a pagar.
+Withney (1918) publicó los primeros trabajos en esta materia con la aparición en los _Proceedings de la Casualty Actuarial Society_. de una forma simple, a través de una matemática elemental, propone que la prima que debe pagar un asegurado considere tanto la experiencia individual (del asegurado) y la del colectivo (la carta de seguros). De esta manera, la estimación del monto de la prima, se calculará como: 
+
+
+$$\textbf{P}=Z\cdot\textbf{X}+(1-Z)\cdot\textbf{C}~~~~~~~~(1)$$
+
+Con $\textbf{X}$ la experiencia individual, $\textbf{C}$ es la información disponible del colectivo y Z es un factor que pondera estas dos informaciones, conocido como $\textit{factor de credibilidad }$. Esta expresión dio respuesta a la idea que rondaba la mente de muchos actuarios de la época. Encontrar un mecanismo que permitiera asignar a estos dos tipos de información, la individual y la colectiva, un peso o ponderación que las complementara para la determinación de la prima a cobrar.
+
+Intuitivamente, este factor de credibilidad, Z, debería satisfacer las siguientes condiciones:
+
+- Debe ser una función del tiempo de vigencia de la póliza, $\textit{n}$, i.e., $Z=Z(n)$.
+- Debe ser una función creciente de $n$, de tal manera que converja a $uno$ si $n\to \infty $ y tienda a $cero$ cuando $n\to 0$. Este ultimo caso, ($n=0$), implicaría que no se tiene información sobre el asegurado (sería un contrato nuevo), y la prima a cobrar sería, $C$, la que se basa en la información del colectivo. En la medida que se incremente la información del asegurado (que $n$ crezca), entonces esta información empezaría a tener más peso en el cálculo de la prima a cobrar, i.e., la experiencia de la siniestralidad del asegurado tendría mayor verosimilitud o credibilidad. En el caso extremo, ($n\to\infty$), el valor de la prima debería ser $X$, esto es, la prima debería basarse únicamente en la experiencia individualidad de la siniestralidad del asegurado. 
+- El factor de la credibilidad, $Z$, debería ser también una función creciente de la varianza de las primas teóricas, con límite $uno$ cuando esta varianza tienda a infinito, y $cero$ cuando tienda a cero. La lógica de esta cuestión es que si la cartera no es $\textit{heterogénea}$, i.e., es $\textit{homogénea}$ entonces la prima basada en la información del colectivo sería el mejor estimador de la prima individual. Por el contrario, una mayor heterogeneidad de la cartera, debería propiciar un mayor peso a la información individual del asegurado.
+
+A mediados del siglo $XX$ empezaba a tomar forma un nuevo enfoque de la estadística, la  $\textit{Estadística Bayesiana}$. No pasó mucho tiempo para que se constatara que muchos estimadores de Bayes, obtenidos para ciertas verosimilitudes (distribución conjunta de los datos) y la distribución $\textit{A priori}$ o inicial natural conjugada del parámetro o parámetros que determinan esta verosimilitud, correspondían a la expresión $(1)$. De hecho, Whetney (1918) ya señalaba que el problema de credibilidad era un caso de cálculo de probabilidades inversas (teorema de Bayes). En el trabajo de Mayerson (1964) se utilizan por primera vez los términos de credibilidad y estadística Bayesiana.
+
+Bajo el enfoque Bayesiano, la fórmula de credibilidad $(1)$ puede interpretarse también de la siguiente manera. Puede verse a $\textbf{C}$ como la información a priori (basada, por ejemplo, en contratos similares) y $\textbf{X}$ la nueva información obtenida mediante la observación de la siniestralidad de los últimos años. Finalmente, la prima, $\textbf{P}$, es el resultado de combinar la información a priori con la información adquirida para obtener un $\textit{estimador actualizado}$ de la prima. Por lo tanto, la teoría de la credibilidad es un proceso Bayesiano que combina la información inicial o apriori  con la información muestral para lograr una actualización del estimador de la prima.
+
+Consideremos un riesgo determinado que proveniente de un conjunto de asegurados vigentes por un periodo determinado. Si este grupo de asegurados es homogéneo, en el sentido de que todos sus miembros tienen la misma probabilidad de realizar una reclamación, entonces es razonable aplicar una misma prima para todos ellos. Sin embargo, cuando el grupo no es homogéneo, o bien, al paso del tiempo aparecen factores de heterogeneidad dentro del mismo, habrá subgrupos de bajo riesgo y otros de alto riesgo. Cobrar una misma prima a todos resultaría injusto, y no sería conveniente para la aseguradora, pues, eventualmente, los asegurados de bajo riesgo buscarían un mejor trato con otra aseguradora. La idea fundamental es aplicar primas menores a los asegurados de bajo riesgo y primas mayores a los de alto riesgo, con base en el historial de reclamaciones que cada uno de los asegurados o subgrupos hayan realizado durante los periodos anteriores. $\textit{En la teoría de la credibilidad}$ se estudian métodos para el cálculo de primas a través de la combinación de la experiencia individual (historial de reclamaciones, datos propios) y la experiencia de grupo (datos del mercado, contratos similares, experiencia propia acumulada, datos colaterales).
+
+Con base en lo dicho anteriormente, podemos decir que la finalidad de la $\textit{teoría de la credibilidad}$ es **ajustar** el valor de una $prima$ con base en el $historial$/$experiencia$ que tiene la aseguradora con cierto siniestro. Para lograr esto, nosotros en este caso vamos a trabajar ajustando la $\textit{prima de riesgo}$, en general se puede hacer esto para que la $\textit{prima de tarifa}$ pueda ser calculada tomando como referencia a la de riesgo.
+
+Tomaremos para esta sección $S$ un riesgo arbitrario que busca absorber una aseguradora, correspondiente a un asegurado o grupo de asegurados con $\textit{características homogéneas}$ y válido por un periodo determinado. Denotaremos como $\{ S_i \}_{i=1}^{m}$ los montos registrados de las reclamaciones efectuadas por el asegurado o portafolio de asegurados durante $m$ periodos consecutivos.
+
+Con base en la estadística clásica y Bayesiana, las metodologías que hay para la teoría de la credibilidad son dos principales ramas:
+
+\begin{equation*}
+    \text{Teoría de la credibilidad}
+    \begin{cases}
+        \text{Clásica} \begin{cases}
+            \text{Completa}\\
+            \text{Parcial}
+    \end{cases}\\
+    \text{Bayesiana}
+    \end{cases}
+\end{equation*}
+
+Al igual que se hizo a lo largo de la historia, exploraremos la forma **clásica**, pues tiene sus fundamentos en resultados asintóticos que ya se han trabajado. Posteriormente veremos la perspectiva **Bayesiana** que es otra manera de atacar el problema pero con el apoyo de los fundamentos de la parte clásica.
+
+### Credibilidad Completa/total
+
+Para lograr el ajuste a la $\textit{prima de riesgo}$, la cual estamos modelando como $\mathbb{E}[S]$, con base en el histórico, vamos a recurrir a su versión muestral.
+
+Como ya lo hemos hecho antes, nos interesa conocer el comportamiento de:
+
+$$\overline{S}= \frac{1}{m}\sum_{i=1}^{m}S_i$$
+
+Esto lo haremos así pues, si la **modelación del riesgo** que nosotros estamos proponiendo es correcta, entonces por las leyes de los grandes números:
+
+\begin{equation*}
+    \begin{array}{cc}
+     \text{La prima de} \\ \text{riesgo que nos } \\ \text{dicen los datos.}\end{array}
+= \overline{S}= \displaystyle\frac{1}{m}\displaystyle\sum_{i=1}^{m}S_i~ \xrightarrow[m\to \infty]{c.s} ~\mathbb{E}[S]=\begin{array}{cc}
+     \text{La prima de } \\ \text{riesgo según el } \\ \text{modelo propuesto.}\end{array}
+\end{equation*}
+
+Por lo que si nuestro modelo es incorrecto, esta relación no se da.
+
+Si estamos modelando de manera correcta, tiene sentido que, mientras el portafolio se mantenga homogéneo a medida que m crezca la información nueva sustente nuestra teoría. De lo contrario, aún consiguiendo $m$ lo suficientemente grande, los datos no ajustarán el modelo.
+
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("Imágenes/convergencia de s.png", error=FALSE)
+```
+
+Por lo que nos interesa encontrar el valor de m tal que según nuestro modelo, $\overline{S}$ se encuentre "razonablemente" cercano a $\mathbb{E}[S]$. El que esto suceda es precisamente lo que le da credibilidad al modelo.
+
+**Definición.**
+
+Sean $k,~p$ dos números fijos, se dice que $\overline{S}$ tiene **Credibilidad completa** (k,p) si:
+
+\begin{equation*}
+    \mathbb{P}\left[ |\overline{S}- \mathbb{E}[S]|\leq k\mathbb{E}[S]\right]\geq p
+\end{equation*}
+
+**Nota:** En general se asume que $\mathbb{E}[S]\neq 0$ por(espero) obvias razones. Así que para que lo dicho anteriormente tenga sentido, se toman valores para $k$ cercanos a cero y $p$ cercanos a uno. Así como se toma un nivel de significación $\alpha=0.05$, lo más usal es tomar $k=0.05$,  $p=0.90$.
+
+### Credibilidad Completa Bajo Hipótesis de Normalidad
+
+Como usualmente es complicado obtener expresiones analíticas para las probabilidades de $S$, acudiremos a las aproximaciones.
+
+Encontraremos la condición sobre el número de periodos de observación $m$, para obtener credibilidad completa usando la distribución normal.
+
+#### Ejercicio: {-} 
+
+Arrastra el lápiz si no recuerdas que:
+
+$$\mathbb{E}[\overline{S}]=\mathbb{E}[S]~~~~~~~y~~~~~~~ Var(\overline{S})= \frac{1}{m}Var(S)$$
+
+Tenemos que:
+
+$$p\le\mathbb{P}\left[ | \overline{S} - \mathbb{E}[S] | \leq k\mathbb{E}[S] \right]=\mathbb{P} \left[ \frac{| \overline{S} - \mathbb{E}[S] |}{\sqrt{Var(\overline{S})}} \leq \frac{k\mathbb{E}[S]}{\sqrt{Var(\overline{S})}}\right]$$
+
+Llamando:
+
+$$\gamma=\frac{k\mathbb{E}[S]}{\sqrt{Var(\overline{S})}} $$
+
+$$\underbrace{p\leq \mathbb{P}\left[ -\gamma \leq   \frac{\overline{S}-\mathbb{E}[\overline{S}]}{\sqrt{Var(\overline{S})}} \leq \gamma \right]}_{Usando~ el ~valor ~absoluto ~anterior~ y~ que~ \mathbb{E}[\overline{S}]=\mathbb{E}[S]}$$
+
+$$\underbrace{\thickapprox \Phi(\gamma) - \Phi(-\gamma)}_{\text{usando ley de los grandes números}}$$
+\begin{eqnarray*}
+\Rightarrow &=& \underbrace{  2\Phi(\gamma)-1  }_{\text{Por la simetría de la normal}~ \Phi(-x)=1-\Phi(x)}\\
+&=& 2\Phi\left( \frac{k\mathbb{E}[S]}{\sqrt{Var(S)}} \right)-1     \underbrace{ =2\Phi\left( \frac{\sqrt{m}k\mathbb{E}[S]}{\sqrt{Var(S)}}\right)-1    }_{Var(\overline{S})=\frac{1}{m}Var(S)}\\
+\end{eqnarray*}
+
+$$\therefore p\leq 2\Phi\left( \frac{k\mathbb{E}[S]}{\sqrt{Var(S)}} \right)-1 =2\Phi\left( \frac{\sqrt{m}k\mathbb{E}[S]}{\sqrt{Var(S)}}\right)-1$$
+
+$$\Longleftrightarrow \frac{p+1}{2}\leq \Phi\left( \frac{k\mathbb{E}[S]}{\sqrt{Var(S)}} \right) =\underbrace{\Phi\left( \frac{\sqrt{m}k\mathbb{E}[S]}{\sqrt{Var(S)}}\right) }_{\text{Las operaciones realizadas respetan la igualdad}}$$
+
+Tomando $Z_x\ddot{=}$ cuantil del $(\alpha-100)\%$ de una $N(0,1)=\Phi^{-1}(x)$:
+
+$$\Longleftrightarrow Z_{(\frac{p+1}{2})}\leq \left( \frac{k\mathbb{E}[S]}{\sqrt{Var(S)}} \right)\\=\underbrace{\left( \frac{\sqrt{m}k\mathbb{E}[S]}{\sqrt{Var(S)}}\right)}_{Aplicando ~\Phi^{-1} ~de~ ambos ~lados~ respeta~ la ~desigualdad ~pues~ \Phi ~es ~creciente ~\implies \Phi^{-1}~lo~ es }$$
+
+De esta última expresión obtenemos las dos siguientes:
+
+
+- $Var(S)\left[ \frac{ Z_{(\frac{p+1}{2})}}{k\mathbb{E}[S]} \right]^{2}\lesssim m\to$ Esta es una manera de obtener la cantidad **mínima de periodos** $m$ a partir del modelo
+- $Var(\overline{S})\lesssim \left[ \frac{k\mathbb{E}[S]}{Z_{(\frac{p+1}{2})}} \right]^2\to$ si $m=1$ vemos una cota teórica para la varianza del riesgo $S$.
+**Nota:** Recordar que $Var(\overline{S})=\frac{Var(S)}{m}$.
+
+**Nota:** Como $m \in \mathbb{N}$ si la cota inferior tiene decimales, **la mínima $m$** será el techo de la cota.
+
+En concreto, ¿cómo se realiza usando una muestra? Lo primero que debemos realizar es, dado nuestro modelo, calcularemos:
+
+\begin{equation*}
+    \underbrace{m_{min}\ddot{=}\left\lceil \frac{Var(S)}{\mathbb{E}^2[S]}
+    \left[\frac{Z_{(\frac{p+1}{2})}}{k} \right]
+    \right\rceil^2}_{\text{Este cálculo se hará con el modelo teórico que nosotros vamos a probar}}
+\end{equation*}
+
+**Nota:** Como usualmente $k=0.05$ y $p=0.9\Longrightarrow \left[\frac{Z_{(\frac{p+1}{2})}}{k} \right]^2\thickapprox 1082.217$ salvo que se especifiquen otros valores para $(k,p)$.
+
+Donde $\lceil\cdot\rceil$ es la función "parte entera mayor o igual" o simplemente conocida como "techo". De tal manera que el modelo propuesto **impone** una cantidad de periodos necesaria para poder verificar credibilidad.
+
+Si $m$ es la cantidad de datos disponibles **una condición para poder verificar** credibilidad completa (k,p)(Bajo hipótesis de normailidad) es:
+
+\begin{equation*}
+    m_{min}\leq m
+\end{equation*}
+
+**Nota:** Observando la definición de credibilidad completa y de $m_{min}$ se vislumbra que cuando $k\downarrow 0$ o bien $p\uparrow1$ estamos siendo más estrictos con el modelo, y de hecho $m_{min}\uparrow \infty$ lo que significa que necesitaremos más periodos. Recíprocamente cuando $k\uparrow 1$ o bien $p\downarrow0$ necesitamos menos periodos.
+
+De tal manera que si tenemos m datos, usando el modelo teórico $m_{min}$ nos dirá si tenemos la cantidad suficiente de datos para verificar si nuestro modelo tiene **credibilidad completa** (k,p) o no.
+
+Ahora, con base en la teoría desarrollada por la SOA para el examen STAM, notemos que:
+
+$$\frac{Var(S)}{\overline{S}\mathbb{E}[S]}\left[\frac{Z_{(\frac{p+1}{2})}}{k}
+\right]^2\thickapprox \frac{Var(S)}{\mathbb{E}[S]^2} \left[\frac{Z_{(\frac{p+1}{2})}}{k}
+\right]^2= Var(S)\left[\frac{Z_{(\frac{p+1}{2})}}{k\mathbb{E}[S]}
+\right]^2 \leq m$$
+
+De aquí usaremos la muestra para verificar si se **puede** cumplir la **credibilidad completa** (k,p). Esto es:
+
+Si $m_{min}\leq m$ entonces nuestro modelo **puede** satisfacer credibilidad completa (k,p)(bajo hipótesis de normailidad) si:
+\begin{equation*}
+    \underbrace{\frac{Var(S)}{\mathbb{E}[S]} }_{Modelo~ teórico}\underbrace{\left[\quad\quad\quad\frac{Z_{(\frac{p+1}{2})}}{k}
+    \right]^2}_{C.C.~(k,p)~normalidad } \underbrace{\quad\quad\quad\leq m\overline{S}= \sum_{i=1}^mS_i}_{experiencia~de~los~siniestros}
+\end{equation*}
+
+Esto nos da otra condición que deberían satisfacer los datos si deseamos verificar la credibilidad completa (k,p).
+
+De tal manera que para poder si quiera preguntarnos si nuestros datos **pueden** satisfacer credibilidad completa (k,p) deberían satisfacerse las siguientes **condiciones**:
+
+- $m_{min}\leq m\to$ cantidad mínima de periodos requeridos SOA.
+- $\frac{Var(S)}{\mathbb{E}[S]} \left[\frac{Z_{(\frac{p+1}{2})}}{k}\right]^2 \leq \sum_{i=1}^mS_i\to$ Monto total mínimo de reclamaciones experimentadas del riesgo SOA.
+- $Var(\overline{S})\lesssim \left[ \frac{k\mathbb{E}[S]}{Z_{(\frac{p+1}{2})}} \right]^2\to$ Cota superior de la volatilidad de la media de las reclamaciones experimentadas.
+
+Si no se satisfacen 2 y 3 son indicios de replantear el modelo. Más adelante hablamos de qué hacer si falla. Ahora estas **condiciones** las ponemos así porque estamos esperando que $\overline{S}\to \mathbb{E}[S]$ es decir que nuestros datos, en efecto, sean descritos por la teoría. Pero al final $\overline{S}$ se aproximará a su propia media. De tal manera que **aún cumpliéndose las condiciones anteriores no significa que nuestro modelo explique los datos**. Más bien de cumplirse aún falta verificar que en efecto nuestros datos explican el modelo mediante la definición de **credibilidad completa** (k,p) Podemos pensar que las condiciones anteriores son una puerta que necesito abrir para poder ver si mi modelo explica los datos.
+
+En resumen una vez satisfechas las condiciones hay que ver que en efecto $| \overline{S}- \mathbb{E}[S] | \leq k\mathbb{E}[S]$ con probabilidad $\geq p$.
+
+Una posible verificación decisiva puede ser usando bootstrap para mostrar que se cumpla la definición de **credibilidad completa**  (k,p).
+
+Lo ideal es primero verificar las **condiciones** y posteriormente esto.
+
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("Imágenes/boot.PNG", error=FALSE)
+```
+
+Equivalentemente decimos que $\overline{S}$ cumple **credibilidad completa**  (k,p) bajo hipótesis de normalidad con nuestro modelo teórico.
+
+La idea es sencilla. Pensemos entonces que tenemos una muestra aleatoria $\underline{S}_{m}= \{S_{i}, S_{2},..., {S_m} \}$. Ahora, si esta muestra cumpliera la definición de **credibilidad completa** con (k, p) entonces:
+
+\begin{eqnarray*}
+    \mathbb{P} \left[| \overline{S}-\mathbb{E}[S]  |  \leq k \quad \mathbb{E}[S] \right]& \geq p
+\end{eqnarray*}
+
+Lo que haremos es verificar que esto sucede en $n$ ensayos realizados a partir de la primera muestra.
+
+Lo que haremos será muestrear con reemplazo de $\underline{S}$ y de cada una de estas muestras veremos si $| \overline{S}-\mathbb{E}[S]  |  \leq k \quad \mathbb{E}[S]$ o no. Es decir, tendremos $\{ \underline{ S }^{(i)}_m \}_{i=1}^{n}$  muestras con reemplazo de  $\underline{S}_m$  y luego:
+
+\begin{eqnarray*}
+    \underline{ S   }^{(1)} &\Rightarrow& \quad \textit{Calculamos su promedio y lo llamamos} \quad  \overline{ S   }_{m}^{(1)}\\
+    \underline{ S   }^{(2)} &\Rightarrow& \quad \textit{Calculamos su promedio y lo llamamos} \quad  \overline{ S   }_{m}^{(2)}\\
+    \vdots \\
+    \underline{ S   }^{n} &\Rightarrow& \quad \textit{Calculamos su promedio y lo llamamos} \quad \overline{ S   }_{m}^{n}\\
+\end{eqnarray*}
+
+Teniendo así, una muestra de tamaño $n$ de $\{\underline{S}^{(i)}_m \}_{i=1}^{n}$ para cada una de estas estadísticas podemos calcular: $x_{i}= \mathbb{I}\{ | \overline{S}_m-\mathbb{E}[S]  |  \leq k \quad \mathbb{E}[S]\}$ y entonces si $\bar{x}=\displaystyle\frac{éxitos}{ensayos} \geq p$, tendremos que el modelo satisface **c.c** (k,p) por **bootstrap**.
+
+
+- Cuando no hay credibilidad completa hay que replantear el modelo.
+- Si ${m_{mín}} > m ( 1))$ entonces podemos ver la siguiente alternativa.
+
+
+### Credibilidad Parcial
+
+Cuando no se obtiene credibilidad completa, por ejemplo cuando no tenemos la cantidad de periodos mínima para obtener este criterio obtenemos **credibilidad parcial**. Para esto, tomamos 
+$\alpha \in (0,1]$ y proponemos la combinación convexa del estimador de $\mathbb{E}[S]$:
+
+\begin{eqnarray*}
+    \alpha \overline{S}+ (1- \alpha) \mathbb{E}[S] \quad \textit{con Factor de credibilidad}\quad \ddot{=} \alpha \in (0,1)
+\end{eqnarray*}
+
+Mediante esta expresión se le otorga **credibilidad completa** a una parte de la media muestral $\overline{S}$ y el complemento a $\mathbb{E}[S]$. Es decir:
+
+**Definición:**
+
+Sean k, p, $\alpha \in (0,1)$ tres números fijos. Diremos que $\overline{S}$ tiene **credibilidad parcial** (k, p, $\alpha$) si:
+
+\begin{eqnarray*}
+  \mathbb{P} \left[| \alpha \overline{S}+(1- \alpha)\mathbb{E}[S]  -\mathbb{E}[S] |  \leq k \quad \mathbb{E}[S] \right]& \geq p\\
+\end{eqnarray*}
+
+Sin embargo, esta definición se vuelve irrelevante cuando se vislumbra que:
+
+\begin{eqnarray*}
+    p&\leq& \mathbb{P} \left[| \alpha \overline{S}+(1- \alpha)\mathbb{E}[S]  -\mathbb{E}[S] |  \leq k \quad \mathbb{E}[S] \right]\quad \textit{¿Qué pasa si $\alpha \equiv 0$?}\\
+  &=& \mathbb{P} \left[\alpha | \overline{S}- \mathbb{E}[S]|  \leq k \quad \mathbb{E}[S] \right]\\
+  &=& \mathbb{P} \left[| \overline{S}- \mathbb{E}[S]|  \leq \displaystyle\frac{k}{\alpha} \quad \mathbb{E}[S] \right]\\
+\end{eqnarray*}
+
+Por lo tanto:
+
+\begin{eqnarray*}
+    p&\leq& \mathbb{P} [| \alpha \overline{S}+(1- \alpha)\mathbb{E}[S]  -\mathbb{E}[S] |  \leq k \quad \mathbb{E}[S]]\\
+    &=& \mathbb{P} [| \overline{S}- \mathbb{E}[S]|  \leq \displaystyle\frac{k}{\alpha} \quad \mathbb{E}[S]]\\
+\end{eqnarray*}
+
+Es decir: 
+
+**Credibilidad parcial** (k, p, $\alpha$) $\Leftrightarrow$ **credibilidad completa** $\left(\displaystyle\frac{k}{\alpha}, p\right)$.
+
+Como $\alpha\in(0,1] \Rightarrow \dfrac{k}{\alpha}\geq k$ y esto permite un rango de error mayor con **credibilidad parcial** que con **credibilidad completa** con la misma (k, p).
+
+### Credibilidad Parcial bajo Hipótesis de Normalidad
+
+Como ya vimos, **credibilidad parcial** no es más que tomar **credibilidad total** pero modificando una de sus componentes. Por lo que bajo el supuesto de normalidad asintótica, para **credibilidad parcial**  tenemos que:
+
+\begin{equation*}
+    Var(S) = \left[  \displaystyle\frac{ z_{\left(\frac{p+1}{2}\right)}  }{\displaystyle\frac{k}{\alpha}\mathbb{E}[S]}  \right]^{2} \lesssim m \quad ; \quad Var(\overline{S}) \lesssim \left[  \displaystyle\frac{\displaystyle\frac{k}{\alpha}\mathbb{E}[S] }{z_{\left(\frac{p+1}{2}\right)}}  \right]^{2} 
+\end{equation*}
+
+**Nota:** Observemos que el **Factor de credibilidad** justo hace menos estricta la condición de **credibilidad completa**.
+
+Las interpretaciones son idénticas al caso que ya vimos con **credibilidad total**. El punto interesante aquí es que si el tamaño de muestra (m) **NO** fuese suficientemente grande pero fijo y conocido, entonces podemos calcular el **Factor de credibilidad** de la información que tenemos y el modelo propuesto como:
+
+\begin{equation*}
+ \alpha= \left[  \displaystyle\frac{k \cdot \mathbb{E}[S] \displaystyle\sqrt{m} }{z_{\left(\frac{p+1}{2}\right)} \displaystyle\sqrt{Var(S)}}  \right]= \left[  \displaystyle\frac{k \cdot \mathbb{E}[S] }{z_{\left(\frac{p+1}{2}\right)} \displaystyle\sqrt{Var(\overline{S})}}  \right]
+\end{equation*}
+
+**Nota:** Si m es lo suficientemente grande $\Rightarrow$ $\alpha$ puede ser mayor a uno. Esto pues precisamente va alcanzando **credibilidad completa**. Con la finalidad de dar una versión generalizada del **Factor de credibilidad** tenemos que:
+
+\begin{eqnarray*}
+    \alpha&=& mín \left \{ \underbrace{{\displaystyle\frac{k \cdot \mathbb{E}[S] \displaystyle\sqrt{m} }{z_{\left(\frac{p+1}{2}\right)} \displaystyle\sqrt{Var(S)}}}}_\textit{Usaremos este} = \displaystyle\frac{k \cdot \mathbb{E}[S] }{z_{\left(\frac{p+1}{2}\right)} \displaystyle\sqrt{Var(\overline{S})}},1 \right \} 
+\end{eqnarray*}
+
+De aqui notamos que:
+
+\begin{equation*}
+    \displaystyle\frac{k \cdot \mathbb{E}[S] \displaystyle\sqrt{m} }{z_{\left(\frac{p+1}{2}\right)} \displaystyle\sqrt{Var(S)}}
+    =\displaystyle\frac{ \displaystyle\sqrt{m} }{ \displaystyle\frac{z_{\left(\frac{p+1}{2}\right)} \displaystyle\sqrt{Var(S)}}{k \cdot \mathbb{E}[S]}} 
+    = \displaystyle\sqrt{\displaystyle\frac{  m   }{ \displaystyle\frac{Var(S)}{\mathbb{E}^{2}[S]}       \left[ \displaystyle\frac{z_{\left(\frac{p+1}{2}\right)}}{k}  \right]^{2}}}
+\end{equation*}
+
+Con base en la teoría desarrollada por la SAA para el examen STAM, tendremos entonces lo siguiente:
+
+Dependiendo de la cantidad de información que se tenga, el número anterior se calcula de la siguiente manera:
+    
+\begin{eqnarray*}
+    \displaystyle\sqrt{\displaystyle\frac{  m   }{ \displaystyle\frac{Var(S)}{\mathbb{E}^{2}[S]}       \left[ \displaystyle\frac{z_{\left(\frac{p+1}{2}\right)}}{k}  \right]^{2}}}&\approx& \displaystyle\sqrt{\displaystyle\frac{  m\cdot \overline{S}  }{ \displaystyle\frac{Var(S)}{\mathbb{E}[S]}       \left[ \displaystyle\frac{z_{\left(\frac{p+1}{2}\right)}}{k} \right]^{2}}}
+\end{eqnarray*}
+    
+**Nota:** En esta expresión el numerador se calcula con la muestra y el denominador con el modelo teórico.
+    
+**Nota:** Si no se tiene muestra, de hecho no tiene sentido invocar credibilidad. Sin embargo en ejercicios 100\% teóricos donde se solicita el cálculo del **Factor de credibilidad** **pero no se da una muestra**, se debe tomar $\alpha=1$.
+
+Ahora, existen diversas propuestas de diferentes autores de cómo estimar/obtener el **Factor de credibilidad**; Nosotros nos centraremos en la metodología prouesta por la SOA.
+
+Usando la teoría desarrollada por la SOA tenemos que:
+
+Para invocar credibilidad parcial (k, p, $\alpha$) (Bajo el supuesto de normalidad), el cálculo del **Factor de credibilidad** se hace de la siguiente manera:
+
+\begin{eqnarray*}
+    \alpha&=& mín \left \{ \displaystyle\frac{\textit{"Información disponible"}}{\textit{"Información necesaria para credibilidad completa"}}\right\} 
+\end{eqnarray*}
+
+Donde:
+
+- $\textrm{"Información disponible"}$. Es el numerador de las expresiones anteriores y se obtiene dependiendo de la muestra dada (o bien si no se cuenta con muestra, se hace teórica).
+- $\textrm{"Información necesaria para credibilidad completa"}$. Es el denominador de las expresiones anteriores y se obtiene con el modelo propuesto. 
+
+Las cosas pueden ponerse más interesantes dependiendo si $S$ es un modelo colectivo, algunos de los cálculos con los que se verifican o se obtienen ciertos factores tanto para credibilidad completa o parcial se modifican dependiendo de la $\textrm{"Información disponible"}$.
+
+**Esto se hace con la finalidad de explotar los datos** y la experiencia obtenida de la muestra de la forma más adecuada posible. Aunque de momento, vamos a tratar la credibilidad como hasta este punto.
+
+### Ajuste de primas con credibilidad clásica
+
+Finalmente llegamos al objetivo principal de esta sección; recordemos que la finalidad de la teoría de la credibilidad es dar verosimilitud al modelo que estamos proponiendo con base en el histórico que tenemos.
+
+En el caso en el que nuestro modelo cumpla **credibilidad completa**, como su nombre lo indica, nuestro modelo funciona correctamente a los niveles (k, p), por lo que **no es necesario hacer un ajuste al modelo de prima de riesgo**. Sin embargo, se acostumbra dar más peso a la información recolectada y con base en esto tener la nueva prima. Esto significa:
+
+\begin{equation*}
+    \text{credibilidad completa } (k, p) \Rightarrow \text{Prima de riesgo ajustada } \ddot{=} \overline{S} \underbrace{\approx}_{(k, p)} \mathbb{E}[S]. 
+\end{equation*}
+
+**Nota:** Recuerda que buscamos $k \approx 0$ y  $p \approx 1$. Sin ser exactamente iguales.
+
+Por otro lado, en el caso en que tengamos **credibilidad parcial** $(k, p, \alpha)$, entonces **realizamos un ajuste a la prima** y de hecho podemos considerar modificar el modelo propuesto, si $\alpha \approx0$ o si el número de periodos con los que contamos es aún muy pequeño con respecto a la cota inferior de m. El ajuste de la prima en este caso será:
+
+\begin{equation*}
+    \text{credibilidad parcial } (k, p, \alpha) \Rightarrow \text{Prima de riesgo ajustada } \ddot{=} \alpha \overline{S}+(1-\alpha)\mathbb{E}[S] \underbrace{\approx}_{(k, p, \alpha)}\mathbb{E}[S].
+\end{equation*}
+
+**Nota:** No queremos que $\alpha \approx 0$ pues hacemos que el modelo ajuste a los datos no a sí mismo.
+
+
+## Enfoque bayesiano 
+
+En estadística tradicional, enfoque clásico, uno de los problemas inferenciales más importantes es la estimación del parámetro $\theta$, de una distribución de probabilidad $f(x; \theta)$.
+
+Para realizar dicha estimación seleccionamos una muestra aleatoria de esta distribución y se tienen distintos métodos para estimar $\theta$, considerando siempre que este parámetro tiene un valor desconocido y fijo. En el enfoque Bayesiano, $\theta$ se trata como una variable aleatoria para la que se supone una distribución de probabilidad $p(\theta)$, llama distribución inicial o distribución a priori. Esta distribución refleja la información subjetiva o cuantitativa que el observador pueda tener sobre este parámetro $\theta$, antes de observar la muestra.
+
+**Actualización de la información a través del teorema de Bayes**
+
+La forma en la que se actualiza la información inicial sobre nuestro parámetros de interpes $\theta$, mediante la información contenida en la muestra $p(x|\theta)=L(\theta, \underline{X})$ (la verosimilitud), es a través del teorema de Bayes.
+
+## Teorema de Bayes 
+
+_Teorema de Bayes_ 
+
+Dados dos eventos A y B tales que $\mathbb{P}(B)>0$, la probabilidad condicional de A dado B, $\mathbb{P}(A|B)$, se define como:
+
+\begin{eqnarray*}
+\mathbb{P}(A|B)&=& \displaystyle\frac{\mathbb{P} (B\cap A) }{\mathbb{P}(B)}\\
+&=& \displaystyle\frac{\mathbb{P}(B|A)\mathbb{P}(A)}{\mathbb{P}(B)}\\
+\end{eqnarray*}
+
+
+_Teorema de Bayes_ 
+
+Si $\{ A_{i}: i=1,2,...,M\}$ en un conjunto de eventos mutuamente excluyentes, entonces:
+
+\begin{eqnarray*}
+\mathbb{P}(A_{i}|B)&=& \displaystyle\frac{\mathbb{P}(B|A_i)\mathbb{P}(A_i)}{\displaystyle\sum_{j=1}^{M} \mathbb{P}(B|A_{j}) \mathbb{P}(A_{j})}\\
+\end{eqnarray*}
+
+La forma esquemática de actualizar esta información a través del teorema de Bayes es la siguiente:
+
+
+$1.$ $\theta$ debe tener una distribución de probabilidad $p(\theta)$, que refleje nuestro conocimiento inicial acerca de su valor.
+
+$2.$ La información sobre $\theta$ que contiene la muestra aleatoria seleccionada, está resumida en la verosimilitud $p(x|\theta)=L(\theta; \underline{X})$.
+
+
+Por lo tanto, nuestro conocimiento acerca del valor $\theta$ queda descrito a través de su distribución final.
+
+El teorema de Bayes nos dice cómo encontrarla:
+
+\begin{eqnarray*}
+    {p(\theta| \underline{X})= \displaystyle\frac{p(x|\theta)p(\theta)}{\displaystyle\int p(x|\theta)p(\theta) d\theta}}
+\end{eqnarray*}
+
+Este proceso se conoce como el proceso de actualización de la información sobre $\theta$ ,y es la manera de combinar las dos fuentes de información que tenemos. La inicial dada a través de $p(\theta)$, y la de la muestra, dada por medio de la verosimilitud $p(x|\theta)$, para obtener la distribución final $p(\theta; \underline{X})$, que contiene la suma de estas dos fuentes de información.
+
+Obsérvese que el denominador, $p(x)=\displaystyle\int p(x|\theta)p(\theta) d\theta$ no depende de $\theta$, por lo que es común escribir esta distribución final como:
+
+\begin{eqnarray*}
+p(\theta| \underline{X})&\propto & p(x|\theta)p(\theta)\\
+\end{eqnarray*}
+
+En la práctica, el cálculo de la distribución final puede ser un asunto complicado, especialmente si la dimensión del parámetro es grande.
+
+Sin embargo, para ciertas combinaciones de distribuciones iniciales y verosimilitudes es posible simplificar el análisis.
+
+En otros casos se requieren aproximaciones analíticas y/o técnicas computacionales relativamente sofisticadas.
+ 
+Como hemos visto, la *prima de riesgo* puede *cambiar*  según el comportamiento de la muestra y que a medida que tuviéramos *más información*, se nos indica que el modelo va en dirección correcta.
+
+Todo esto es algo que nos hace pensar en *estadística bayesiana*, por lo que veremos un pequeño repaso de cómo hacer *estimaciones* con este tipo de estadística.
+
+Comencemos dejando claro un poco la notación en términos probabilísticos. Supongamos que  $X_1, X_2,...,X_n \sim Algo (\Theta)$ ($\Theta$ podría ser un vector de parámetros). $\Theta \sim Algo_{2} (\Delta)$, donde $\Delta$ asumimos totalmente conocido (propuesto).
+
+**Verosimilitud**
+
+\begin{eqnarray*}
+p(\underline{x} | \Theta) & \ddot{=}&  f_{x_1, x_2,...,x_n}(x_1, x_2,...,x_n)
+\end{eqnarray*}
+
+Es la **función de densidad conjunta** de la muestra, cuya distribución depende del parámetro de interés $\Theta$. 
+
+**Distribución inicial (a priori)**
+\begin{eqnarray*}
+p(\theta)& \ddot{=}& f_{\Theta} (\theta)
+\end{eqnarray*}
+
+Es la **función de densidad** del parámetro de interés, crecordando que este se piensa como v.a
+
+**Distribución final (a posteriori)**
+\begin{eqnarray*}
+p(\theta|\underline{x})& \ddot{=}& f_{\Theta|\underline{X}=\underline{x}} (\theta)
+\end{eqnarray*}
+
+Es la **función de densidad** que depende únicamente de $\theta$. Tomando en cuenta valores ya observados y fijos de la muestra.
+
+El siguiente resultado **NO** viene directamente del teorema de Bayes, ya que aunque es muy común usar la notación " $p(\theta)$ ", esto no necesariamente es probabilidad, pues de hecho es una **función de densidad**. Del Teorema de Bayes se puede encontrar que:
+
+\begin{equation*}
+   p(\theta| \underline{X})= \displaystyle\frac{p(x|\theta)p(\theta)}{\displaystyle\int_{\Omega_{\Theta}} p(x|\theta)p(\theta) d\theta} \propto p(x|\theta)p(\theta)
+   \end{equation*}
+   
+   Donde {$\propto$ Kernel de la v.a $\Theta|\underline{X}$}
+   
+La razón de porque $p(\theta|\underline{X}) \propto  p(x|\theta)p(\theta)$ 
+es porque $\displaystyle\int_{\Omega_{\Theta}} p(x|\theta)p(\theta) d\theta$ no depende de $\theta$ (Se integran) y quedan simplemente constantes para $\theta$ , como lo son $\underline{X}$ y $\Delta$.
+
+**Nota:** En general se asume una muestra aleatoria en $\underline{X}$ entonces la independencia queda implícita. Así: $p(\underline{x| \theta})= \prod_{i=1}^{n}p(x_i|\theta)$}.
+
+$Definición:$ Dada una **distribución final** y una **muestra fija**, decimos que **estimador bayesiano** para $\Theta$ es:
+
+\begin{equation*}
+\widehat{\Theta}\ddot{=} \mathbb{E}[\Theta| \underline{X}= \underline{x}]=\displaystyle\int_{\Omega_{\Theta}} \theta p(\theta| \underline{x}) d\theta
+\end{equation*}
+
+Nota: "Muestra fija" es la clave, ya que de otro modo $\widehat{\Theta}$ sería v.a.
+
+**Ejemplo:**
+
+Suponga $\{X_i \}_{i=1}^{n}$ una muestra aleatoria con distribución Bernoulli($\Theta$) y consideremos $\Theta \sim Beta(\Delta=(a,b))$ entonces:
+
+\begin{equation*}
+p(\theta)= \displaystyle\frac{1}{\beta(a,b)} \theta^{a-1} (1-\theta)^{b-1} \quad ; \quad \mathbb{E}[\Theta]= \displaystyle\frac{a}{b+a} \quad \quad ;\beta(a,b) \ddot{=} \displaystyle\frac{\Gamma(a \Gamma(b))}{\Gamma(a+b)}  
+\end{equation*}
+
+\begin{eqnarray*}
+p(x_i|\theta)p(\theta)&=& \theta^{x_i} (1-\theta)^{1-x_i}\mathbb{I}_{\{ 0,1\}} (x_{i}) \quad \quad \text{Noten que está bien definido pues $\theta \in (0,1)$}
+\end{eqnarray*}
+
+**Kernel**
+
+\begin{eqnarray*}
+p(\underline{x}|\theta)p(\theta) &=& \displaystyle\prod_{i=1}^{n} p(x_i| \theta) p(\theta)\\
+&=& \displaystyle\prod_{i=1}^{n}  \theta^{x_i} (1-\theta)^{1-x_i} \displaystyle\frac{1}{\beta(a,b)} \theta^{a-1} (1-\theta)^{b-1}\\
+&=& \displaystyle\frac{1}{\beta(a,b)} \theta^{n \bar{x}+a-1} (1-\theta)^{n(1- \bar{x})+b-1}\\
+&\propto& {\underbrace{{\theta^{n \bar{x}+a} (1-\theta)^{n(1- \bar{x})+b}}}_{\text{Un kernel conocido}}}
+\end{eqnarray*}
+
+
+Por lo tanto
+
+Como $p(\theta| \underline{x}) \propto p(\underline{x}|\theta)p(\theta)$ entonces $\Theta| \underline{X}=\underline{x} \sim Beta(n \bar{x}+a-1, n(1- \bar{x})+b-1)$
+
+Sin embargo, es común que la gente sea escéptica a "mandar a la ... constante de integración" las cosas. Entonces, sin tomar proporciones, tenemos:
+
+**Kernel**
+
+-  $P(\underline{x}|\theta)P(\theta)=\displaystyle\frac{1}{\beta(a,b)}\theta^{n\overline{x}+a-1}(1-\theta)^{n(1-\overline{x})+b-1}$  
+
+
+**Constante de integración**
+
+$$\displaystyle\int_{\Omega_{\Theta}}P(\underline{x}|\theta)P(\theta)d\theta$$
+$=\displaystyle\int_0^1\frac{1}{\beta(a,b)}\theta^{n\overline{x}+a-1}(1-\theta)^{n(1-\overline{x})+b-1}d\theta$
+
+$=\displaystyle\frac{1}{\beta(a,b)}{\beta(a+n\overline{x},b(1-\overline{x}+b))}{\underbrace{{\displaystyle\int_0^1{1}{{\frac{1}{\beta(a+n\overline{x},n(1-\overline{x})+b)}}\theta^{n\overline{x}+a-1}(1-\theta)^{n(1-\overline{x})+b-1}}d\theta}}_{\mbox{Una densidad Beta sobre todo su soporte}}}$
+    
+$=\displaystyle\frac{1}{\beta(a,b)}{\beta(a+n\overline{x},n(1-\overline{x})+b)}$
+\begin{eqnarray*}
+   \therefore P(\theta|\underline{x})&=&\displaystyle\frac{P(\underline{x}|\theta)P(\theta)}{\displaystyle\int_{\Omega_{\Theta}}P(\underline{x}|\theta)P(\theta)d\theta}\\
+   &=&\displaystyle\frac{{\frac{1}{\beta(a,b)}}\theta^{n\overline{x}+a-1}(1-\theta)^{n(1-\overline{x})+b-1}}{{\frac{1}{\beta(a,b)}}{\beta(a+n\overline{x},n(1-\overline{x})+b)}}\\
+   
+  &=&\displaystyle\frac{1}{\beta(a+n\overline{x},n(1-\overline{x})+b)}\theta^{n\overline{x}+a-1}(1-\theta)^{n(1-\overline{x})+b-1}\\
+\end{eqnarray*}
+$\therefore\Theta|\underline{X}=\underline{x}\sim Beta(b\overline{x}+a,n(1-\overline{x})+b)$,también haciendo más cuentas. 
+        $\Rightarrow \widehat{\Theta}={E}[\Theta| \underline{X}=\underline{x}]=\displaystyle\frac{n\overline{x}+a}{(n\overline{x}+a)+(n(1-\overline{x})+b)}=\frac{n\overline{x}+a}{n+a+b}$
+        
+
+En este caso, la distribución final tuvo una distribución conocida, sin embargo, esto no sucede necesariamente. Afortunadamente, existen distribuciones que si las utilizamos para la **verosimilitud** y la **inicial**,tendremos una **final conocida**. Esto se conoce como **familias conjugadas**.
+
+## Familias conjugadas
+
+Comentamos en uno de los puntos anteriores, que **existen cierta combinaciones de distribuciones y verosimilitudes, que simplifican el análisis Bayesiano**, esencialmente, porque **el modelo de la distribución final de $\theta$, pertenece a la misma familia que el de la inicial**.
+
+$Definición.$ Sea {$\mathscr{P}$}=$\{p(x|\theta):\theta\in\Theta\}$ una **familia paramétrica**. Una clase (o colección) de distribuciones de probabilidad $\mathscr{F}$ es una **familia conjugada** para $\mathscr{P}$ si para toda $p(x|\theta)\in\mathscr{P}$ y $p(\theta)\in\mathscr{F}$ se tiene que $p(\theta |x)\in \mathscr{F}$
+
+Algunos modelos paramétricos univariados con sus respectivas familias conjugadas:
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/FamParam.png", error=FALSE)
+```
+
+**Ejemplo:** 
+
+Consideremos la **familia paramétrica** $\mathscr{P}=\{\mbox{Poisson}(x|\lambda):\lambda\in{P}^+\}$. Si utilizamos como **distribución inicial** $p(\lambda)\in\mathscr{F}=\{\mbox{Gamma}(\lambda|\alpha,\beta):\alpha,\beta\in{R}^+\}$}. Entonces, **si se tiene una muestra aleatoria $\mbox{x}=(x_1,...,x_n)$, la distribución final es**
+
+$${ p(\lambda|\underline{X})=\mbox{Gamma}(\lambda|\alpha+r,n+\beta) }\qquad \mbox{con } r =\displaystyle\sum_{i=1}^n x_i$$
+
+_Demostración._
+
+Solo demostraremos que el _kernel_ de la distribución final, pertenece a la distribución $Gamma(\lambda|\alpha+r,n+\beta)$.
+
+Sabemos, por Bayes, que
+
+$$p(\lambda|\underline{X})=\displaystyle\frac{{p(x|\lambda)p(\lambda)}}{\displaystyle\int p(x|\lambda)p(\lambda)d\lambda}$$
+con
+
+$p(x|\lambda)$ =$\displaystyle\prod_{i=1}^n\displaystyle\frac{\lambda^{x_i}e^{-\lambda}}{x_i!}\varpropto \lambda^{\displaystyle\sum_{i=1}^nx_i}e^{-n\lambda}$ y
+
+$p(\lambda)$=$\displaystyle\frac{\beta^\alpha\lambda^{\alpha-1}e^{-\beta\lambda}}{\Gamma(\alpha)}$, por lo que
+
+$p(\lambda|\underline{X})\varpropto$$\lambda^{\displaystyle\sum_{i=1}^nx_i}e^{-n\lambda}\lambda^{\alpha-1}e^{-\beta\lambda}=\lambda^{\alpha+\displaystyle\sum_{i=1}^n x_i-1}e^{-\lambda(\beta+n)}\varpropto Gamma\left(\alpha+\displaystyle\sum_{i=1}^n x_i,\beta+n\right)$
+
+## Cálculo Bayesiano de primas de seguros 
+_El uso de las distribuciones iniciales que tienen un carácter evidentemente subjetivo_, resulta de _utilidad en el mercado de seguros_, sobre todo si se tiene en cuenta que _cuando se quiere tarifar un riesgo nuevo no se dispone de información para ello_.
+
+La visión Bayesiana se incorporó rápidamente a la disciplina actuarial, demostrando que _algunas primas que se obtienen a través de la metodología Bayesiana pueden escribirse como fórmulas de credibilidad_.
+
+En estos términos actuariales, _la cuestión básica de credibilidad es determinar una prima establecida como una combinación lineal convexa entre la experiencia particular de un asegurado y la experiencia del colectivo_,esto es, toda la cartera. Es decir
+
+$$\mathbb{P}_j=Z\hat{\mathbb{P}}+(1-Z){P}_0$$
+
+$\bullet$ _$\mathbb{P}_j$ prima a aplicar a los asegurados_ por el riesgo $j$. _(final-posterior)_
+
+$\bullet$ _$\mathbb{P}_0$ prima a aplicar a un colectivo_ al que pertenece el asegurado $j$. _(inicial-propuesta)_
+
+$\bullet$ _$\hat{\mathbb{P}}$ Prima calculada con base en la experiencia_ del asegurado $j$. _(muestral)_
+
+$\bullet$ _$Z$ Factor de credibilidad_ Que debe verificar las condiciones:
+$\lim\limits_{m\rightarrow\infty}Z=1$, con $m$ el número de sujetos expuestos al riesgo $j$ o el periodo de observación de la póliza $j$. Entonces,si $Z=1$ la experiencia del asegurados recibe credibilidad total o del 100\%, mientras que si $Z=0,\mathbb{P}_j=\mathbb{P}_0$ y la prima del asegurado $j$ coincide con la del colectivo} a la que pertenece dicha póliza, o la experiencia del colectivo recibe credibilidad total o del 100\%
+
+Entonces, desde el punto de vista Bayesiano, esta fórmula de credibilidad puede interpretarse como: Podemos considerar $\mathbb{P}_0$ como la información inicial o \textit{a priori.} A $\mathbb{P}_0$ como la nueva información que se obtiene mediante la observación de la siniestralidad del riesgo $j$ (los datos recabados; la información recabada) y $\mathbb{P}_j$ la actualización del cálculo de la póliza (prima a posteriori), resultado de combinar la información inicial con la información recabada.
+
+Por lo tanto
+
+_Prima (a posteriori)_ =$(1-Z)\ast$ _Prima a priori_+ $Z\ast$ _Experiencia dada por los datos_;
+
+
+De esta manera, la teoría de la credibilidad Bayesiana, sigue un esquema donde la información a priori sobre el cálculo de las primas, se actualiza con la información dada por la observación  del siniestro (muestra), dando como resultado la actualización de la prima, mediante el cálculo de la prima a posteriori.
+
+### ¿Cómo modelar un riesgo para obtener una prima de credibilidad Bayesiana? {-}
+
+Ahora aplicaremos estas ideas al problema del cálculo de primas tomando en cuenta la experiencia de un riesgo. Suponga que las variables $S_1,...,S_m$ representan el historial de reclamaciones en $m$ años o periodos que se han registrado de un riesgo dado. Suponga además que estas variables son independientes y todas ellas tienen una distribución común dependiente de un parámetro desconocido $\theta$, y esta distribución es tal que $E(S)=\theta$. Bajo el enfoque Bayesiano se considera que el parámetro $\theta$ es una variable aleatoria para la cual se asume una distribución de probabilidad a priori. La esperanza a porteriori de $\theta$, es decir, $E(\theta|S_1,...,S_m)$, representa una  estimación para $E(S)=\theta$ tomando en cuenta el historial $S_1,...,S_m$. A esta esperanza posteriori se le llama prima de credibilidad Bayesiana. En los casos que analizaremos esta prima tiene la forma de la credibilidad parcial mencionada antes. Los casos que consideraremos para la distribución de $S$ son: la distribución Poisson con media $\lambda$, y la distribución normal con media $\theta$.
+
+$\blacksquare$ _Modelo Poisson-Gamma_
+
+Este modelo adquiere su nombre a partir de las siguientes hipótesis: se postula que cada una de las variables aleatorias independientes $S_1,...,S_m$ tiene distribución Poisson con parámetro $\lambda$, el cual se considera aleatorio con una distribución a priori gamma$(\gamma,\alpha)$,con $\gamma\mbox{ y }\alpha$ parámetros conocidos. Observe que en este modelo se considera que los montos de las reclamaciones toman valores enteros. La función de densidad a posteriori de $\lambda$ es, para $x>0$,
+
+\begin{eqnarray*}
+    g(\lambda|S_1,...,S_m)&=&\displaystyle\frac{f(S_1,...,S_m|\lambda)h(\lambda)}{\displaystyle\int_0^\infty f(S_1,...,S_m|\lambda)h(\lambda)d\lambda}\\
+    &=&\displaystyle\frac{\displaystyle\prod_{j=1}^m\left(\frac{\lambda^{S_j}}{S_j!}e^{-\lambda}\right)\frac{\alpha^\gamma}{\Gamma(\gamma)}\lambda^{\gamma-1}e^{-\alpha\lambda}}{\displaystyle\int_0^\infty\displaystyle\prod_{j=1}^m\left(\frac{\lambda^{S_j}}{S_j!}\right)\frac{\alpha^\gamma}{\Gamma(\gamma)}\lambda^{\gamma-1}e^{-\alpha\lambda}d\lambda}\\
+    &=&\displaystyle\frac{\lambda^{m\overline{S}+\gamma-1}e^{-(m+\alpha)\lambda}}{\displaystyle\int_0^\infty \lambda^{m\overline{S}+\gamma-1}e^{-(m+\alpha)\lambda}d\lambda}\\
+    &=& \displaystyle\frac{(m+\alpha)^{m\overline{S}+\gamma}}{\Gamma(m\overline{S}+\gamma)}\lambda^{m\overline{S}+\gamma-1}e^{-(m+\alpha)\lambda}.
+\end{eqnarray*}
+
+
+Es decir, la densidad a posteriori es gamma($m\overline{S}+\gamma,m+\alpha$).Por lo tanto, la prima por credibilidad, esperanza de esta densidad, es 
+
+\begin{eqnarray*}
+    {\text{prima}}&=& E(\lambda|S_1,...,S_m)\\
+    &=&\displaystyle\frac{m\overline{S}+\gamma}{m+\alpha}\\
+    &=& \displaystyle\frac{m}{m+\alpha}\overline{S}+\displaystyle\frac{\alpha}{m+\alpha}\displaystyle\frac{\gamma}{\alpha}\\
+    &=&{z\overline{S}+(1-z)\displaystyle\frac{\gamma}{\alpha}}, 
+\end{eqnarray*}
+
+en donde $z=\frac{m}{(m+\alpha)}$ es llamado factor de credibilidad. Esta cantidad crece monótonamente a uno cuando $m$ crece a infinito, dando cada vez más credibilidad a la media muestral $\overline{S}$ y favoreciendo cada vez menos a la media teórica $\frac{\gamma}{\alpha}$. Observe además que cuando $m$ crece a infinito, la media de la distribución a posteriori converge a la media muestral límite dado por el historial de reclamaciones, y que la varianza de $\lambda$ dada por $Var(\lambda|\underline{S})
+=\frac{(m\overline{S}+\gamma)}{(m+\alpha)^2}$ converge a cero, lo cual indica que la distribución posteriori se concentra cada vez más alrededor de su media.
+
+$\blacksquare$ _Modelo Normal-Normal_
+
+En este modelo se postula que cada una de las reclamaciones $S_1,...,S_m$ tiene distribución $N(\theta,\sigma^2)$, en donde el parámetro $\sigma^2$ es conocido y la media $\theta$ es una variable aleatoria con distribución $N(\mu,\eta)$, con $\mu\mbox{ y }\eta^2$ conocidos. La primera hipótesis puede ser justificada en el caso cuando los montos anuales se componen de un gran número de reclamaciones individuales, para ello no es necesario suponer que las reclamaciones individuales tienen la misma distribución. La segunda hipótesis podría ser razonable si es que los parámetros $\mu\mbox{ y }\eta^2$ son tales que la probabilidad asignada a la parte negativa del eje es muy pequeña.La función de densidad a posteriori de $\theta$ es 
+
+\begin{eqnarray*}
+   g(\theta|S_1,...,S_m)&=& \displaystyle\frac{f(S_1,...,S_m|\theta)h(\theta)}{\displaystyle\int_{-\infty}^\infty f(S_1,...,S_m|\theta)h(\theta)\theta d\theta}\\
+   
+ &=& \displaystyle\frac{\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\sum_{j=1}^m(S_j-\theta)^2/2\sigma^2}\frac{1}{\sqrt{2\pi\eta^2}}e^{-(\theta-\mu)^2/2\eta^2}}{\displaystyle\int_{-\infty}^\infty \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\sum_{j=1}^m(S_j-\theta)^2/2\sigma^2}\frac{1}{\sqrt{2\pi\eta^2}}e^{-(\theta-\mu)^2/2\eta^2}d\theta}\\
+\end{eqnarray*}
+
+Nos concentramos en analizar únicamente el exponente y tenemos que
+
+$$-\displaystyle\sum_{j=1}^m\displaystyle\frac{(S_j-\theta)^2}{2\sigma^2}-\displaystyle\frac{(\theta-\mu)^2}{2\eta^2}=-\theta^2\left(\frac{m}{2\sigma^2}+\frac{1}{2\eta^2}\right)+2\theta\left(\frac{m\overline{S}}{2\sigma^2}+\frac{\mu}{2\eta^2}\right)-\left(\displaystyle\sum_{j=1}^m\displaystyle\frac{S_j^2}{2\sigma^2}\right)-\frac{\mu^2}{2\eta^2}.$$
+Completando el cuadrado en $\theta$, este exponente se puede escribir como sigue
+$$-\displaystyle\frac{\left[\theta-\left(\frac{m\overline{S}}{\sigma^2}+\frac{\mu}{\eta^2}\right)/\left(\frac{m}{\sigma^2}+\frac{1}{\eta^2}\right)\right]}{2\left(\frac{m}{\sigma^2}+\frac{1}{\eta^2}\right)^{-1}}+\displaystyle\frac{\left(\frac{m\overline{S}}{\sigma^2}+\frac{\mu}{\eta^2}\right)^2}{2\left(\frac{m}{\sigma^2}+\frac{1}{\eta^2}\right)}-\left(\displaystyle\sum_{j=1}^m\frac{S_j^2}{2\sigma^2}\right)-\frac{\mu^2}{2\eta^2}.$$
+Este exponente aparece tanto en el numerador como en el denominador, y como los últimos dos sumandos no dependen de $\theta$ éstos desaparecen completamente al hacer el cociente. Lo que resulta es nuevamente la distribución normal
+$$g(\theta|S_1,...,S_m)=\displaystyle\frac{1}{\sqrt{2\pi \left(\frac{m}{\sigma^2}+\frac{1}{\eta^2}\right)^{-1}}}exp\left\{-\frac{\left[\theta-{\left(\frac{m\overline{S}}{\sigma^2}+\frac{\mu}{\eta^2}\right)/\left(\frac{m}{\sigma^2}+\frac{1}{\eta^2}\right)}\right]^2}{2\left(\frac{m}{\sigma^2}+\frac{1}{\eta^2}\right)^{-1}}\right\}.$$
+
+La media de esta distribución es entonces la prima por credibilidad, es decir,
+
+\begin{eqnarray*}
+    {prima}&=& E(\theta|S_1,...,S_m)\\
+    &=& {\left(\frac{m\overline{S}}{\sigma^2}+\frac{\mu}{\eta^2}\right)/\left(\frac{m}{\sigma^2}+\frac{1}{\eta^2}\right)}\\
+    &=& \displaystyle\frac{m\eta^2}{m\eta^2+\sigma^2}\overline{S}+\displaystyle\frac{\sigma^2}{m\eta^2+\sigma^2}\mu\\
+    &=& z\overline{S}+(1-z)\mu,
+\end{eqnarray*}
+
+en donde $z=\frac{m\eta^2}{(m\eta^2+\sigma^2)}$ es el factor de credibilidad, el cual tiene nuevamente comportamiento monótono creciente a uno conforme $m$ crece a infinito. Observe además que $Var(\theta|\underline{S})=(\frac{m}{\sigma^2}+\frac{1}{\eta^2})^{-1}$ y que esta cantidad converge a cero cuando el tamaño de muestra $m$ crece a infinito, indicando nuevamente que la distribución a posteriori se concentra cada vez más alrededor de su media.
+
+**Ejemplo:**
+
+Suponga $\{X_i\}_{i=1}^n$ una muestra aleatoria con distribución $Bernoulli(\Theta)$ y consideremos  $\Theta\sim Beta(\Lambda=(a,b))$.
+Con base en esto, ya vimos que: 
+
+$\hat{\Theta}=\displaystyle\frac{n\overline{X}+a}{n+a+b}=\displaystyle\frac{n}{n+a+b}\overline{X}+\frac{1}{n+a+b}a$
+
+Sea $Z$ tal que: $\displaystyle\frac{1}{n+a+b}={Z}\frac{1}{a+b}\Leftrightarrow{Z}=\displaystyle\frac{a+b}{n+a+b}\in(0,1)$, además notemos que:
+
+$1-{Z}=1-\displaystyle\frac{a+b}{n+a+b}$. De tal manera que:
+
+\begin{eqnarray*}
+\hat{\Theta}&=&\displaystyle\frac{n}{n+a+b}\overline{X}+\frac{1}{n+a+b}a=(1-{Z})\overline{X}+{Z}\frac{a}{a+b}\\
+&=&(1-{Z})\overline{X}+{Z}{\mathbb{E}[\theta]};\mbox{ si }{Z'}\ \ \ddot{=}\ \ 1-{Z} 
+\end{eqnarray*}
+
+
+\begin{eqnarray*}    
+    \therefore \underset{{\hookrightarrow\mbox{ De credibilidad Bayesiana}}}{\begin{array}{cc}
+     {\text{Prima final}}  
+     {\text{(Posterior)}} 
+    \end{array}={\hat{\Theta}}} &=&{Z'}{\overline{X}}+(1-{Z'}){\mathbb{E}[\Theta]}\\ &=&{Z'}{\left(\begin{array}{cc}
+         \text{Experiencia}  \\
+         \text{de los datos}
+    \end{array}\right)}+(1-{Z'}){\left(\begin{array}{cc}
+         \text{Prima inicial}  \\
+         \text{(a priori)}
+    \end{array}\right)}
+\end{eqnarray*}\
+
+**Nota:** En esta metodología, debemos tener en cuenta que pensamos a la prima de riesgo como una v.a. que cambia con base en la muestra y $\mathbb{E}[S|\Theta=\theta]=\theta$. Pero puede ser que $\mathbb{E}[S|\Theta=\theta]=\tau(\theta)$
+
+Un par de últimas observaciones de lo que se está haciendo. Noten que la prima de credibilidad bayesiana se puede obtener sin calcular el factor de credibilidad $Z$, más bien, se obtiene simplemente de actualizar la distribución inicial.
+
+La aparición de $Z$ se hace para observar qué tanto se otorga en la transformación lineal convexa, a la experiencia muestral y a la propuesta teórica.
+
+$${Z}{\overline{X}}+(1-{Z}){\mathbb{E}[\Theta]}$$
+Por eso en credibilidad Bayesiana es fundamentar proponer una distribución inicial que tenga como media (al menos de forma numérica) la Prima de Riesgo teórica que se propone en el modelo inicial.
+
+También se debe recalcar que el modelo que se propone inicialmente es para $p(\underline{x}| \theta)$ (la verosimilitud) no para $p(\theta)$ (la distribución inicial). Esto significa que todo lo que vimos en la primera parte del curso es para $p(\underline{x}|\theta)$. Mientras que $p(\theta)$ se propone "a colmillo" y tal teóricamente:
+
+si $\mathbb{E}[{S}]=\mathbb{E}[{S}|\Theta={\theta}]={\tau({\theta})}\Rightarrow{\tau({\mathbb{E}[\Theta]})}={\tau({\theta})}$
+
+Más aún, la prima de riesgo de Credibilidad Beyesiana y el factor de credibilidad Bayesiana son respectivamente:
+
+${\tau({\hat{\Theta}})}={\tau({\mathbb{E}[\Theta|\underline{S}]})}$ \quad \ \ y ${Z}\hspace{0.4em} \cdot)\cdot$\quad \ \  ${\tau({\hat{\Theta}})}{Z}{\overline{S}}+(1-{Z}){\tau({\mathbb{E}[\Theta]})}$
+
+Todo esto significa que debemos plantear la distribución inicial con base en nuestro modelo y luego simplemente actualizarlo. Vía estadística Bayesiana.
+
+**Ejemplo:** Por muchos años un investigador ha estudiado una muestra de observaciones ${S}_i$. Él ha dicho en diversos artículos que ${S}_i\sim Exp({\lambda}),\mathbb{E}[{S}_i]=2\hspace{0.4em}\forall i$. Hoy en día existe un fenómeno natural que hace dudar que ${\lambda}=\frac{1}{2}$.
+
+Pero no se sabe qué valor pueda tomar $\lambda$, así que los expertos en las ${S}_i$'s han dicho que $\lambda$, podría tener un comportamiento ${\Lambda\sim Gamma(\alpha,\beta)}$ con $\alpha=2$. Hoy se tomó una muestra aleatoria de ${S}$ la cual es la siguiente: $2.71,11.04,0.53,0.88,0.14,7.13,5.35,2.82,1.14,5.09$.
+
+Si ${S}$ está asociado a un monto de siniestros. ¿Cuál sería una prima de riesgo adecuada dada esta información?
+
+_Solución:_
+
+Como el investigador decía que antes $\mathbb{E}[{S}_i]=2$ y se ha propuesto una distribución inicial ${\Lambda}\sim Gamma(2,\beta)$ entonces:
+
+$\mathbb{E}[|\Lambda=\lambda]={{\tau({\lambda})}=\displaystyle\frac{{1}}{{\lambda}}}= 2 \Rightarrow \frac{\beta}{2}=\frac{{1}}{{\mathbb{E}[\Lambda]}}= {\tau({\mathbb{E}[\Lambda]})}={\tau({\lambda})}=2$
+
+Los expertos proponen una distribución inicial ${\Lambda}\sim Gamma({\alpha}=2,{\beta}=4)$.
+
+Trabajando con la _nueva información_:
+
+- _Distribución inicial_: $P(\lambda)\sim Gamma({\alpha}=2,{\beta}=4)$
+
+- _Verosimilitud_: $P(\underline{S}|\lambda)\sim Exp({\Lambda})$.
+
+\begin{eqnarray*}
+
+  &\Rightarrow& \mbox{ Distribución final: }p(\lambda|\underline{S})\sim {\underbrace{{Gamma({\alpha}+{n}=12,{\beta}+{\displaystyle\sum_{i=1}^n S_i}=\text{40.83})}}_{\mbox{ejercicio para el lector}}}\\
+  
+  
+   &\Rightarrow& {\hat{\Lambda}}\ \ddot{=} {\mathbb{E}[\Lambda|\underline{S}]}=\frac{12}{\text{40.83}}=\frac{400}{1361}\approx \text{0.293901543}\\
+ 
+  
+   &\Rightarrow& \mbox{Prima de Riesgo de C.B.}={\tau({\hat{\Lambda}}})=\frac{1361}{400}
+\end{eqnarray*}
+
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("Imágenes/Credi.png", error=FALSE)
+```
+
+$\therefore$ La prima de riesgo actualizada es 3.4025.
+
+**Ejemplo (Parte 2):** Del ejemplo anterior ¿cuál sería el factor de credibilidad?
+
+_Solución:_ Buscamos ${Z}$ tal que:
+
+\begin{eqnarray*}
+    {Z}\left(\frac{\text{36.83}}{10}\right)+(1-{Z})(2)={Z}{\overline{S}}+(1-{Z}){\tau\left({\mathbb{E}[\Lambda]}\right)}=\begin{array}{cc}
+         {\text{Prima}}  \\
+         {\text{de}}\\
+         {\text{Riesgo}}
+    \end{array}={\tau({\hat{\Lambda}})}=\text{3.4025}\\
+\end{eqnarray*}
+\begin{eqnarray*}
+    &\Rightarrow &\text{3.683}Z+\text{2.2}Z=2+\text{1.6837}=\text{3.4025}\Leftrightarrow {Z}=\frac{\text{3.4025}-2}{\text{1.683}}\hspace{3.3cm}\\
+    &\therefore& \text{El factor de credibilidad es} {Z}=\frac{\text{3.4025}-2}{\text{1.683}}=\frac{5}{6}\approx\text{83.3}\overline{3}\%\hspace{2.4cm}
+\end{eqnarray*}
+
+_Moraleja:_ Recuerda siempre lo que se está haciendo y cómo se está haciendo.
+
+**Nota:** Todo esto tiene sentido pues el autor obtuvo los datos de una $Exponencial(\lambda=\frac{1}{4})$
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,472 @@
+# Modelo colectivo: Bases
+
+Resulta ser que pensando a $N$ como una v.a. que mide el número de reclamaciones las propiedades en general que presenta S son manejables.
+
+Es el momento de mezclar todos los temas que hemos desarrollado para crear una variable aleatoria que puede generalizar en cierto sentido a todas las demás.
+
+Desde el principio se habló de dos conceptos por separado, la frecuencia y la severidad. Veremos que estos dos se pueden Unificar. En la vida práctica es necesario estudiar y modelar por separado estos conceptos para que una vez bien identificados además de modelados se puedan mezclar en uno de los modelos más populares cuando se habla de riesgo: **El Modelo colectivo** o **Modelo de pérdidas agregadas**.
+
+## Modelo Colectivo {-}
+
+**Considere un conjunto de un número no determinado de contratos de seguros** con vigencia en un periodo de tiempo $[0,T]$ . Este periodo puede corresponder a un año por ejemplo. **Sea $N$ la variable aleatoria que denota el número de reclamaciones ocurridas en este intervalo, y sean las variables positivas $Y_1,...,Y_N$ los montos de estas reclamaciones**. Gráficamente una posible realización de tal esquema se muestra en la _Figura 1.7_.
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/fig1punto7.png", error=FALSE)
+```
+
+_Nota:_ 
+
+-  $Y\to$ _frecuencia_
+
+- $\gamma\to$ _severidad_
+
+**Consideraremos que el número de reclamaciones y los montos de éstas son variables aleatorias independientes. Más aún, supondremos que las reclamaciones mismas son independientes entre sí, y que comparten la misma distribución de probabilidad**.
+
+_Definición:_ El monto agregado o monto acumulado de todas las reclamaciones efectuadas  es la variable aleatoria $S$, llamado riesgo y definida como sigue:
+
+$S=\sum_{j=1}^N Y_j$   ~~~~~~~~~~ (1.2)
+
+Observe que cada sumando es una variable aleatoria y que el número de sumandos es también aleatorio. La suma (1.2) se define como cero cuando $N=0$}. Observe además que **$S$ puede ser una variable aleatoria mixta**, es decir, no ser discreta ni continua, pues cuando los montos de las reclamaciones $Y$ son variables continuas estrictamente positivas, la variable $S$ puede tomar el valor 0 con probabilidad $P( S=0)= P( N =0)> 0$, y puede además tomar cualquier valor en el intervalo $(0,\infty)$ **La ecuación (1.2) representa el modelo colectivo para un contrato de seguros**, cuyas posibles realizaciones **como función del tiempo tienen la forma de la gráfica de la _Figura 1.8_:
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/fig1punto8.png", error=FALSE)
+```
+
+**A la función de distribución de cada reclamación Y la denotaremos por la
+letra $G$. Se asume naturalmente que $G(0)=0$, ello equivale a decir que la
+variable $Y$ es positiva. Adicionalmente usaremos la notación $\mu_n :\mathbb{E}[Y^n]$,
+en particular se escribe $\mu$ en lugar de $\mu_1:= \mathbb{E}(Y)$. Nuevamente el problema
+central es encontrar la distribución de probabilidad de $S$, la cual depende
+de la distribución de $Y$ y de $N$. Un primer resultado general al respecto
+es el que aparece a continuación. Antes de enunciarlo recordemos que la
+0-convolución de una función de distribución G se define como:**
+
+$$G^{*0}(x)= \begin{cases}
+1~~~si~~~x\geq0\\
+0~~~si~~~x<0
+\end{cases}$$
+
+**Proposición:** La función de distribución del riesgo $S$ en el modelo colectivo es:
+
+  $$F(x)=\sum_{n=0}^{\infty}G^{*n}(x)P(N=n)$$
+  _Demostración._
+  
+\begin{eqnarray*} 
+  F(x)&=&\sum_{n=0}^{\infty}P(S\leq x| N=n)P(N=n)\\
+&=&P(S\leq x| N=0)P(N=0)+\sum_{n=1}^{\infty} P(Y_1, \dots , Y_n\leq x)P(N=n)\\
+&=&G^{*0}(x)P(N=0)+\sum_{n=1}^{\infty}G^{*n}(x)P(N=n)\\
+&=&\sum_{n=0}^{\infty}G^{*n}(x)P(N=n)\\
+\end{eqnarray*}
+
+Algunas características numéricas de la variable $S$ se muestran a continuación:
+
+**Proposición 1.4:** Suponiendo que las cantidades y funciones indicadas
+existen, el riesgo $S$ en el modelo colectivo cumple las siguientes propiedades.
+
+
+- _1._ $\mathbb{E}[S]=\mathbb{E}[N]\mathbb{E}[Y]$
+- _2._ $\mathbb{E}[S^2]=Var(N)\mathbb{E}[Y^2]+\mathbb{E}[(N(N-1))\mathbb{E}^2[Y]$
+- _3._ $Var(S)=Var(N)\mathbb{E}^2[Y]+Var(Y)\mathbb{E}[Y]$
+- _4._ $M_s(t)=M_N(ln(M_Y(t)))$
+
+_Nota:_ Estos resultados son válidos para $\gamma 's$ discretas, continuas, mixtas y hasta con soporte en $\mathbb{R}$
+
+_Demostración._
+
+_1._ Condicionaremos sobre le valor de N y después usaremos la hipótesis de independencia. El resultado del cálculo es el mismo cuando la variable $N$ inicia en el valor 0 o en valor 1
+
+\begin{eqnarray*} 
+E(S)&=&\sum_{n=0}^{\infty} E(\sum_{j=1}^{N}Y_j|N=n)P(N=n)\\
+&=&\sum_{n=0}^{\infty} E(\sum_{j=1}^{n}Y_j|N=n)P(N=n)\\
+&=&\sum_{n=0}^{\infty} nE(Y)P(N=n)\\
+&=&E(N)E(Y)\\
+\end{eqnarray*}
+
+_2._ Nuevamente condicionando sobre el valor de $N$
+
+$$\begin{aligned}
+E\left(S^{2}\right) &=\sum_{n=0}^{\infty} E\left(\left(\sum_{j=1}^{N} Y_{j}\right)^{2} \mid N=n\right) P(N=n) \\
+&=\sum_{n=0}^{\infty} E\left(\left(\sum_{j=1}^{n} Y_{j}\right)^{2} \mid N=n\right) P(N=n) \\
+&=\sum_{n=0}^{\infty} E\left(\left(\sum_{j=1}^{n} Y_{j}\right)^{2}\right) P(N=n) \\
+&=\sum_{n=0}^{\infty}\left[\sum_{j=1}^{n} E\left(Y_{j}^{2}\right)+\sum_{j, k=1 \atop j \neq k}^{n} E\left(Y_{j} Y_{k}\right)\right] P(N=n) .
+\end{aligned}$$
+
+Observe que segunda suma es nula cuando $n=0$, y a su vez la tercera suma se anula cuando $n=0$ o 1 . Así, por la idéntica distribución tenemos que
+
+$$
+\begin{aligned}
+E\left(S^{2}\right) &=\sum_{n=0}^{\infty} n E\left(Y^{2}\right) P(N=n)+\sum_{n=0}^{\infty} n(n-1) E^{2}(Y) P(N=n) \\
+&=E(N) E\left(Y^{2}\right)+E(N(N-1)) E^{2}(Y)
+\end{aligned}
+$$
+_3._ Por las fórmulas anteriores,
+
+$$
+\begin{aligned}
+\operatorname{Var}(S) &=E\left(S^{2}\right)-E^{2}(S) \\
+&=E(N) E\left(Y^{2}\right)+E(N(N-1)) E^{2}(Y)-E^{2}(N) E^{2}(Y) \\
+&=E(N)\left[E\left(Y^{2}\right)-E^{2}(Y)\right]+\left[E\left(N^{2}\right)-E^{2}(N)\right] E^{2}(Y) \\
+&=E(N) \operatorname{Var}(Y)+\operatorname{Var}(N) E^{2}(Y)
+\end{aligned}
+$$
+
+_4._ De manera análoga a los dos primeros incisos,
+
+$$
+\begin{aligned}
+M_{S}(t) &=\sum_{n=0}^{\infty} E\left(e^{r\left(Y_{1}+\cdots+Y_{N}\right)} \mid N=n\right) P(N=n) \\
+&=\sum_{n=0}^{\infty} E\left(e^{r\left(Y_{1}+\cdots+Y_{n}\right)}\right) P(N=n) \\
+&=\sum_{n=0}^{\infty}\left(M_{Y}(t)\right)^{n} P(N=n) \\
+&=E\left(\left(M_{Y}(t)\right)^{N}\right) \\
+&=E\left(e^{N \ln \left(M_{Y}(t)\right)}\right) \\
+&=M_{N}\left(\ln \left(M_{Y}(t)\right)\right)
+\end{aligned}
+$$
+
+## Modelo Binomial Compuesto {-}
+
+**Cuando el número de reclamaciones $N$ tiene una distribución $Bin\sim(n,p)$ se dice que el riesgo $S$ tiene una distribución binomial compuesta**, y se escribe $S\sim BinComp(n,p,G)$ donde $G$ es la función de distribución de cada sumando en la definición de $S$. Bajo esta hipótesis se tienen los siguientes
+resultados.
+
+**Proposición:** Si $N$ tiene distribución $Bin(n,p)$  entonces
+
+_a)_ $E(S)=n p \mu$.
+
+_b)_ $E\left(S^{2}\right)=n p \mu_{2}+n(n-1) p^{2} \mu^{2}$.
+
+_c)_ $\operatorname{Var}(S)=n p\left(\mu_{2}-p \mu^{2}\right)$.
+
+_d)_ $M_{S}(t)=\left(1-p+p M_{Y}(t)\right)^{n}$.
+
+_Nota:_ $\mathbb{E}[\gamma^n]=\mu_n$
+
+Estas expresiones se siguen fácilmente de las fórmulas generales demostradas antes, basta recordar que si $N$ tiene distribución $bin(n,p)$, entonces $E(N)=np$, $Var(N)=np(1-p)$ y $M_N(t)=(1-p+pe^t)^n$
+
+## Modelo binomial negativo compuesto {-}
+
+**Cuando el número de reclamaciones $N$ tiene una distribución binomial negativa se dice que el riesgo S tiene una distribución binomial negativa compuesta**. Esto es, si $N \sim bin neg (k, p)$ entonces $S \sim bin neg comp (k, p, G)$ donde nuevamente $G$ hace referencia a la función de distribución
+
+**Proposición:** Si $N$ tiene distribución bin $n e g(k, p)$, entonces
+
+_a)_ $E(S)=k(1 / p-1) \mu$.
+
+_b)_ $E\left(S^{2}\right)=$.
+
+_c)_ $\operatorname{Var}(S)=k(1 / p-1)(1 / p) \mu^{2}+k(1 / p-1)\left(\mu_{2}-\mu^{2}\right)$.
+
+_d)_ $M_{S}(t)=\left(\frac{p}{1-(1-p) M_{Y}(t)}\right)^{k}$.
+
+
+Para encontrar estas fórmulas es suficiente recordar que si $N$ tiene distribución $bin ~neg (k, p)$, entonces $E(N)=\frac{k(1-p)}{p},~~ Var(N)=\frac{k(1-p)}{p^2}~~y~~ M_N(t)=\left[ \frac{p}{(1-p)e^t} \right]^k$
+
+En el caso particular cuando $k=1$, la distribución de $N$ se reduce a la distribución geométrica de parámetro $p$, y se dice que $S$ tiene distribución geométrica compuesta.
+
+## Modelo Poisson Compuesto {-}
+
+**Cuando el número de reclamaciones $N$ tiene una distribución Poisson se
+dice que el riesgo $S$ tiene una distribución Poisson compuesta**, y se escribe $S \sim Poisson ~comp (\lambda, G)$ , en donde $\lambda$ es el parámetro de la distribución
+Poisson y $G$ es la función de distribución de cada sumando de $S$.
+
+Para este modelo se tienen los siguientes resultados:
+
+**Proposición:** Si $N$ tiene distribución $\operatorname{Poisson}(\lambda)$, entonces
+
+_a)_ $E(S)=\lambda\mu$.
+
+_b)_ $E\left(S^{2}\right)=\lambda\mu_{2}+\lambda^{2} \mu^{2}$.
+
+_c)_ $\operatorname{Var}(S)=\lambda\mu_{2}$.
+
+_d)_ $M_{S}(t)=\exp\left[\lambda\left(M_{Y}(t)-1\right)\right]$.
+
+Nuevamente estas expresiones son consecuencia de las fórmulas generales demostradas antes, $\mathrm{y}$ del hecho de que si $N$ tiene distribución Poisson $(\lambda)$ entonces $E(N)=\lambda, \operatorname{Var}(N)=\lambda$, y $M_{N}(t)=\exp \left(\lambda\left(e^{t}-1\right)\right)$. Véase la sección de ejercicios para los terceros momentos de este modelo. Observe que el parámetro $\lambda$ y la distribución de la variable $Y$ determinan por completo al modelo Poisson compuesto. Estudiaremos con más detalle este modelo en la siguiente sección.
+
+**Proposición:** Si $N$ tiene distribución Poisson($\lambda$) entonces.
+
+_a)_ $\mathbb{E}(S)= \lambda\mu$
+
+_b)_ $\mathbb{E}(S^{2})= \lambda \mu_{2}+\lambda^{2}\mu^{2}$
+
+_c)_ $Var(S)=\lambda \mu_{2}$
+
+_d)_ $M_{S}(t)= exp[\lambda(M_{Y}(t)-1)]$
+
+Nuevamente estas expresiones son consecuencia de las fórmulas generales demostradas antes, y del hecho que si $N$ tiene distribución Poisson($\lambda$), entonces $\mathbb{E}(N)=\lambda, Var(N) \quad \text{y}\quad M_{N}(t)=exp[\lambda(e^{t}-1)]$. Véase la sección de ejercicios para los terceros momentos de este modelo. Observe que el parámetro $\lambda$ y la distribución de la variable $Y$ determinan por completo al modelo Poisson compuesto. Estudiaremos con más detalle este modelo en la siguiente sección.
+
+## Distribución de la convoluación de Poisson compuestas {-}
+
+Una característica muy útil para nuestros fines, es que la Poisson compuesta es cerrada bajo convolución. 
+
+Específicamente:
+
+Supongase que $S_{j}$ tiene una distribución Poisson compuesta con parametros $\lambda_{j}$ y función de distribución para severidades $F_{j}(x)$ para $j=1,2,...,n$. Además que $S_{1},S_{2},...,S_{n}$ son independientes.
+
+Entonces $S=S_{1}+S_{2}+...+S_{n}$ tiene una distribución Poisson compuesta con parametro: $\lambda= \displaystyle\sum_{j=1}^{n} \lambda_{j}$ y función de distribución de severidad $F(x)= \displaystyle\sum_{j=1}^{n}\displaystyle\frac{\lambda_{j}}{\lambda}F_{j}(x)$
+
+_Demostración._
+
+Sea $M_{j}(t)$ la f.g.m de $F_{j}(x)$ para $j=1,2,...,n$. Entonces $S_{j}$ tiene f.g.m dada por: $M_{S_{j}}(t)=\mathbb{E}(e^{tS_{j}})= e^{\lambda_{j}(M_{j}(t)-1)}$ y por la independencia de las $S_{j}´s$. S tiene f.g.m:
+
+\begin{eqnarray*}
+M_{S}(t)&=& \displaystyle\prod_{j=1}^{n}M_{S_{j}}(t)\\
+&=& \displaystyle\prod_{j=1}^{n} exp(\lambda_{j}[M_{j}(t)-1])\\
+&=& exp \left(  \left[ \displaystyle\sum_{j=1}^{n} \lambda_{j}M_{j}(t) - \displaystyle\sum_{j=1}^{n} \lambda_{j}\right]   \right)\\
+&=& exp\left(  \left[ \displaystyle\sum_{j=1}^{n} \lambda_{j}M_{j}(t)  -\lambda\right]   \right)\\
+&=& exp \left( \lambda \left[ \displaystyle\sum_{j=1}^{n} \displaystyle\frac{\lambda_{j}}{\lambda}M_{j}(t)  -\lambda\right]  \right)\\
+\end{eqnarray*}
+
+Debido a que $\displaystyle\sum_{j=1}^{n}\displaystyle\frac{\lambda_{j}}{\lambda}M_{j}(t)$ es la f.g.m de $F(x)= \displaystyle\sum_{j=1}^{n}\displaystyle\frac{\lambda_{j}}{\lambda}F_{j}(x)$ entonces $M_{S}(t)$ tiene la forma de la f.g.m de una distribución Poisson compuesta.
+
+**Nota: Al igual que los resultados anteriores, la severidad en este resultado puede ser discreta, continua, mixta o con soporte en los reales.**
+
+Este último resultado se puede enunciar de la siguiente manera:
+
+Supongamos una muestra de riesgos $\{S_{j} \}_{j=1}^{n}$ v.a.i.i.d con $S_{j} \sim PoiComp(\lambda_{j}, F_{Y_{j}})$, entonces: 
+
+\begin{eqnarray*}
+S &\ddot{=} &\displaystyle\sum_{j=1}^{n}S_{j} \sim PoiComp\left(\lambda= \displaystyle\sum_{j=1}^{n} \lambda_{j},F_{Y_{j}}= \displaystyle\sum_{j=1}^{n}  \displaystyle\frac{\lambda_{j}}{\lambda}F_{Y_{j}}(x) \right)
+\end{eqnarray*}
+
+De este resultado una de las partes interesantes es la severidad resultante de esta acción ($Y^{*}$). Principalmente porque, a pesar de que el resultado está dado en términos de la d.f.a, se deriva que:
+
+\begin{eqnarray*}
+f_{Y^{*}}(t)&=& \displaystyle\sum_{j=1}^{n} \displaystyle\frac{\lambda_{j}}{\lambda} f_{Y_{j}}(t)
+\end{eqnarray*}
+
+Sin importar que haya $Y_{j}´s$ discretas, continuas, mixtas; este resultado quedará como ejercicio para el lector.
+
+Una demostración del resultado anterior, se puede dar si suponemos tener $n_{1}$ v.a continuas y $n_{2}$ v.a discretas con $n=n_{1}+n_{2}$. Llamemos a $\{ Y_{1i}\}_{i=1}^{n_{1}}$ a las v.a´s de severidad **continuas** y llamemos $\lambda_{1i}$ a sus correspondientes parámetros de frecuencia. Análogamente, llamaremos $\{ Y_{2k}\}_{k=1}^{n_{2}}$ a las v.a´s de severidad **discretas** y  $\lambda_{2k}$ a sus correspondientes parámetros de frecuencia. De esta manera, tendremos que:
+
+\begin{eqnarray*}
+                    F_{Y^{*}}(t) &=& \displaystyle\sum_{j=1}^{n} \displaystyle\frac{\lambda_{j}}{j} F_{Y_{j}}(t)\\
+                    &=& \underbrace{ \displaystyle\sum_{i=1}^{n_{1}} \displaystyle\frac{\lambda_{1i}}{\lambda} F_{Y_{1i}}(t) }_\text{continuas} + \underbrace{{ \displaystyle\sum_{k=1}^{n_{2}} \displaystyle\frac{\lambda_{2k}}{\lambda} F_{Y_{2k}}(t) }}_\text{discretas}\\
+                    \end{eqnarray*}
+                    
+Entonces:
+
+\begin{eqnarray*}
+    f_{Y^{*}}(t)&=&\displaystyle\frac{d}{dt}\displaystyle\sum_{i=1}^{n_{1}} \displaystyle\frac{\lambda_{1i}}{\lambda} F_{Y_{1i}}(t) \quad + \underbrace{ \displaystyle\sum_{k=1}^{n_{2}} \displaystyle\frac{\lambda_{2k}}{\lambda} F_{Y_{2k}}(t)- F_{Y_{2k}}(t-1)}_\text{Asumiendo que las discretas tienen un soporte consecutivo}\\
+    &=& \underbrace{\displaystyle\sum_{i=1}^{n_{1}} \displaystyle\frac{\lambda_{1i}}{\lambda} f_{Y_{1i}}(t) + \displaystyle\sum_{k=1}^{n_{2}} \displaystyle\frac{\lambda_{2k}}{\lambda} f_{Y_{2k}}(t)}_\text{por la linealidad de la derivada y la probabilidad puntual de las discretas
+    }\\
+    &=& \displaystyle\sum_{j=1}^{n} \displaystyle\frac{\lambda_{j}}{\lambda} f_{Y_{j}}(t) \quad \text{Juntando todo en un solo índice}\\
+\end{eqnarray*}
+
+Notemos que entonces la severidad resultante de la suma de modelos Poisson compuestos, resulta ser una **mezcla** de las severidades de los riesgos sumados.
+
+_Nota:_ $\displaystyle\frac{\lambda_{i}}{\lambda}\in (0,1]$ y  $\displaystyle\sum_{i=1}^{n}\displaystyle\frac{\lambda_{i}}{\lambda}=1$
+
+Esto nos da pie a que, en general, los momentos de la severidad de la suma ($Y^{*}$) vendrán dados por:
+
+\begin{eqnarray*}
+\mathbb{E}[(Y^{*})^{m}]&=& \displaystyle\frac{1}{\lambda} \displaystyle\sum_{j=1}^{n} \lambda_{j} \mathbb{E}[(Y_{i})^{m}]\\
+\end{eqnarray*}
+
+Nuevamente, esto se da sin importar el soporte de los $Y_{i}´s$ pues una demostración con las hipótesis y notación anteriores puede verse como:
+
+\begin{eqnarray*}
+\mathbb{E}[Y^{*m}]
+&=&\displaystyle\sum_{i=1}^{n_{1}} \frac{\lambda_{1i}}{\lambda} \displaystyle\int_{\mathbb{R}} t^{m} f_{Y_{1i}}(t) dt + \frac{\lambda_{2k}}{\lambda} \displaystyle\sum_{\forall t} t^{m} f_{Y_{2k}}(t) \\
+&=& \displaystyle\sum_{i=1}^{n_{1}} \frac{\lambda_{1i}}{\lambda} \mathbb{E}[Y_{1i}^{m}]  + \frac{\lambda_{2k}}{\lambda} \mathbb{E}[Y_{2k}^{m}]\\
+&=& \displaystyle\sum_{j=1}^{n} \frac{\lambda_{i}}{\lambda} \mathbb{E}[Y_{j}^{m}]
+\end{eqnarray*}
+
+**Ejemplo:**
+
+$S_{1}$ y $S_{2}$ son distribuciones Poisson compuestas con parámetros $\lambda_{1}=3$ y $\lambda_{2}=2$, y función de severidad individual; asumiendo $S_{1} \perp S_{2}$.
+
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("Imágenes/Tablita.png", error=FALSE)
+```
+    
+Determine la media y la varianza de $S$.
+
+$S=S_{1}+S_{2}$ tiene una distribución Poisson compuesta con media $\lambda=3+2=5$, y con función de severidad.
+
+_Solución:_
+
+Sea $X_{1}$ $X_{2}$ las severidades de $S_{1}$ $S_{2}$ respectivamente. 
+
+\begin{align*}
+    \mathbb{E}[X_{1}]&= (1)(0.25)+(2)(0.75)=1.75\\
+    \mathbb{E}[X_{1}^{2}]&= (1^{2})(0.25)+(2^{2})(0.75)=3.75\\
+    \mathbb{E}[X_{2}]&= (1)(0.1)+(2)(0.4)+(3)(0.4)+(4)(0.1)=2.5\\
+    \mathbb{E}[X_{2}^{2}]&= (1^{2})(0.1)+(2^{2})(0.4)+(3^{2})(0.4)+(4^{2})(0.1)=6.9\\
+\end{align*}
+
+**Solución 1: Por propiedades básicas**
+
+\begin{eqnarray*}
+\mathbb{E}[S] &=& \mathbb{E}[S_{1}+ S_{2}]\\
+&=&  \mathbb{E}[S_{1}]  +\mathbb{E} [S_{2}]\\
+&=& \lambda_{1} \mathbb{E}[X_{1}] +\lambda_{2} \mathbb{E}[X_{2}]\\
+&=& 3(1.75)+2(2.5)\\
+&=& 10.25\\
+\end{eqnarray*}
+
+\begin{eqnarray*}
+Var[S] &=& Var[S_{1}+ S_{2}]\\
+&=&  Var[S_{1}]  +Var[S_{2}] + {2Cov(S_{1},S_{2})}\\
+&=& \lambda_{1} \mathbb{E}[X_{1}^{2}] +\lambda_{2} \mathbb{E}[X_{2}^{2}]\\
+&=& 3(3.75)+2(6.9)\\
+&=& 25.05\\
+\end{eqnarray*}
+
+**Solución 2: Por propiedades de convolución de Poisson compuestas**
+
+
+\begin{eqnarray*}
+\mathbb{E}[S] &=& \lambda \mathbb{E}[Y^{*}]\\
+&=& \lambda \left( \displaystyle\frac{\lambda_{1}}{\lambda}   \mathbb{E}[X_{1}]   + \displaystyle\frac{\lambda_{2}}{\lambda}  \mathbb{E}[X_{2}]\right)\\
+&=& 5 \left( \displaystyle\frac{3}{5}  (1.75) + \displaystyle\frac{2}{5}  (2.5)  \right)\\
+&=& 10.25
+\end{eqnarray*}
+
+\begin{eqnarray*}
+Var[S] &=& \lambda \mathbb{E}[(Y^{*})^{2}]\\
+&=& \lambda \left( \displaystyle\frac{\lambda_{1}}{\lambda}   \mathbb{E}[X_{1}^{2}]   + \displaystyle\frac{\lambda_{2}}{\lambda}  \mathbb{E}[X_{2}^{2}]\right)\\
+&=& 5 \left( \displaystyle\frac{3}{5}  (3.75) + \displaystyle\frac{2}{5}  (6.9)  \right)\\
+&=& 25.05\\
+\end{eqnarray*}
+
+Esas son dos maneras de obtener el mismo resultado aplicando las propiedades básicas de la probabilidad vistas en cursos anteriores y los resultados a los que acabamos de llegar.
+
+Lo siguiente que nos interesa buscar es la manera de obtener probabilidades del riesgo $S$. Para esto podemos deducir que las probabilidades exactas de $S$ son difíciles de calcular , por tanto, en la siguiente sección veremos algunas metodologías para estimar dichos valores.
+
+A continuación facilitamos algunos vídeos que ayuden al entendimiento del tema anterior.
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/11. a.png", error=FALSE)
+```
+
+_Link de YouTube:_ https://www.youtube.com/watch?v=YFKFsSIHod4
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/11. b.png", error=FALSE)
+```
+
+_Link de YouTube:_ https://www.youtube.com/watch?v=uNZiUUW6VaA
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/MC_Bases1.png", error=FALSE)
+```
+
+_Link de YouTube:_ https://youtu.be/z73RugHd_cU
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/MC_Bases2.png", error=FALSE)
+```
+
+_Link de YouTube:_ https://youtu.be/4g0qQG2gvbU
+
+## Aproximaciones de probabilidad del Modelo Colectivo {-}
+
+Este tipo de aproximaciones se utilizan generalmente cuando la severidad es una v.a. continua o con modelos más sofisticados de riesgo.
+
+
+### Aproximación Normal
+
+Sea $S$ un riesgo con media y varianza finitas, entonces, si la variable aleatoria de frecuencia toma en general valores grandes, para cualquier $x\geq 0$ se tiene:
+
+$$F_S(t)\hspace{0.4em}\ddot{=}\hspace{0.4em}\mathbb{P}[S\leq t]\approx \Phi\left(\frac{t-\mathbb{E}[S]}{\sqrt{Var(S)}}\right)$$
+
+De donde se obtiene el siguiente resultado:
+
+$$f_S(t)\approx\frac{1}{\sqrt{Var(S)}}\phi\left(\frac{t-\mathbb{E}[S]}{\sqrt{Var(S)}}\right)$$
+
+Recordando que $\Phi(t)$ es la función de distribución de una normal estándar y $\phi(t)$ la densidad de la misma.
+
+### Aproximación Gamma Trasladada
+
+Observemos lo siguiente:
+
+_Ejemplo de densidades de Gamma_
+
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("Imágenes/ModeloColectivoGamma.png", error=FALSE)
+```
+
+_Ejemplo de densidad de S_
+
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("Imágenes/Imagen1.png", error=FALSE)
+```
+
+Existen algunos riesgos $(S)$ en modelos colectivos que presentan un comportamiento similar al de una densidad Gamma. Es por eso que suena razonable intentar ajustar una densidad Gamma a nuestro modelo. Para esto, intentaremos ajustar una densidad **Gamma trasladada** para buscar ser más exactos en nuestro modelo. Entonces, definiremos $Z\sim Gamma({\beta},{\lambda})$ y tomaremos ${c}\in \mathbb{R}$, de tal manera que se buscará ajustar la variable $G\hspace{0.4em}\ddot{=}\hspace{0.4em}Z+{c}\sim Gamma T({\beta},{\alpha},{c})$ a nuestro riesgo $S$.
+
+Para lograr esto emplearemos un método similar al de momentos, necesitamos estimar 3 parámetros: ${\beta},{\alpha}\mbox{ y }{c}$.Supongamos conocidos o estimadas las siguientes cantidades:
+
+$\mathbb{E}[S]=\mu\quad\rightarrow\quad$ la media
+
+$Var(S)=\sigma^2\quad\rightarrow\quad$ la varianza
+
+$\frac{\mathbb{E}[(S-\mathbb{E}[S])^3]}{\sqrt{Var^3(S)}}=\alpha\quad\rightarrow$ el coeficiente de asimetría
+
+Con base en estas 3 cantidades estimaremos los parámetros.
+
+Haciendo los cálculos, las cantidades correspondientes para nuestra variable aleatoria $G$ en términos de los parámetros de interés son las siguientes:
+
+- $\mathbb{E}[G]=\mathbb{E}[{c}+Z]={c}+\frac{\beta}{\lambda}$ 
+
+
+- $Var(G)=Var({c}+Z)=\frac{{\beta}}{{\lambda}^2}$
+
+- $\frac{\mathbb{E}[(G-\mathbb{E}[G])^3]}{Var(G)^{\frac{3}{2}}}=\frac{\mathbb{E}[(({c}+Z)-\mathbb{E}[{c}+Z])^3]}{Var{c}+Z)^{\frac{3}{2}}}=\frac{2}{\sqrt{{\beta}}}$
+
+Análogo al método de momentos tenemos el siguiente sistema de ecuaciones:
+
+\begin{eqnarray*}
+    \left\{ \begin{array}{lcc}
+        -\hspace{0.4em} \mathbb{E}[S]={\mu}={c}+\frac{{\beta}}{{\lambda}}=\mathbb{E}[G]   \\
+        -\hspace{0.4em} Var(S)={\sigma}^2=\frac{{\beta}}{{\lambda}^2}=Var(G)\\
+        -\hspace{0.4em}\frac{\mathbb{E}[(S-\mathbb{E}[S])^3]}{\sqrt{Var^3(S)}}={\alpha}=\frac{2}{\sqrt{{\beta}}}=\frac{\mathbb{E}[(G-\mathbb{E}[G])^3]}{Var(G)^{\frac{3}{2}}}
+    \end{array}
+    \right.
+\end{eqnarray*}
+
+Resolviendo el sistema de ecuaciones:
+
+\begin{eqnarray*}
+    \left\{
+\begin{array}{lcc}
+    {\left.{c}={\mu}{-\frac{2{\sigma}}{{\alpha}}}\right\}\text{Parámetro de traslación}}\\
+    {\left.\begin{array}{lcc}
+    {\beta}={\frac{4}{{\alpha}^2}}\\
+    {\lambda}={\frac{2}{{\sigma}{\alpha}}}\end{array}\right\} \text{Parámetros de la Gamma}}
+\end{array}
+    \right.
+\end{eqnarray*}
+
+Para más de la aproximación Gamma-T:
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("Imágenes/MC_Bases3.png", error=FALSE)
+```
+
+_Link de YouTube:_ https://youtu.be/veGk-C-m_sk
+
+La distribución del riesgo $S$ en el modelo colectivo puede aproximarse mediante la distribución de la variable aleatoria $G={c}+Z={\mu}-\frac{2{\sigma}}{{\alpha}}+z$ donde $Z\sim Gamma\left({\beta}=\frac{4}{{\alpha}^2},{\lambda}=\frac{2}{{\sigma}{\alpha}}\right)$. Es decir:
+
+$$
+            F_S(t)\hspace{0.4em}\ddot{=}\hspace{0.4em}\mathbb{P}[S\leq t]\approx\mathbb{P}[G\leq t]=\mathbb{P}\left[z\leq t-{\mu}+\frac{2{\sigma}}{{\alpha}}\right]\hspace{0.4em}\ddot{=}\hspace{0.4em}F_Z\left(t-{\mu}+\frac{2{\sigma}}{{\alpha}}\right)
+        $$
+$\mathbb{E}[S]=\mu$ $\hspace{0.4em}$ $\hspace{0.4em}$ $\hspace{0.4em}$ $\hspace{0.4em}$  $Var(S)=\sigma^2$ $\hspace{0.4em}$ $\hspace{0.4em}$ $\hspace{0.4em}$ $\hspace{0.4em}$  $\frac{\mathbb{E}[(S-\mathbb{E}[S])^3]}{\sqrt{Var^3(S)}}=\alpha$
+
+Cuando la severidad al igual que la frecuencia del modelo son discretas entonces la distribución del riesgo será también discreta. Por lo cual, si se desea utilizar estos métodos de aproximación en el caso discreto, es necesario aplicar antes una **corrección por continuidad**. En general:
+
+
+Suponiendo que se desea aproximar $\mathbb{P}[n\leq S \leq m]$ con $S$ discreta la **corrección por continuidad** será expandiendo el intervalo $[n,m]$ al intervalo $\left[n-\frac{1}{2},m+\frac{1}{2}\right]$:
+        $$
+            \mathbb{P}[n\leq S\leq m]\approx \mathbb{P}\left[n-\frac{1}{2}\leq S\leq m+\frac{1}{2}\right]
+        $$
+**Ejemplo Gamma Trasladada:**
+
+```{r echo=FALSE, out.width="40%"}
+knitr::include_graphics("Imágenes/GammaTras.png", error=FALSE)
+```
+
+Vamos a estimar en R con una muestra de $S$ los parámetros de la Gamma Trasladada y veamos que en efecto la distribución obtenida ajusta a los datos.
+
+
+
+    
+
